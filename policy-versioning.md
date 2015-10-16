@@ -1,4 +1,4 @@
-## **Versioning Policy**    * **DRAFT (TO BE APPROVED BY LEGAL)** *
+## Versioning Policy   * **DRAFT (TO BE APPROVED BY LEGAL)** *
 
 Tangoe supports multiple versions of our APIs to enable introduction of new features without disrupting use by third-party consumers. Moreover, we provide ample notice to those existing consumers so that they can make appropriate plans for migrating to the latest version. *(Please Note: APIs are subject to change without prior notice if a security vulnerability is discovered in the current functionality.)*
 
