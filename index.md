@@ -7,7 +7,7 @@ logo2: tangoe_knockout.jpg
 
 
 
-# Tangoe Mobile Procurement API
+# Tangoe Mobile Procurement API site
 
 Tangoe's Mobile Procurement API is a RESTful API.  With this next generation interface, our clients are able to:
 
