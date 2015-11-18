@@ -1,7 +1,6 @@
 ---
 layout: default
-logo1: tangoe-logo_125.png
-logo2: tangoe_knockout.jpg
+title: Mobile Procurement API v1
 ---
 
 
@@ -28,6 +27,27 @@ Tangoe's Mobile Procurement API is a RESTful API.  With this next generation int
 1. Top-level 1
 1. Top-level 2
 1. Top-level 3
-  a.  Second-level 1
-  a.  Second-level 2
+ 1.1 Second-level 1
+ 1.1 Second-level 2
+
+~~strikethru~~
+
+
+* Item
+* Item
+* Item
+
+- Item
+- Item
+- Item
+
+
+1. Item 1
+  1. A corollary to the above item.
+  2. Yet another point to consider.
+2. Item 2
+  * A corollary that does not need to be ordered.
+    * This is indented four spaces, because it's two spaces further than the item above.
+    * You might want to consider making a new list.
+3. Item 3
 
