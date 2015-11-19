@@ -6,7 +6,11 @@ permalink: /start/register.md
 
 
 
-<h1>Register your Application</h1>
+# Register your Application
 
-<p>(How to register your application via the Dev Portal)</p>
+(How to register your application via the Dev Portal)
+
+1. one
+1. two
+1. threeee
  
