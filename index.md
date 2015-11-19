@@ -32,15 +32,7 @@ Tangoe's Mobile Procurement API is a RESTful API.  With this next generation int
 
 ~~strikethru~~
 
-
-* Item
-* Item
-* Item
-
-- Item
-- Item
-- Item
-
+Yup
 
 1. Item 1
   1. A corollary to the above item.
