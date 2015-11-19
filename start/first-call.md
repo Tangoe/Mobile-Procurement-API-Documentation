@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Getting Started - Making your First API Call
-permalink: /start/first-call.md
+permalink: start/first-call.md
 ---
 
 
