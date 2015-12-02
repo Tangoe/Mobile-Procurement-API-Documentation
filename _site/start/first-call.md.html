@@ -3,8 +3,17 @@
 <head>
   <meta charset=utf-8 />
   <title>  Getting Started - Making your First API Call |  MOB API </title>  
-  <link rel="stylesheet" href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/css/tgUI-style.0.2.8.min.css" />
+  
+  <link rel="stylesheet" href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/css/tgUI-style.0.2.8.minX.css" />
+  
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,300" />
+
   <link rel="stylesheet" href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/css/styles.css" />
+
+
 </head>
 <body>
  
@@ -24,9 +33,12 @@
 
 <div class="tg-grid">
   <div class="tg-grid__cell  tg-one-fifth  tg-pad">
-    <nav role="navigation" class="tg-space--top">
+    
+
+    <nav role="navigation" class="tg-space--top"  style="display:none;">
       <ul>
         <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/">Home</a></li>
+
         <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/start/">Getting Started</a>
           <ul>
             <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/start/register.md">Register your App</a></li>
@@ -34,19 +46,83 @@
             <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/start/test-explore.md">Test and Explore</a></li>
           </ul>
         </li>
+
         <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/tutorials/">Tutorials</a>
-          <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/tutorials/orders/">Orders</a></li>
-          <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/tutorials/addresses/">Addresses</a></li>
+          <ul>
+            <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/tutorials/orders/">Orders</a></li>
+            <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/tutorials/addresses/">Addresses</a></li>
+          </ul>
         </li>
+
         <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/concepts/">Using the API</a>
-          <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/concepts/error/">Errors</a></li>
-          <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/concepts/pagination/">Pagination</a></li>
-          <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/concepts/security/">Security</a></li>
+          <ul>
+            <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/concepts/errors/">Errors</a></li>
+            <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/concepts/pagination/">Pagination</a></li>
+            <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/concepts/security/">Security</a></li>
+          </ul>
         </li>
+
         <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/policies/">Policies</a></li>
+
         <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/contact">Contact</a></li>
       </ul>
     </nav>
+
+
+
+
+
+  <p>accordion nav</p>
+  <header role="banner">
+    <nav class="tg-space--top  nav" role="navigation">
+    <ul class="nav__list">
+      <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/">Home</a></li>
+
+      <li>
+        <input id="group-1" type="checkbox" hidden />
+        <label for="group-1"><span class="fa fa-angle-right"></span> Getting Started</label>
+        <ul class="group-list">
+          <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/start/register.md">Register your App</a></li>
+          <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/start/first-call.md">Make your First Call in Minutes</a></li>
+          <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/start/test-explore.md">Test and Explore</a></li>          
+        </ul>
+      </li>
+      <li>
+        <input id="group-2" type="checkbox" hidden />
+        <label for="group-2"><span class="fa fa-angle-right"></span> Tutorials</label>
+        <ul class="group-list">
+          <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/tutorials/orders/">Orders</a></li>
+          <input id="sub-group-2" type="checkbox" hidden />
+          <label for="sub-group-2"><span class="fa fa-angle-right"></span> Transaction Types</label>
+          <ul class="sub-group-list">
+            <li><a href="#">DEACTIVATE</a></li>
+            <li><a href="#">SUSPEND</a></li>
+          </ul>
+
+          <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/tutorials/addresses/">Addresses</a></li>
+            
+        </ul>
+      </li>
+      <li>
+        <input id="group-3" type="checkbox" hidden />
+        <label for="group-3"><span class="fa fa-angle-right"></span> Using the API</label>
+        <ul class="group-list">
+          <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/concepts/errors/">Errors</a></li>
+          <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/concepts/pagination/">Pagination</a></li>
+          <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/concepts/security/">Security</a></li>   
+        </ul>
+      </li>
+
+      <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/policies/">Policies</a></li>
+      <li><a href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/contact">Contact</a></li>
+
+    </ul>
+  </nav>
+</header>
+
+
+
+
   </div><!--
   --><div class="tg-grid__cell  tg-four-fifths  tg-pad">
 

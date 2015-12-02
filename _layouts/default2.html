@@ -1,51 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset=utf-8 />
-  <title>  Mobile Procurement API v1 |  MOB API </title>  
-  
-  <link rel="stylesheet" href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/css/tgUI-style.0.2.8.minX.css" />
-  
-  
-
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-
-  <link rel="stylesheet" href="http://tangoe.github.io/Mobile-Procurement-API-Documentation/css/styles2.css" />
-
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
-
-
-
-
-<script type="text/javascript">
-$(document).ready(function() {
-  $('.collapse.in').prev('.panel-heading').addClass('active');
-  $('#accordion, #bs-collapse')
-    .on('show.bs.collapse', function(a) {
-      $(a.target).prev('.panel-heading').addClass('active');
-    })
-    .on('hide.bs.collapse', function(a) {
-      $(a.target).prev('.panel-heading').removeClass('active');
-    });
-});
-</script>
-
-</head>
-<body>
- 
-  <div id="tg-shellMain">
-
-    <header class="tg-display--table  tg-one-whole  tg-pad--half">
-      <div class="tg-display--table-cell"  style="width:150px"><a href="/"><img src="http://tangoe.github.io/Mobile-Procurement-API-Documentation/images/tangoe-logo_125.png" alt="Tangoe" /></a></div><!--
-      --><div class="tg-display--table-cell  tg-text--left  tg-valign--middle  tg-h1">Mobile Procurement API v1</div><!--
-      --><div class="tg-display--table-cell  tg-text--right  tg-valign--middle">
-        	<a href="">Learn</a>  |  <a href="">Reference</a>  |  <a href="">Register</a>
-        </div>
-	  </div>
-    <header>
-
-    
-  
+{% include header2.html %}
 
 
     
@@ -136,67 +89,8 @@ $(document).ready(function() {
 
 
 <div>
-    <h1 id="tangoe-mobile-procurement-api-site">Tangoe Mobile Procurement API site</h1>
-
-<p>Tangoe’s Mobile Procurement API is a RESTful API.  With this next generation interface, our clients are able to:</p>
-
-<ul>
-  <li>Retrieve Inventory Information
-    <ul>
-      <li>Assets</li>
-      <li>Service Numbers</li>
-      <li>Contract Dates</li>
-    </ul>
-  </li>
-  <li>Place procurement orders
-    <ul>
-      <li>New Activations</li>
-      <li>Upgrades</li>
-      <li>Ports</li>
-      <li>Suspend/Reconnect Service</li>
-      <li>Update Features</li>
-      <li>Deactivate Service</li>
-    </ul>
-  </li>
-  <li>Retrieve Order Status</li>
-</ul>
-
-<ol>
-  <li>Top-level 1</li>
-  <li>Top-level 2</li>
-  <li>Top-level 3
- 1.1 Second-level 1
- 1.1 Second-level 2</li>
-</ol>
-
-<p>~~strikethru~~</p>
-
-<p>Yup</p>
-
-<ol>
-  <li>Item 1</li>
-  <li>A corollary to the above item.</li>
-  <li>Yet another point to consider.</li>
-  <li>Item 2
-    <ul>
-      <li>A corollary that does not need to be ordered.</li>
-      <li>This is indented four spaces, because it’s two spaces further than the item above.</li>
-      <li>You might want to consider making a new list.</li>
-    </ul>
-  </li>
-  <li>Item 3</li>
-</ol>
-
-
+    {{ content }}
 </div>
 
  
-    
-    
-    <footer>
-      <p class="tg-text--center">&copy; Copyright 2015 Tangoe </p>
-    </footer>
- 
-  </div>
-</body>
-</html>
+{% include footer.html %}
