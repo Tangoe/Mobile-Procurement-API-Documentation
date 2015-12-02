@@ -2,95 +2,23 @@
 
 <div class="tg-grid">
   <div class="tg-grid__cell  tg-one-fifth  tg-pad">
-    
 
-    <nav role="navigation" class="tg-space--top"  style="display:none;">
+
+    <nav role="navigation" class="tg-space--top">
       <ul>
-        <li><a href="{{site.url}}">Home</a></li>
-
-        <li><a href="{{site.url}}start/">Getting Started</a>
-          <ul>
-            <li><a href="{{site.url}}start/register.md">Register your App</a></li>
-            <li><a href="{{site.url}}start/first-call.md">Make your First Call in Minutes</a></li>
-            <li><a href="{{site.url}}start/test-explore.md">Test and Explore</a></li>
-          </ul>
-        </li>
-
-        <li><a href="{{site.url}}tutorials/">Tutorials</a>
-          <ul>
-            <li><a href="{{site.url}}tutorials/orders/">Orders</a></li>
-            <li><a href="{{site.url}}tutorials/addresses/">Addresses</a></li>
-          </ul>
-        </li>
-
-        <li><a href="{{site.url}}concepts/">Using the API</a>
-          <ul>
-            <li><a href="{{site.url}}concepts/errors/">Errors</a></li>
-            <li><a href="{{site.url}}concepts/pagination/">Pagination</a></li>
-            <li><a href="{{site.url}}concepts/security/">Security</a></li>
-          </ul>
-        </li>
-
-        <li><a href="{{site.url}}policies/">Policies</a></li>
-
-        <li><a href="{{site.url}}contact">Contact</a></li>
+        {% for navoption in site.data.nav %}
+          <li><a href="{{site.url}}{{ navoption.href }}">{{ navoption.label }}</a>
+            {% if navoption.children != null %}
+              <ul>
+                {% for child in navoption.children %}
+                  <li><a href="{{ site.url }}{{ child.childHref }}">{{ child.childLabel }}</a></li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
       </ul>
-    </nav>
-
-
-
-
-
-  <p>accordion nav</p>
-  <header role="banner">
-    <nav class="tg-space--top  nav" role="navigation">
-    <ul class="nav__list">
-      <li><a href="{{site.url}}">Home</a></li>
-
-      <li>
-        <input id="group-1" type="checkbox" hidden />
-        <label for="group-1"><span class="fa fa-angle-right"></span> Getting Started</label>
-        <ul class="group-list">
-          <li><a href="{{site.url}}start/register.md">Register your App</a></li>
-          <li><a href="{{site.url}}start/first-call.md">Make your First Call in Minutes</a></li>
-          <li><a href="{{site.url}}start/test-explore.md">Test and Explore</a></li>          
-        </ul>
-      </li>
-      <li>
-        <input id="group-2" type="checkbox" hidden />
-        <label for="group-2"><span class="fa fa-angle-right"></span> Tutorials</label>
-        <ul class="group-list">
-          <li><a href="{{site.url}}tutorials/orders/">Orders</a></li>
-          <input id="sub-group-2" type="checkbox" hidden />
-          <label for="sub-group-2"><span class="fa fa-angle-right"></span> Transaction Types</label>
-          <ul class="sub-group-list">
-            <li><a href="#">DEACTIVATE</a></li>
-            <li><a href="#">SUSPEND</a></li>
-          </ul>
-
-          <li><a href="{{site.url}}tutorials/addresses/">Addresses</a></li>
-            
-        </ul>
-      </li>
-      <li>
-        <input id="group-3" type="checkbox" hidden />
-        <label for="group-3"><span class="fa fa-angle-right"></span> Using the API</label>
-        <ul class="group-list">
-          <li><a href="{{site.url}}concepts/errors/">Errors</a></li>
-          <li><a href="{{site.url}}concepts/pagination/">Pagination</a></li>
-          <li><a href="{{site.url}}concepts/security/">Security</a></li>   
-        </ul>
-      </li>
-
-      <li><a href="{{site.url}}policies/">Policies</a></li>
-      <li><a href="{{site.url}}contact">Contact</a></li>
-
-    </ul>
-  </nav>
-</header>
-
-
-
+    </nav> 
 
   </div><!--
   --><div class="tg-grid__cell  tg-four-fifths  tg-pad">
