@@ -1,9 +1,7 @@
 {% include header.html %}
 
 <div class="tg-grid">
-  <div class="tg-grid__cell  tg-one-fifth  tg-pad">
-
-
+  <div class="tg-grid__cell  tg-one-fifth  ">
     <nav role="navigation" class="tg-space--top">
       <ul>
         {% for navoption in site.data.nav %}
@@ -16,7 +14,7 @@
                     {% if hasSecond %}
                       <ul>
                         {% for sub2 in sub1.subTwo %}
-                          <li><a href="{{ secondlevel.subTwoHref }}">{{ sub2.subTwoLabel }}</a></li>
+                          <li><a href="{{ site.url }}{{ sub2.subTwoHref }}">{{ sub2.subTwoLabel }}</a></li>
                         {% endfor %}
                       </ul>
                     {% endif %}

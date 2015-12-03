@@ -156,14 +156,60 @@
   </div><!--
   --><div class="tg-grid__cell  tg-four-fifths  tg-pad">
 
-    <h2 id="tutorials---how-to-create-an-order">Tutorials - How to Create an Order</h2>
+    <h2 id="metadata">Metadata</h2>
 
-<p>Create an Order for:
-1. All Types
-1. DEACTIVATE
-1. SUSPEND
-1. UNSUSPEND</p>
+<p>In many places, the Mobile Procurement API’s responses include blocks of metadata relating to the data points within that response. These supplementary blocks, which are always named “_meta,” typically contain fully-qualified URLs that resolve to other API calls for retrieving related detail data.</p>
 
+<p>For example, the API call for a collection of employees might return items containing just a few selected details about each employee. Each item also contains a “_meta” block populated a URL that can be used to obtain that specific employee’s full detail record.</p>
+
+<h3 id="detail-record-example">Detail Record Example</h3>
+
+<p>Metadata blocks make it very easy for the API consumer to easily obtain details for selected items without having to bloat a collection with details for all items returned. This could be particularly useful for use cases such as a list page containing a “view details” button for every item in the list.The end user will likely want to scan a list and choose to find out more details about just one particular item, rather than view the details of every item. Therefore, it is unnecessary to bloat the API response with a huge volume of detail that the end user is unlikely to want. Moreover, a smaller result set of more targeted data will enable the API to return results much faster.</p>
+
+<p>Below is an illustration of a metadata block contained in a JSON response for an employee collection.</p>
+
+<p><code>
+{
+  "_meta": {
+    "href": "http://api.tangoe.com/mobileprocurement/v1/employees/123456781"
+  },
+  "id": "123456781",
+  "firstName": "Barbara",
+  "lastName": "Andrews",
+  "email": "barbara.andrews@example.com",
+  "officePhone": "2035550399"
+},
+{
+  "_meta": {
+    "href": "http://api.tangoe.com/mobileprocurement/v1/employees/223456993"
+  },
+  "id": "223456993",
+  "firstName": "James",
+  "lastName": "Carpenter",
+  "email": "james.carpenter@example.com",
+  "officePhone": "2035550402"
+},
+...
+</code></p>
+
+<h3 id="pagination-data-example">Pagination Data Example</h3>
+
+<p>The meta blocks are not limited to URLs used executing API calls for obtaining related detail data records. They are also used to hold data needed to support paginated lists.</p>
+
+<p>In addition to hyperlinks for retrieving the first/last and next/previous pages of results, metadata blocks also contain data that the user interface might need to display result counts, such as total count, items per page limit, etc. For example:</p>
+
+<p><code>
+"_meta": {
+  "href": "http://api.tangoe.com/mobileprocurement/v1/assets/devices?sortAscending=true&amp;maxStatistics=7&amp;limit=3&amp;offset=9",
+  "totalCount": 31,
+  "offset": 9,
+  "limit": 3,
+  "hrefStart": "http://api.tangoe.com/mobileprocurement/v1/assets/devices?sortAscending=true&amp;maxStatistics=7&amp;limit=3&amp;offset=0",
+  "hrefPrevious": "http://api.tangoe.com/mobileprocurement/v1/assets/devices?sortAscending=true&amp;maxStatistics=7&amp;limit=3&amp;offset=6",
+  "hrefNext": "http://api.tangoe.com/mobileprocurement/v1/assets/devices?sortAscending=true&amp;maxStatistics=7&amp;limit=3&amp;offset=12",
+  "hrefEnd": "http://api.tangoe.com/mobileprocurement/v1/assets/devices?sortAscending=true&amp;maxStatistics=7&amp;limit=3&amp;offset=30"
+}
+</code></p>
 
 
   </div>

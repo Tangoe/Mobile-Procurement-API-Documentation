@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Getting Started - Test and Explore the API
-permalink: /start/test-explore.md
 ---
 
 

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Getting Started - Register your Application
-permalink: /start/register.md
 ---
 
 

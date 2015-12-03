@@ -4,12 +4,12 @@
 - label: "Getting Started"
   href: "start/"
   subOne:
-    - subOneLabel: "Register your Application"
-      subOneHref: "start/register.md"
+    - subOneLabel: "Register your App"
+      subOneHref: "start/register/"
     - subOneLabel: "Make your First Call in Minutes"
-      subOneHref: "start/first-call.md"
+      subOneHref: "start/first-call/"
     - subOneLabel: "Test and Explore"
-      subOneHref: "start/test-explore.md"
+      subOneHref: "start/explore/"
 
 - label: "Using the API"
   subOne:
@@ -21,6 +21,8 @@
       subOneHref: "concepts/errors/"
     - subOneLabel: "Pagination"
       subOneHref: "concepts/pagination/"
+    - subOneLabel: "Metadata"
+      subOneHref: "concepts/metadata/"
 
 - label: "Tutorials"
   subOne:
@@ -28,13 +30,13 @@
       subOneHref: "tutorials/orders/"
       subTwo:
         - subTwoLabel: "SUSPEND"
-        - subTwoHref: "tutorials/orders/SUSPEND/"
+          subTwoHref: "tutorials/orders/suspend/"
         - subTwoLabel: "UNSUSPEND"
-        - subTwoHref: "tutorials/orders/UNSUSPEND/"
+          subTwoHref: "tutorials/orders/unsuspend/"
         - subTwoLabel: "DEACTIVATE"
-        - subTwoHref: "tutorials/orders/DEACTIVATE/"
+          subTwoHref: "tutorials/orders/deactivate/"
         - subTwoLabel: "SWAP_DEVICES"
-        - subTwoHref: "tutorials/orders/SWAP_DEVICES/"
+          subTwoHref: "tutorials/orders/swap/"
     - subOneLabel: "Format an Address"
       subOneHref: "tutorials/addresses/"
 

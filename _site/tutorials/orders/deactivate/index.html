@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset=utf-8 />
-  <title>  Tutorials |  MOB API </title>  
+  <title>  Tutorials - Submit an Order DEACTIVATE |  MOB API </title>  
   
   <link rel="stylesheet" href="http://localhost:4000/css/tgUI-style.0.2.8.min.css" />  
   <link rel="stylesheet" href="http://localhost:4000/css/styles.css" />
@@ -156,13 +156,112 @@
   </div><!--
   --><div class="tg-grid__cell  tg-four-fifths  tg-pad">
 
-    <h2 id="tutorials---how-to-create-an-order">Tutorials - How to Create an Order</h2>
+    <h2 id="how-to-deactivcate-service">How to Deactivcate Service</h2>
 
-<p>Create an Order for:
-1. All Types
-1. DEACTIVATE
-1. SUSPEND
-1. UNSUSPEND</p>
+<p>The following is a step-by-step illustration of how to permanently [<strong>**<em>VERIFY WITH BECKY</em></strong>**] deactivate a specific active mobile service asset.</p>
+
+<h3 id="step-zero-authentication">Step Zero: Authentication</h3>
+
+<p>See Authentication page for info regarding the supported OAuth2 grant types: Implicit, Resource Owner Password Credentials</p>
+
+<h3 id="step-one-set-necessary-headers">Step One: Set Necessary Headers</h3>
+
+<p>A few HTTP headers are required to be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate).</p>
+
+<h4 id="required-headers">Required headers:</h4>
+
+<ul>
+  <li><strong>X-TNGO-TENANT</strong> - Used to identify the specific tenant (i.e., customer) for which the API is being called.
+See headers page [LINK] for more information about these headers.</li>
+</ul>
+
+<h4 id="optional-headers---do-anyall-of-these-apply-to-deactivate">Optional headers:   (Do any/all of these apply to DEACTIVATE?)</h4>
+
+<ul>
+  <li>
+    <p><strong>X-TNGO-CONTEXT-COMPANYEMPLOYEEID</strong></p>
+  </li>
+  <li>
+    <p><strong>X-TNGO-CONTEXT-EMPLOYEEID</strong></p>
+  </li>
+  <li>
+    <p><strong>X-TNGO-CONTEXT-HIERARCHYID</strong></p>
+  </li>
+</ul>
+
+<h3 id="step-two-build-json-for-request-body">Step Two: Build JSON for Request Body</h3>
+
+<p>Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.</p>
+
+<p>For DEACTIVATE, this JSON typically includes the following pieces:</p>
+
+<ul>
+  <li>External Order Number</li>
+  <li>Transaction type (i.e., DEACTIVATE).</li>
+  <li>Service ID of the service asset to be deactivated.</li>
+  <li>Account Holder Company ID (or Account Holder ID) for the user to whom the asset is assigned.</li>
+  <li>The properties that are required for deactivating a service for the specific vendor associated with the service asset.</li>
+</ul>
+
+<p>Here is an example:</p>
+
+<p><strong>*** UPDATE THIS JSON – CONFIRM THAT THIS WILL SUCCESSFULLY POST **</strong>*
+<code>
+{
+    "orderRequest": {
+    "externalOrderNumber": "AZ99087547-001",
+    "transactionType": "DEACTIVATE",
+    "serviceId": "99034551",
+    "accountHolderCompanyEmployeeId": "PETER_EDWARDS@EXAMPLE.COM",
+    "properties": [
+      {
+        "groupId": "MISCELLANEOUS",
+        "fields": [
+          {
+            "id": "CONTACT_PHONE",
+            "type": "TEXT",
+            "text": "2035559360"
+          },
+          {
+            "id": "ADDITIONAL_INSTRUCTIONS",
+            "type": "TEXT",
+            "text": "Please confirm with account holder that service has been successfully deactivated."
+          },
+          {
+            "id": "PREFERRED_DEACTIVATION_DATE",
+            "type": "DATE",
+            "date": "2015-06-28T00:00:00+00:00"
+          }
+        ]
+      }
+    ]
+  }
+}
+</code></p>
+
+<h3 id="step-three-set-query-parameters-as-needed">Step Three: Set Query Parameter(s), as Needed</h3>
+
+<p>The only query parameter that can be set when creating an order is:</p>
+
+<ul>
+  <li>confirm  (boolean) - If true, the order will not be posted. Instead, the response will return a complete description of the order that can be used to create an order confirmation for the end user to review, correct, and then submit for processing.</li>
+</ul>
+
+<h3 id="step-four-submit-order-request-confirmation">Step Four: Submit Order Request Confirmation</h3>
+
+<p>Your request, containing the JSON request body and confirm query parameter set to true, should now be ready. Submit it via HTTP POST to the orders endpoint.</p>
+
+<p>If successful, the API will return a response with a 200 HTTP status code and containing JSON that fully describes the identifiers that were submitted. This data can then be presented back to the end user for verification and correction, if necessary.</p>
+
+<p>Here is an example of what the order confirmation JSON might look like:
+[<em>** ORDER CONFIRMATION JSON **</em>]
+Step Five: Submit Order Request
+Once the request has been confirmed, it can be re-submitted for processing via HTTP POST. Before submitting, be sure to set the confirm query parameter to false (or remove it, since the default is false).</p>
+
+<p>If the submission is successful, the API will once again return a response containing JSON with an HTTP status code of 200. This response also will include the newly-assigned order number (i.e., orderId).</p>
+
+<p>Here is an example of what the order JSON might look like:
+[<em>** ORDER SUBMIT JSON **</em>]</p>
 
 
 

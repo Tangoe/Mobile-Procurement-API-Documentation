@@ -3,7 +3,22 @@
 /* ********************* */
 
 body {
-  margin: 10px 18px;
+  /* margin: 10px 18px; */
 }
 
 
+.dc-banner,
+.dc-banner a {
+	background-color: #0032A0;
+	color: #F5E500;
+}
+
+.dc-footer,
+.dc-footer a {	
+	background-color: #252729;
+	color: #FFF;
+
+}
+.dc-footer {
+	padding: 10px;
+}
