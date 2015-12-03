@@ -2,33 +2,48 @@
   href: "/"
 
 - label: "Getting Started"
-  href: "/start/"
-  children:
-    - childLabel: "Register your App"
-      childHref: "/start/register.md"
-    - childLabel: "Make your First Call in Minutes"
-      childHref: "/start/first-call.md"
-    - childLabel: "Test and Explore"
-      childHref: "/start/test-explore.md"
-
-- label: "Tutorials"
-  children:
-    - childLabel: "Orders"
-      childHref: "/tutorials/orders/"
-    - childLabel: "Addresses"
-      childHref: "/tutorials/addresses/"
+  href: "start/"
+  subOne:
+    - subOneLabel: "Register your Application"
+      subOneHref: "/start/register.md"
+    - subOneLabel: "Make your First Call in Minutes"
+      subOneHref: "/start/first-call.md"
+    - subOneLabel: "Test and Explore"
+      subOneHref: "/start/test-explore.md"
 
 - label: "Using the API"
-  children:
-    - childLabel: "Errors"
-      childHref: "/concepts/errors/"
-    - childLabel: "Pagination"
-      childHref: "/concepts/pagination/"
-    - childLabel: "Security"
-      childHref: "/concepts/security/"
+  subOne:
+    - subOneLabel: "Security and Authentication"
+      subOneHref: "/concepts/security/"
+    - subOneLabel: "Headers"
+      subOneHref: "/concepts/headers/"
+    - subOneLabel: "Faults and Error Handling"
+      subOneHref: "/concepts/errors/"
+    - subOneLabel: "Pagination"
+      subOneHref: "/concepts/pagination/"
 
-- label: "Policies"
-  href: "/policies/"
+- label: "Tutorials"
+  subOne:
+    - subOneLabel: "Submit an Order"
+      subOneHref: "/tutorials/orders/"
+      subTwo:
+        - subTwoLabel: "SUSPEND"
+        - subTwoHref: "/tutorials/orders/SUSPEND/"
+        - subTwoLabel: "UNSUSPEND"
+        - subTwoHref: "/tutorials/orders/UNSUSPEND/"
+        - subTwoLabel: "DEACTIVATE"
+        - subTwoHref: "/tutorials/orders/DEACTIVATE/"
+        - subTwoLabel: "SWAP_DEVICES"
+        - subTwoHref: "/tutorials/orders/SWAP_DEVICES/"
+    - subOneLabel: "Format an Address"
+      subOneHref: "/tutorials/addresses/"
+
+- label: "Policies and Terms"
+  subOne:
+    - subOneLabel: "Versioning Policy" 
+    - subOneHref: "/policies/versioning/"
+    - subOneLabel: "Terms of Service" 
+    - subOneHref: "/policies/terms/"
 
 - label: "Contact"
   href: "/contact/"

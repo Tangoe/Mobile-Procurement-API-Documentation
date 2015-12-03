@@ -8,10 +8,19 @@
       <ul>
         {% for navoption in site.data.nav %}
           <li><a href="{{site.url}}{{ navoption.href }}">{{ navoption.label }}</a>
-            {% if navoption.children != null %}
+            {% if navoption.subOne != null %}
               <ul>
-                {% for child in navoption.children %}
-                  <li><a href="{{ site.url }}{{ child.childHref }}">{{ child.childLabel }}</a></li>
+                {% for sub1 in navoption.subOne %}
+                  <li><a href="{{ site.url }}{{ sub1.subOneHref }}">{{ sub1.subOneLabel }}</a>
+                    {% assign hasSecond = sub1.subTwo != undefined %}
+                    {% if hasSecond %}
+                      <ul>
+                        {% for sub2 in sub1.subTwo %}
+                          <li><a href="{{ secondlevel.subTwoHref }}">{{ sub2.subTwoLabel }}</a></li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </li>
                 {% endfor %}
               </ul>
             {% endif %}
