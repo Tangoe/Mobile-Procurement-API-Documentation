@@ -1,13 +1,10 @@
 ---
 layout: default
-title: Getting Started
+title: Getting Started register
 ---
 
 
 
-## Getting Started
+## Register your app
 
-All the info needed to get up and running
- 
-
-
+(how to get a key)
