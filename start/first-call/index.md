@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Getting Started - First call
+title: Getting Started  First call
 ---
 
 

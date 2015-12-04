@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Getting Started - Test and Explore the API
+title: Getting Started  Test and Explore the API
 ---
 
 
