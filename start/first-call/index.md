@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Getting Started - Make yuor first call in minutes
+title: Getting Started - First call
 ---
 
 
 
-# Making your first call
+## How to make your first call in just minutes
 
-Get up-and-running in minutes.
+(overview of dev portal)
