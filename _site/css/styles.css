@@ -24,6 +24,9 @@ h4 {
 	color: #000;
 }
 
+.dc-navPanel {
+	border-right: 1px solid #F5E500; /* #ccc; */
+}
 
 .dc-banner {
 	background-color: #051c48;  /* #12484B;  */

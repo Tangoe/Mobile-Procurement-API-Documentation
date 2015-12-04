@@ -1,8 +1,8 @@
 name: ""
 description: ""
 
-#url: "http://localhost:4000/" 
-url: "http://tangoe.github.io/Mobile-Procurement-API-Documentation/" 
+url: "http://localhost:4000/" 
+#url: "http://tangoe.github.io/Mobile-Procurement-API-Documentation/" 
 
 # paginate: 10
 #markdown: rdiscount
