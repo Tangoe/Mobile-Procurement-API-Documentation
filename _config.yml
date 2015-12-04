@@ -10,10 +10,10 @@ url: "http://tangoe.github.io/Mobile-Procurement-API-Documentation/"
 # pygments: true
 
 
-markdown: redcarpet2
+#markdown: redcarpet
 
-redcarpet:
-  extensions: ["fenced_code_blocks","tables"]
+#redcarpet:
+#  extensions: ["fenced_code_blocks","tables"]
 
 
 
