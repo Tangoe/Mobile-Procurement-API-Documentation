@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Getting Started - Make yor first call in minutes
+title: Getting Started - Make yuor first call in minutes
 ---
 
 
