@@ -819,6 +819,25 @@ Styleguide 400.1.6
   font-weight: normal;
   font-style: normal;
 }
+/* fonts for latest Tangoe branding */
+@font-face {
+  font-family: 'linotype_helvetica_thin';
+  src: url("fonts/LinotypeHelveticaLT35-Thin.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'linotype_helvetica_roman';
+  src: url("fonts/LinotypeHelveticaLT55Roman.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'linotype_helvetica_bold';
+  src: url("fonts/LinotypeHelveticaLT75Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 a {
   color: #111111;
   text-decoration: none;

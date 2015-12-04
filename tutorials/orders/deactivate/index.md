@@ -40,12 +40,14 @@ For DEACTIVATE, this JSON typically includes the following pieces:
 * Service ID of the service asset to be deactivated.
 * Account Holder Company ID (or Account Holder ID) for the user to whom the asset is assigned.
 * The properties that are required for deactivating a service for the specific vendor associated with the service asset.
-
+ 
+ 
 Here is an example:
 
 ***** UPDATE THIS JSON -- CONFIRM THAT THIS WILL SUCCESSFULLY POST *****
+
 ```
-{
+  {
     "orderRequest": {
     "externalOrderNumber": "AZ99087547-001",
     "transactionType": "DEACTIVATE",
@@ -74,7 +76,7 @@ Here is an example:
       }
     ]
   }
-}
+  }
 ```
 
 ### Step Three: Set Query Parameter(s), as Needed

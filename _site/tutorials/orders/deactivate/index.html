@@ -11,17 +11,23 @@
  
   <div id="tg-shellMain">
 
-    <header class="dc-banner  tg-display--table  tg-one-whole  tg-pad--half"  style="background-color:#0032A0">
-      <div class="tg-display--table-cell"  style="width:150px"><a href="/"><img src="http://localhost:4000/images/tangoe-logo_125.png" alt="Tangoe" /></a></div><!--
-      --><div class="tg-display--table-cell  tg-text--left  tg-valign--middle  tg-h1">Mobile Procurement API v1</div><!--
-      --><div class="tg-display--table-cell  tg-text--right  tg-valign--middle">
-        	<a href="">Learn</a>  |  <a href="">Reference</a>  |  <a href="">Register</a>
-        </div>
-	  </div>
-    <header>
+    <header class="dc-banner">
+     <div class="tg-display--table  tg-one-whole  tg-pad--half">
+      <div class="tg-display--table-cell"  style="width:150px; padding-top: 4px">
+        <a href="/"><img src="http://localhost:4000/images/tangoe-logo_125.png" alt="Tangoe" /></a>
+      </div><!--
+    --><div class="tg-display--table-cell  tg-text--left  tg-valign--top">Mobile Procurement REST API v1</div><!--
+    <div class="tg-display--table-cell  tg-text--right  tg-valign--middle"  style="display:none">
+        <a href="">Learn</a>  |  <a href="">Reference</a>  |  <a href="">Register</a>
+      </div>-->
+     </div>
 
-    
-  
+     <div class="dc-banner--royal  tg-text--right  tg-pad--right">
+        <div class="dc-bannerLinks"><span class="dc-bannerLinks__link">Learn</span> <span class="dc-bannerLinks__link">Explore</span> <span class="dc-bannerLinks__link">Register</span</div>
+      </div>
+    </header>
+
+ 
 
 <div class="tg-grid">
   <div class="tg-grid__cell  tg-one-fifth  ">
@@ -205,9 +211,10 @@ See headers page [LINK] for more information about these headers.</li>
 
 <p>Here is an example:</p>
 
-<p><strong>*** UPDATE THIS JSON – CONFIRM THAT THIS WILL SUCCESSFULLY POST **</strong>*
-<code>
-{
+<p><strong>*** UPDATE THIS JSON – CONFIRM THAT THIS WILL SUCCESSFULLY POST **</strong>*</p>
+
+<p><code>
+  {
     "orderRequest": {
     "externalOrderNumber": "AZ99087547-001",
     "transactionType": "DEACTIVATE",
@@ -236,7 +243,7 @@ See headers page [LINK] for more information about these headers.</li>
       }
     ]
   }
-}
+  }
 </code></p>
 
 <h3 id="step-three-set-query-parameters-as-needed">Step Three: Set Query Parameter(s), as Needed</h3>

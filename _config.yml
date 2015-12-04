@@ -5,12 +5,15 @@ description: ""
 url: "http://tangoe.github.io/Mobile-Procurement-API-Documentation/" 
 
 # paginate: 10
-# markdown: rdiscount
+#markdown: rdiscount
 # permalink: pretty
 # pygments: true
 
-#kramdown:
-#  input: GFM
+
+markdown: redcarpet2
+
+redcarpet:
+  extensions: ["fenced_code_blocks","tables"]
 
 
 
