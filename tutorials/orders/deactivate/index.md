@@ -6,7 +6,14 @@ title: Tutorials - Submit an Order DEACTIVATE
 
 ## How to Deactivcate Service
 
-The following is a step-by-step illustration of how to permanently [*****VERIFY WITH BECKY*****] deactivate a specific active mobile service asset. 
+The following is a step-by-step illustration of how to permanently [*****VERIFY WITH BECKY*****] deactivate a specific active mobile service asset.
+
+```
+<div class="parent">
+  <div class="puffNstuff">Block here</div>
+</div>
+```
+
 
 ### Step Zero: Authentication
 
@@ -76,8 +83,8 @@ Here is an example:
       }
     ]
   }
-  }
 ```
+
 
 ### Step Three: Set Query Parameter(s), as Needed
 

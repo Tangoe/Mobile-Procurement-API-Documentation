@@ -4,6 +4,8 @@
   <meta charset=utf-8 />
   <title>  Tutorials |  MOB API </title>  
   
+<link rel="stylesheet" href="http://localhost:4000/css/styles-syntax.css">
+
   <link rel="stylesheet" href="http://localhost:4000/css/tgUI-style.0.2.8.min.css" />  
   <link rel="stylesheet" href="http://localhost:4000/css/styles.css" />
 </head>
@@ -174,29 +176,31 @@
 
 <p>Below is an illustration of a metadata block contained in a JSON response for an employee collection.</p>
 
-<p><code>
-{
-  "_meta": {
-    "href": "http://api.tangoe.com/mobileprocurement/v1/employees/123456781"
-  },
-  "id": "123456781",
-  "firstName": "Barbara",
-  "lastName": "Andrews",
-  "email": "barbara.andrews@example.com",
-  "officePhone": "2035550399"
-},
-{
-  "_meta": {
-    "href": "http://api.tangoe.com/mobileprocurement/v1/employees/223456993"
-  },
-  "id": "223456993",
-  "firstName": "James",
-  "lastName": "Carpenter",
-  "email": "james.carpenter@example.com",
-  "officePhone": "2035550402"
-},
-...
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://api.tangoe.com/mobileprocurement/v1/employees/123456781"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456781"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Barbara"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andrews"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"barbara.andrews@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"officePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035550399"</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://api.tangoe.com/mobileprocurement/v1/employees/223456993"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"223456993"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carpenter"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james.carpenter@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"officePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035550402"</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="err">...</span><span class="w">
+
+</span></code></pre>
+</div>
 
 <h3 id="pagination-data-example">Pagination Data Example</h3>
 
@@ -204,7 +208,7 @@
 
 <p>In addition to hyperlinks for retrieving the first/last and next/previous pages of results, metadata blocks also contain data that the user interface might need to display result counts, such as total count, items per page limit, etc. For example:</p>
 
-<p><code>
+<div class="highlighter-rouge"><pre class="highlight"><code>
 "_meta": {
   "href": "http://api.tangoe.com/mobileprocurement/v1/assets/devices?sortAscending=true&amp;maxStatistics=7&amp;limit=3&amp;offset=9",
   "totalCount": 31,
@@ -215,7 +219,9 @@
   "hrefNext": "http://api.tangoe.com/mobileprocurement/v1/assets/devices?sortAscending=true&amp;maxStatistics=7&amp;limit=3&amp;offset=12",
   "hrefEnd": "http://api.tangoe.com/mobileprocurement/v1/assets/devices?sortAscending=true&amp;maxStatistics=7&amp;limit=3&amp;offset=30"
 }
-</code></p>
+
+</code></pre>
+</div>
 
 
   </div>

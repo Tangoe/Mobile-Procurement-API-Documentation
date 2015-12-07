@@ -4,6 +4,8 @@
   <meta charset=utf-8 />
   <title>  Tutorials - Submit an Order DEACTIVATE |  MOB API </title>  
   
+<link rel="stylesheet" href="http://localhost:4000/css/styles-syntax.css">
+
   <link rel="stylesheet" href="http://localhost:4000/css/tgUI-style.0.2.8.min.css" />  
   <link rel="stylesheet" href="http://localhost:4000/css/styles.css" />
 </head>
@@ -166,6 +168,12 @@
 
 <p>The following is a step-by-step illustration of how to permanently [<strong>**<em>VERIFY WITH BECKY</em></strong>**] deactivate a specific active mobile service asset.</p>
 
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;div class="parent"&gt;
+  &lt;div class="puffNstuff"&gt;Block here&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+
 <h3 id="step-zero-authentication">Step Zero: Authentication</h3>
 
 <p>See Authentication page for info regarding the supported OAuth2 grant types: Implicit, Resource Owner Password Credentials</p>
@@ -177,7 +185,7 @@
 <h4 id="required-headers">Required headers:</h4>
 
 <ul>
-  <li><strong>X-TNGO-TENANT</strong> - Used to identify the specific tenant (i.e., customer) for which the API is being called.
+  <li><strong>X-TNGO-TENANT</strong> - Used to identify the specific tenant (i.e., customer) for which the API is being called.<br />
 See headers page [LINK] for more information about these headers.</li>
 </ul>
 
@@ -213,38 +221,37 @@ See headers page [LINK] for more information about these headers.</li>
 
 <p><strong>*** UPDATE THIS JSON – CONFIRM THAT THIS WILL SUCCESSFULLY POST **</strong>*</p>
 
-<p><code>
-  {
-    "orderRequest": {
-    "externalOrderNumber": "AZ99087547-001",
-    "transactionType": "DEACTIVATE",
-    "serviceId": "99034551",
-    "accountHolderCompanyEmployeeId": "PETER_EDWARDS@EXAMPLE.COM",
-    "properties": [
-      {
-        "groupId": "MISCELLANEOUS",
-        "fields": [
-          {
-            "id": "CONTACT_PHONE",
-            "type": "TEXT",
-            "text": "2035559360"
-          },
-          {
-            "id": "ADDITIONAL_INSTRUCTIONS",
-            "type": "TEXT",
-            "text": "Please confirm with account holder that service has been successfully deactivated."
-          },
-          {
-            "id": "PREFERRED_DEACTIVATION_DATE",
-            "type": "DATE",
-            "date": "2015-06-28T00:00:00+00:00"
-          }
-        ]
-      }
-    ]
-  }
-  }
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"orderRequest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"externalOrderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ99087547-001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEACTIVATE"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99034551"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"accountHolderCompanyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PETER_EDWARDS@EXAMPLE.COM"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"groupId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MISCELLANEOUS"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTACT_PHONE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559360"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADDITIONAL_INSTRUCTIONS"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please confirm with account holder that service has been successfully deactivated."</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREFERRED_DEACTIVATION_DATE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-28T00:00:00+00:00"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
 
 <h3 id="step-three-set-query-parameters-as-needed">Step Three: Set Query Parameter(s), as Needed</h3>
 
@@ -260,14 +267,14 @@ See headers page [LINK] for more information about these headers.</li>
 
 <p>If successful, the API will return a response with a 200 HTTP status code and containing JSON that fully describes the identifiers that were submitted. This data can then be presented back to the end user for verification and correction, if necessary.</p>
 
-<p>Here is an example of what the order confirmation JSON might look like:
-[<em>** ORDER CONFIRMATION JSON **</em>]
-Step Five: Submit Order Request
+<p>Here is an example of what the order confirmation JSON might look like:<br />
+[<em>** ORDER CONFIRMATION JSON **</em>]<br />
+Step Five: Submit Order Request<br />
 Once the request has been confirmed, it can be re-submitted for processing via HTTP POST. Before submitting, be sure to set the confirm query parameter to false (or remove it, since the default is false).</p>
 
 <p>If the submission is successful, the API will once again return a response containing JSON with an HTTP status code of 200. This response also will include the newly-assigned order number (i.e., orderId).</p>
 
-<p>Here is an example of what the order JSON might look like:
+<p>Here is an example of what the order JSON might look like:<br />
 [<em>** ORDER SUBMIT JSON **</em>]</p>
 
 

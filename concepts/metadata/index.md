@@ -16,6 +16,7 @@ Metadata blocks make it very easy for the API consumer to easily obtain details 
 Below is an illustration of a metadata block contained in a JSON response for an employee collection.
 
 ```
+
 {
   "_meta": {
     "href": "http://api.tangoe.com/mobileprocurement/v1/employees/123456781"
@@ -37,6 +38,7 @@ Below is an illustration of a metadata block contained in a JSON response for an
   "officePhone": "2035550402"
 },
 ...
+
 ```
 
 ### Pagination Data Example
@@ -45,7 +47,9 @@ The meta blocks are not limited to URLs used executing API calls for obtaining r
 
 In addition to hyperlinks for retrieving the first/last and next/previous pages of results, metadata blocks also contain data that the user interface might need to display result counts, such as total count, items per page limit, etc. For example:
 
+
 ```
+
 "_meta": {
   "href": "http://api.tangoe.com/mobileprocurement/v1/assets/devices?sortAscending=true&maxStatistics=7&limit=3&offset=9",
   "totalCount": 31,
@@ -56,4 +60,5 @@ In addition to hyperlinks for retrieving the first/last and next/previous pages 
   "hrefNext": "http://api.tangoe.com/mobileprocurement/v1/assets/devices?sortAscending=true&maxStatistics=7&limit=3&offset=12",
   "hrefEnd": "http://api.tangoe.com/mobileprocurement/v1/assets/devices?sortAscending=true&maxStatistics=7&limit=3&offset=30"
 }
+
 ```
