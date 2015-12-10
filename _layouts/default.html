@@ -1,23 +1,37 @@
 {% include header.html %}
 
+
+   
+<!-- tgUI grid version -->
 <div class="tg-grid">
-  <div class="tg-grid__cell  tg-one-fifth  ">
+  <div class="tg-grid__cell  tg-one-fifth  tg-pad--eighth--left">
+
+
+
     <nav role="navigation" class="tg-space--top  dc-navPanel">
-      <ul>
+      <div id="listContainer">
+      <ul id="expList">
         {% for navoption in site.data.nav %}
-          <li><a href="{{site.url}}{{ navoption.href }}">{{ navoption.label }}</a>
+
+          {% if  page.url == navoption.href %}
+            <li class="dc-navOption  dc-navOption__active">
+          {% else %}
+            <li class="dc-navOption">
+          {% endif %}
+          <a href="{{site.url}}{{ navoption.href }}" class="dc-navOption__top">{{ navoption.label }}</a>
             {% if navoption.subOne != null %}
               <ul>
                 {% for sub1 in navoption.subOne %}
-                  <li><a href="{{ site.url }}{{ sub1.subOneHref }}">{{ sub1.subOneLabel }}</a>
-                    {% assign hasSecond = sub1.subTwo != undefined %}
-                    {% if hasSecond %}
-                      <ul>
-                        {% for sub2 in sub1.subTwo %}
-                          <li><a href="{{ site.url }}{{ sub2.subTwoHref }}">{{ sub2.subTwoLabel }}</a></li>
-                        {% endfor %}
-                      </ul>
-                    {% endif %}
+                  {% assign pageURL = page.url %}
+                  {% assign currURL = sub1.href | prepend: '/' %}
+
+                  {% if page.url == currURL %}
+                    <li class="dc-navOption  dc-navOption__subone  dc-navOption__active">
+                  {% else %}
+                    <li class="dc-navOption  dc-navOption__subone">
+                  {% endif %}
+
+                  <a href="{{ site.url }}{{ sub1.href }}">{{ sub1.label }}</a>
                   </li>
                 {% endfor %}
               </ul>
@@ -25,6 +39,7 @@
           </li>
         {% endfor %}
       </ul>
+    </div>
     </nav> 
 
   </div><!--

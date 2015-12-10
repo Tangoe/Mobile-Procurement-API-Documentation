@@ -27,29 +27,60 @@ h4 {
 }
 
 
-.highlightX {
-	border: 1px solid #ddd;
-	border-radius: 5px;
+.highlight {
+	border: 1px dotted #999;
+	border-radius: 4px;
 	padding: 15px;
-	background-color: #eee;
+	/* 
+	color: #007020; 
+	background-color: #fafafa; 
+	*/
 	margin-bottom: 12px;
 }
 
 
 
-
+/* navigation */
 .dc-navPanel {
-	border-right: 1px solid #F5E500; /* #ccc; */
-	font-size: 11px;	
+	border-right: 1px solid #F5E500;
+	font-size: 14px;
 }
 
+.dc-navOption {
+	
+}
+
+.dc-navOption__top {
+	font-weight: bold;
+	color: #0032A0;
+	/*
+	border-bottom: 1px solid #999;
+	*/
+}
+
+.dc-navOption__subone {
+	padding: 6px 0px 3px 0px;
+	font-size: 11px;
+	/*
+	color: green;
+	background-color: gray;
+	*/
+}
+
+.dc-navOption__active {
+	color: black;
+	background-color: #F5E500;
+}
+
+
+
+/* top banner */
 .dc-banner {
 	background-color: #051c48;  /* #12484B;  */
 	color:  #F5E500; 
 	font-family: 'linotype_helvetica_thin', arial, sans-serif;
 	font-size: 3em;
 }
-
 .dc-banner--royal {
 	background-color: #0032A0;
 	color: #fff; /*#F5E500; */
@@ -59,7 +90,6 @@ h4 {
 	padding: 5px 10px;
 	border-bottom: 4px solid #F5E500;
 }
-
 .dc-bannerLinks {
 	display: flex;
 	flex-direction: row;
@@ -71,6 +101,8 @@ h4 {
 }
 
 
+
+/* footer */
 .dc-footer,
 .dc-footer a {	
 	color: #666;
@@ -81,3 +113,7 @@ h4 {
 	padding: 7px;
 	border-top: 1px solid #999;
 }
+
+
+
+
