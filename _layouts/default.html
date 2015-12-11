@@ -7,51 +7,37 @@
   <div class="tg-grid">
     <div class="tg-grid__cell  tg-one-fifth  tg-pad--quarter--left">
 
+
       <nav role="navigation" class="tg-space--top  dc-navPanel">
       {% for navoption in site.data.nav %}
         {% assign pageURL = page.url %}
         {% assign currURL = navoption.href | prepend: '/' %}
 
-<!--
-              <p>
-                pageURL: {{ pageURL }}<br>
-                currURL: {{ currURL }}
-              </p>
--->
-
-        {% if  page.url == navoption.href %}
-        <div class="dc-navOption  dc-navOption__top  dc-navOption__active">
-        {% else %}
         <div class="dc-navOption  dc-navOption__top">
-        {% endif %}
-          
+        {% if  page.url == navoption.href %}        
+          <a href="{{site.url}}{{ navoption.href }}" class="dc-navOption__active">{{ navoption.label }}</a>
+        {% else %}
           <a href="{{site.url}}{{ navoption.href }}">{{ navoption.label }}</a>
-
+        {% endif %}
+         
           {% if navoption.subOne != null %}
             {% for sub1 in navoption.subOne %}
               {% assign pageURL = page.url %}
               {% assign currURL = sub1.href | prepend: '/' %}
 
-<!--
-              <p>
-                pageURL: {{ pageURL }}<br>
-                currURL: {{ currURL }}
-              </p>
--->
-
-              {% if page.url == currURL %}
-              <div class="dc-navOption  dc-navOption__subone  dc-navOption__active">
-              {% else %}
               <div class="dc-navOption  dc-navOption__subone">
+              {% if page.url == currURL %}
+              <a href="{{ site.url }}{{ sub1.href }}" class="dc-navOption__active">{{ sub1.label }}</a>
+              {% else %}
+              <a href="{{ site.url }}{{ sub1.href }}">{{ sub1.label }}</a>
               {% endif %}
-                <a href="{{ site.url }}{{ sub1.href }}">{{ sub1.label }}</a>
               </div>
             {% endfor %}          
           {% endif %}
         
         </div>
       {% endfor %}
-      </nav> 
+      </nav>
 
     </div><!--
     --><div class="tg-grid__cell  tg-four-fifths  tg-pad">

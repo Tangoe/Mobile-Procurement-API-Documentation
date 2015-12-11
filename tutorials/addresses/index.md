@@ -4,9 +4,82 @@ title: Tutorials
 logoTangoe: tangoe-logo_125.png
 ---
 
-# Address Formatting
 
-text here
- 
+# How To Assemble and Address Block
+
+When placing an order that requires the physical shipment of a device or accessory, shipping address information will need to be included in the request body JSON. Moreover, various countries require differing sets of components for an address to be deliverable in that country.
+
+In order to determine the required mailing address components for a selected country, a call must first be made to the **/regions/{id}** endpoint. Please note that this endpoint requires passing in the ID for the country in which the address is located. This call will return a response that includes a block called addressFormat that identifies the specific address components required. 
+
+For example:
+
+```
+
+{
+  "_meta": {
+    "href": "http://api.tangoe.com/mobileprocurement/v1/regions/7088567",
+    "hrefParent": "",
+    "hrefChildren": "http://api.tangoe.com/mobileprocurement/v1/regions?parentRegion=7088567"
+  },
+  "id": "7088567",
+  "name": "United States of America",
+  "type": "COUNTRY",
+  "parentId": "",
+  "addressFormat": [
+    {
+      "id": "LINE_1",
+      "label": "Address 1"
+    },
+    {
+      "id": "LINE_2",
+      "label": "Address 2"
+    },
+    {
+      "id": "CITY",
+      "label": "City"
+    },
+    {
+      "id": "STATE",
+      "label": "State"
+    },
+    {
+      "id": "POSTAL_CODE",
+      "label": "Postal Code"
+    }
+  ]
+}
+
+```
 
 
+Once a selected country's address format is returned, the response can be parsed to assemble a “shipTo” block containing all of the required address components, along with the appropriate values. For example:
+
+```
+
+"shipTo": {  
+      "name": "Peter Edwards",
+      "region": { 
+        "id": "7088567"
+      },
+      "address": [
+        {
+          "id": "LINE_1",
+          "value": "35 Executive Blvd"
+        },
+        {
+          "id": "CITY",
+          "value": "Orange"
+        },
+        {
+          "id": "STATE",
+          "value": "CT"
+        },
+        {
+          "id": "POSTAL_CODE",
+          "value": "06477"
+        }
+      ],
+      "expedite": true
+    }
+
+```
