@@ -4,7 +4,7 @@ title: Tutorials
 logoTangoe: tangoe-logo_125.png
 ---
 
-## Tutorials
+# Tutorials
 
 Here are some great tutorials to learn from:
 

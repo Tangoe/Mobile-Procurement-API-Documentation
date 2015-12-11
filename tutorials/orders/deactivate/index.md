@@ -4,7 +4,7 @@ title: Tutorials - Submit an Order DEACTIVATE
 ---
 
 
-## How to Deactivcate Service
+# How to Deactivcate Service
 
 The following is a step-by-step illustration of how to permanently [*****VERIFY WITH BECKY*****] deactivate a specific active mobile service asset.
 
@@ -15,20 +15,20 @@ The following is a step-by-step illustration of how to permanently [*****VERIFY 
 ```
 
 
-### Step Zero: Authentication
+## Step Zero: Authentication
 
 See Authentication page for info regarding the supported OAuth2 grant types: Implicit, Resource Owner Password Credentials
 
-### Step One: Set Necessary Headers
+## Step One: Set Necessary Headers
 
 A few HTTP headers are required to be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate). 
 
-#### Required headers:
+### Required headers:
 
 * **X-TNGO-TENANT** - Used to identify the specific tenant (i.e., customer) for which the API is being called.
 See headers page [LINK] for more information about these headers.
 
-#### Optional headers:   (Do any/all of these apply to DEACTIVATE?)
+### Optional headers:   (Do any/all of these apply to DEACTIVATE?)
 
 * **X-TNGO-CONTEXT-COMPANYEMPLOYEEID**  
 
@@ -36,7 +36,7 @@ See headers page [LINK] for more information about these headers.
 
 * **X-TNGO-CONTEXT-HIERARCHYID** 
 
-### Step Two: Build JSON for Request Body
+## Step Two: Build JSON for Request Body
 
 Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.
 
@@ -86,13 +86,13 @@ Here is an example:
 ```
 
 
-### Step Three: Set Query Parameter(s), as Needed
+## Step Three: Set Query Parameter(s), as Needed
 
 The only query parameter that can be set when creating an order is:
 
 * confirm  (boolean) - If true, the order will not be posted. Instead, the response will return a complete description of the order that can be used to create an order confirmation for the end user to review, correct, and then submit for processing.
 
-### Step Four: Submit Order Request Confirmation
+## Step Four: Submit Order Request Confirmation
 
 Your request, containing the JSON request body and confirm query parameter set to true, should now be ready. Submit it via HTTP POST to the orders endpoint.
 

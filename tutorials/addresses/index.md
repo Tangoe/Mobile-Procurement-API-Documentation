@@ -4,7 +4,7 @@ title: Tutorials
 logoTangoe: tangoe-logo_125.png
 ---
 
-## Address Formatting
+# Address Formatting
 
 text here
  

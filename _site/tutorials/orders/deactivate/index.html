@@ -367,7 +367,7 @@
     </div><!--
     --><div class="tg-grid__cell  tg-four-fifths  tg-pad">
 
-      <h2 id="how-to-deactivcate-service">How to Deactivcate Service</h2>
+      <h1 id="how-to-deactivcate-service">How to Deactivcate Service</h1>
 
 <p>The following is a step-by-step illustration of how to permanently [<strong>**<em>VERIFY WITH BECKY</em></strong>**] deactivate a specific active mobile service asset.</p>
 
@@ -377,22 +377,22 @@
 </code></pre>
 </div>
 
-<h3 id="step-zero-authentication">Step Zero: Authentication</h3>
+<h2 id="step-zero-authentication">Step Zero: Authentication</h2>
 
 <p>See Authentication page for info regarding the supported OAuth2 grant types: Implicit, Resource Owner Password Credentials</p>
 
-<h3 id="step-one-set-necessary-headers">Step One: Set Necessary Headers</h3>
+<h2 id="step-one-set-necessary-headers">Step One: Set Necessary Headers</h2>
 
 <p>A few HTTP headers are required to be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate).</p>
 
-<h4 id="required-headers">Required headers:</h4>
+<h3 id="required-headers">Required headers:</h3>
 
 <ul>
   <li><strong>X-TNGO-TENANT</strong> - Used to identify the specific tenant (i.e., customer) for which the API is being called.<br />
 See headers page [LINK] for more information about these headers.</li>
 </ul>
 
-<h4 id="optional-headers---do-anyall-of-these-apply-to-deactivate">Optional headers:   (Do any/all of these apply to DEACTIVATE?)</h4>
+<h3 id="optional-headers---do-anyall-of-these-apply-to-deactivate">Optional headers:   (Do any/all of these apply to DEACTIVATE?)</h3>
 
 <ul>
   <li>
@@ -406,7 +406,7 @@ See headers page [LINK] for more information about these headers.</li>
   </li>
 </ul>
 
-<h3 id="step-two-build-json-for-request-body">Step Two: Build JSON for Request Body</h3>
+<h2 id="step-two-build-json-for-request-body">Step Two: Build JSON for Request Body</h2>
 
 <p>Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.</p>
 
@@ -456,7 +456,7 @@ See headers page [LINK] for more information about these headers.</li>
 </span></code></pre>
 </div>
 
-<h3 id="step-three-set-query-parameters-as-needed">Step Three: Set Query Parameter(s), as Needed</h3>
+<h2 id="step-three-set-query-parameters-as-needed">Step Three: Set Query Parameter(s), as Needed</h2>
 
 <p>The only query parameter that can be set when creating an order is:</p>
 
@@ -464,7 +464,7 @@ See headers page [LINK] for more information about these headers.</li>
   <li>confirm  (boolean) - If true, the order will not be posted. Instead, the response will return a complete description of the order that can be used to create an order confirmation for the end user to review, correct, and then submit for processing.</li>
 </ul>
 
-<h3 id="step-four-submit-order-request-confirmation">Step Four: Submit Order Request Confirmation</h3>
+<h2 id="step-four-submit-order-request-confirmation">Step Four: Submit Order Request Confirmation</h2>
 
 <p>Your request, containing the JSON request body and confirm query parameter set to true, should now be ready. Submit it via HTTP POST to the orders endpoint.</p>
 

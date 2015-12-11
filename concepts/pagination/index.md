@@ -4,17 +4,17 @@ title: Tutorials
 logoTangoe: tangoe-logo_125.png
 ---
 
-## Pagination
+# Pagination
 
 API calls that retrieve collections of items frequently return large, unbounded result sets. In these cases, results are almost always paginated to both improve performance and help the user more easily manage handling of the results.
 
-### Input Parameters
+## Input Parameters
 
 All paginated API calls require two input parameters: limit and offset. 
 
 The limit value sets the maximum number of items to be included in single “page.” In other words, it is the number of items to be returned within the JSON, out of the total result set found by the query for that API call. The offset value identifies the index of first item contained in the current page. For example, assume you have a total result set of 50 items and you set the limit to 10 and the offset to 30. The result set would be grouped into 5 pages (50 / 10 = 5) and return 10 items starting with the third page (30 / 10 = 3).
 
-### JSON Response Body
+## JSON Response Body
 
 Paginated results always include a metadata block [****LINK TO METADATA**** PAGE] containing the details needed by the API consumer to navigate the resultset. These details include: 
 

@@ -5,7 +5,7 @@ title: API Concepts - Headers
 
 
 
-## Headers
+# Headers
 
 (general discussion)
  
