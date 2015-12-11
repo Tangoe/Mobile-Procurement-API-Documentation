@@ -1,14 +1,14 @@
 @charset "UTF-8";
-.tg-grid {
+.tg-grid, .tg-shellHeader--PHONE {
   *zoom: 1;
 }
-.tg-grid:before, .tg-grid:after {
+.tg-grid:before, .tg-shellHeader--PHONE:before, .tg-grid:after, .tg-shellHeader--PHONE:after {
   content: " ";
   /* 1 */
   display: table;
   /* 2 */
 }
-.tg-grid:after {
+.tg-grid:after, .tg-shellHeader--PHONE:after {
   clear: both;
 }
 
@@ -12303,6 +12303,572 @@ Styleguide 600.1.1
     opacity: 0.0;
   }
 }
+.tg-shellContent__cap {
+  height: 16px;
+  clear: both;
+  -moz-border-radius-topleft: 2px;
+  -webkit-border-top-left-radius: 2px;
+  border-top-left-radius: 2px;
+  -moz-border-radius-topright: 2px;
+  -webkit-border-top-right-radius: 2px;
+  border-top-right-radius: 2px;
+  background-color: #d7d7ec;
+  background-size: 100%;
+  background-position-x: center;
+}
+@media only screen and (max-width: 650px) {
+  .tg-shellContent__cap {
+    height: 32px;
+    -moz-border-radius-topleft: 0;
+    -webkit-border-top-left-radius: 0;
+    border-top-left-radius: 0;
+    -moz-border-radius-topright: 0;
+    -webkit-border-top-right-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #4787b0;
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzU0OTViZSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzMzNzE5YSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+    background-size: 100%;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5495be), color-stop(100%, #33719a));
+    background-image: -moz-linear-gradient(top, #5495be, #33719a);
+    background-image: -webkit-linear-gradient(top, #5495be, #33719a);
+    background-image: linear-gradient(to bottom, #5495be, #33719a);
+    background-repeat: repeat-x;
+    *zoom: 1;
+    filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF5495BE', endColorstr='#FF33719A');
+  }
+}
+.tg-shellContent__cap {
+  font-family: "open_sansregular", Helvetica, Arial, sans-sarif;
+}
+.tg-custom-fonts-off .tg-shellContent__cap {
+  font-family: Helvetica, Arial, sans-sarif;
+}
+
+.tg-shellNavigation--MegaMenuScrollingTabs.tg-shellContent__cap {
+  height: 14px;
+  clear: both;
+  -moz-border-radius-topleft: 2px;
+  -webkit-border-top-left-radius: 2px;
+  border-top-left-radius: 2px;
+  -moz-border-radius-topright: 2px;
+  -webkit-border-top-right-radius: 2px;
+  border-top-right-radius: 2px;
+  background-color: #d7d7ec;
+  background-size: 100%;
+  background-position-x: center;
+}
+.tg-shellNavigation--MegaMenuScrollingTabs.tg-shellContent__cap {
+  font-family: "open_sansregular", Helvetica, Arial, sans-sarif;
+}
+.tg-custom-fonts-off .tg-shellNavigation--MegaMenuScrollingTabs.tg-shellContent__cap {
+  font-family: Helvetica, Arial, sans-sarif;
+}
+@media only screen and (max-width: 650px) {
+  .tg-shellNavigation--MegaMenuScrollingTabs.tg-shellContent__cap {
+    display: none;
+  }
+}
+
+.tg-shell {
+  background: #6091dc;
+  filter: none;
+}
+
+.tg-shell--no-scroll {
+  overflow: hidden;
+}
+
+/* Shell - Main
+
+<h1>.tg-shellMain</h1>
+
+Entire area of the application shell that falls below the shell header. It contains the main content <code>&lt;DIV&gt;</code> or <code>&lt;IFrame&gt;</code> and footer areas. The shell main container can hold multiple elements using the child classes listed here. But please note that all of these child classes must be nested inside an element with the <code>tg-shellMain</code> class.
+<ul>
+    <li><strong>tg-shellContent</strong> - The container that holds the page's content.</li>
+    <li><strong>tg-shellContent\__cap</strong> - The thin container along the top of the content container that holds the main navigation bar.</li>
+    <li><strong>tg-shellFooter</strong> - Holds the footer content (e.g., version, copyright disclaimer, etc.).</li>
+</ul>
+
+Markup: 
+<div class="tg-shell">
+  <div class="tg-shellMain" style="height:150px">
+    <div class="tg-shellContent" style="height:50px">
+      <div class="tg-shellContent__cap">
+        [Main nav here]
+      </div>
+    </div>
+    <footer class="tg-shellFooter">
+    </footer>
+  </div>
+</div>
+
+Styleguide 605.2
+
+*/
+.tg-shellMain {
+  background: url('images/tgIMG-shell-mainBackground.png?1449849211') no-repeat top left;
+}
+
+.tg-shellContent {
+  position: relative;
+  min-height: 400px;
+  margin: 0px 5px;
+  padding-top: 0px;
+  background-color: #FFFFFF;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  border-left: 1px solid 0px;
+}
+@media only screen and (max-width: 1024px) {
+  .tg-shellContent {
+    margin: 0px 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    border-left: 0;
+  }
+}
+
+.tg-shellMegaMenuScrollingTabs {
+  position: absolute;
+  top: -16px;
+  left: 5px;
+  margin: 0px;
+  clear: both;
+  list-style: none;
+  display: block;
+  /*  -- TBD: SPECIAL TABLET BEHAVIORS NOT NEEDED -------- 
+  @include media-query(TABLET_internal){
+      position: relative;
+      top: 0;
+      left: 0;
+      float: right;
+      padding-left: 0;
+      background-image: image-url('tgIMG_mainNav-clear.gif');
+      background-repeat: repeat;
+  }
+  */
+}
+@media only screen and (max-width: 650px) {
+  .tg-shellMegaMenuScrollingTabs {
+    display: none;
+  }
+}
+
+.tg-shellNavigation--MegaMenuScrollingTabs__menuBtnContainer {
+  width: 135px;
+  height: 28px;
+  vertical-align: bottom;
+}
+
+.tg-shellNavigation--MegaMenuScrollingTabs__menuBtn {
+  display: inline-block;
+  visibility: hidden;
+}
+
+.tg-shellNavigation--MegaMenuScrollingTabs__menuBtn--visible {
+  visibility: visible;
+}
+
+.tg-pageContent {
+  width: 100%;
+  padding: 20px;
+  overflow: auto;
+  background-color: #FFFFFF;
+  border: none;
+}
+
+/* Shell - Header
+
+<h1>.tg-shellHeader</h1>
+
+Top area of the application shell that holds the branding and application name. It can also contain various other application components such as a utility menu and global search. The shell header container can hold multiple elements using the child classes listed here. But please note that all of these child classes must be nested inside an element with the <code>tg-shellHeader</code> class.
+<ul>
+    <li><strong>tg-shellHeader\__branding</strong> - Holds the product name, along with any other elements that must be aligned relative to the branding logo.</li>
+    <li><strong>tg-shellHeader\__brandingLogo</strong> - The branding logo.</li>
+    <li><strong>tg-shellHeader\__productNameContainer</strong> - Holds the product name, along with any other elements that must be aligned relative to the product name.</li>
+    <li><strong>tg-shellHeader\__productName</strong> - The application's product name.</li>
+</ul>
+
+Markup: 
+<div class="tg-shell">
+    <header class="tg-shellHeader">
+      <div class="tg-shellHeader__branding">
+        <img class="tg-shellHeader__brandingLogo" src="./css/images/tgIMG-logo-tangoe.png" />
+      </div>
+    </header>
+</div>
+
+Styleguide 605.1
+
+*/
+/*header*/
+.tg-shellHeader {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  width: 100%;
+  max-height: 65px;
+  overflow: hidden;
+  *zoom: 1;
+}
+@media only screen and (max-width: 650px) {
+  .tg-shellHeader {
+    max-height: 65px;
+    display: none;
+  }
+}
+
+.tg-shellHeader__branding {
+  position: relative;
+  min-height: 65px;
+  float: left;
+  display: block;
+  background: url('images/tgIMG-shell-brandingBackground.png?1449849211') no-repeat top right;
+  min-width: 250px;
+}
+.standards .tg-shellHeader__branding {
+  padding: 14px 200px 14px 5px;
+}
+.tg-shellHeader__branding .tg-shellHeader__brandingLogo {
+  max-height: 31px;
+}
+.lt-ie9 .tg-shellHeader__branding .tg-shellHeader__brandingLogo {
+  padding: 14px 200px 14px 5px;
+}
+@media only screen and (max-width: 650px) {
+  .tg-shellHeader__branding .tg-shellHeader__brandingLogo {
+    max-height: 55px;
+  }
+  .lt-ie9 .tg-shellHeader__branding .tg-shellHeader__brandingLogo {
+    padding: 2px 200px 2px 5px;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .tg-shellHeader__branding {
+    min-height: 65px;
+    min-width: 80px;
+  }
+  .standards .tg-shellHeader__branding {
+    padding: 2px 140px 2px 5px;
+  }
+}
+
+.tg-shellHeader__cobrandingContainer {
+  width: 80px;
+}
+@media only screen and (max-width: 650px) {
+  .tg-shellHeader__cobrandingContainer {
+    width: 0px;
+  }
+}
+
+.tg-shellHeader__cobrandingLogo {
+  position: absolute;
+  z-index: 5;
+  top: 32px;
+  right: 8px;
+  width: 58px;
+  height: 58px;
+  background: url('images/tgIMG_logo.png?1449849211') no-repeat top left;
+  display: inline-block;
+}
+@media only screen and (max-width: 650px) {
+  .tg-shellHeader__cobrandingLogo {
+    display: none;
+  }
+}
+
+.tg-shellHeader__cobrandingLogo--slideoutpinned {
+  right: 363px;
+}
+
+.tg-shellHeader__search {
+  position: relative;
+  left: 0px;
+  bottom: -48px;
+  height: 22px;
+  line-height: normal;
+  color: #687684;
+  background-color: #ffffff;
+  display: inline-block;
+  *zoom: 1;
+  *display: inline;
+}
+@media only screen and (max-width: 1024px) {
+  .tg-shellHeader__search {
+    bottom: -20px;
+    padding-right: 0;
+  }
+}
+
+.tg-shellHeader__search-filter {
+  background-color: #eeeeee;
+}
+
+.tg-shellHeader__search-clear {
+  margin: 2px 0px 0px -2px;
+  background-color: #ffffff;
+  padding: 2px 0px 4px 3px;
+  border-left: 0px solid #fff;
+  border-top: 1px solid #c9c9c9;
+  border-bottom: 1px solid #c9c9c9;
+}
+.tg-shellHeader__search-clear img {
+  opacity: .4;
+}
+
+.tg-shellHeader__search-submit {
+  background-color: #ffffff;
+  padding: 2px 3px 4px 3px;
+  margin-left: -2px;
+  border-radius: 0px 4px 4px 0px;
+  border-left: 0px solid #fff;
+  border-top: 1px solid #c9c9c9;
+  border-bottom: 1px solid #c9c9c9;
+  border-right: 1px solid #c9c9c9;
+}
+.tg-shellHeader__search-submit img {
+  opacity: .4;
+}
+
+.tg-shellHeader--PHONE {
+  background-color: #4787b0;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzU0OTViZSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzMzNzE5YSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5495be), color-stop(100%, #33719a));
+  background-image: -moz-linear-gradient(top, #5495be, #33719a);
+  background-image: -webkit-linear-gradient(top, #5495be, #33719a);
+  background-image: linear-gradient(to bottom, #5495be, #33719a);
+  background-repeat: repeat-x;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF5495BE', endColorstr='#FF33719A');
+  color: #FFFFFF;
+  line-height: 18px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 7px 15px;
+  vertical-align: middle;
+  display: none;
+}
+@media only screen and (max-width: 650px) {
+  .tg-shellHeader--PHONE {
+    display: block;
+  }
+}
+
+.tg-shellUtilityNav {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.tg-shellUtilityNav .tg-shellUtilityNav__button {
+  position: relative;
+  width: 24px;
+  height: 26px;
+  padding: 9px 0px;
+}
+.tg-shellUtilityNav .tg-shellUtilityNav__button button {
+  width: 20px;
+  height: 20px;
+  margin: 6px 4px 0px 7px;
+  padding: 4px 2px;
+  color: #ffffff;
+  font-size: 9px;
+  text-align: center;
+  border: 0;
+}
+.tg-shellUtilityNav .tg-shellUtilityNav__button:hover,
+.tg-shellUtilityNav .tg-shellUtilityNav__button--on {
+  background-color: #CDDCF4;
+}
+.tg-shellUtilityNav .tg-shellUtilityNav__buttonSet {
+  position: relative;
+  background-color: #ABC5ED;
+  padding: 14px 0px 8px 14px;
+  border: 1px solid #95A6B4;
+  border-bottom-left-radius: 15px;
+  z-index: 1001;
+}
+
+/* *** TBD: REMOVE FROM ALL SAMPLE PAGES AND REPLACE WITH NEW ICON TREATMENT **** */
+.tg-shellNav--utility {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+}
+.tg-shellNav--utility ul li {
+  float: right;
+  border-right: 1px solid #677583;
+  font-size: 11px;
+  color: #687684;
+  padding: 0 10px;
+  list-style-type: none;
+}
+.tg-shellNav--utility ul li ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  z-index: 99;
+}
+.tg-shellNav--utility ul li ul li {
+  position: relative;
+  float: left;
+  padding: 0;
+  border-right: 0px;
+  z-index: 1;
+}
+.tg-shellNav--utility ul li:first-child {
+  border-right: 0;
+  padding-right: 0;
+}
+.tg-shellNav--utility ul a,
+.tg-shellNav--utility ul a:link,
+.tg-shellNav--utility ul a:active {
+  color: #687684;
+}
+.tg-shellNav--utility ul a:hover {
+  color: #3b434b;
+  text-decoration: underline;
+}
+@media only screen and (max-width: 1024px) {
+  .tg-shellNav--utility ul {
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .tg-shellNav--utility {
+    top: 5px;
+    right: 10px;
+  }
+}
+
+.tg-hoverPanel__panel {
+  display: none;
+  position: absolute;
+  top: 1.2em;
+  left: -5px;
+  z-index: 999;
+  padding: 0;
+  list-style: none;
+  background-color: #ffffff;
+  border-left: 1px #CCCCCC solid;
+  border-right: 1px #CCCCCC solid;
+  border-bottom: 1px #CCCCCC solid;
+}
+.tg-hoverPanel__panel li {
+  color: #687684;
+  width: 100%;
+  font-weight: normal;
+}
+.tg-hoverPanel__panel li a {
+  color: #687684 !important;
+  width: 100%;
+  padding: 2px 5px;
+  white-space: nowrap;
+  display: block;
+}
+.lt-ie8 .tg-hoverPanel__panel li a {
+  width: 150px;
+}
+.tg-hoverPanel__panel li a:hover,
+.tg-hoverPanel__panel li a.over {
+  color: #3b434b !important;
+  text-decoration: none;
+}
+.tg-hoverPanel__panel li:hover,
+.tg-hoverPanel__panel li.over {
+  background-color: #cccccc;
+}
+
+.tg-hoverPanel:hover .tg-hoverPanel__panel {
+  position: absolute;
+  display: block;
+}
+
+.tg-shellNav--utility {
+  font-family: "open_sansregular", Helvetica, Arial, sans-sarif;
+}
+
+.tg-custom-fonts-off .tg-shellNav--utility {
+  font-family: Helvetica, Arial, sans-sarif;
+}
+
+/* Shell - Footer
+
+<h1>.tg-shellFooter</h1>
+
+Entire area of the application shell that falls below the main content container. 
+
+The shell footer container can hold multiple elements using the child classes listed here. But please note that all of these child classes must be nested inside an element with the <code>tg-shellFooter</code> class.
+<ul>    
+    <li><strong>tg-shellfooter\__standard</strong> - The footer container that holds common elements such as version and copyright disclaimer. Typically appears on all pages in the application.</li>
+    <li><strong>tg-shellFooter\__additional</strong> - Optional footer container that usually appears below the standard container. Typically only used on the login page.</li>
+</ul>
+
+Markup: 
+<div class="tg-shell">
+  <div class="tg-shellMain" style="height:150px">
+    <div class="tg-shellContent" style="height:50px">
+      <div class="tg-shellContent__cap">
+        [Main nav here]
+      </div>
+    </div>
+    <footer class="tg-shellFooter">
+      <div class="tg-shellfooter__standard">
+        <span id="version" class="tg-float--left">Billing IT 2.0.0.0</span>
+        <span id="copyright" class="tg-float--right">&copy; 2013 Tangoe, Inc. All Rights Reserved.</span>
+      </div>
+      <div id="main-footer-additional">
+        <div><a href="http://export.gov/safeharbor" target="_blank"><img src="./common/images/shell-footer-SafeHarbor.gif" height="57" width="140" border="0"></a></div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+Styleguide 605.3
+
+*/
+.tg-shellFooter {
+  position: relative;
+  padding: 5px 7px;
+  color: #C2C6FF;
+  font-size: 11px;
+  line-height: normal;
+  text-align: right;
+  display: block;
+}
+
+.tg-shellFooter__standard,
+.tg-shellFooter__additional {
+  padding: 5px 2px 0px 2px;
+}
+
+.tg-shellFooter__links a,
+.tg-shellFooter__links a:link,
+.tg-shellFooter__links a:active {
+  color: #C2C6FF;
+}
+.tg-shellFooter__links a:hover {
+  color: #5c67ff;
+  text-decoration: underline;
+}
+
 .__TGUI_TEST_END_CSS1__ {
   background: red;
 }

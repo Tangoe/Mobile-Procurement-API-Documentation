@@ -1,53 +1,65 @@
 {% include header.html %}
 
 
+<div class="tg-pageContent" style="padding-top:0px">
    
-<!-- tgUI grid version -->
-<div class="tg-grid">
-  <div class="tg-grid__cell  tg-one-fifth  tg-pad--eighth--left">
+  <!-- tgUI grid version -->
+  <div class="tg-grid">
+    <div class="tg-grid__cell  tg-one-fifth  tg-pad--quarter--left">
 
+      <nav role="navigation" class="tg-space--top  dc-navPanel">
+      {% for navoption in site.data.nav %}
+        {% assign pageURL = page.url %}
+        {% assign currURL = navoption.href | prepend: '/' %}
 
+<!--
+              <p>
+                pageURL: {{ pageURL }}<br>
+                currURL: {{ currURL }}
+              </p>
+-->
 
-    <nav role="navigation" class="tg-space--top  dc-navPanel">
-      <div id="listContainer">
-      <ul id="expList">
-        {% for navoption in site.data.nav %}
+        {% if  page.url == navoption.href %}
+        <div class="dc-navOption  dc-navOption__top  dc-navOption__active">
+        {% else %}
+        <div class="dc-navOption  dc-navOption__top">
+        {% endif %}
+          
+          <a href="{{site.url}}{{ navoption.href }}">{{ navoption.label }}</a>
 
-          {% if  page.url == navoption.href %}
-            <li class="dc-navOption  dc-navOption__active">
-          {% else %}
-            <li class="dc-navOption">
+          {% if navoption.subOne != null %}
+            {% for sub1 in navoption.subOne %}
+              {% assign pageURL = page.url %}
+              {% assign currURL = sub1.href | prepend: '/' %}
+
+<!--
+              <p>
+                pageURL: {{ pageURL }}<br>
+                currURL: {{ currURL }}
+              </p>
+-->
+
+              {% if page.url == currURL %}
+              <div class="dc-navOption  dc-navOption__subone  dc-navOption__active">
+              {% else %}
+              <div class="dc-navOption  dc-navOption__subone">
+              {% endif %}
+                <a href="{{ site.url }}{{ sub1.href }}">{{ sub1.label }}</a>
+              </div>
+            {% endfor %}          
           {% endif %}
-          <a href="{{site.url}}{{ navoption.href }}" class="dc-navOption__top">{{ navoption.label }}</a>
-            {% if navoption.subOne != null %}
-              <ul>
-                {% for sub1 in navoption.subOne %}
-                  {% assign pageURL = page.url %}
-                  {% assign currURL = sub1.href | prepend: '/' %}
+        
+        </div>
+      {% endfor %}
+      </nav> 
 
-                  {% if page.url == currURL %}
-                    <li class="dc-navOption  dc-navOption__subone  dc-navOption__active">
-                  {% else %}
-                    <li class="dc-navOption  dc-navOption__subone">
-                  {% endif %}
+    </div><!--
+    --><div class="tg-grid__cell  tg-four-fifths  tg-pad">
 
-                  <a href="{{ site.url }}{{ sub1.href }}">{{ sub1.label }}</a>
-                  </li>
-                {% endfor %}
-              </ul>
-            {% endif %}
-          </li>
-        {% endfor %}
-      </ul>
+      {{ content }}
+
     </div>
-    </nav> 
-
-  </div><!--
-  --><div class="tg-grid__cell  tg-four-fifths  tg-pad">
-
-    {{ content }}
-
-  </div>
+  </div>  
 </div>  
  
 {% include footer.html %}
