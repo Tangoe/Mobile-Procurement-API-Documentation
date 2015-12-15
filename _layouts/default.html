@@ -21,20 +21,19 @@
         {% endif %}
          
           {% if navoption.subOne != null %}
-            {% for sub1 in navoption.subOne %}
-              {% assign pageURL = page.url %}
-              {% assign currURL = sub1.href | prepend: '/' %}
+            {% for sub1 in navoption.subOne %}              
+              {% assign subCurrURL = sub1.href | prepend: '/' %}
 
               <div class="dc-navOption  dc-navOption__subone">
-              {% if page.url == currURL %}
+              {% if page.url == subCurrURL %}
               <a href="{{ site.url }}{{ sub1.href }}" class="dc-navOption__active">{{ sub1.label }}</a>
               {% else %}
               <a href="{{ site.url }}{{ sub1.href }}">{{ sub1.label }}</a>
               {% endif %}
               </div>
-            {% endfor %}          
+            {% endfor %}
           {% endif %}
-        
+         
         </div>
       {% endfor %}
       </nav>
