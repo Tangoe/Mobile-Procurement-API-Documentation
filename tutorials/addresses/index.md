@@ -7,9 +7,9 @@ logoTangoe: tangoe-logo_125.png
 
 # How To Assemble and Address Block
 
-When placing an order that requires the physical shipment of a device or accessory, shipping address information will need to be included in the request body JSON. Moreover, various countries require differing sets of components for an address to be deliverable in that country.
+When placing an order that requires the physical shipment of a device or accessory, shipping address information will need to be included in the request body. Moreover, different countries often require differing sets of components in order for an address to be valid for delivery in that country.
 
-In order to determine the required mailing address components for a selected country, a call must first be made to the **/regions/{id}** endpoint. Please note that this endpoint requires passing in the ID for the country in which the address is located. This call will return a response that includes a block called addressFormat that identifies the specific address components required. 
+In order to determine the required mailing address components for a selected country, an API call must first be made to the **/regions/{id}** endpoint. Please note that this endpoint requires passing in the ID for the country to which the shipment is to be delivered. This call will return a response that includes a block called addressFormat that identifies the specific address components required. 
 
 For example:
 

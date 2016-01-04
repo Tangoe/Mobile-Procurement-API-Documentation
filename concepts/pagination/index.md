@@ -16,7 +16,7 @@ The limit value sets the maximum number of items to be included in single “pag
 
 ## JSON Response Body
 
-Paginated results always include a metadata block [****LINK TO METADATA**** PAGE] containing the details needed by the API consumer to navigate the resultset. These details include: 
+Paginated results always include a [metadata block](/concepts/pagination/) containing the details needed by the API consumer to navigate the resultset. These details include: 
 
 * **totalCount** - The total number of items in the entire result set (i.e., across all pages).
 

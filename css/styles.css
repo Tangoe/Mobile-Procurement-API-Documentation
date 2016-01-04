@@ -27,6 +27,11 @@ h3 {
 	color: #000;
 }
 
+a {
+	color: #0032A0;
+	text-decoration: underline;
+}
+
 
 .highlight {
 	border: 1px dotted #999;
@@ -68,7 +73,7 @@ h3 {
 	border: 0px;
 }
 .dc-navOption__subone > a {
-	color: #888;
+	color: #666;
 	text-decoration: none;
 	padding: 4px 7px 3px 11px;
 	display: block;

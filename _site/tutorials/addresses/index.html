@@ -219,16 +219,16 @@
          
         </div>
       
-      </nav>
+      </nav> 
 
     </div><!--
-    --><div class="tg-grid__cell  tg-four-fifths  tg-pad">
+    --><div class="tg-grid__cell  tg-four-fifths  tg-pad"> 
 
       <h1 id="how-to-assemble-and-address-block">How To Assemble and Address Block</h1>
 
-<p>When placing an order that requires the physical shipment of a device or accessory, shipping address information will need to be included in the request body JSON. Moreover, various countries require differing sets of components for an address to be deliverable in that country.</p>
+<p>When placing an order that requires the physical shipment of a device or accessory, shipping address information will need to be included in the request body. Moreover, different countries often require differing sets of components in order for an address to be valid for delivery in that country.</p>
 
-<p>In order to determine the required mailing address components for a selected country, a call must first be made to the <strong>/regions/{id}</strong> endpoint. Please note that this endpoint requires passing in the ID for the country in which the address is located. This call will return a response that includes a block called addressFormat that identifies the specific address components required.</p>
+<p>In order to determine the required mailing address components for a selected country, an API call must first be made to the <strong>/regions/{id}</strong> endpoint. Please note that this endpoint requires passing in the ID for the country to which the shipment is to be delivered. This call will return a response that includes a block called addressFormat that identifies the specific address components required.</p>
 
 <p>For example:</p>
 
@@ -309,7 +309,7 @@
  
     
     <footer class="dc-footer">
-      <p class="">&copy; Copyright 2015 Tangoe  | <a href="http://www.tangoe.com">About Tangoe</a></p>
+      <p class="">&copy; Copyright 2016 Tangoe  | <a href="http://www.tangoe.com">About Tangoe</a></p>
     </footer> 
   </div>
 </body>
