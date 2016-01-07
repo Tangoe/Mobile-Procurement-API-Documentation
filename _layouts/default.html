@@ -31,8 +31,28 @@
               <a href="{{ site.url }}{{ sub1.href }}">{{ sub1.label }}</a>
               {% endif %}
               </div>
+
+
+{% if navoption.subTwo != null %}
+              {% for sub2 in navoption.subTwo %}              
+                {% assign sub2urrURL = sub2.href | prepend: '/' %}
+
+                <div class="dc-navOption  dc-navOption__subone  tg-pad--left">
+                {% if page.url == sub2CurrURL %}
+                <a href="{{ site.url }}{{ sub2.href }}" class="dc-navOption__active">{{ sub2.label }}</a>
+                {% else %}
+                <a href="{{ site.url }}{{ sub2.href }}">{{ sub2.label }}</a>
+                {% endif %}
+                </div>
+              {% endfor %}
+            {% endif %}
+
+
+              
             {% endfor %}
           {% endif %}
+
+            
          
         </div>
       {% endfor %}

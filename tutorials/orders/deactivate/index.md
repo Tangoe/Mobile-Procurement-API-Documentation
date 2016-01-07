@@ -4,7 +4,7 @@ title: Tutorials - Submit an Order DEACTIVATE
 ---
 
 
-# How to Deactivcate Service
+# How to Deactivcate a Service
 
 The following is a step-by-step illustration of how to permanently [*****VERIFY WITH BECKY*****] deactivate a specific active mobile service asset.
 

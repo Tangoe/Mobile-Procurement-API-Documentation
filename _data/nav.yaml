@@ -27,7 +27,27 @@
 - label: "Tutorials"
   subOne:
     - label: "Submit an Order"
-      href: "tutorials/orders/"
+      href: "tutorials/orders/" 
+
+    - label: "&nbsp;&nbsp;&nbsp;&nbsp;  SUSPEND"
+      href: "tutorials/orders/suspend" 
+    - label: "&nbsp;&nbsp;&nbsp;&nbsp;  UNSUSPEND"
+      href: "tutorials/orders/unsuspend" 
+    - label: "&nbsp;&nbsp;&nbsp;&nbsp;  DEACTIVATE"
+      href: "tutorials/orders/deactivate" 
+    - label: "&nbsp;&nbsp;&nbsp;&nbsp;  SWAP_DEVICE"
+      href: "tutorials/orders/swap_device" 
+
+#  subTwo:
+#    - label: "SUSPEND" 
+#      href: "/tutorials/orders/suspend"
+#    - label: "UNSUSPEND" 
+#      href: "/tutorials/orders/unsuspend"
+#    - label: "DEACIVATE" 
+#      href: "/tutorials/orders/deactivate"
+#    - label: "SWAP_DEVICE" 
+#      href: "/tutorials/orders/swap_device"
+
     - label: "Format an Address"
       href: "tutorials/addresses/"
 
