@@ -4,7 +4,9 @@ title: Tutorials
 logoTangoe: tangoe-logo_125.png
 ---
 
-# How to Submit an Order
+# How to Create and Submit an Order
+
+**This tutorial provides a high-level overview of how orders are created and submitted. Please click on a specific transaction type (below) for step-by-step instructions, along with request and response body examples, needed to successfully create and submit an order for that transaction type.**
 
 The types of orders that can be created with this API are classified in one of two catagories: *Procurement* or *Care*. Procurement transactions are orders for obtaining a new device, plan, and/or accessories. Care transactions are orders for modifying an existing device or service asset. 
 
@@ -27,19 +29,14 @@ Within each of these categories are specific types of transactions, as listed in
 
 Along with the required request headers, API consumers will need to pass a block of JSON in the request body. This JSON code provides all of the data needed by the backend system to process the order request (e.g., transaction type ID, requester's employee ID, catalog ID of for the device to be obtained, etc.). In addition to the **/orders** endpoint, the API also provides many other supporting endpoints that can be used to gather all of this data.
 
-After preparing your order request, it can be passed to the server for validation and processing. This processing supports two modes: *confirmation* and *submission*.
+After preparing your order request, it can be passed to the server for validation and processing. This processing supports two modes: *confirmation* and *submission*:
 
-#### Confirmation
+* **Confirmation** -- When set to confirmation mode, the order will NOT be submitted for fulfillment. Instead, after validating the data in the request, the server returns a response containing a status value of "SUCCESS," along with JSON in the response body containing human-readable data that fully describes what was referenced by ID in the request body. This expanded data provides the UI with enough information to display meaningful request data that can be presented to the end user to verify the order, correct any errors, and submit for fulfillment.
 
-When set to confirmation mode, the order will NOT be submitted for fulfillment. Instead, after validating the data in the request, the server returns a response containing a status value of "SUCCESS," along with JSON in the response body containing human-readable data that fully describes what was referenced by ID in the request body. This expanded data provides the UI with enough information to display meaningful request data that can be presented to the end user to verify the order, correct any errors, and submit for fulfillment.
+* **Submission** -- Once the request is successfully validated and without errors -- and confirmation mode is NOT explicitly set -- the order can be submitted to the server for fulfillment. Again, the server will return a status value of "SUCCESS", along with enough meaningful information for display to the end user, as well as with a new, system-generated order ID.
 
-#### Submission
+* **Errors** -- If during validation the server determines that there are issues with the request that prevent it from being processed, the server will return a status value of "ERROR." The respinse will also include an array containing data describing the error(s). For a detailed description of what might be returned for an unsuccessful response, please go to the [Faults and Error Handling](/concepts/errors/) page.
 
-Once the request is successfully validated and without errors -- and confirmation mode is NOT explicitly set -- the order can be submitted to the server for fulfillment. Again, the server will return a status value of "SUCCESS", along with enough meaningful information for display to the end user, as well as with a new, system-generated order ID.
-
-#### Errors
-
-If during validation the server determines that there are issues with the request that prevent it from being processed, the server will return a status value of "ERROR." The respinse will also include an array containing data describing the error(s). For a detailed description of what might be returned for an unsuccessful response, please go to the [Faults and Error Handling](/concepts/errors/) page.
 
 
 ## Steps for building your order
@@ -57,6 +54,7 @@ Please refer to the [Headers](/concepts/headers/) page for details regarding wha
 
 ### Step 3. Submit the order request via HTTP POST to the orders resource (/orders).
 Typically, you will want to first ask for a confirmation. To do so, simply include the appropriate query parameter (confirmation=true). This confirmation is useful because it:
+
 * Returns a successful confirmation response will return  human readable data that fully describes what was passed in as an ID in the request (e.g., device make/model, vendor name, account holder details, etc.).
 * Provides API consumer with useful feedback to present to end user, allowing them to confirm that the request is accurate.
 

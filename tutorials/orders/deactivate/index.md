@@ -4,20 +4,14 @@ title: Tutorials - Submit an Order DEACTIVATE
 ---
 
 
-# How to Deactivcate a Service
+# How to Deactivcate a Service Asset
 
-The following is a step-by-step illustration of how to permanently [*****VERIFY WITH BECKY*****] deactivate a specific active mobile service asset.
-
-```
-<div class="parent">
-  <div class="puffNstuff">Block here</div>
-</div>
-```
+**This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to deactivate a specific service.**
 
 
-## Step Zero: Authentication
+## Authentication
 
-See Authentication page for info regarding the supported OAuth2 grant types: Implicit, Resource Owner Password Credentials
+See Authentication page for info regarding the supported OAuth2 grant types: Implicit, Resource Owner Password Credentials.
 
 ## Step One: Set Necessary Headers
 

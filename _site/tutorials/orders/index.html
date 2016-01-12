@@ -76,7 +76,7 @@
               </div>
 
 
-
+            
 
 
               
@@ -90,7 +90,7 @@
               </div>
 
 
-
+            
 
 
               
@@ -104,7 +104,7 @@
               </div>
 
 
-
+            
 
 
               
@@ -134,7 +134,7 @@
               </div>
 
 
-
+            
 
 
               
@@ -148,7 +148,7 @@
               </div>
 
 
-
+            
 
 
               
@@ -162,7 +162,7 @@
               </div>
 
 
-
+            
 
 
               
@@ -176,7 +176,7 @@
               </div>
 
 
-
+            
 
 
               
@@ -190,7 +190,7 @@
               </div>
 
 
-
+            
 
 
               
@@ -220,7 +220,7 @@
               </div>
 
 
-
+            
 
 
               
@@ -234,7 +234,7 @@
               </div>
 
 
-
+            
 
 
               
@@ -248,7 +248,7 @@
               </div>
 
 
-
+            
 
 
               
@@ -262,7 +262,7 @@
               </div>
 
 
-
+            
 
 
               
@@ -276,7 +276,7 @@
               </div>
 
 
-
+            
 
 
               
@@ -290,7 +290,7 @@
               </div>
 
 
-
+            
 
 
               
@@ -320,7 +320,7 @@
               </div>
 
 
-
+            
 
 
               
@@ -334,7 +334,7 @@
               </div>
 
 
-
+            
 
 
               
@@ -364,7 +364,9 @@
     </div><!--
     --><div class="tg-grid__cell  tg-four-fifths  tg-pad"> 
 
-      <h1 id="how-to-submit-an-order">How to Submit an Order</h1>
+      <h1 id="how-to-create-and-submit-an-order">How to Create and Submit an Order</h1>
+
+<p><strong>This tutorial provides a high-level overview of how orders are created and submitted. Please click on a specific transaction type (below) for step-by-step instructions, along with request and response body examples, needed to successfully create and submit an order for that transaction type.</strong></p>
 
 <p>The types of orders that can be created with this API are classified in one of two catagories: <em>Procurement</em> or <em>Care</em>. Procurement transactions are orders for obtaining a new device, plan, and/or accessories. Care transactions are orders for modifying an existing device or service asset.</p>
 
@@ -437,19 +439,19 @@
 
 <p>Along with the required request headers, API consumers will need to pass a block of JSON in the request body. This JSON code provides all of the data needed by the backend system to process the order request (e.g., transaction type ID, requester’s employee ID, catalog ID of for the device to be obtained, etc.). In addition to the <strong>/orders</strong> endpoint, the API also provides many other supporting endpoints that can be used to gather all of this data.</p>
 
-<p>After preparing your order request, it can be passed to the server for validation and processing. This processing supports two modes: <em>confirmation</em> and <em>submission</em>.</p>
+<p>After preparing your order request, it can be passed to the server for validation and processing. This processing supports two modes: <em>confirmation</em> and <em>submission</em>:</p>
 
-<h4 id="confirmation">Confirmation</h4>
-
-<p>When set to confirmation mode, the order will NOT be submitted for fulfillment. Instead, after validating the data in the request, the server returns a response containing a status value of “SUCCESS,” along with JSON in the response body containing human-readable data that fully describes what was referenced by ID in the request body. This expanded data provides the UI with enough information to display meaningful request data that can be presented to the end user to verify the order, correct any errors, and submit for fulfillment.</p>
-
-<h4 id="submission">Submission</h4>
-
-<p>Once the request is successfully validated and without errors – and confirmation mode is NOT explicitly set – the order can be submitted to the server for fulfillment. Again, the server will return a status value of “SUCCESS”, along with enough meaningful information for display to the end user, as well as with a new, system-generated order ID.</p>
-
-<h4 id="errors">Errors</h4>
-
-<p>If during validation the server determines that there are issues with the request that prevent it from being processed, the server will return a status value of “ERROR.” The respinse will also include an array containing data describing the error(s). For a detailed description of what might be returned for an unsuccessful response, please go to the <a href="/concepts/errors/">Faults and Error Handling</a> page.</p>
+<ul>
+  <li>
+    <p><strong>Confirmation</strong> – When set to confirmation mode, the order will NOT be submitted for fulfillment. Instead, after validating the data in the request, the server returns a response containing a status value of “SUCCESS,” along with JSON in the response body containing human-readable data that fully describes what was referenced by ID in the request body. This expanded data provides the UI with enough information to display meaningful request data that can be presented to the end user to verify the order, correct any errors, and submit for fulfillment.</p>
+  </li>
+  <li>
+    <p><strong>Submission</strong> – Once the request is successfully validated and without errors – and confirmation mode is NOT explicitly set – the order can be submitted to the server for fulfillment. Again, the server will return a status value of “SUCCESS”, along with enough meaningful information for display to the end user, as well as with a new, system-generated order ID.</p>
+  </li>
+  <li>
+    <p><strong>Errors</strong> – If during validation the server determines that there are issues with the request that prevent it from being processed, the server will return a status value of “ERROR.” The respinse will also include an array containing data describing the error(s). For a detailed description of what might be returned for an unsuccessful response, please go to the <a href="/concepts/errors/">Faults and Error Handling</a> page.</p>
+  </li>
+</ul>
 
 <h2 id="steps-for-building-your-order">Steps for building your order</h2>
 
@@ -464,9 +466,12 @@
 <p>Please refer to the <a href="/concepts/headers/">Headers</a> page for details regarding what headers are available and how to configure them.</p>
 
 <h3 id="step-3-submit-the-order-request-via-http-post-to-the-orders-resource-orders">Step 3. Submit the order request via HTTP POST to the orders resource (/orders).</h3>
-<p>Typically, you will want to first ask for a confirmation. To do so, simply include the appropriate query parameter (confirmation=true). This confirmation is useful because it:<br />
-* Returns a successful confirmation response will return  human readable data that fully describes what was passed in as an ID in the request (e.g., device make/model, vendor name, account holder details, etc.).<br />
-* Provides API consumer with useful feedback to present to end user, allowing them to confirm that the request is accurate.</p>
+<p>Typically, you will want to first ask for a confirmation. To do so, simply include the appropriate query parameter (confirmation=true). This confirmation is useful because it:</p>
+
+<ul>
+  <li>Returns a successful confirmation response will return  human readable data that fully describes what was passed in as an ID in the request (e.g., device make/model, vendor name, account holder details, etc.).</li>
+  <li>Provides API consumer with useful feedback to present to end user, allowing them to confirm that the request is accurate.</li>
+</ul>
 
 <h3 id="step-4-submit-the-order">Step 4. Submit the Order.</h3>
 <p>After confirming the request, the API consumer can re-submit, setting the confirmation parameter to false (or do not pass at all since the default value is false).</p>
