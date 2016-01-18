@@ -229,6 +229,62 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
+              <a href="http://localhost:4000/tutorials/orders/new_activation">&nbsp;&nbsp;&nbsp;&nbsp;  NEW_ACTIVATION</a>
+              
+              </div>
+
+
+            
+
+
+              
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
+              <a href="http://localhost:4000/tutorials/orders/upgrade">&nbsp;&nbsp;&nbsp;&nbsp;  UPGRADE</a>
+              
+              </div>
+
+
+            
+
+
+              
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
+              <a href="http://localhost:4000/tutorials/orders/order_accessories">&nbsp;&nbsp;&nbsp;&nbsp;  ORDER_ACCESSORES</a>
+              
+              </div>
+
+
+            
+
+
+              
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
+              <a href="http://localhost:4000/tutorials/orders/port_number">&nbsp;&nbsp;&nbsp;&nbsp;  PORT_NUMBER</a>
+              
+              </div>
+
+
+            
+
+
+              
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
               <a href="http://localhost:4000/tutorials/orders/suspend">&nbsp;&nbsp;&nbsp;&nbsp;  SUSPEND</a>
               
               </div>
@@ -271,7 +327,21 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/tutorials/orders/swap_device">&nbsp;&nbsp;&nbsp;&nbsp;  SWAP_DEVICE</a>
+              <a href="http://localhost:4000/tutorials/orders/update_features">&nbsp;&nbsp;&nbsp;&nbsp;  UPDATE_FEATURES</a>
+              
+              </div>
+
+
+            
+
+
+              
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
+              <a href="http://localhost:4000/tutorials/orders/swap_devices">&nbsp;&nbsp;&nbsp;&nbsp;  SWAP_DEVICES</a>
               
               </div>
 
@@ -366,7 +436,8 @@
 
       <h1 id="how-to-create-and-submit-an-order">How to Create and Submit an Order</h1>
 
-<p><strong>This tutorial provides a high-level overview of how orders are created and submitted. Please click on a specific transaction type (below) for step-by-step instructions, along with request and response body examples, needed to successfully create and submit an order for that transaction type.</strong></p>
+<p><strong>This tutorial provides a high-level overview of how orders are created and submitted. Please click on a specific transaction type (below) for step-by-step instructions, along with request and response body examples, needed to successfully create and submit an order for that transaction type.</strong><br />
+<br /></p>
 
 <p>The types of orders that can be created with this API are classified in one of two catagories: <em>Procurement</em> or <em>Care</em>. Procurement transactions are orders for obtaining a new device, plan, and/or accessories. Care transactions are orders for modifying an existing device or service asset.</p>
 
@@ -385,22 +456,22 @@
       <td>—————————————————————————–</td>
     </tr>
     <tr>
-      <td>NEW_ACTIVATION</td>
+      <td><a href="/tutorials/orders/new_activation/">NEW_ACTIVATION</a></td>
       <td>Procurement</td>
       <td>Obtain a new device, service, and/or accessory</td>
     </tr>
     <tr>
-      <td>UPGRADE</td>
+      <td><a href="/tutorials/orders/upgrade/">UPGRADE</a></td>
       <td>Procurement</td>
       <td>Upgrade an existing device and/or service.</td>
     </tr>
     <tr>
-      <td>ORDER_ACCESSORIES</td>
+      <td><a href="/tutorials/orders/order_accessories/">ORDER_ACCESSORIES</a></td>
       <td>Procurement</td>
       <td>Obtain one or more new accessory item(s).</td>
     </tr>
     <tr>
-      <td>PORT_NUMBER</td>
+      <td><a href="/tutorials/orders/port_number/">PORT_NUMBER</a></td>
       <td>Procurement</td>
       <td>Port an existing service asset from one carrier to another.</td>
     </tr>
@@ -420,7 +491,7 @@
       <td>Deactivate an existing active cellular service asset.</td>
     </tr>
     <tr>
-      <td>UPDATE_FEATURES</td>
+      <td><a href="/tutorials/orders/update_features/">UPDATE_FEATURES</a></td>
       <td>Care</td>
       <td>Add or remove optional features on an existing cellular service asset.</td>
     </tr>
@@ -449,7 +520,8 @@
     <p><strong>Submission</strong> – Once the request is successfully validated and without errors – and confirmation mode is NOT explicitly set – the order can be submitted to the server for fulfillment. Again, the server will return a status value of “SUCCESS”, along with enough meaningful information for display to the end user, as well as with a new, system-generated order ID.</p>
   </li>
   <li>
-    <p><strong>Errors</strong> – If during validation the server determines that there are issues with the request that prevent it from being processed, the server will return a status value of “ERROR.” The respinse will also include an array containing data describing the error(s). For a detailed description of what might be returned for an unsuccessful response, please go to the <a href="/concepts/errors/">Faults and Error Handling</a> page.</p>
+    <p><strong>Errors</strong> – If during validation the server determines that there are issues with the request that prevent it from being processed, the server will return a status value of “ERROR.” The respinse will also include an array containing data describing the error(s). For a detailed description of what might be returned for an unsuccessful response, please go to the <a href="/concepts/errors/">Faults and Error Handling</a> page.<br />
+<br /></p>
   </li>
 </ul>
 
@@ -457,10 +529,8 @@
 
 <p>All orders require the following process steps in order to create, confirm, and submit an order:</p>
 
-<h3 id="step-1-build-the-order-request-json-code-that-is-required-for-yur-specific-transaction-type">Step 1. Build the order request JSON code that is required for yur specific transaction type.</h3>
-<p>The transaction type identifies the specific action that you wish to take (e.g., obtain a new phone and cellular plan, suspend cellular service, etc.). See the chart below for a full list of available transaction types</p>
-
-<p>For the specific order creation steps required for each transaction type, including JSON samples, please refer to the following pages:</p>
+<h3 id="step-1-build-the-order-request-json-code-that-is-required-for-your-specific-transaction-type">Step 1. Build the order request JSON code that is required for your specific transaction type.</h3>
+<p>The transaction type identifies the specific action that you wish to take (e.g., obtain a new phone and cellular plan, suspend cellular service, etc.). See the chart above for a full list of available transaction types, along with the specific order creation steps required for each transaction type, including JSON samples.</p>
 
 <h3 id="step-2-compile-the-request-headers-needed-for-your-desired-transaction">Step 2. Compile the request headers needed for your desired transaction.</h3>
 <p>Please refer to the <a href="/concepts/headers/">Headers</a> page for details regarding what headers are available and how to configure them.</p>

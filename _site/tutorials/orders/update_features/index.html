@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset=utf-8 />
-  <title>  Tutorials |  MOB API </title>  
+  <title>  Tutorials - UPDATE_FEATURES Order |  MOB API </title>  
 
   <script src="http://localhost:4000/js/jquery/jquery-2.1.4.min.js"></script>
   
@@ -434,18 +434,95 @@
     </div><!--
     --><div class="tg-grid__cell  tg-four-fifths  tg-pad"> 
 
-      <h1 id="tutorials">Tutorials</h1>
+      <h1 id="how-to-update-the-features-of-a-service-asset">How to Update the Features of a Service Asset</h1>
 
-<p>Here are some great tutorials to learn from:</p>
+<p><strong>This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to update features of a specific service asset.</strong><br />
+<br /></p>
 
-<ol>
-  <li>Setting Headers</li>
-  <li>Create an Order<br />
-  a. All Types<br />
-  a. DEACTIVATE<br />
-  a. SUSPEND<br />
-  a. UNSUSPEND</li>
-</ol>
+<h2 id="authentication">Authentication</h2>
+
+<p>See the <a href="/concepts/security/">Security and Authentication</a> page for info regarding the supported OAuth2 grant types: Implicit, Resource Owner Password Credentials.<br />
+<br /></p>
+
+<h2 id="step-one-set-necessary-headers">Step One: Set Necessary Headers</h2>
+
+<p>A few HTTP headers are required to be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate).</p>
+
+<h3 id="required-headers">Required headers:</h3>
+
+<ul>
+  <li><strong>X-TNGO-TENANT</strong> - Used to identify the specific tenant (i.e., customer) for which the API is being called.<br />
+See the <a href="/concepts/headers/">Headers</a> page for more information about these headers.</li>
+</ul>
+
+<h3 id="optional-headers">Optional headers:</h3>
+
+<ul>
+  <li>
+    <p><strong>X-TNGO-CONTEXT-COMPANYEMPLOYEEID</strong>  – Used to specify a company employee ID that defines the context of the call. This header is only checked if the X-TNGO-CONTEXT-EMPLOYEEID header is blank or does not exist. If this header does not exist, the context will be set to the authenticated user. <br />
+<em>SECURITY NOTE:</em> The authenticated user must be authorized to access (at a minimum) all the same data that the employee referenced in this header is authorized to access.</p>
+  </li>
+  <li>
+    <p><strong>X-TNGO-CONTEXT-EMPLOYEEID</strong> –  Used to specify an employee ID that defines the context of the call. If this header does not exist or is blank, then the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header will be used instead. <br />
+<em>SECURITY NOTE:</em> The authenticated user must be authorized to access (at a minimum) all the same data that the employee referenced in this header is authorized to access.</p>
+  </li>
+  <li>
+    <p><strong>X-TNGO-CONTEXT-HIERARCHYID</strong> –  Used to specify the organizational hierarchy to be used for the API call. If this header is blank or does not exist, the default hierarchy will be used.<br />
+<br /></p>
+  </li>
+</ul>
+
+<h2 id="step-two-build-json-for-request-body">Step Two: Build JSON for Request Body</h2>
+
+<p>Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.</p>
+
+<p>For an UPDATE_FEATURES, this JSON typically includes the following pieces:</p>
+
+<ul>
+  <li>Transaction type (i.e., UPDATE_FEATURES).</li>
+  <li>??? OTHER BULLETS HERE ???</li>
+</ul>
+
+<p>Here is an example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<p><br /></p>
+
+<h2 id="step-three-set-query-parameters-as-needed">Step Three: Set Query Parameter(s), as Needed</h2>
+
+<p>The only query parameter that can be set when creating an order is:</p>
+
+<ul>
+  <li>confirm  (boolean) - If true, the order will not be posted. Instead, the response will return a complete description of the order that can be used to create an order confirmation for the end user to review, correct, and then submit for processing.<br />
+<br /></li>
+</ul>
+
+<h2 id="step-four-submit-order-request-confirmation">Step Four: Submit Order Request Confirmation</h2>
+
+<p>Your request, containing the JSON request body and confirm query parameter set to true, should now be ready. Submit it via HTTP POST to the orders endpoint.</p>
+
+<p>If successful, the API will return a response with a 200 HTTP status code and containing JSON that fully describes the identifiers that were submitted. This data can then be presented back to the end user for verification and correction, if necessary.</p>
+
+<p>Here is an example of what the order confirmation JSON might look like:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<p><br /></p>
+
+<h2 id="step-five-submit-order-request">Step Five: Submit Order Request</h2>
+<p>Once the request has been confirmed, it can be re-submitted for processing via HTTP POST. Before submitting, be sure to set the confirm query parameter to false (or remove it, since the default is false).</p>
+
+<p>If the submission is successful, the API will once again return a response containing JSON with an HTTP status code of 200. This response also will include the newly-assigned order number (i.e., orderId).</p>
+
+<p>Here is an example of what the order JSON might look like:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+<p><br /></p>
 
 
 
