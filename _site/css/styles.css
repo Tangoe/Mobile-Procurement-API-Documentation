@@ -132,6 +132,9 @@ a.dc-navOption__active {
 	font-family: helvetica, arial, sans-serif;
 	font-size: .85rem;
 }
+.dc-bannerLinks__link a {
+  color: #ffffff;
+}
 
 
 
