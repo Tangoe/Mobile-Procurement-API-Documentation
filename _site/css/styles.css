@@ -172,7 +172,7 @@ a.dc-navOption__active {
 }
 .dc-homeLayout_cell--nav {
 	flex-basis: 222px;
-	background-color: #f2f2f2;
+	background-color: #fff;
 }
 
 
@@ -200,9 +200,9 @@ background-size: cover;
 
 /* FEATURE BLOCK CLASSES */
 .dc-featureBlock {
-  width: 90%;
-  height: 280px;
-  margin-top: 55px;
+  width: 100%;
+  height: 260px;
+  margin-top: 50px;
   background-color: #0032A0;
 }
 .dv-feature { 
