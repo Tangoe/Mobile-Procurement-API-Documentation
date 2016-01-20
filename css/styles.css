@@ -211,7 +211,7 @@ background-size: cover;
   padding-bottom: 18px;
   border: 1px solid #A6B3DE;  /* #2B3C73  #BBBBBB; */
   border-radius: 3px;
-  background-color: #FFFFFF;
+  /* background-color: #FFFFFF; */
   width: 250px;
 }
 .dv-feature h3 {  
@@ -293,9 +293,9 @@ border-radius: 3px;
   position: relative;
   margin: 5px  0px; 
   padding: 7px 17px;
-  color: #FFFFFF;
-  background-color: transparent;
-  border: 1px solid #FFFFFF;
+  color: #000000; /* #2b3c73; */
+  background-color: #f3E600;
+  border: 1px solid #f3E600; 
   border-radius: 50px;
   font-weight: bold;
   font-size: 17px;
@@ -304,8 +304,8 @@ border-radius: 3px;
 }
 .dv-hero__button:hover,
 .dv-hero__button:active {
-  color: #2b3c73;
-  background-color: #f3E600;
-  border: 1px solid #f3E600;
+  color: #FFFFFF;
+  background-color: transparent;
+  border: 1px solid #FFFFFF;
   text-decoration: none;
 }
