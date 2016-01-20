@@ -8,6 +8,7 @@ title: Tutorials
 In many places, the Mobile Procurement API’s responses include blocks of metadata relating to the data points within that response. These supplementary blocks, which are always named “_meta,” typically contain fully-qualified URLs that resolve to other API calls for retrieving related detail data.
 
 For example, the API call for a collection of employees might return items containing just a few selected details about each employee. However, each item also contains a “_meta” block populated a URL that can be used to obtain that specific employee’s full detail record. 
+<br />
 
 ## Detail Record Example
 
@@ -40,6 +41,7 @@ Below is an illustration of a metadata block contained within a response for an 
 ...
 
 ```
+<br />
 
 ## Pagination Data Example
 

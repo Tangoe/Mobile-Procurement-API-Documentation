@@ -44,8 +44,7 @@
   <div class="tg-grid">
     <div class="tg-grid__cell  tg-one-fifth  tg-pad--quarter--left">
 
-
-      <nav role="navigation" class="tg-space--top  dc-navPanel">
+      <nav role="navigation" class="dc-navPanel">
       
         
         
@@ -445,7 +444,8 @@
 <h3 id="a-note-about-empty-values-and-blanks">A Note about Empty Values and Blanks</h3>
 <p>If a header value is returned as an empty or blank field, the backend system using the header should consider it to have NOT been set. In other words, they should discard the empty value or spaces and act as if that particular header to have not been passed at all.</p>
 
-<p>Below are descriptions the various types of headers available, along with the call required to obtain each one.</p>
+<p>Below are descriptions the various types of headers available, along with the call required to obtain each one.<br />
+<br /></p>
 
 <h2 id="general-headers">General Headers</h2>
 
@@ -457,6 +457,8 @@
   <li>Data type of value: string</li>
   <li>Description: Used to identify the specific tenant (i.e., customer) for which the API is being called.</li>
 </ul>
+
+<p><br /></p>
 
 <h2 id="context-id-headers">Context ID Headers</h2>
 <p>User ID headers are added after the logged in user is authenticated. A single user could have IDs for one or more backend systems. Each backend system can extract their relevant ID and simply ignore the rest.</p>

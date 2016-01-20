@@ -12,6 +12,7 @@ Request headers are simply key value pairs of metadata relating to what is conta
 If a header value is returned as an empty or blank field, the backend system using the header should consider it to have NOT been set. In other words, they should discard the empty value or spaces and act as if that particular header to have not been passed at all.
 
 Below are descriptions the various types of headers available, along with the call required to obtain each one.
+<br />
 
 ## General Headers
 
@@ -22,6 +23,7 @@ General headers are added by the consumer of the API and are passed through the 
 * Data type of value: string
 * Description: Used to identify the specific tenant (i.e., customer) for which the API is being called.
 
+<br />
 
 ## Context ID Headers
 User ID headers are added after the logged in user is authenticated. A single user could have IDs for one or more backend systems. Each backend system can extract their relevant ID and simply ignore the rest. 

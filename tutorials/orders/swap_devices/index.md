@@ -14,7 +14,7 @@ title: Tutorials - SWAP_DEVICE Order
 See the [Security and Authentication](/concepts/security/) page for info regarding the supported OAuth2 grant types: Implicit, Resource Owner Password Credentials.
 <br />
 
-## Step One: Set Necessary Headers
+## Step 1: Set Necessary Headers
 
 A few HTTP headers are required to be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate). 
 
@@ -34,7 +34,7 @@ See the [Headers](/concepts/headers/) page for more information about these head
 * **X-TNGO-CONTEXT-HIERARCHYID** --  Used to specify the organizational hierarchy to be used for the API call. If this header is blank or does not exist, the default hierarchy will be used.
 <br />
 
-## Step Two: Build JSON for Request Body
+## Step 2: Build JSON for Request Body
 
 Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.
 
@@ -109,14 +109,14 @@ Here is an example:
 ```
 <br />
 
-## Step Three: Set Query Parameter(s), as Needed
+## Step 3: Set Query Parameter(s), as Needed
 
 The only query parameter that can be set when creating an order is:
 
 * confirm  (boolean) - If true, the order will not be posted. Instead, the response will return a complete description of the order that can be used to create an order confirmation for the end user to review, correct, and then submit for processing.
 <br />
 
-## Step Four: Submit Order Request Confirmation
+## Step 4: Submit Order Request Confirmation
 
 Your request, containing the JSON request body and confirm query parameter set to true, should now be ready. Submit it via HTTP POST to the orders endpoint.
 
@@ -254,7 +254,7 @@ Here is an example of what the order confirmation JSON might look like:
 ```
 <br/>
 
-## Step Five: Submit Order Request
+## Step 5: Submit Order Request
 Once the request has been confirmed, it can be re-submitted for processing via HTTP POST. Before submitting, be sure to set the confirm query parameter to false (or remove it, since the default is false). 
 
 If the submission is successful, the API will once again return a response containing JSON with an HTTP status code of 200. This response also will include the newly-assigned order number (i.e., orderId). 
