@@ -194,13 +194,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5d84aa', end
 background-color:#0032A0; 
 background-image:url('http://www.tangoe.com/wp-content/uploads/2015/12/1.2_Telecom1.jpg');
 
+background-size: cover;
+
 }
 
 /* FEATURE BLOCK CLASSES */
 .dc-featureBlock {
-  width: 100%;
-  height: 340px;
-  margin-top: 85px;
+  width: 90%;
+  height: 280px;
+  margin-top: 55px;
   background-color: #0032A0;
 }
 .dv-feature { 
