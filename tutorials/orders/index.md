@@ -18,7 +18,7 @@ Within each of these categories are specific types of transactions, as listed in
 | ----------------------------------------------		| ----------------- | ----------------------------------------------------------------------------- |
 | [NEW_ACTIVATION](/tutorials/orders/new_activation/)	| Procurement 		| Obtain a new device, service, and/or accessory 								|
 | [UPGRADE](/tutorials/orders/upgrade/)					| Procurement 		| Upgrade an existing device and/or service.									|
-| [ORDER_ACCESSORIES](/tutorials/orders/order_accessories/) | Procurement 		| Obtain one or more new accessory item(s).  									|
+| [ORDER_ACCESSORIES](/tutorials/orders/order_accessories/) | Procurement 		| Obtain one or more new accessory item(s).  								|
 | [PORT_NUMBER](/tutorials/orders/port_number/) 		| Procurement 		| Port an existing service asset from one carrier to another. 					|
 | [SUSPEND](/tutorials/orders/suspend/)	 				| Care 				| Suspend an existing active cellular service asset.							|
 | [UNSUSPEND](/tutorials/orders/unsuspend/) 	 		| Care 				| Reactivate an existing cellular service asset that was previously suspended. 	|

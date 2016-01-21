@@ -132,7 +132,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/concepts/security/">Security and Authentication</a>
+              <a href="http://localhost:4000/concepts/security/">Authentication and Security</a>
               
               </div>
 
@@ -160,7 +160,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/concepts/errors/">Faults and Error Handling</a>
+              <a href="http://localhost:4000/concepts/errors/">Errors</a>
               
               </div>
 
@@ -437,9 +437,9 @@
     </div><!--
     --><div class="tg-grid__cell  tg-four-fifths  tg-pad"> 
 
-      <h1 id="how-to-changing-the-device-that-is-assigned-to-a-service-asset">How to Changing the Device that is Assigned to a Service Asset</h1>
+      <h1 id="how-to-transfer-service-from-one-device-to-another">How to Transfer Service from One Device to Another</h1>
 
-<p><strong>This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to change the device that is associated with a specific service asset.</strong><br />
+<p><strong>This tutorial provides step-by-step instructions for changing the assignment of a service from one device to another. Please note that both devices must be known assets in the possession of the user. In other words, service cannot be transferred to a brand new device that is purchased during the order process.</strong><br />
 <br /></p>
 
 <h2 id="authentication">Authentication</h2>
@@ -483,9 +483,11 @@ See the <a href="/concepts/headers/">Headers</a> page for more information about
 
 <ul>
   <li>Transaction type (i.e., SWAP_DEVICE).</li>
-  <li>Service ID of the service asset to be updated with a different device assignment.</li>
+  <li>Service ID of the service that is being reassigned.</li>
   <li>Account Holder Company ID (or Account Holder ID) for the user to whom the asset is assigned.</li>
-  <li>The properties that are required for changing the device associated with a specific service asset for the specific vendor.</li>
+  <li>Details identifying the device that currently uses the service.</li>
+  <li>Details identifying the device to with the service is being transferred.</li>
+  <li>The properties that are required for transferring a service from one device asset to another.</li>
 </ul>
 
 <p>Here is an example:</p>

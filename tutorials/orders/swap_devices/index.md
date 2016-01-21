@@ -4,9 +4,9 @@ title: Tutorials - SWAP_DEVICE Order
 ---
 
 
-# How to Changing the Device that is Assigned to a Service Asset
+# How to Transfer Service from One Device to Another
 
-**This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to change the device that is associated with a specific service asset.**
+**This tutorial provides step-by-step instructions for changing the assignment of a service from one device to another. Please note that both devices must be known assets in the possession of the user. In other words, service cannot be transferred to a brand new device that is purchased during the order process.**
 <br />
 
 ## Authentication
@@ -41,10 +41,12 @@ Next, you will need to compile the JSON that will be submitted in the request bo
 For a SWAP_DEVICE, this JSON typically includes the following pieces:
 
 * Transaction type (i.e., SWAP_DEVICE).
-* Service ID of the service asset to be updated with a different device assignment.
+* Service ID of the service that is being reassigned.
 * Account Holder Company ID (or Account Holder ID) for the user to whom the asset is assigned.
-* The properties that are required for changing the device associated with a specific service asset for the specific vendor.
- 
+* Details identifying the device that currently uses the service.
+* Details identifying the device to with the service is being transferred.
+* The properties that are required for transferring a service from one device asset to another.
+
  
 Here is an example:
 

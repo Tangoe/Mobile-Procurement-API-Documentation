@@ -6,7 +6,7 @@ title: Tutorials - SUSPEND Order
 
 # How to Suspend a Service Asset
 
-**This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to suspend a specific service asset.**
+**This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to temporarily suspend a specific service asset that is currently active.**
 <br />
 
 ## Authentication

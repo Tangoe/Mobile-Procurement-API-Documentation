@@ -13,11 +13,11 @@
 
 - label: "Using the API"
   subOne:
-    - label: "Security and Authentication"
+    - label: "Authentication and Security"
       href: "concepts/security/"
     - label: "Headers"
       href: "concepts/headers/"
-    - label: "Faults and Error Handling"
+    - label: "Errors"
       href: "concepts/errors/"
     - label: "Pagination"
       href: "concepts/pagination/"

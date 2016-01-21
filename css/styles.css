@@ -111,7 +111,7 @@ a.dc-navOption__active {
 }
 
 .dc-banner {
-	background-color: #000000;  /*  #051c48;  #12484B;  */
+	background-color: #00000A;  /*  #051c48;  #12484B;  */
 	color:  #F5E500; 
 	font-family: 'linotype_helvetica_thin', arial, sans-serif;
 	font-size: 2em;
@@ -154,7 +154,7 @@ a.dc-navOption__active {
 	margin-top: 0px;
 	padding: 7px;
 	border-top: 1px solid #0032A0;
-	background-color: #000000;
+	background-color: #00000A;
 }
 
 
@@ -177,7 +177,7 @@ a.dc-navOption__active {
 
 
 .dc-home__background {
-background: #0032A0; /* Old browsers */
+background: #00000A;  /* #0032A0; /* Old browsers */
 
 /* IE9 SVG, needs conditional override of 'filter' to 'none' */
 /*
@@ -191,7 +191,7 @@ background: linear-gradient(to bottom,  #5d84aa 7%,#4679b2 22%,#155299 53%,#2b3c
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5d84aa', endColorstr='#2b3c73',GradientType=0 ); / * IE6-8 * /
 */
 
-background-color:#0032A0; 
+background-color:#00000A; 
 background-image:url('http://www.tangoe.com/wp-content/uploads/2015/12/1.2_Telecom1.jpg');
 
 background-size: cover;

@@ -5,7 +5,7 @@ logoTangoe: tangoe-logo_125.png
 ---
 
 
-# How To Assemble and Address Block
+# How To Assemble an Address Block
 
 When placing an order that requires the physical shipment of a device or accessory, shipping address information will need to be included in the request body. Moreover, different countries often require differing sets of components in order for an address to be valid for delivery in that country.
 

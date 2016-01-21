@@ -4,9 +4,9 @@ title: Tutorials - UNSUSPEND Order
 ---
 
 
-# How to Reactivate a Suspended Service Asset
+# How to Reactivate a Suspended Service Asset (Unsuspend)
 
-**This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to reactivate a specific suspended service asset.**
+**This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to reactivate a specific service asset tah is currently suspended.**
 <br />
 
 ## Authentication

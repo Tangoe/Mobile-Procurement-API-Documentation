@@ -132,7 +132,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/concepts/security/">Security and Authentication</a>
+              <a href="http://localhost:4000/concepts/security/">Authentication and Security</a>
               
               </div>
 
@@ -160,7 +160,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/concepts/errors/" class="dc-navOption__active">Faults and Error Handling</a>
+              <a href="http://localhost:4000/concepts/errors/" class="dc-navOption__active">Errors</a>
               
               </div>
 
@@ -437,10 +437,93 @@
     </div><!--
     --><div class="tg-grid__cell  tg-four-fifths  tg-pad"> 
 
-      <h1 id="concepts---errors">Concepts - Errors</h1>
+      <h1 id="errors">Errors</h1>
 
-<p>text here</p>
+<p>This API returns a standard HTTP status code with every response to indicate whether your request had succeeded or failed.</p>
 
+<p>Status codes within the 200 range typically indicate that the request was processed successfully. Codes within the 400 range indicate an error occurred that resulted from the request data provided by the caller (e.g., a required parameter was missing in the request). And codes within the 500 range indicate an error triggered by something on Tangoe’s servers. <br />
+<br /></p>
+
+<h2 id="supported-http-status-codes">Supported HTTP Status Codes</h2>
+
+<p>The following status codes are currently supported:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong><em>Status Code</em></strong></td>
+      <td><strong><em>Description</em></strong></td>
+    </tr>
+    <tr>
+      <td>——————–</td>
+      <td>————————————————————————————————-</td>
+    </tr>
+    <tr>
+      <td><strong>200</strong></td>
+      <td><em>Success:</em> Your request was received, understood, and processed.</td>
+    </tr>
+    <tr>
+      <td>——————–</td>
+      <td>————————————————————————————————-</td>
+    </tr>
+    <tr>
+      <td><strong>400</strong></td>
+      <td><em>Bad Request:</em> Your request is missing required data or is malformed.</td>
+    </tr>
+    <tr>
+      <td>——————–</td>
+      <td>————————————————————————————————-</td>
+    </tr>
+    <tr>
+      <td><strong>403</strong></td>
+      <td><em>Forbidden:</em> You are not authorized to receive what was requested.</td>
+    </tr>
+    <tr>
+      <td>——————–</td>
+      <td>————————————————————————————————-</td>
+    </tr>
+    <tr>
+      <td><strong>404</strong></td>
+      <td><em>Not Found:</em> The resource you requested cannot be found.</td>
+    </tr>
+    <tr>
+      <td>——————–</td>
+      <td>————————————————————————————————-</td>
+    </tr>
+    <tr>
+      <td><strong>500</strong></td>
+      <td><em>Server Error:</em> Your request failed due to a problem on Tangoe’s servers.</td>
+    </tr>
+    <tr>
+      <td>——————–</td>
+      <td>————————————————————————————————-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<h2 id="error-messages">Error Messages</h2>
+
+<p>If an error does occur, the following error message information will be included in the response body:</p>
+
+<ul>
+  <li><strong>status</strong> – One of the HTTP status codes listed above (e.g., 400).</li>
+  <li><strong>id</strong> – Unique string identifying this specific occurance of the error.</li>
+  <li><strong>errorCode</strong> – Tangoe-assigned code indicating the type of error that occurred.</li>
+  <li><strong>message</strong> – Description of the what caused the message and/or how to resolve it.</li>
+</ul>
+
+<p>Here is an example of an error message for a missing (required) parameter:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400-Region_id-Account-Id-error"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tghwn"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Region ID or Service ID must be passed in."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
 
 
     </div>
