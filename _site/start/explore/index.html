@@ -20,10 +20,7 @@
       <div class="tg-display--table-cell"  style="width:150px; padding-top: 4px">
         <a href="/"><img src="http://www.tangoe.com/wp-content/themes/tangoe/images/tangoe_150x56.png" alt="Tangoe" class="dc-logo" /></a>
       </div><!--
-    --><div class="tg-display--table-cell  tg-text--left  tg-valign--top">Mobile Procurement REST API v1</div><!--
-    <div class="tg-display--table-cell  tg-text--right  tg-valign--middle"  style="display:none">
-        <a href="">Learn</a>  |  <a href="">Reference</a>  |  <a href="">Register</a>
-      </div>-->
+    --><div class="tg-display--table-cell  tg-text--left  tg-valign--top">Mobile Procurement REST API v1</div>
      </div>
 
      <div class="dc-banner--royal  tg-text--right  tg-pad--right">
@@ -38,11 +35,11 @@
  
 
 
-<div class="tg-pageContent" style="padding-top:0px">
+<div class="dc-page" style="padding-top:0px">
    
   <!-- tgUI grid version -->
-  <div class="tg-grid">
-    <div class="tg-grid__cell  tg-one-fifth  tg-pad--quarter--left">
+  <div class="dc-pageLayout">
+    <div class="dc-pageLayout_cell--nav  tg-one-fifth  tg-pad--quarter--left">
 
       <nav role="navigation" class="dc-navPanel">
       
@@ -439,7 +436,50 @@
 
       <h1 id="test-and-explore-the-api">Test and Explore the API</h1>
 
-<p>(overview of dev portal)</p>
+<h2 id="before-you-start"><strong>Before You Start</strong></h2>
+
+<p>Before beginning, you first must register the application with which you will be accessing the API. As part of this registration process, a <strong>client ID</strong> and <strong>client secret</strong> will be assigned. This ID and secret are used to obtain an access token that must be passed with every API call. If your application is already registered and you have this ID and secret, you are ready to make your first API call. Otherwise, please proceed with the steps below.</p>
+
+<p>To register your application, click on the “Request API Access” button in the upper right corner. In the popup form, complete the following steps:</p>
+
+<ol>
+  <li>Select the application that you would like to access from the dropdown list.  (If the application is not listed, then click the “New Application” button and complete the Add Application form presented. The request will be reviewed and you will be contacted by Tangoe when the application is approved.)</li>
+  <li>Review the Terms &amp; Conditions.</li>
+  <li>Click the checkbox to accept these terms and conditions.</li>
+  <li>Click the Request API Access button.</li>
+</ol>
+
+<p><img src="http://localhost:4000/images/screens/register.gif" style="border:1px solid #666;" /><br />
+<br /></p>
+
+<p>The API management team will review your request and grant access by sending you the client ID and client secret that is needed to obtain an access token. After obtaining a valid access token, you can being to execute API calls.<br />
+<br /></p>
+
+<h2 id="make-your-first-api-call"><strong>Make your First API Call</strong></h2>
+
+<p>Once your application has been granted access to the Mobile Procurement API, you will be able to make your first API in a matter of minutes. Simply follow these easy steps:</p>
+
+<ol>
+  <li>Click on the API Reference link.</li>
+  <li>Scroll down to the Resources section and locate the <strong>/ping</strong> endpoint.</li>
+  <li>Click on the <strong>GET</strong> tab to expand the panel that describes this endpoint.</li>
+  <li>Click on the <strong>“Try it”</strong> link right below the GET tab. This reveals the form for testing this API call.</li>
+  <li>In the AUTHENTICATION section, enter your <strong>Client ID</strong> and check the appropriate scope (i.e., MOBILE_PROCUREMENT_API).</li>
+  <li>In the HEADERS section, enter your tenant header (i.e., X-TNGO-TENANT).</li>
+  <li>In the QUERY PARAMETERS section, enter some text in the <strong>echoText</strong> parameter input. This text will be returned with a successful response.</li>
+  <li>Click the <strong>GET</strong> button.</li>
+</ol>
+
+<p>A successful response (i.e., HTTP status 200) should be returned. The response body will include your echoText value, along with some data identifying the backend system that processed your request.</p>
+
+<p><img src="http://localhost:4000/images/screens/ping.png" style="border:1px solid #666;" /><br />
+<br /></p>
+
+<h2 id="explore"><strong>Explore</strong></h2>
+
+<p>After you make your first successful Ping call, then you are ready to begin exploring the rest of the Mobile Procurement API.</p>
+
+<p>Every endpoint in the API offers a similar reference page that explains what it does and the query parameters that it takes. Furthermore, all these pages offer the same form for testing that endpoint. Simply enter the appropriate headers and query parameter values, then click the button labeled with the desired HTTP method (e.g., GET, POST). A sample response will be returned.</p>
 
 
     </div>
