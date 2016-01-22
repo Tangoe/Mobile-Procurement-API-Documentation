@@ -6,23 +6,22 @@ title: Getting Started Test and Explore the API
 
 # Test and Explore the API
 
-Once you have registered yuor application to use this API, Tangoe will provide you with access to the Tangoe Developer Portal. Through this site
+Once you have registered your application to use with this API, you will be provided with access to the **Tangoe Developer Portal**. 
+
+Upon logging in, simply go to the API Reference page for extensive documentation describing each of the API endpoints, along with a tool to easily try them. Or, use the documentation to form and send a request from the client of your choice.
 
 <img src="{{site.url}}images/screens/devportal.jpg" style="border:1px solid #666;" />
 <br/>
 
 
 
-
-## **Before You Start**
-In order to use the Tangoe Developer Portal to test and explore this API, you must first 
-<br/>
-
 ## **Exploring the all the API Endpoints**
 
-Once your application has been granted access to the Mobile Procurement API, you will be able to make your first API in a matter of minutes. Simply follow these easy steps:
+After signing into the Tangoe Developer Portal, we recommend you begin by trying the */ping* endpoint to confirm your access to the backend services that power this API. The steps to to test this simple endpoint are essentialy the same for all endpoints.
 
-1. Click on the API Reference link.
+To begin, simply follow these easy steps:
+
+1. Click on the API Reference link in navigation panel on the left.
 1. Scroll down to the Resources section and locate the **/ping** endpoint. 
 1. Click on the **GET** tab to expand the panel that describes this endpoint.
 1. Click on the **"Try it"** link right below the GET tab. This reveals the form for testing this API call. 
@@ -32,12 +31,15 @@ Once your application has been granted access to the Mobile Procurement API, you
 1. Click the **GET** button.
 
 
-A successful response (i.e., HTTP status 200) should be returned. The response body will include your echoText value, along with some data identifying the backend system that processed your request.
-
 <img src="{{site.url}}images/screens/ping.png" style="border:1px solid #666;" />
 <br/>
 
-## **Explore**
+A successful response (i.e., HTTP status 200) should be returned. The response body will include your echoText value, along with some data identifying the backend system that processed your request. 
+
+If there was a problem with your request, you would have received an error message. Please refer to the <a href="/concepts/errors/">Errors page</a> for an explanation of supported HTTP status codes and error messages.
+<br />
+
+## **Explore More Endpoints**
 
 After you make your first successful Ping call, then you are ready to begin exploring the rest of the Mobile Procurement API.
 

@@ -436,31 +436,21 @@
 
       <h1 id="test-and-explore-the-api">Test and Explore the API</h1>
 
-<h2 id="before-you-start"><strong>Before You Start</strong></h2>
+<p>Once you have registered your application to use with this API, you will be provided with access to the <strong>Tangoe Developer Portal</strong>.</p>
 
-<p>Before beginning, you first must register the application with which you will be accessing the API. As part of this registration process, a <strong>client ID</strong> and <strong>client secret</strong> will be assigned. This ID and secret are used to obtain an access token that must be passed with every API call. If your application is already registered and you have this ID and secret, you are ready to make your first API call. Otherwise, please proceed with the steps below.</p>
+<p>Upon logging in, simply go to the API Reference page for extensive documentation describing each of the API endpoints, along with a tool to easily try them. Or, use the documentation to form and send a request from the client of your choice.</p>
 
-<p>To register your application, click on the “Request API Access” button in the upper right corner. In the popup form, complete the following steps:</p>
-
-<ol>
-  <li>Select the application that you would like to access from the dropdown list.  (If the application is not listed, then click the “New Application” button and complete the Add Application form presented. The request will be reviewed and you will be contacted by Tangoe when the application is approved.)</li>
-  <li>Review the Terms &amp; Conditions.</li>
-  <li>Click the checkbox to accept these terms and conditions.</li>
-  <li>Click the Request API Access button.</li>
-</ol>
-
-<p><img src="http://localhost:4000/images/screens/register.gif" style="border:1px solid #666;" /><br />
+<p><img src="http://localhost:4000/images/screens/devportal.jpg" style="border:1px solid #666;" /><br />
 <br /></p>
 
-<p>The API management team will review your request and grant access by sending you the client ID and client secret that is needed to obtain an access token. After obtaining a valid access token, you can being to execute API calls.<br />
-<br /></p>
+<h2 id="exploring-the-all-the-api-endpoints"><strong>Exploring the all the API Endpoints</strong></h2>
 
-<h2 id="make-your-first-api-call"><strong>Make your First API Call</strong></h2>
+<p>After signing into the Tangoe Developer Portal, we recommend you begin by trying the <em>/ping</em> endpoint to confirm your access to the backend services that power this API. The steps to to test this simple endpoint are essentialy the same for all endpoints.</p>
 
-<p>Once your application has been granted access to the Mobile Procurement API, you will be able to make your first API in a matter of minutes. Simply follow these easy steps:</p>
+<p>To begin, simply follow these easy steps:</p>
 
 <ol>
-  <li>Click on the API Reference link.</li>
+  <li>Click on the API Reference link in navigation panel on the left.</li>
   <li>Scroll down to the Resources section and locate the <strong>/ping</strong> endpoint.</li>
   <li>Click on the <strong>GET</strong> tab to expand the panel that describes this endpoint.</li>
   <li>Click on the <strong>“Try it”</strong> link right below the GET tab. This reveals the form for testing this API call.</li>
@@ -470,12 +460,15 @@
   <li>Click the <strong>GET</strong> button.</li>
 </ol>
 
-<p>A successful response (i.e., HTTP status 200) should be returned. The response body will include your echoText value, along with some data identifying the backend system that processed your request.</p>
-
 <p><img src="http://localhost:4000/images/screens/ping.png" style="border:1px solid #666;" /><br />
 <br /></p>
 
-<h2 id="explore"><strong>Explore</strong></h2>
+<p>A successful response (i.e., HTTP status 200) should be returned. The response body will include your echoText value, along with some data identifying the backend system that processed your request.</p>
+
+<p>If there was a problem with your request, you would have received an error message. Please refer to the <a href="/concepts/errors/">Errors page</a> for an explanation of supported HTTP status codes and error messages.<br />
+<br /></p>
+
+<h2 id="explore-more-endpoints"><strong>Explore More Endpoints</strong></h2>
 
 <p>After you make your first successful Ping call, then you are ready to begin exploring the rest of the Mobile Procurement API.</p>
 
