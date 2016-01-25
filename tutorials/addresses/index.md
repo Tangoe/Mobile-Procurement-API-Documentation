@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Tutorials
+title: Tutorials - Addresses
 logoTangoe: tangoe-logo_125.png
 ---
 
