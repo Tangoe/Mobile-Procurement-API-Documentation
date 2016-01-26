@@ -13,6 +13,8 @@ The types of orders that can be created with this API are classified in one of t
 
 Within each of these categories are specific types of transactions, as listed in the table below. Click on a transaction type to view the specific steps required to create that type of order, along with exanples of the request/response body for that type.
 
+<a name="transactionTypes"></a>
+*Click on a Transaction Type below to see specific instructions for submitting that type of order.*
 
 | ***Transaction Type*** 								| ***Catagory*** 		| ***Description*** 																					|
 | ----------------------------------------------		| --------------------- | ----------------------------------------------------------------------------------------------------- |
@@ -49,28 +51,29 @@ After preparing your order request, it can be passed to the server for validatio
 <br />
 
 
-## Steps for building your order
+## Steps for Creating and Submitting an Order
 
 All orders require the following process steps in order to create, confirm, and submit an order:
 
-### Step 1. Build the order request JSON code that is required for your specific transaction type.
-
-The transaction type identifies the specific action that you wish to take (e.g., obtain a new phone and cellular plan, suspend cellular service, etc.). See the chart above for a full list of available transaction types, along with the specific order creation steps required for each transaction type, including JSON samples.
+### Step 1. Build the request body (in JSON) that is required for your specific transaction type.
+The transaction type identifies the specific action that you wish to take (e.g., obtain a new phone and cellular plan, suspend cellular service, etc.). See the chart above for a <a href="#transactionTypes">full list of available transaction types</a>, along with links to the specific order creation steps required for each transaction type, including JSON samples.
  
-### Step 2. Compile the request headers needed for your desired transaction.
+### Step 2. Set the request headers needed for your desired transaction.
 Please refer to the [Headers](/concepts/headers/) page for details regarding what headers are available and how to configure them.
 
-### Step 3. Submit the order request via HTTP POST to the orders resource (/orders).
-Typically, you will want to first ask for a confirmation. To do so, simply include the appropriate query parameter (confirmation=true). This confirmation is useful because it:
+### Step 3. Indicate if you wish to obtain an order confirmation.
+As described in the section above, calling the orders endpoint in "confirmation" mode does not submit it for processing. Rather, it returns all of the IDs passed in with the request, along with the human-readable data that fully describes what was referenced by those IDs (e.g., device name, vendor, price). This is useful for API consumers who wish to present the order request back to their end user so they can verify it for accuracy.
 
-* Returns a successful confirmation response will return  human readable data that fully describes what was passed in as an ID in the request (e.g., device make/model, vendor name, account holder details, etc.).
-* Provides API consumer with useful feedback to present to end user, allowing them to confirm that the request is accurate.
+To indicate confirmation mode, simply set the confirm query parameter to true.
 
-### Step 4. Submit the Order.
-After confirming the request, the API consumer can re-submit, setting the confirmation parameter to false (or do not pass at all since the default value is false). 
+### Step 4. Submit the order request via HTTP POST to the orders resource (/orders).
+If this is a confirmation, then the order will not be submitted for processing yet. However, if the confirm query parameter is not passed or set to false, then your order will be submitted for processing. 
 
-### Step 5. Order ID is assigned.
-If the request is successful, the response will new order ID. Otherwise, errors will be returned describing why the order request could not be processed.
+### Step 5. Your order response is returned. 
+
+* If the order contains validation issues (or otherwise could not be accepted), than the response with an appropriate error message will be returned.
+* If your order request was successfully submitted for confirmation, the response will include all of the data needed for an end user to verify their order.
+* If your order request was successfully submitted for vendor processing, the response will include a Tangoe-assigned ID number.
 
 
 
