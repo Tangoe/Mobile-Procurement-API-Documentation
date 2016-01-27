@@ -196,7 +196,7 @@ a.dc-navOption__active {
   margin-top: 50px;
   background-color: #0032A0;
   display: flex;
-  flex-direction: row;  
+  flex-direction: row; 
   justify-content: space-around;  
 }
 .dv-feature { 

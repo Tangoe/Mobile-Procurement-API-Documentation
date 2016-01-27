@@ -4,9 +4,11 @@ title: Tutorials
 logoTangoe: tangoe-logo_125.png
 ---
 
-# Concepts - Security
+# Authentication and Security
 
-text here
+[HOW TO AUTHENTICATE AN API CALL]
+
+[GRANT TYPES: Implicit, Resource Owner Password Credentials]
  
 
 

@@ -62,7 +62,7 @@ The transaction type identifies the specific action that you wish to take (e.g.,
 Please refer to the [Headers](/concepts/headers/) page for details regarding what headers are available and how to configure them.
 
 ### Step 3. Indicate if you wish to obtain an order confirmation.
-As described in the section above, calling the orders endpoint in "confirmation" mode does not submit it for processing. Rather, it returns all of the IDs passed in with the request, along with the human-readable data that fully describes what was referenced by those IDs (e.g., device name, vendor, price). This is useful for API consumers who wish to present the order request back to their end user so they can verify it for accuracy.
+As described in the section above, calling the orders endpoint in "confirmation" mode does not submit it for processing. Rather, it returns all of the IDs passed in with the request body, along with the human-readable data that fully describes what was referenced by those IDs (e.g., device name, vendor, price). This is useful for API consumers who wish to present the order request back to their end user so they can verify it for accuracy.
 
 To indicate confirmation mode, simply set the confirm query parameter to true.
 

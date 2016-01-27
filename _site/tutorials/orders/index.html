@@ -213,7 +213,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/tutorials/orders/" class="dc-navOption__active">Submit an Order</a>
+              <a href="http://localhost:4000/tutorials/orders/" class="dc-navOption__active">Submitting an Order</a>
               
               </div>
 
@@ -353,7 +353,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/tutorials/properties/">Determine Order Properties</a>
+              <a href="http://localhost:4000/tutorials/properties/">Obtaining Order Properties</a>
               
               </div>
 
@@ -367,7 +367,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/tutorials/addresses/">Format an Address</a>
+              <a href="http://localhost:4000/tutorials/addresses/">Formatting an Address</a>
               
               </div>
 
@@ -593,7 +593,7 @@
 <p>Please refer to the <a href="/concepts/headers/">Headers</a> page for details regarding what headers are available and how to configure them.</p>
 
 <h3 id="step-3-indicate-if-you-wish-to-obtain-an-order-confirmation">Step 3. Indicate if you wish to obtain an order confirmation.</h3>
-<p>As described in the section above, calling the orders endpoint in “confirmation” mode does not submit it for processing. Rather, it returns all of the IDs passed in with the request, along with the human-readable data that fully describes what was referenced by those IDs (e.g., device name, vendor, price). This is useful for API consumers who wish to present the order request back to their end user so they can verify it for accuracy.</p>
+<p>As described in the section above, calling the orders endpoint in “confirmation” mode does not submit it for processing. Rather, it returns all of the IDs passed in with the request body, along with the human-readable data that fully describes what was referenced by those IDs (e.g., device name, vendor, price). This is useful for API consumers who wish to present the order request back to their end user so they can verify it for accuracy.</p>
 
 <p>To indicate confirmation mode, simply set the confirm query parameter to true.</p>
 

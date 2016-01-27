@@ -1,52 +1,33 @@
 ---
 layout: default
-title: Tutorials - NEW_ACTIVATION Order
+title: Tutorials - Ordering - NEW_ACTIVATION 
 ---
 
 
 # How to Order a New Device and Service Plan
 
-**This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to procure a new device and service plan.**
+**This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to procure a new device and service plan (i.e., NEW_ACTIVATION).**
 <br />
 
 ## Authentication
 
-See the [Security and Authentication](/concepts/security/) page for info regarding the supported OAuth2 grant types: Implicit, Resource Owner Password Credentials.
+This API uses the OAuth2 standard for authentication. Specifically, it supports two grant types: *Implicit* and *Resource Owner Password Credentials*. For details regarding how to use this standard to authenticate when making your API calls, please refer to the  [Security and Authentication](/concepts/security/) page.
 <br />
 
-## Step 1: Set Necessary Headers
-
-A few HTTP headers are required to be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate). 
-
-### Required headers:
-
-* **X-TNGO-TENANT** - Used to identify the specific tenant (i.e., customer) for which the API is being called.
-See the [Headers](/concepts/headers/) page for more information about these headers.
-
-### Optional headers:
-
-* **X-TNGO-CONTEXT-COMPANYEMPLOYEEID**  -- Used to specify a company employee ID that defines the context of the call. This header is only checked if the X-TNGO-CONTEXT-EMPLOYEEID header is blank or does not exist. If this header does not exist, the context will be set to the authenticated user. 
-*SECURITY NOTE:* The authenticated user must be authorized to access (at a minimum) all the same data that the employee referenced in this header is authorized to access.
-
-* **X-TNGO-CONTEXT-EMPLOYEEID** --  Used to specify an employee ID that defines the context of the call. If this header does not exist or is blank, then the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header will be used instead. 
-*SECURITY NOTE:* The authenticated user must be authorized to access (at a minimum) all the same data that the employee referenced in this header is authorized to access.
-
-* **X-TNGO-CONTEXT-HIERARCHYID** --  Used to specify the organizational hierarchy to be used for the API call. If this header is blank or does not exist, the default hierarchy will be used.
-<br />
-
-## Step 2: Build JSON for Request Body
+## Step 1. Build the request body (in JSON) that is required 
 
 Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.
 
 For a NEW_ACTIVATION, this JSON typically includes the following pieces:
 
 * Transaction type (i.e., NEW_ACTIVATION).
-* Account Holder Company ID (or Account Holder ID) for the user to whom the assets will be assigned.
-* The properties that are required for procuring a new device and service plan with the specific vendor from whom they will be purchased.
-* ??? OTHER BULLETS HERE ???
- 
- 
-Here is an example:
+* Region ID for the country in which the device and/or service will be used. This can be obtained via the **/regions** endpoint.
+* The postal code for the zone in which the device and/or service will be used. (Note: this is only required when the selected region is the United States of America.)
+* Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, features, and/or accessories). These IDs can be obtained via the catalog endpoints (**/catalog/devices**, **/catalog/plans**, **/catalog/features**, **/catalog/accessories**).
+* All required and optional order properties. Refer to the <a href="/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
+* Shipping information. (Required when order includes physical items). Refer to the <a href="/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping informtion block for your order.
+
+Here is an example of what the fully-assembled request body JSON might look like:
 
 ```
 {
@@ -56,7 +37,6 @@ Here is an example:
     "regionId": "70144640",
     "postalCode": "06477",
     "shoppingCart": {
-      "quantity": 1,
       "deviceId": "9194791812",
       "planId": "6568886494",
       "optionalFeatureIds": ["951", "88"],
@@ -69,7 +49,7 @@ Here is an example:
           {
             "id": "CONTACT_NUMBER",
             "type": "TEXT",
-            "text": "2035559360"
+            "text": "2035559999"
           },
           {
             "id": "ADDITIONAL_INSTRUCTIONS",
@@ -82,10 +62,10 @@ Here is an example:
             "text": "512"
           },
           {
-      	    "id": "Reason",
+            "id": "Reason",
             "type": "CHOICE",
             "choice": {
-	     "id": "1"
+              "id": "1"
             }
           }
         ]
@@ -96,19 +76,19 @@ Here is an example:
       "regionId": "70144640",
       "address": [
         {
-          "id": "1",
+          "id": "LINE_1",
           "value": "35 Executive Blvd"
         },
         {
-          "id": "4",
+          "id": "CITY",
           "value": "Orange"
         },
         {
-          "id": "5",
+          "id": "STATE",
           "value": "CT"
         },
         {
-          "id": "6",
+          "id": "POSTAL_CODE",
           "value": "06477"
         }
       ],
@@ -119,18 +99,47 @@ Here is an example:
 ```
 <br />
 
-## Step 3: Set Query Parameter(s), as Needed
 
-The only query parameter that can be set when creating an order is:
 
-* confirm  (boolean) - If true, the order will not be posted. Instead, the response will return a complete description of the order that can be used to create an order confirmation for the end user to review, correct, and then submit for processing.
+
+
+
+
+
+
+## Step 2: Set required request headers.
+
+There are multiple HTTP headers that may be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate). See the [Headers](/concepts/headers/) page for more information about our supported headers.
+
+### Required Headers:
+
+* **X-TNGO-TENANT** - Used to identify the specific tenant (i.e., customer) for which the API is being called.
+
+### Optional Headers:
+
+* **X-TNGO-CONTEXT-COMPANYEMPLOYEEID** -- Used to specify a company employee ID that defines the context of the call. This header is only checked if the X-TNGO-CONTEXT-EMPLOYEEID header is blank or does not exist. If this header does not exist, the context will be set to the authenticated user. 
+*Security Note:* The authenticated user must be authorized to access (at a minimum) all the same data that the employee referenced in this header is authorized to access.
+
+* **X-TNGO-CONTEXT-EMPLOYEEID** -- Used to specify an employee ID that defines the context of the call. If this header does not exist or is blank, then the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header will be used instead. 
+*Security Note:* The authenticated user must be authorized to access (at a minimum) all the same data that the employee referenced in this header is authorized to access.
+
+* **X-TNGO-CONTEXT-HIERARCHYID** -- Used to specify the organizational hierarchy to be used for the API call. If this header is blank or does not exist, the default hierarchy will be used.
 <br />
 
-## Step 4: Submit Order Request Confirmation
 
-Your request, containing the JSON request body and confirm query parameter set to true, should now be ready. Submit it via HTTP POST to the orders endpoint.
+## Step 3: Indicate if you wish to obtain an order confirmation.
 
-If successful, the API will return a response with a 200 HTTP status code and containing JSON that fully describes the identifiers that were submitted. This data can then be presented back to the end user for verification and correction, if necessary. 
+Prior to submitting the order for vendor processing, you will probably want to first obtain an order confirmation. The confirmation returns all of the IDs passed in with the request body, along with the human-readable data that fully describes what was referenced by those IDs (e.g., device name, vendor, price). This is useful for API consumers who wish to present the order request back to their end user so they can verify it for accuracy.
+
+To obtain a confirmation, set the **confirm** query parameter to true.
+<br />
+
+
+## Step 4: Obtain the order confirmation by calling the /orders endpoint via HTTP POST. 
+
+Your request, containing the JSON request body and confirm query parameter set to true, is now be ready. Submit it via the HTTP POST method to the **/orders** endpoint.
+
+If successful, the API will return a response with a 200 HTTP status code and containing JSON that fully describes the identifiers that were submitted. This data can then be presented back to the end user for verification and correction (if necessary). 
 
 Here is an example of what the order confirmation JSON might look like:
 
@@ -139,23 +148,23 @@ Here is an example of what the order confirmation JSON might look like:
   "orderConfirmation": {
     "accountHolder": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28671524"
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28671599"
       },
-      "companyEmployeeId": "mike.mcpadden.xx1",
+      "companyEmployeeId": "peter.edwards.acme",
       "department": {
         "id": "10652965372",
         "name": "Accounting"
       },
-      "email": "michael.mcpadden@tangoe.com",
-      "firstName": "Michael",
-      "id": "28671524",
-      "lastName": "McPadden",
-      "officePhone": "203-859-9360",
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
+      "id": "28671599",
+      "lastName": "Edwards",
+      "officePhone": "203-555-9999",
       "status": "ACTIVE"
     },
     "costSummary": [
       {
-        "amount": 244.97000000000003,
+        "amount": 244.99,
         "currencyCode": "USD",
         "recurrence": "ONETIME"
       },
@@ -173,7 +182,7 @@ Here is an example of what the order confirmation JSON might look like:
           {
             "id": "CONTACT_NUMBER",
             "label": "Contact Phone Number",
-            "text": "2035559360",
+            "text": "2035559999",
             "type": "TEXT"
           },
           {
@@ -185,7 +194,7 @@ Here is an example of what the order confirmation JSON might look like:
           {
             "id": "PREFERRED_AREA_CODE",
             "label": "Preferred Area Code",
-            "text": "512",
+            "text": "203",
             "type": "TEXT"
           },
           {
@@ -210,37 +219,37 @@ Here is an example of what the order confirmation JSON might look like:
       "_meta": {
         "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28671524"
       },
-      "companyEmployeeId": "mike.mcpadden.xx1",
+      "companyEmployeeId": "peter.edwards.acme",
       "department": {
         "id": "10652965372",
         "name": "Accounting"
       },
-      "email": "michael.mcpadden@tangoe.com",
-      "firstName": "Michael",
-      "id": "28671524",
-      "lastName": "McPadden",
-      "officePhone": "203-859-9360",
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
+      "id": "28671599",
+      "lastName": "Edwards",
+      "officePhone": "203-859-9999",
       "status": "ACTIVE"
     },
     "shipTo": {
       "address": [
         {
-          "id": "1",
+          "id": "LINE_1",
           "label": "Address Line1",
           "value": "35 Executive Blvd"
         },
         {
-          "id": "4",
+          "id": "CITY",
           "label": "City",
           "value": "Orange"
         },
         {
-          "id": "5",
+          "id": "STATE",
           "label": "State",
           "value": "CT"
         },
         {
-          "id": "6",
+          "id": "POSTAL_CODE,
           "label": "Zip Code",
           "value": "06477"
         }
@@ -262,7 +271,7 @@ Here is an example of what the order confirmation JSON might look like:
             "href": "https://tg-mobility.cloudhub.io/mobility/v1/catalog/accessories/3628935899"
           },
           "id": "3628935899",
-          "imageUrl": "https://commcareqa.tangoe.com/manage/images/devices/VER/MICRDUALVPCF_m.jpg",
+          "imageUrl": "https://commcareqa.tangoe.com/manage/images/devices/VER/MICRDUALVPCF.jpg",
           "manufacturer": {
             "_meta": {
               "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Verizon%20Wireless"
@@ -282,7 +291,7 @@ Here is an example of what the order confirmation JSON might look like:
               "href": "https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"
             },
             "id": "98",
-            "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif",
+            "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VERZN.gif",
             "name": "Verizon Wireless"
           }
         },
@@ -291,7 +300,7 @@ Here is an example of what the order confirmation JSON might look like:
             "href": "https://tg-mobility.cloudhub.io/mobility/v1/catalog/accessories/3628939022"
           },
           "id": "3628939022",
-          "imageUrl": "https://commcareqa.tangoe.com/manage/images/devices/VER/EMICUSBDTVL_F_m.jpg",
+          "imageUrl": "https://commcareqa.tangoe.com/manage/images/devices/VER/EMICUSBDTVL_F.jpg",
           "manufacturer": {
             "_meta": {
               "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Verizon%20Wireless"
@@ -311,7 +320,7 @@ Here is an example of what the order confirmation JSON might look like:
               "href": "https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"
             },
             "id": "98",
-            "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif",
+            "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VERZN.gif",
             "name": "Verizon Wireless"
           }
         }
@@ -321,7 +330,7 @@ Here is an example of what the order confirmation JSON might look like:
           "href": "https://tg-mobility.cloudhub.io/mobility/v1/catalog/devices/9194791812"
         },
         "id": "9194791812",
-        "imageUrl": "https://commcareqa.tangoe.com/manage/images/devices/VER/sam_gal_s4_blk_l.jpg",
+        "imageUrl": "https://commcareqa.tangoe.com/manage/images/devices/VER/sam_gal_s4.jpg",
         "manufacturer": {
           "_meta": {
             "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Samsung"
@@ -341,7 +350,7 @@ Here is an example of what the order confirmation JSON might look like:
             "href": "https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"
           },
           "id": "98",
-          "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif",
+          "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VERZN.gif",
           "name": "Verizon Wireless"
         }
       },
@@ -361,7 +370,7 @@ Here is an example of what the order confirmation JSON might look like:
             "description": "Unlimited Push to Talk",
             "id": "951",
             "price": {
-              "amount": 300,
+              "amount": 300.25,
               "currencyCode": "USD",
               "recurrence": "MONTHLY"
             }
@@ -370,7 +379,7 @@ Here is an example of what the order confirmation JSON might look like:
             "description": "Extended Warranty",
             "id": "88",
             "price": {
-              "amount": 200,
+              "amount": 200.44,
               "currencyCode": "USD",
               "recurrence": "MONTHLY"
             }
@@ -386,7 +395,7 @@ Here is an example of what the order confirmation JSON might look like:
             "href": "https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"
           },
           "id": "98",
-          "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif",
+          "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VERZN.gif",
           "name": "Verizon Wireless"
         }
       },
@@ -399,7 +408,9 @@ Here is an example of what the order confirmation JSON might look like:
 ```
 <br/>
 
+
 ## Step 5: Submit Order Request
+
 Once the request has been confirmed, it can be re-submitted for processing via HTTP POST. Before submitting, be sure to set the confirm query parameter to false (or remove it, since the default is false). 
 
 If the submission is successful, the API will once again return a response containing JSON with an HTTP status code of 200. This response also will include the newly-assigned order number (i.e., orderId). 
@@ -408,37 +419,129 @@ Here is an example of what the order JSON might look like:
 
 ```
 {
-  "orderConfirmation": {
+  "order": {
+    "_meta": {
+      "href": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8710840"
+    },
     "accountHolder": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28671524"
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28671599"
       },
-      "companyEmployeeId": "mike.mcpadden.xx1",
+      "companyEmployeeId": "peter.edwards.acme",
       "department": {
         "id": "10652965372",
         "name": "Accounting"
       },
-      "email": "michael.mcpadden@tangoe.com",
-      "firstName": "Michael",
-      "id": "28671524",
-      "lastName": "McPadden",
-      "officePhone": "203-859-9360",
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
+      "id": "28671599",
+      "lastName": "Edwards",
+      "officePhone": "203-859-9999",
       "status": "ACTIVE"
     },
-    "costSummary": [
-      {
-        "amount": 244.97000000000003,
-        "currencyCode": "USD",
-        "recurrence": "ONETIME"
-      },
-      {
-        "amount": 538.69,
-        "currencyCode": "USD",
-        "recurrence": "MONTHLY"
-      }
-    ],
+    "dateSubmitted": "2016-01-27T22:17:37Z",
     "externalOrderNumber": "AZ99087547-001",
-    "postalCode": "06477",
+    "orderId": "8710840",
+    "orderSegments": {
+      "items": [
+        {
+          "_meta": {
+            "hrefHistory": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8710840/history?orderSegment=8710841",
+            "hrefShipments": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8710840/shipments?orderSegment=8710841"
+          },
+          "accessories": [
+            {
+              "imageUrl": "https://commcareqa.tangoe.com/manage/images/devices/EMICUSBDTVL_F.jpg",
+              "manufacturer": {
+                "_meta": {
+                  "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Verizon%20Wireless"
+                },
+                "id": "Verizon Wireless",
+                "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/Verizon Wireless.gif",
+                "name": "Verizon Wireless"
+              },
+              "name": "Verizon Wireless Rapid Wall Charger with 6ft Cable for Micro USB (EMICUSBDTVL-F)",
+              "price": {
+                "amount": 22.49,
+                "currencyCode": "USD",
+                "recurrence": "ONETIME"
+              }
+            },
+            {
+              "imageUrl": "https://commcareqa.tangoe.com/manage/images/devices/MICRDUALVPCF_m.jpg",
+              "manufacturer": {
+                "_meta": {
+                  "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Verizon%20Wireless"
+                },
+                "id": "Verizon Wireless",
+                "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/Verizon Wireless.gif",
+                "name": "Verizon Wireless"
+              },
+              "name": "Verizon Wireless Vehicle Charger with Dual Output (MICRDUALVPC-F)",
+              "price": {
+                "amount": 22.49,
+                "currencyCode": "USD",
+                "recurrence": "ONETIME"
+              }
+            }
+          ],
+          "device": {
+            "imageUrl": "https://commcareqa.tangoe.com/manage/images/devices/sam_gal_s4_blk.jpg",
+            "manufacturer": {
+              "_meta": {
+                "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Samsung"
+              },
+              "id": "Samsung",
+              "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/Samsung.gif",
+              "name": "Samsung"
+            },
+            "name": "Samsung Galaxy S4 (16GB) - Black Mist",
+            "price": {
+              "amount": 199.99,
+              "currencyCode": "USD",
+              "recurrence": "ONETIME"
+            }
+          },
+          "features": [],
+          "orderSegmentId": "8710841",
+          "plan": {
+            "name": "Nationwide for Business Talk Share Plan",
+            "optionalFeatures": [
+              {
+                "description": "Extended Warranty",
+                "price": {
+                  "amount": 200.44,
+                  "currencyCode": "USD",
+                  "recurrence": "MONTHLY"
+                }
+              },
+              {
+                "description": "Unlimited Push to Talk",
+                "price": {
+                  "amount": 300.25,
+                  "currencyCode": "USD",
+                  "recurrence": "MONTHLY"
+                }
+              }
+            ],
+            "price": {
+              "amount": 38.69,
+              "currencyCode": "USD",
+              "recurrence": "MONTHLY"
+            }
+          },
+          "status": "ORDER_SUBMITTED",
+          "vendor": {
+            "_meta": {
+              "href": "https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"
+            },
+            "id": "98",
+            "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif",
+            "name": "Verizon Wireless"
+          }
+        }
+      ]
+    },
     "properties": [
       {
         "fields": [
@@ -471,48 +574,41 @@ Here is an example of what the order JSON might look like:
         "groupId": "MISCELLANEOUS"
       }
     ],
-    "region": {
-      "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/regions/70144640"
-      },
-      "id": "70144640",
-      "name": "United States"
-    },
     "requestedBy": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28671524"
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28671599"
       },
-      "companyEmployeeId": "mike.mcpadden.xx1",
+      "companyEmployeeId": "peter.edwards.acme",
       "department": {
         "id": "10652965372",
         "name": "Accounting"
       },
-      "email": "michael.mcpadden@tangoe.com",
-      "firstName": "Michael",
-      "id": "28671524",
-      "lastName": "McPadden",
-      "officePhone": "203-859-9360",
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
+      "id": "28671599",
+      "lastName": "Edwards",
+      "officePhone": "203-859-9999",
       "status": "ACTIVE"
     },
     "shipTo": {
       "address": [
         {
-          "id": "1",
+          "id": "LINE_1",
           "label": "Address Line1",
           "value": "35 Executive Blvd"
         },
         {
-          "id": "4",
+          "id": "CITY",
           "label": "City",
           "value": "Orange"
         },
         {
-          "id": "5",
+          "id": "STATE",
           "label": "State",
           "value": "CT"
         },
         {
-          "id": "6",
+          "id": "POSTAL_CODE",
           "label": "Zip Code",
           "value": "06477"
         }
@@ -527,147 +623,12 @@ Here is an example of what the order JSON might look like:
         "name": "United States"
       }
     },
-    "shoppingCart": {
-      "accessories": [
-        {
-          "_meta": {
-            "href": "https://tg-mobility.cloudhub.io/mobility/v1/catalog/accessories/3628935899"
-          },
-          "id": "3628935899",
-          "imageUrl": "https://commcareqa.tangoe.com/manage/images/devices/VER/MICRDUALVPCF_m.jpg",
-          "manufacturer": {
-            "_meta": {
-              "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Verizon%20Wireless"
-            },
-            "id": "Verizon Wireless",
-            "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/Verizon Wireless.gif",
-            "name": "Verizon Wireless"
-          },
-          "name": "Verizon Wireless Vehicle Charger with Dual Output (MICRDUALVPC-F)",
-          "price": {
-            "amount": 22.49,
-            "currencyCode": "USD",
-            "recurrence": "ONETIME"
-          },
-          "vendor": {
-            "_meta": {
-              "href": "https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"
-            },
-            "id": "98",
-            "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif",
-            "name": "Verizon Wireless"
-          }
-        },
-        {
-          "_meta": {
-            "href": "https://tg-mobility.cloudhub.io/mobility/v1/catalog/accessories/3628939022"
-          },
-          "id": "3628939022",
-          "imageUrl": "https://commcareqa.tangoe.com/manage/images/devices/VER/EMICUSBDTVL_F_m.jpg",
-          "manufacturer": {
-            "_meta": {
-              "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Verizon%20Wireless"
-            },
-            "id": "Verizon Wireless",
-            "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/Verizon Wireless.gif",
-            "name": "Verizon Wireless"
-          },
-          "name": "Verizon Wireless Rapid Wall Charger with 6ft Cable for Micro USB (EMICUSBDTVL-F)",
-          "price": {
-            "amount": 22.49,
-            "currencyCode": "USD",
-            "recurrence": "ONETIME"
-          },
-          "vendor": {
-            "_meta": {
-              "href": "https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"
-            },
-            "id": "98",
-            "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif",
-            "name": "Verizon Wireless"
-          }
-        }
-      ],
-      "device": {
-        "_meta": {
-          "href": "https://tg-mobility.cloudhub.io/mobility/v1/catalog/devices/9194791812"
-        },
-        "id": "9194791812",
-        "imageUrl": "https://commcareqa.tangoe.com/manage/images/devices/VER/sam_gal_s4_blk_l.jpg",
-        "manufacturer": {
-          "_meta": {
-            "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Samsung"
-          },
-          "id": "Samsung",
-          "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/Samsung.gif",
-          "name": "Samsung"
-        },
-        "name": "Samsung Galaxy S4 (16GB) - Black Mist",
-        "price": {
-          "amount": 199.99,
-          "currencyCode": "USD",
-          "recurrence": "ONETIME"
-        },
-        "vendor": {
-          "_meta": {
-            "href": "https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"
-          },
-          "id": "98",
-          "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif",
-          "name": "Verizon Wireless"
-        }
-      },
-      "plan": {
-        "_meta": {
-          "href": "https://tg-mobility.cloudhub.io/mobility/v1/catalog/plans/6568886494"
-        },
-        "id": "6568886494",
-        "includedFeatures": [
-          {
-            "description": "Base Package"
-          }
-        ],
-        "name": "Nationwide for Business Talk Share Plan",
-        "optionalFeatures": [
-          {
-            "description": "Unlimited Push to Talk",
-            "id": "951",
-            "price": {
-              "amount": 300,
-              "currencyCode": "USD",
-              "recurrence": "MONTHLY"
-            }
-          },
-          {
-            "description": "Extended Warranty",
-            "id": "88",
-            "price": {
-              "amount": 200,
-              "currencyCode": "USD",
-              "recurrence": "MONTHLY"
-            }
-          }
-        ],
-        "price": {
-          "amount": 38.69,
-          "currencyCode": "USD",
-          "recurrence": "MONTHLY"
-        },
-        "vendor": {
-          "_meta": {
-            "href": "https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"
-          },
-          "id": "98",
-          "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif",
-          "name": "Verizon Wireless"
-        }
-      },
-      "quantity": 1
-    },
+    "status": "ORDER_SUBMITTED",
     "transactionType": "NEW_ACTIVATION"
   },
   "status": "SUCCESS"
 }
+  
 ```
 <br/>
 

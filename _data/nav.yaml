@@ -26,7 +26,7 @@
 
 - label: "Tutorials"
   subOne:
-    - label: "Submit an Order"
+    - label: "Submitting an Order"
       href: "tutorials/orders/" 
 
     - label: "&nbsp;&nbsp;&nbsp;&nbsp;  NEW_ACTIVATION"
@@ -48,9 +48,9 @@
     - label: "&nbsp;&nbsp;&nbsp;&nbsp;  SWAP_DEVICES"
       href: "tutorials/orders/SWAP_DEVICES/" 
 
-    - label: "Determine Order Properties"
+    - label: "Obtaining Order Properties"
       href: "tutorials/properties/"
-    - label: "Format an Address"
+    - label: "Formatting an Address"
       href: "tutorials/addresses/"  
 
 - label: "Policies and Terms"
