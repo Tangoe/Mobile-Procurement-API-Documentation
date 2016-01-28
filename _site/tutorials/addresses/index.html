@@ -25,7 +25,7 @@
 
      <div class="dc-banner--royal  tg-text--right  tg-pad--right">
         <div class="dc-bannerLinks">
-          <button class="tg-button  tg-button--primary" target="_blank">Developer Portal Log In</button>
+          <a href="https://anypoint.mulesoft.com/apiplatform/tangoe/#/portals/organizations/f5574299-614a-4d3f-885d-24958c10613f/apis/20442/versions/21828" class="tg-button  tg-button--primary" target="_blank">Developer Portal Log In</a>
         </div>
       </div>
     </header>
@@ -118,7 +118,7 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
-          <a href="http://localhost:4000/">Using the API</a>
+          <a href="http://localhost:4000/concepts/">Using the API</a>
         
          
           
@@ -204,7 +204,7 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
-          <a href="http://localhost:4000/">Tutorials</a>
+          <a href="http://localhost:4000/tutorials/">Tutorials</a>
         
          
           
@@ -388,7 +388,7 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
-          <a href="http://localhost:4000/">Policies and Terms</a>
+          <a href="http://localhost:4000/policies/">Policies and Terms</a>
         
          
           
@@ -432,7 +432,7 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
-          <a href="http://localhost:4000//contact/">Contact</a>
+          <a href="http://localhost:4000/contact/">Contact</a>
         
          
           
@@ -448,9 +448,9 @@
 
       <h1 id="how-to-assemble-an-address-block">How To Assemble an Address Block</h1>
 
-<p>When placing an order that requires the physical shipment of a device or accessory, shipping address information will need to be included in the request body. Moreover, different countries often require differing sets of components in order for an address to be valid for delivery in that country.</p>
+<p>When placing an order that requires the physical shipment of a device or accessory, shipping address information will need to be included in the request body. Moreover, different countries often require differing sets of components in order for an address to be valid for delivery to an address within that country.</p>
 
-<p>In order to determine the required mailing address components for a selected country, an API call must first be made to the <strong>/regions/{id}</strong> endpoint. Please note that this endpoint requires passing in the ID for the country to which the shipment is to be delivered. This call will return a response that includes a block called addressFormat that identifies the specific address components required.</p>
+<p>In order to determine the required mailing address components for a selected country, an API call must first be made to the <strong>/regions/{id}</strong> endpoint. Please note that this endpoint requires passing the ID as a URI parameter for the country to which the shipment is to be delivered. This call will return a response that includes a block called addressFormat that identifies all of the specific address components that are required.</p>
 
 <p>For example:</p>
 
@@ -488,40 +488,40 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 </div>
 
-<p>Once a selected country’s address format is returned, the response can be parsed to assemble a “shipTo” block containing all of the required address components, along with the appropriate values. For example:</p>
+<p>Once a selected country’s address format is returned, the response can be parsed to assemble a <strong>shipTo</strong> block containing all of the required address components, along with the appropriate values. For example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
-"shipTo": {  
-      "name": "Peter Edwards",
-      "region": { 
-        "id": "7088567"
-      },
-      "address": [
-        {
-          "id": "LINE_1",
-          "value": "35 Executive Blvd"
-        },
-        {
-          "id": "CITY",
-          "value": "Orange"
-        },
-        {
-          "id": "STATE",
-          "value": "CT"
-        },
-        {
-          "id": "POSTAL_CODE",
-          "value": "06477"
-        }
-      ],
-      "expedite": true
-    }
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"shipTo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">  
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter Edwards"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7088567"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LINE_1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35 Executive Blvd"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CITY"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Orange"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STATE"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CT"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POSTAL_CODE"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06477"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"expedite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-</code></pre>
+</span></code></pre>
 </div>
 
 

@@ -25,7 +25,7 @@
 
      <div class="dc-banner--royal  tg-text--right  tg-pad--right">
         <div class="dc-bannerLinks">
-          <button class="tg-button  tg-button--primary" target="_blank">Developer Portal Log In</button>
+          <a href="https://anypoint.mulesoft.com/apiplatform/tangoe/#/portals/organizations/f5574299-614a-4d3f-885d-24958c10613f/apis/20442/versions/21828" class="tg-button  tg-button--primary" target="_blank">Developer Portal Log In</a>
         </div>
       </div>
     </header>
@@ -118,7 +118,7 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
-          <a href="http://localhost:4000/">Using the API</a>
+          <a href="http://localhost:4000/concepts/">Using the API</a>
         
          
           
@@ -204,7 +204,7 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
-          <a href="http://localhost:4000/">Tutorials</a>
+          <a href="http://localhost:4000/tutorials/">Tutorials</a>
         
          
           
@@ -388,7 +388,7 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
-          <a href="http://localhost:4000/">Policies and Terms</a>
+          <a href="http://localhost:4000/policies/">Policies and Terms</a>
         
          
           
@@ -432,7 +432,7 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
-          <a href="http://localhost:4000//contact/">Contact</a>
+          <a href="http://localhost:4000/contact/">Contact</a>
         
          
           
@@ -446,9 +446,9 @@
     </div><!--
     --><div class="tg-grid__cell  tg-four-fifths  tg-pad"> 
 
-      <h1 id="how-to-order-a-new-device-and-service-plan">How to Order a New Device and Service Plan</h1>
+      <h1 id="how-to-order-a-new-device-andor-service-plan">How to Order a New Device and/or Service Plan</h1>
 
-<p><strong>This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to procure a new device and service plan (i.e., NEW_ACTIVATION).</strong><br />
+<p><strong>This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to procure a new device and service plan (i.e., NEW_ACTIVATION). Please note that device accessories can also be included with this order.</strong><br />
 <br /></p>
 
 <h2 id="authentication">Authentication</h2>
@@ -463,12 +463,24 @@
 <p>For a NEW_ACTIVATION, this JSON typically includes the following pieces:</p>
 
 <ul>
-  <li>Transaction type (i.e., NEW_ACTIVATION).</li>
-  <li>Region ID for the country in which the device and/or service will be used. This can be obtained via the <strong>/regions</strong> endpoint.</li>
-  <li>The postal code for the zone in which the device and/or service will be used. (Note: this is only required when the selected region is the United States of America.)</li>
-  <li>Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, features, and/or accessories). These IDs can be obtained via the catalog endpoints (<strong>/catalog/devices</strong>, <strong>/catalog/plans</strong>, <strong>/catalog/features</strong>, <strong>/catalog/accessories</strong>).</li>
-  <li>All required and optional order properties. Refer to the <a href="/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.</li>
-  <li>Shipping information. (Required when order includes physical items). Refer to the <a href="/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping informtion block for your order.</li>
+  <li>
+    <p>Transaction type (i.e., NEW_ACTIVATION).</p>
+  </li>
+  <li>
+    <p>Region ID for the country in which the device and/or service will be used. This ID can be obtained via the <strong>/regions</strong> endpoint.</p>
+  </li>
+  <li>
+    <p>The postal code for the zone in which the device and/or service will be used. (Note: this is only required when the selected region is the United States of America.)</p>
+  </li>
+  <li>Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, features, and/or accessories). These IDs can be obtained via the catalog endpoints (i.e., <strong>/catalog/devices</strong>, <strong>/catalog/plans</strong>, <strong>/catalog/features</strong>, <strong>/catalog/accessories</strong>).
+    <ul>
+      <li>Optional feature IDs for a specific plan can be obtained from the <strong>/catalog/plans/{id}</strong> endpoint.</li>
+    </ul>
+  </li>
+  <li>
+    <p>All required and optional order properties. Refer to the <a href="/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.</p>
+  </li>
+  <li>Shipping information. (Required when order includes physical items). Refer to the <a href="/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required for your order.</li>
 </ul>
 
 <p>Here is an example of what the fully-assembled request body JSON might look like:</p>
@@ -565,17 +577,19 @@
 <em>Security Note:</em> The authenticated user must be authorized to access (at a minimum) all the same data that the employee referenced in this header is authorized to access.</p>
   </li>
   <li>
-    <p><strong>X-TNGO-CONTEXT-HIERARCHYID</strong> – Used to specify the organizational hierarchy to be used for the API call. If this header is blank or does not exist, the default hierarchy will be used.<br />
-<br /></p>
+    <p><strong>X-TNGO-CONTEXT-HIERARCHYID</strong> – Used to specify the organizational hierarchy to be used for the API call. If this header is blank or does not exist, the default hierarchy will be used.</p>
   </li>
 </ul>
+
+<p><br /></p>
 
 <h2 id="step-3-indicate-if-you-wish-to-obtain-an-order-confirmation">Step 3: Indicate if you wish to obtain an order confirmation.</h2>
 
 <p>Prior to submitting the order for vendor processing, you will probably want to first obtain an order confirmation. The confirmation returns all of the IDs passed in with the request body, along with the human-readable data that fully describes what was referenced by those IDs (e.g., device name, vendor, price). This is useful for API consumers who wish to present the order request back to their end user so they can verify it for accuracy.</p>
 
-<p>To obtain a confirmation, set the <strong>confirm</strong> query parameter to true.<br />
-<br /></p>
+<p>To obtain a confirmation, set the <strong>confirm</strong> query parameter to true.</p>
+
+<p><br /></p>
 
 <h2 id="step-4-obtain-the-order-confirmation-by-calling-the-orders-endpoint-via-http-post">Step 4: Obtain the order confirmation by calling the /orders endpoint via HTTP POST.</h2>
 
@@ -690,161 +704,161 @@
           </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CT"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POSTAL_CODE,
-          "</span><span class="err">label</span><span class="s2">": "</span><span class="err">Zip</span><span class="w"> </span><span class="err">Code</span><span class="s2">",
-          "</span><span class="err">value</span><span class="s2">": "</span><span class="mi">06477</span><span class="s2">"
-        }
-      ],
-      "</span><span class="err">expedite</span><span class="s2">": true,
-      "</span><span class="err">name</span><span class="s2">": "</span><span class="err">Peter</span><span class="w"> </span><span class="err">Edwards</span><span class="s2">",
-      "</span><span class="err">region</span><span class="s2">": {
-        "</span><span class="err">_meta</span><span class="s2">": {
-          "</span><span class="err">href</span><span class="s2">": "</span><span class="err">https://tg-mobility.cloudhub.io/mobility/v</span><span class="mi">1</span><span class="err">/regions/</span><span class="mi">70144640</span><span class="s2">"
-        },
-        "</span><span class="err">id</span><span class="s2">": "</span><span class="mi">70144640</span><span class="s2">",
-        "</span><span class="err">name</span><span class="s2">": "</span><span class="err">United</span><span class="w"> </span><span class="err">States</span><span class="s2">"
-      }
-    },
-    "</span><span class="err">shoppingCart</span><span class="s2">": {
-      "</span><span class="err">accessories</span><span class="s2">": [
-        {
-          "</span><span class="err">_meta</span><span class="s2">": {
-            "</span><span class="err">href</span><span class="s2">": "</span><span class="err">https://tg-mobility.cloudhub.io/mobility/v</span><span class="mi">1</span><span class="err">/catalog/accessories/</span><span class="mi">3628935899</span><span class="s2">"
-          },
-          "</span><span class="err">id</span><span class="s2">": "</span><span class="mi">3628935899</span><span class="s2">",
-          "</span><span class="err">imageUrl</span><span class="s2">": "</span><span class="err">https://commcareqa.tangoe.com/manage/images/devices/VER/MICRDUALVPCF.jpg</span><span class="s2">",
-          "</span><span class="err">manufacturer</span><span class="s2">": {
-            "</span><span class="err">_meta</span><span class="s2">": {
-              "</span><span class="err">href</span><span class="s2">": "</span><span class="err">https://tg-mobility.cloudhub.io/mobility/v</span><span class="mi">1</span><span class="err">/manufacturers/Verizon%</span><span class="mi">20</span><span class="err">Wireless</span><span class="s2">"
-            },
-            "</span><span class="err">id</span><span class="s2">": "</span><span class="err">Verizon</span><span class="w"> </span><span class="err">Wireless</span><span class="s2">",
-            "</span><span class="err">logoUrl</span><span class="s2">": "</span><span class="err">https://commcareqa.tangoe.com/manage/images/manufacturers/Verizon</span><span class="w"> </span><span class="err">Wireless.gif</span><span class="s2">",
-            "</span><span class="err">name</span><span class="s2">": "</span><span class="err">Verizon</span><span class="w"> </span><span class="err">Wireless</span><span class="s2">"
-          },
-          "</span><span class="err">name</span><span class="s2">": "</span><span class="err">Verizon</span><span class="w"> </span><span class="err">Wireless</span><span class="w"> </span><span class="err">Vehicle</span><span class="w"> </span><span class="err">Charger</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">Dual</span><span class="w"> </span><span class="err">Output</span><span class="w"> </span><span class="err">(MICRDUALVPC-F)</span><span class="s2">",
-          "</span><span class="err">price</span><span class="s2">": {
-            "</span><span class="err">amount</span><span class="s2">": 22.49,
-            "</span><span class="err">currencyCode</span><span class="s2">": "</span><span class="err">USD</span><span class="s2">",
-            "</span><span class="err">recurrence</span><span class="s2">": "</span><span class="err">ONETIME</span><span class="s2">"
-          },
-          "</span><span class="err">vendor</span><span class="s2">": {
-            "</span><span class="err">_meta</span><span class="s2">": {
-              "</span><span class="err">href</span><span class="s2">": "</span><span class="err">https://tg-mobility.cloudhub.io/mobility/v</span><span class="mi">1</span><span class="err">/vendors/</span><span class="mi">98</span><span class="s2">"
-            },
-            "</span><span class="err">id</span><span class="s2">": "</span><span class="mi">98</span><span class="s2">",
-            "</span><span class="err">logoUrl</span><span class="s2">": "</span><span class="err">https://commcareqa.tangoe.com/manage/images/carrier/logo_VERZN.gif</span><span class="s2">",
-            "</span><span class="err">name</span><span class="s2">": "</span><span class="err">Verizon</span><span class="w"> </span><span class="err">Wireless</span><span class="s2">"
-          }
-        },
-        {
-          "</span><span class="err">_meta</span><span class="s2">": {
-            "</span><span class="err">href</span><span class="s2">": "</span><span class="err">https://tg-mobility.cloudhub.io/mobility/v</span><span class="mi">1</span><span class="err">/catalog/accessories/</span><span class="mi">3628939022</span><span class="s2">"
-          },
-          "</span><span class="err">id</span><span class="s2">": "</span><span class="mi">3628939022</span><span class="s2">",
-          "</span><span class="err">imageUrl</span><span class="s2">": "</span><span class="err">https://commcareqa.tangoe.com/manage/images/devices/VER/EMICUSBDTVL_F.jpg</span><span class="s2">",
-          "</span><span class="err">manufacturer</span><span class="s2">": {
-            "</span><span class="err">_meta</span><span class="s2">": {
-              "</span><span class="err">href</span><span class="s2">": "</span><span class="err">https://tg-mobility.cloudhub.io/mobility/v</span><span class="mi">1</span><span class="err">/manufacturers/Verizon%</span><span class="mi">20</span><span class="err">Wireless</span><span class="s2">"
-            },
-            "</span><span class="err">id</span><span class="s2">": "</span><span class="err">Verizon</span><span class="w"> </span><span class="err">Wireless</span><span class="s2">",
-            "</span><span class="err">logoUrl</span><span class="s2">": "</span><span class="err">https://commcareqa.tangoe.com/manage/images/manufacturers/Verizon</span><span class="w"> </span><span class="err">Wireless.gif</span><span class="s2">",
-            "</span><span class="err">name</span><span class="s2">": "</span><span class="err">Verizon</span><span class="w"> </span><span class="err">Wireless</span><span class="s2">"
-          },
-          "</span><span class="err">name</span><span class="s2">": "</span><span class="err">Verizon</span><span class="w"> </span><span class="err">Wireless</span><span class="w"> </span><span class="err">Rapid</span><span class="w"> </span><span class="err">Wall</span><span class="w"> </span><span class="err">Charger</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="mi">6</span><span class="err">ft</span><span class="w"> </span><span class="err">Cable</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">Micro</span><span class="w"> </span><span class="err">USB</span><span class="w"> </span><span class="err">(EMICUSBDTVL-F)</span><span class="s2">",
-          "</span><span class="err">price</span><span class="s2">": {
-            "</span><span class="err">amount</span><span class="s2">": 22.49,
-            "</span><span class="err">currencyCode</span><span class="s2">": "</span><span class="err">USD</span><span class="s2">",
-            "</span><span class="err">recurrence</span><span class="s2">": "</span><span class="err">ONETIME</span><span class="s2">"
-          },
-          "</span><span class="err">vendor</span><span class="s2">": {
-            "</span><span class="err">_meta</span><span class="s2">": {
-              "</span><span class="err">href</span><span class="s2">": "</span><span class="err">https://tg-mobility.cloudhub.io/mobility/v</span><span class="mi">1</span><span class="err">/vendors/</span><span class="mi">98</span><span class="s2">"
-            },
-            "</span><span class="err">id</span><span class="s2">": "</span><span class="mi">98</span><span class="s2">",
-            "</span><span class="err">logoUrl</span><span class="s2">": "</span><span class="err">https://commcareqa.tangoe.com/manage/images/carrier/logo_VERZN.gif</span><span class="s2">",
-            "</span><span class="err">name</span><span class="s2">": "</span><span class="err">Verizon</span><span class="w"> </span><span class="err">Wireless</span><span class="s2">"
-          }
-        }
-      ],
-      "</span><span class="err">device</span><span class="s2">": {
-        "</span><span class="err">_meta</span><span class="s2">": {
-          "</span><span class="err">href</span><span class="s2">": "</span><span class="err">https://tg-mobility.cloudhub.io/mobility/v</span><span class="mi">1</span><span class="err">/catalog/devices/</span><span class="mi">9194791812</span><span class="s2">"
-        },
-        "</span><span class="err">id</span><span class="s2">": "</span><span class="mi">9194791812</span><span class="s2">",
-        "</span><span class="err">imageUrl</span><span class="s2">": "</span><span class="err">https://commcareqa.tangoe.com/manage/images/devices/VER/sam_gal_s</span><span class="mi">4</span><span class="err">.jpg</span><span class="s2">",
-        "</span><span class="err">manufacturer</span><span class="s2">": {
-          "</span><span class="err">_meta</span><span class="s2">": {
-            "</span><span class="err">href</span><span class="s2">": "</span><span class="err">https://tg-mobility.cloudhub.io/mobility/v</span><span class="mi">1</span><span class="err">/manufacturers/Samsung</span><span class="s2">"
-          },
-          "</span><span class="err">id</span><span class="s2">": "</span><span class="err">Samsung</span><span class="s2">",
-          "</span><span class="err">logoUrl</span><span class="s2">": "</span><span class="err">https://commcareqa.tangoe.com/manage/images/manufacturers/Samsung.gif</span><span class="s2">",
-          "</span><span class="err">name</span><span class="s2">": "</span><span class="err">Samsung</span><span class="s2">"
-        },
-        "</span><span class="err">name</span><span class="s2">": "</span><span class="err">Samsung</span><span class="w"> </span><span class="err">Galaxy</span><span class="w"> </span><span class="err">S</span><span class="mi">4</span><span class="w"> </span><span class="err">(</span><span class="mi">16</span><span class="err">GB)</span><span class="w"> </span><span class="err">-</span><span class="w"> </span><span class="err">Black</span><span class="w"> </span><span class="err">Mist</span><span class="s2">",
-        "</span><span class="err">price</span><span class="s2">": {
-          "</span><span class="err">amount</span><span class="s2">": 199.99,
-          "</span><span class="err">currencyCode</span><span class="s2">": "</span><span class="err">USD</span><span class="s2">",
-          "</span><span class="err">recurrence</span><span class="s2">": "</span><span class="err">ONETIME</span><span class="s2">"
-        },
-        "</span><span class="err">vendor</span><span class="s2">": {
-          "</span><span class="err">_meta</span><span class="s2">": {
-            "</span><span class="err">href</span><span class="s2">": "</span><span class="err">https://tg-mobility.cloudhub.io/mobility/v</span><span class="mi">1</span><span class="err">/vendors/</span><span class="mi">98</span><span class="s2">"
-          },
-          "</span><span class="err">id</span><span class="s2">": "</span><span class="mi">98</span><span class="s2">",
-          "</span><span class="err">logoUrl</span><span class="s2">": "</span><span class="err">https://commcareqa.tangoe.com/manage/images/carrier/logo_VERZN.gif</span><span class="s2">",
-          "</span><span class="err">name</span><span class="s2">": "</span><span class="err">Verizon</span><span class="w"> </span><span class="err">Wireless</span><span class="s2">"
-        }
-      },
-      "</span><span class="err">plan</span><span class="s2">": {
-        "</span><span class="err">_meta</span><span class="s2">": {
-          "</span><span class="err">href</span><span class="s2">": "</span><span class="err">https://tg-mobility.cloudhub.io/mobility/v</span><span class="mi">1</span><span class="err">/catalog/plans/</span><span class="mi">6568886494</span><span class="s2">"
-        },
-        "</span><span class="err">id</span><span class="s2">": "</span><span class="mi">6568886494</span><span class="s2">",
-        "</span><span class="err">includedFeatures</span><span class="s2">": [
-          {
-            "</span><span class="err">description</span><span class="s2">": "</span><span class="err">Base</span><span class="w"> </span><span class="err">Package</span><span class="s2">"
-          }
-        ],
-        "</span><span class="err">name</span><span class="s2">": "</span><span class="err">Nationwide</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">Business</span><span class="w"> </span><span class="err">Talk</span><span class="w"> </span><span class="err">Share</span><span class="w"> </span><span class="err">Plan</span><span class="s2">",
-        "</span><span class="err">optionalFeatures</span><span class="s2">": [
-          {
-            "</span><span class="err">description</span><span class="s2">": "</span><span class="err">Unlimited</span><span class="w"> </span><span class="err">Push</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">Talk</span><span class="s2">",
-            "</span><span class="err">id</span><span class="s2">": "</span><span class="mi">951</span><span class="s2">",
-            "</span><span class="err">price</span><span class="s2">": {
-              "</span><span class="err">amount</span><span class="s2">": 300.25,
-              "</span><span class="err">currencyCode</span><span class="s2">": "</span><span class="err">USD</span><span class="s2">",
-              "</span><span class="err">recurrence</span><span class="s2">": "</span><span class="err">MONTHLY</span><span class="s2">"
-            }
-          },
-          {
-            "</span><span class="err">description</span><span class="s2">": "</span><span class="err">Extended</span><span class="w"> </span><span class="err">Warranty</span><span class="s2">",
-            "</span><span class="err">id</span><span class="s2">": "</span><span class="mi">88</span><span class="s2">",
-            "</span><span class="err">price</span><span class="s2">": {
-              "</span><span class="err">amount</span><span class="s2">": 200.44,
-              "</span><span class="err">currencyCode</span><span class="s2">": "</span><span class="err">USD</span><span class="s2">",
-              "</span><span class="err">recurrence</span><span class="s2">": "</span><span class="err">MONTHLY</span><span class="s2">"
-            }
-          }
-        ],
-        "</span><span class="err">price</span><span class="s2">": {
-          "</span><span class="err">amount</span><span class="s2">": 38.69,
-          "</span><span class="err">currencyCode</span><span class="s2">": "</span><span class="err">USD</span><span class="s2">",
-          "</span><span class="err">recurrence</span><span class="s2">": "</span><span class="err">MONTHLY</span><span class="s2">"
-        },
-        "</span><span class="err">vendor</span><span class="s2">": {
-          "</span><span class="err">_meta</span><span class="s2">": {
-            "</span><span class="err">href</span><span class="s2">": "</span><span class="err">https://tg-mobility.cloudhub.io/mobility/v</span><span class="mi">1</span><span class="err">/vendors/</span><span class="mi">98</span><span class="s2">"
-          },
-          "</span><span class="err">id</span><span class="s2">": "</span><span class="mi">98</span><span class="s2">",
-          "</span><span class="err">logoUrl</span><span class="s2">": "</span><span class="err">https://commcareqa.tangoe.com/manage/images/carrier/logo_VERZN.gif</span><span class="s2">",
-          "</span><span class="err">name</span><span class="s2">": "</span><span class="err">Verizon</span><span class="w"> </span><span class="err">Wireless</span><span class="s2">"
-        }
-      },
-      "</span><span class="err">quantity</span><span class="s2">": 1
-    },
-    "</span><span class="err">transactionType</span><span class="s2">": "</span><span class="err">NEW_ACTIVATION</span><span class="s2">"
-  },
-  "</span><span class="err">status</span><span class="s2">": "</span><span class="err">SUCCESS"</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POSTAL_CODE"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zip Code"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06477"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"expedite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter Edwards"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions/70144640"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"shoppingCart"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"accessories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/catalog/accessories/3628935899"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3628935899"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/devices/VER/MICRDUALVPCF.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Verizon%20Wireless"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/manufacturers/Verizon Wireless.gif"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless Vehicle Charger with Dual Output (MICRDUALVPC-F)"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">22.49</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ONETIME"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/carrier/logo_VERZN.gif"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/catalog/accessories/3628939022"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3628939022"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/devices/VER/EMICUSBDTVL_F.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Verizon%20Wireless"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/manufacturers/Verizon Wireless.gif"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless Rapid Wall Charger with 6ft Cable for Micro USB (EMICUSBDTVL-F)"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">22.49</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ONETIME"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/carrier/logo_VERZN.gif"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/catalog/devices/9194791812"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9194791812"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/devices/VER/sam_gal_s4.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Samsung"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samsung"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/manufacturers/Samsung.gif"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samsung"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samsung Galaxy S4 (16GB) - Black Mist"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">199.99</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ONETIME"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/carrier/logo_VERZN.gif"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"plan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/catalog/plans/6568886494"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6568886494"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"includedFeatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Base Package"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nationwide for Business Talk Share Plan"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"optionalFeatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unlimited Push to Talk"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"951"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">300.25</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTHLY"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Extended Warranty"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"88"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">200.44</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTHLY"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">38.69</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTHLY"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/carrier/logo_VERZN.gif"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW_ACTIVATION"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 </div>

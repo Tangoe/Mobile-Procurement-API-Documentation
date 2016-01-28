@@ -11,7 +11,8 @@
     - label: "Test and Explore"
       href: "start/explore/"
 
-- label: "Using the API"
+- label: "Using the API" 
+  href: "concepts/"
   subOne:
     - label: "Authentication and Security"
       href: "concepts/security/"
@@ -25,6 +26,7 @@
       href: "concepts/metadata/"
 
 - label: "Tutorials"
+  href: "tutorials/"
   subOne:
     - label: "Submitting an Order"
       href: "tutorials/orders/" 
@@ -53,7 +55,8 @@
     - label: "Formatting an Address"
       href: "tutorials/addresses/"  
 
-- label: "Policies and Terms"
+- label: "Policies and Terms" 
+  href: "policies/" 
   subOne:
     - label: "Versioning Policy" 
       href: "policies/versioning/"
@@ -61,4 +64,4 @@
       href: "policies/terms/"
 
 - label: "Contact"
-  href: "/contact/"
+  href: "contact/"

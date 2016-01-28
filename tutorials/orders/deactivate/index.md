@@ -11,45 +11,27 @@ title: Tutorials - DEACTIVATE Order
 
 ## Authentication
 
-See the [Security and Authentication](/concepts/security/) page for info regarding the supported OAuth2 grant types: Implicit, Resource Owner Password Credentials.
+This API uses the OAuth2 standard for authentication. Specifically, it supports two grant types: *Implicit* and *Resource Owner Password Credentials*. For details regarding how to use this standard to authenticate when making your API calls, please refer to the  [Security and Authentication](/concepts/security/) page.
 <br />
 
-## Step 1: Set Necessary Headers
-
-A few HTTP headers are required to be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate). 
-
-### Required headers:
-
-* **X-TNGO-TENANT** - Used to identify the specific tenant (i.e., customer) for which the API is being called.
-See the [Headers](/concepts/headers/) page for more information about these headers.
-
-### Optional headers:
-
-* **X-TNGO-CONTEXT-COMPANYEMPLOYEEID**  -- Used to specify a company employee ID that defines the context of the call. This header is only checked if the X-TNGO-CONTEXT-EMPLOYEEID header is blank or does not exist. If this header does not exist, the context will be set to the authenticated user. 
-*SECURITY NOTE:* The authenticated user must be authorized to access (at a minimum) all the same data that the employee referenced in this header is authorized to access.
-
-* **X-TNGO-CONTEXT-EMPLOYEEID** --  Used to specify an employee ID that defines the context of the call. If this header does not exist or is blank, then the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header will be used instead. 
-*SECURITY NOTE:* The authenticated user must be authorized to access (at a minimum) all the same data that the employee referenced in this header is authorized to access.
-
-* **X-TNGO-CONTEXT-HIERARCHYID** --  Used to specify the organizational hierarchy to be used for the API call. If this header is blank or does not exist, the default hierarchy will be used.
-<br />
-
-## Step 2: Build JSON for Request Body
+## Step 1. Build the request body (in JSON) that is required 
 
 Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.
 
-For a DEACTIVATE order, this JSON typically includes the following pieces:
+For a DEACTIVATE, this JSON typically includes the following pieces:
 
 * Transaction type (i.e., DEACTIVATE).
-* Service ID of the service asset to be deactivated.
-* Account Holder Company ID (or Account Holder ID) for the user to whom the asset is assigned.
-* The properties that are required for deactivating a service asset or the specific vendor.
- 
- 
-Here is an example:
+
+* Service asset ID for the cellular service that is to be deactivated. This ID can be obtained via the **/assets/service** endpoint.
+
+* All required and optional order properties. Refer to the <a href="/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
+
+
+
+Here is an example of what the fully-assembled request body JSON might look like:
 
 ```
- {
+{
   "orderRequest": {
     "externalOrderNumber": "AZ99087547-001",
     "transactionType": "DEACTIVATE",
@@ -61,7 +43,7 @@ Here is an example:
           {
             "id": "CONTACT_NUMBER",
             "type": "TEXT",
-            "text": "2038599360"
+            "text": "2035559999"
           },
           {
             "id": "ADDITIONAL_INSTRUCTIONS",
@@ -76,7 +58,7 @@ Here is an example:
           {
             "id": "SERVICE_NUMBER",
             "type": "TEXT",
-            "text": "2489535406"
+            "text": "2035551111"
           },
           {
             "id": "Reason",
@@ -93,18 +75,42 @@ Here is an example:
 ```
 <br />
 
-## Step 3: Set Query Parameter(s), as Needed
 
-The only query parameter that can be set when creating an order is:
 
-* confirm  (boolean) - If true, the order will not be posted. Instead, the response will return a complete description of the order that can be used to create an order confirmation for the end user to review, correct, and then submit for processing.
+## Step 2: Set required request headers.
+
+There are multiple HTTP headers that may be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate). See the [Headers](/concepts/headers/) page for more information about our supported headers.
+
+### Required Headers:
+
+* **X-TNGO-TENANT** - Used to identify the specific tenant (i.e., customer) for which the API is being called.
+
+### Optional Headers:
+
+* **X-TNGO-CONTEXT-COMPANYEMPLOYEEID** -- Used to specify a company employee ID that defines the context of the call. This header is only checked if the X-TNGO-CONTEXT-EMPLOYEEID header is blank or does not exist. If this header does not exist, the context will be set to the authenticated user. 
+*Security Note:* The authenticated user must be authorized to access (at a minimum) all the same data that the employee referenced in this header is authorized to access.
+
+* **X-TNGO-CONTEXT-EMPLOYEEID** -- Used to specify an employee ID that defines the context of the call. If this header does not exist or is blank, then the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header will be used instead. 
+*Security Note:* The authenticated user must be authorized to access (at a minimum) all the same data that the employee referenced in this header is authorized to access.
+
+* **X-TNGO-CONTEXT-HIERARCHYID** -- Used to specify the organizational hierarchy to be used for the API call. If this header is blank or does not exist, the default hierarchy will be used.
+
 <br />
 
-## Step 4: Submit Order Request Confirmation
 
-Your request, containing the JSON request body and confirm query parameter set to true, should now be ready. Submit it via HTTP POST to the orders endpoint.
+## Step 3: Indicate if you wish to obtain an order confirmation.
 
-If successful, the API will return a response with a 200 HTTP status code and containing JSON that fully describes the identifiers that were submitted. This data can then be presented back to the end user for verification and correction, if necessary. 
+Prior to submitting the order for vendor processing, you will probably want to first obtain an order confirmation. The confirmation returns all of the IDs passed in with the request body, along with the human-readable data that fully describes what was referenced by those IDs (e.g., device name, vendor, price). This is useful for API consumers who wish to present the order request back to their end user so they can verify it for accuracy.
+
+To obtain a confirmation, set the **confirm** query parameter to true.
+
+<br />
+
+## Step 4: Obtain the order confirmation by calling the /orders endpoint via HTTP POST. 
+
+Your request, containing the JSON request body and confirm query parameter set to true, is now be ready. Submit it via the HTTP POST method to the **/orders** endpoint.
+
+If successful, the API will return a response with a 200 HTTP status code and containing JSON that fully describes the identifiers that were submitted. This data can then be presented back to the end user for verification and correction (if necessary). 
 
 Here is an example of what the order confirmation JSON might look like:
 
@@ -115,16 +121,16 @@ Here is an example of what the order confirmation JSON might look like:
       "_meta": {
         "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28671524"
       },
-      "companyEmployeeId": "mike.mcpadden.xx1",
+      "companyEmployeeId": "peter.edwards.acme",
       "department": {
         "id": "10652965372",
         "name": "Accounting"
       },
-      "email": "michael.mcpadden@tangoe.com",
-      "firstName": "Michael",
-      "id": "28671524",
-      "lastName": "McPadden",
-      "officePhone": "203-859-9360",
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
+      "id": "28671599",
+      "lastName": "Edwards",
+      "officePhone": "203-555-9999",
       "status": "ACTIVE"
     },
     "externalOrderNumber": "AZ99087547-001",
@@ -134,7 +140,7 @@ Here is an example of what the order confirmation JSON might look like:
           {
             "id": "CONTACT_NUMBER",
             "label": "Contact Phone Number",
-            "text": "2038599360",
+            "text": "2035559999",
             "type": "TEXT"
           },
           {
@@ -151,7 +157,7 @@ Here is an example of what the order confirmation JSON might look like:
           {
             "id": "SERVICE_NUMBER",
             "label": "Service Number",
-            "text": "2489535406",
+            "text": "2035551111",
             "type": "TEXT"
           },
           {
@@ -169,16 +175,16 @@ Here is an example of what the order confirmation JSON might look like:
       "_meta": {
         "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28671524"
       },
-      "companyEmployeeId": "mike.mcpadden.xx1",
+      "companyEmployeeId": "peter.edwards.acme",
       "department": {
         "id": "10652965372",
         "name": "Accounting"
       },
-      "email": "michael.mcpadden@tangoe.com",
-      "firstName": "Michael",
-      "id": "28671524",
-      "lastName": "McPadden",
-      "officePhone": "203-859-9360",
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
+      "id": "28671599",
+      "lastName": "Edwards",
+      "officePhone": "203-555-9999",
       "status": "ACTIVE"
     },
     "service": {
@@ -187,22 +193,25 @@ Here is an example of what the order confirmation JSON might look like:
       },
       "contractDates": {
         "activated": "2013-06-05T05:00:00Z",
-        "end": "2016-06-05T05:00:00Z",
+        "end": "2017-06-05T05:00:00Z",
         "lastDeviceUpgrade": "2013-06-05T05:00:00Z",
         "start": "2013-06-05T05:00:00Z"
       },
       "id": "31647891",
-      "serviceNumber": "2489535406",
+      "serviceNumber": "2035551111",
       "status": "ACTIVE"
     },
     "transactionType": "DEACTIVATE"
   },
   "status": "SUCCESS"
 }
+
 ```
 <br/>
 
+
 ## Step 5: Submit Order Request
+
 Once the request has been confirmed, it can be re-submitted for processing via HTTP POST. Before submitting, be sure to set the confirm query parameter to false (or remove it, since the default is false). 
 
 If the submission is successful, the API will once again return a response containing JSON with an HTTP status code of 200. This response also will include the newly-assigned order number (i.e., orderId). 
@@ -216,16 +225,16 @@ Here is an example of what the order JSON might look like:
       "href": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8054738"
     },
     "accountHolder": {
-      "companyEmployeeId": "mike.mcpadden.xx1",
+      "companyEmployeeId": "peter.edwards.acme",
       "department": {
         "id": "10652965372",
         "name": "Accounting"
       },
-      "email": "michael.mcpadden@tangoe.com",
-      "firstName": "Michael",
-      "id": "28671524",
-      "lastName": "McPadden",
-      "officePhone": "203-859-9360",
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
+      "id": "28671599",
+      "lastName": "Edwards",
+      "officePhone": "203-555-9999",
       "status": "ACTIVE"
     },
     "dateSubmitted": "2015-12-16T19:14:04Z",
@@ -237,7 +246,7 @@ Here is an example of what the order JSON might look like:
           {
             "id": "CONTACT_NUMBER",
             "label": "Contact Phone Number",
-            "text": "2038599360",
+            "text": "2035559999",
             "type": "TEXT"
           },
           {
@@ -254,7 +263,7 @@ Here is an example of what the order JSON might look like:
           {
             "id": "SERVICE_NUMBER",
             "label": "Service Number",
-            "text": "2489535406",
+            "text": "2035551111",
             "type": "TEXT"
           },
           {
@@ -272,19 +281,19 @@ Here is an example of what the order JSON might look like:
       "_meta": {
         "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28671524"
       },
-      "companyEmployeeId": "mike.mcpadden.xx1",
+      "companyEmployeeId": "peter.edwards.acme",
       "department": {
         "id": "10652965372",
         "name": "Accounting"
       },
-      "email": "michael.mcpadden@tangoe.com",
-      "firstName": "Michael",
-      "id": "28671524",
-      "lastName": "McPadden",
-      "officePhone": "203-859-9360",
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
+      "id": "28671599",
+      "lastName": "Edwards",
+      "officePhone": "203-555-9999",
       "status": "ACTIVE"
     },
-    "serviceNumber": "2489535406",
+    "serviceNumber": "2035551111",
     "status": "ORDER_SUBMITTED",
     "transactionType": "DEACTIVATE"
   },

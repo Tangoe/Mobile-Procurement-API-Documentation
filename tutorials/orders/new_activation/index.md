@@ -4,9 +4,9 @@ title: Tutorials - Ordering - NEW_ACTIVATION
 ---
 
 
-# How to Order a New Device and Service Plan
+# How to Order a New Device and/or Service Plan 
 
-**This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to procure a new device and service plan (i.e., NEW_ACTIVATION).**
+**This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to procure a new device and service plan (i.e., NEW_ACTIVATION). Please note that device accessories can also be included with this order.**
 <br />
 
 ## Authentication
@@ -21,11 +21,18 @@ Next, you will need to compile the JSON that will be submitted in the request bo
 For a NEW_ACTIVATION, this JSON typically includes the following pieces:
 
 * Transaction type (i.e., NEW_ACTIVATION).
-* Region ID for the country in which the device and/or service will be used. This can be obtained via the **/regions** endpoint.
+
+* Region ID for the country in which the device and/or service will be used. This ID can be obtained via the **/regions** endpoint.
+
 * The postal code for the zone in which the device and/or service will be used. (Note: this is only required when the selected region is the United States of America.)
-* Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, features, and/or accessories). These IDs can be obtained via the catalog endpoints (**/catalog/devices**, **/catalog/plans**, **/catalog/features**, **/catalog/accessories**).
+
+* Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, features, and/or accessories). These IDs can be obtained via the catalog endpoints (i.e., **/catalog/devices**, **/catalog/plans**, **/catalog/features**, **/catalog/accessories**).
+  * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** endpoint.
+
 * All required and optional order properties. Refer to the <a href="/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
-* Shipping information. (Required when order includes physical items). Refer to the <a href="/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping informtion block for your order.
+
+* Shipping information. (Required when order includes physical items). Refer to the <a href="/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required for your order.
+
 
 Here is an example of what the fully-assembled request body JSON might look like:
 
@@ -124,6 +131,7 @@ There are multiple HTTP headers that may be passed as part of your API request. 
 *Security Note:* The authenticated user must be authorized to access (at a minimum) all the same data that the employee referenced in this header is authorized to access.
 
 * **X-TNGO-CONTEXT-HIERARCHYID** -- Used to specify the organizational hierarchy to be used for the API call. If this header is blank or does not exist, the default hierarchy will be used.
+
 <br />
 
 
@@ -132,8 +140,8 @@ There are multiple HTTP headers that may be passed as part of your API request. 
 Prior to submitting the order for vendor processing, you will probably want to first obtain an order confirmation. The confirmation returns all of the IDs passed in with the request body, along with the human-readable data that fully describes what was referenced by those IDs (e.g., device name, vendor, price). This is useful for API consumers who wish to present the order request back to their end user so they can verify it for accuracy.
 
 To obtain a confirmation, set the **confirm** query parameter to true.
-<br />
 
+<br />
 
 ## Step 4: Obtain the order confirmation by calling the /orders endpoint via HTTP POST. 
 
@@ -249,7 +257,7 @@ Here is an example of what the order confirmation JSON might look like:
           "value": "CT"
         },
         {
-          "id": "POSTAL_CODE,
+          "id": "POSTAL_CODE",
           "label": "Zip Code",
           "value": "06477"
         }

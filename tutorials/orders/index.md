@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Tutorials
-logoTangoe: tangoe-logo_125.png
 ---
 
 # How to Create and Submit an Order

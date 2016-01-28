@@ -25,7 +25,7 @@
 
      <div class="dc-banner--royal  tg-text--right  tg-pad--right">
         <div class="dc-bannerLinks">
-          <button class="tg-button  tg-button--primary" target="_blank">Developer Portal Log In</button>
+          <a href="https://anypoint.mulesoft.com/apiplatform/tangoe/#/portals/organizations/f5574299-614a-4d3f-885d-24958c10613f/apis/20442/versions/21828" class="tg-button  tg-button--primary" target="_blank">Developer Portal Log In</a>
         </div>
       </div>
     </header>
@@ -118,7 +118,7 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
-          <a href="http://localhost:4000/">Using the API</a>
+          <a href="http://localhost:4000/concepts/">Using the API</a>
         
          
           
@@ -204,7 +204,7 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
-          <a href="http://localhost:4000/">Tutorials</a>
+          <a href="http://localhost:4000/tutorials/">Tutorials</a>
         
          
           
@@ -388,7 +388,7 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
-          <a href="http://localhost:4000/">Policies and Terms</a>
+          <a href="http://localhost:4000/policies/">Policies and Terms</a>
         
          
           
@@ -432,7 +432,7 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
-          <a href="http://localhost:4000//contact/">Contact</a>
+          <a href="http://localhost:4000/contact/">Contact</a>
         
          
           
@@ -446,15 +446,143 @@
     </div><!--
     --><div class="tg-grid__cell  tg-four-fifths  tg-pad"> 
 
-      <h1 id="determine-order-properties">Determine Order Properties</h1>
+      <h1 id="obtaining-order-properties">Obtaining Order Properties</h1>
 
-<p>[/orders/properties endpoint]</p>
+<p><strong>This tutorial dscribes the steps for obtaining the required (and optional) properties that are supported by the vendor who will be fulfilling your order.</strong></p>
 
-<p>[REQURIED QUERY PARAMETERS = transaction type, vendor ID and/or service ID (which can be used to get vendor ID) ]</p>
+<p>Order properties are additional pieces of information that are not used by the backend system to process your order. Rather they are passed on to the third-party vendor who will be fulfilling your order. Some of these properties may be required to be populated in order for your order to be accepted.<br />
+<br /></p>
 
-<p>[REQUIRED v OPTIONAL]</p>
+<h2 id="the-ordersproperties-endpoint">The /orders/properties endpoint</h2>
 
-<p>[TYPES: TEXT, DATE, CHOICE]</p>
+<p>An API call can be made to the <strong>/orders/properties</strong> endpoint to obtain the properties. Which specific properties are returned depends upon both the order transaction type and the vendor who will be fulfilling the order.</p>
+
+<p>When making this API call, you must always set the <strong>transactionType</strong> query parameter (e.g., NEW_ACTIVATION, UPGRADE, SUSPEND, etc.). You also must also identify the vendor by passing either one of the two following query parameters:</p>
+
+<ul>
+  <li>
+    <p><strong>vendor</strong> – The ID of the vendor who will be fulfilling the order. This ID can be obtained from mutliple other endpoints, including /vendors, /catalog/plans, etc.</p>
+  </li>
+  <li>
+    <p><strong>service</strong> – The ID of a service asset for which the order is being executed, when applicable. The backend system will look up the ID of the vendor who is associated with this asset.</p>
+  </li>
+</ul>
+
+<p>Here is an illustration of what order properties might look like:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/orders/properties?transactionType=DEACTIVATE&amp;service=123546789"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTACT_NUMBER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contact Phone Number"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"maxLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"minLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2038599360"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"validation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUIRED"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADDITIONAL_INSTRUCTIONS"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Additional Instructions"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"maxLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">4000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"minLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"validation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPTIONAL"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREFERRED_DEACTIVATION_DATE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Preferred Deactivation Date"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"maxLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"minLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mm/dd/yyyy"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"regEx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.]\\d\\d\\d\\d"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"validation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPTIONAL"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"isOther"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cancel service as employee is no longer with the company"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reason"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reason"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHOICE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"validation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUIRED"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"groupId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MISCELLANEOUS"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><br /></p>
+
+<h2 id="contents-of-an-order-property">Contents of an Order Property</h2>
+
+<p>An individual order property contain the following required elements:</p>
+
+<ul>
+  <li>
+    <p><strong>id</strong> – The unique ID identifing this specific property.</p>
+  </li>
+  <li>
+    <p><strong>label</strong> – A descriptive label that is suitable for displaying to an end user.</p>
+  </li>
+  <li>
+    <p><strong>validation</strong> – Indicates whether or not the property is required by the vendor.</p>
+  </li>
+  <li>
+    <p><strong>type</strong> – Type indicates the type of data to which the value should be set:</p>
+    <ul>
+      <li><em>TEXT</em>: A string.</li>
+      <li><em>DATE</em>: A date. (Note: the “pattern” element may be set to indicate the accepted format, e.g., ISO 8601, etc.)</li>
+      <li><em>CHOICE</em>: An ID of a single option chosen from an array of choice options.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>They can also contain any of the following optional eleements:</p>
+
+<ul>
+  <li>
+    <p><strong>maxLength</strong> – The maximum number of charaacters to which this property can be set.</p>
+  </li>
+  <li>
+    <p><strong>minLength</strong> – The minimum number of charaacters to which this property must be set.</p>
+  </li>
+  <li>
+    <p><strong>pattern</strong> – A description of the pattern to which the value should match (e.g, “mm/dd/yyyy”). This can be dislayed to an end user as a hint for what the properties value should look like.</p>
+  </li>
+  <li>
+    <p><strong>regEx</strong> – A regular expression pattern that can be used to validate the value to which the proeprty is set.</p>
+  </li>
+</ul>
+
+<p><a name="#choiceProperty"></a><br /></p>
+
+<h2 id="the-choice-property-type">The CHOICE Property Type</h2>
+
+<p>The CHOICE type is used to model properties that only accept a value from a defined list of options. An API consumer might use this property to surface a dropdown list in their user interface.</p>
+
+<p>CHOICE properties include an array named “choices” that contains its acceptable options. Each option in the array contains the following elements:</p>
+
+<ul>
+  <li><strong>id</strong> – The unique ID identifing this specific option.</li>
+  <li><strong>label</strong> –  A descriptive label that is suitable for displaying to an end user.</li>
+  <li><strong>isOther</strong> – A boolean indicating if this specific option is used to select “other” (i.e., “none of the above”). There should only be one option in the array with isOther set to true. Furthermore, this element can be helpful to the user interface to trigger another event, such as revealing a text field for the end user to enter something not found in the dropdown list.</li>
+</ul>
 
 
 
