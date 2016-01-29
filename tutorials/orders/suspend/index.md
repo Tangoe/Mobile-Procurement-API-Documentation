@@ -22,7 +22,7 @@ For a SUSPEND, this JSON typically includes the following pieces:
 
 * Transaction type (i.e., SUSPEND).
 
-* Service asset ID for the cellular service that is to be deactivated. This ID can be obtained via the **/assets/service** endpoint.
+* Service asset ID for the cellular service that is to be suspended. This ID can be obtained via the **/assets/service** endpoint.
 
 * All required and optional order properties. Refer to the <a href="/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
 
@@ -35,7 +35,7 @@ Here is an example of what the fully-assembled request body JSON might look like
   "orderRequest": {
     "externalOrderNumber": "AZ99087547-001",
     "transactionType": "SUSPEND",
-    "serviceId": "31647891",
+    "serviceId": "38382335",
     "properties": [
       {
         "groupId": "MISCELLANEOUS",
@@ -53,7 +53,7 @@ Here is an example of what the fully-assembled request body JSON might look like
           {
             "id": "SERVICE_NUMBER",
             "type": "TEXT",
-            "text": "22035551111"
+            "text": "2035554468"
           },
           {
             "id": "HOLD_SERVICE",
@@ -119,19 +119,39 @@ Here is an example of what the order confirmation JSON might look like:
   "orderConfirmation": {
     "accountHolder": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28671524"
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
       },
       "companyEmployeeId": "peter.edwards.acme",
       "department": {
-        "id": "10652965372",
-        "name": "Accounting"
+        "id": "11569020385",
+        "name": "Development"
       },
       "email": "peter.edwards@acme.com",
       "firstName": "Peter",
-      "id": "28671599",
+      "id": "28673732",
       "lastName": "Edwards",
-      "officePhone": "203-555-9999",
+      "officePhone": "2038599360",
       "status": "ACTIVE"
+    },
+    "device": {
+      "accessMethod": "CDMA_PCS",
+      "companyAssetId": "0123ABC",
+      "id": "35362361",
+      "macAddress": "90:33:20:94:33",
+      "manufacturer": {
+        "_meta": {
+          "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Apple"
+        },
+        "id": "Apple",
+        "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/Apple.gif",
+        "name": "Apple"
+      },
+      "model": "iPhone 6 Plus (16GB) gold",
+      "serialNumber": {
+        "type": "IMEI",
+        "value": "7738293847839"
+      },
+      "simId": "830002222211123"
     },
     "externalOrderNumber": "AZ99087547-001",
     "properties": [
@@ -152,7 +172,7 @@ Here is an example of what the order confirmation JSON might look like:
           {
             "id": "SERVICE_NUMBER",
             "label": "Service Number",
-            "text": "2035551111",
+            "text": "2035554468",
             "type": "TEXT"
           },
           {
@@ -173,34 +193,41 @@ Here is an example of what the order confirmation JSON might look like:
         "groupId": "MISCELLANEOUS"
       }
     ],
+    "region": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/regions/70144640"
+      },
+      "id": "70144640",
+      "name": "United States"
+    },
     "requestedBy": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28671524"
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
       },
       "companyEmployeeId": "peter.edwards.acme",
       "department": {
-        "id": "10652965372",
-        "name": "Accounting"
+        "id": "11569020385",
+        "name": "Development"
       },
       "email": "peter.edwards@acme.com",
       "firstName": "Peter",
-      "id": "28671599",
+      "id": "28673732",
       "lastName": "Edwards",
-      "officePhone": "203-555-9999",
+      "officePhone": "2038599360",
       "status": "ACTIVE"
     },
     "service": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/assets/services/31647891"
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/assets/services/38382335"
       },
       "contractDates": {
-        "activated": "2013-06-05T05:00:00Z",
-        "end": "2016-06-05T05:00:00Z",
-        "lastDeviceUpgrade": "2013-06-05T05:00:00Z",
-        "start": "2013-06-05T05:00:00Z"
+        "activated": "2014-02-15T06:00:00Z",
+        "end": "2017-02-18T06:00:00Z",
+        "lastDeviceUpgrade": "2015-02-18T06:00:00Z",
+        "start": "2015-02-18T06:00:00Z"
       },
-      "id": "31647891",
-      "serviceNumber": "2035551111",
+      "id": "38382335",
+      "serviceNumber": "2035554468",
       "status": "ACTIVE"
     },
     "transactionType": "SUSPEND"
@@ -223,24 +250,52 @@ Here is an example of what the order JSON might look like:
 {
   "order": {
     "_meta": {
-      "href": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8054740"
+      "href": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8711660"
     },
     "accountHolder": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
+      },
       "companyEmployeeId": "peter.edwards.acme",
       "department": {
-        "id": "10652965372",
-        "name": "Accounting"
+        "id": "11569020385",
+        "name": "Development"
       },
       "email": "peter.edwards@acme.com",
       "firstName": "Peter",
-      "id": "28671599",
+      "id": "28673732",
       "lastName": "Edwards",
-      "officePhone": "203-555-9999",
+      "officePhone": "2038599360",
       "status": "ACTIVE"
     },
-    "dateSubmitted": "2015-12-16T19:21:08Z",
+    "dateSubmitted": "2016-01-29T21:14:05Z",
     "externalOrderNumber": "AZ99087547-001",
-    "orderId": "8054740",
+    "orderId": "8711660",
+    "orderSegments": {
+      "items": [
+        {
+          "_meta": {
+            "hrefHistory": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8711660/history?orderSegment=8711661",
+            "hrefShipments": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8711660/shipments?orderSegment=8711661"
+          },
+          "accessories": [],
+          "features": [],
+          "orderSegmentId": "8711661",
+          "plan": {
+            "optionalFeatures": []
+          },
+          "status": "ORDER_SUBMITTED",
+          "vendor": {
+            "_meta": {
+              "href": "https://tg-mobility.cloudhub.io/mobility/v1/vendors/105"
+            },
+            "id": "105",
+            "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_SPR.gif",
+            "name": "Sprint"
+          }
+        }
+      ]
+    },
     "properties": [
       {
         "fields": [
@@ -259,7 +314,7 @@ Here is an example of what the order JSON might look like:
           {
             "id": "SERVICE_NUMBER",
             "label": "Service Number",
-            "text": "2035551111",
+            "text": "2035554468",
             "type": "TEXT"
           },
           {
@@ -282,21 +337,24 @@ Here is an example of what the order JSON might look like:
     ],
     "requestedBy": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28671524"
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
       },
       "companyEmployeeId": "peter.edwards.acme",
       "department": {
-        "id": "10652965372",
-        "name": "Accounting"
+        "id": "11569020385",
+        "name": "Development"
       },
       "email": "peter.edwards@acme.com",
       "firstName": "Peter",
-      "id": "28671599",
+      "id": "28673732",
       "lastName": "Edwards",
-      "officePhone": "203-555-9999",
+      "officePhone": "2038599360",
       "status": "ACTIVE"
     },
-    "serviceNumber": "2035551111",
+    "serviceNumber": "2035554468",
+    "shipTo": {
+      "address": []
+    },
     "status": "ORDER_SUBMITTED",
     "transactionType": "SUSPEND"
   },
