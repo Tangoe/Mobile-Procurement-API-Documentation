@@ -353,6 +353,20 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
+              <a href="http://localhost:4000/tutorials/models/">Obtaining Device Models</a>
+              
+              </div>
+
+
+            
+
+
+              
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
               <a href="http://localhost:4000/tutorials/properties/">Obtaining Order Properties</a>
               
               </div>
@@ -467,14 +481,79 @@
     <p>Transaction type (i.e., SWAP_DEVICE).</p>
   </li>
   <li>
+    <p>Service asset ID for the cellular service that is to be transferred. This ID can be obtained via the <strong>/assets/service</strong> endpoint.</p>
+  </li>
+  <li>
+    <p>Manufacturer and model IDs, along with the serial number type and value, of the device to which you wish to transfer the service (i.e., the “newDevice” property). If the manufacturer and model are not currently identified in the device catalog, then the make and model anmes can passed via otherNameModelName property (e.g., “Acme StarPhone 2000”).</p>
+  </li>
+  <li>
+    <p>The same manufacturer and model information must also be passed for the device you currently use. That is, the device from which you are transferring service (i.e., the “existingDevice” property). Furthermore, the SIM ID for this existing device is also required.</p>
+  </li>
+  <li>
     <p>All required and optional order properties. Refer to the <a href="/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.</p>
   </li>
 </ul>
 
 <p>Here is an example of what the fully-assembled request body JSON might look like:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
-</code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"orderRequest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"externalOrderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ99087547-001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SWAP_DEVICES"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38382349"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"newDevice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"manufacturerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"modelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iPhone 6 (64GB) - Space Gray"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"otherMakeModelName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMEI"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789001230"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"existingDevice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"manufacturerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"modelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"otherMakeModelName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acme StarPhone 2000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMEI"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"012345678901007"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"simId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89 91 10 1200 00 320451 3"</span><span class="w">
+    </span><span class="p">},</span><span class="w">    
+    </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"groupId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MISCELLANEOUS"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTACT_NUMBER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contact Phone Number"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADDITIONAL_INSTRUCTIONS"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Additional Instructions"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please confirm serial number for new device"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SERVICE_NUMBER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Service Number"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035557676"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREFERRED_AREA_CODE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Preferred Area Code"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"203"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 </div>
 <p><br /></p>
 
@@ -522,8 +601,162 @@
 
 <p>Here is an example of what the order confirmation JSON might look like:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
-</code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"orderConfirmation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"accountHolder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mike.mcpadden.xx1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11569020385"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Development"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"michael.mcpadden@tangoe.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mike"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28673732"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McPadden"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"officePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"accessMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CDMA"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"companyAssetId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123ABC"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35362368"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"macAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90:33:20:94:31"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/LG"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LG"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/manufacturers/LG.gif"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LG"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cookie Plus"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ESN"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4289183847832"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"simId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83924758342478392342"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"existingDevice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Other"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/manufacturers/Other.gif"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Other/models/Other"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"otherMakeModelName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acme StarPhone 2000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMEI"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"012345678901007"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"simId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89 91 10 1200 00 320451 3"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"externalOrderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ99087547-001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"newDevice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Apple"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/manufacturers/Apple.gif"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Apple/models/Apple"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iPhone 6 (64GB) - Space Gray"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iPhone 6 (64GB) - Space Gray"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMEI"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789001230"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTACT_NUMBER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contact Phone Number"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADDITIONAL_INSTRUCTIONS"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Additional Instructions"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please confirm serial number for new device"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SERVICE_NUMBER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Service Number"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035557676"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREFERRED_AREA_CODE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Preferred Area Code"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"203"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"groupId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MISCELLANEOUS"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions/70144640"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"requestedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mike.mcpadden.xx1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11569020385"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Development"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"michael.mcpadden@tangoe.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mike"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28673732"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McPadden"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"officePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/assets/services/38382349"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"contractDates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"activated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2010-01-20T06:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-21T06:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lastDeviceUpgrade"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-01-21T06:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-01-21T06:00:00Z"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38382349"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serviceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035557676"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SWAP_DEVICES"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 </div>
 <p><br /></p>
 
@@ -535,8 +768,112 @@
 
 <p>Here is an example of what the order JSON might look like:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  
-</code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/orders/8712220"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"accountHolder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mike.mcpadden.xx1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11569020385"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Development"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"michael.mcpadden@tangoe.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mike"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28673732"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McPadden"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"officePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"dateSubmitted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-01T15:18:41Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"externalOrderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AZ99087547-001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8712220"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderSegments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"hrefHistory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/orders/8712220/history?orderSegment=8712221"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"hrefShipments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/orders/8712220/shipments?orderSegment=8712221"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"accessories"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nt">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nt">"orderSegmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8712221"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"plan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"optionalFeatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDER_SUBMITTED"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTACT_NUMBER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contact Phone Number"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADDITIONAL_INSTRUCTIONS"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Additional Instructions"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please confirm serial number for new device"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SERVICE_NUMBER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Service Number"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035557676"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREFERRED_AREA_CODE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Preferred Area Code"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"203"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"groupId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MISCELLANEOUS"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"requestedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mike.mcpadden.xx1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11569020385"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Development"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"michael.mcpadden@tangoe.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mike"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28673732"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McPadden"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"officePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"serviceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035557676"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shipTo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDER_SUBMITTED"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SWAP_DEVICES"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 </div>
 <p><br /></p>
 

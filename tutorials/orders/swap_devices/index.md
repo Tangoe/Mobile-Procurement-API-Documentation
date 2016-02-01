@@ -22,6 +22,12 @@ For a SWAP_DEVICE, this JSON typically includes the following pieces:
 
 * Transaction type (i.e., SWAP_DEVICE).
 
+* Service asset ID for the cellular service that is to be transferred. This ID can be obtained via the **/assets/service** endpoint.
+
+* Manufacturer and model IDs, along with the serial number type and value, of the device to which you wish to transfer the service (i.e., the "newDevice" property). If the manufacturer and model are not currently identified in the device catalog, then the make and model anmes can passed via otherNameModelName property (e.g., "Acme StarPhone 2000").
+
+* The same manufacturer and model information must also be passed for the device you currently use. That is, the device from which you are transferring service (i.e., the "existingDevice" property). Furthermore, the SIM ID for this existing device is also required.
+
 * All required and optional order properties. Refer to the <a href="/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
 
 
@@ -30,7 +36,63 @@ For a SWAP_DEVICE, this JSON typically includes the following pieces:
 Here is an example of what the fully-assembled request body JSON might look like:
 
 ```
-
+{
+  "orderRequest": {
+    "externalOrderNumber": "AZ99087547-001",
+    "transactionType": "SWAP_DEVICES",
+    "serviceId": "38382349",
+    "newDevice": {
+      "manufacturerId": "Apple",
+      "modelId": "iPhone 6 (64GB) - Space Gray",
+      "otherMakeModelName": "",
+      "serialNumber": {
+        "type": "IMEI",
+        "value": "123456789001230"
+      }
+    },
+    "existingDevice": {
+      "manufacturerId": "Other",
+      "modelId": "Other",
+      "otherMakeModelName": "Acme StarPhone 2000",
+      "serialNumber": {
+        "type": "IMEI",
+        "value": "012345678901007"
+      },
+      "simId": "89 91 10 1200 00 320451 3"
+    },    
+    "properties": [
+      {
+        "groupId": "MISCELLANEOUS",
+        "fields": [
+          {
+            "id": "CONTACT_NUMBER",
+            "label": "Contact Phone Number",
+            "type": "TEXT",
+            "text": "2035559999"
+          },
+          {
+            "id": "ADDITIONAL_INSTRUCTIONS",
+            "label": "Additional Instructions",
+            "type": "TEXT",
+            "text": "Please confirm serial number for new device"
+          },
+          {
+            "id": "SERVICE_NUMBER",
+            "label": "Service Number",
+            "type": "TEXT",
+            "text": "2035557676"
+          },
+          {
+            "id": "PREFERRED_AREA_CODE",
+            "label": "Preferred Area Code",
+            "type": "TEXT",
+            "text": "203"
+          }
+        ]
+      }
+    ]
+  }
+}
 ```
 <br />
 
@@ -74,7 +136,161 @@ If successful, the API will return a response with a 200 HTTP status code and co
 Here is an example of what the order confirmation JSON might look like:
 
 ```
-
+{
+  "orderConfirmation": {
+    "accountHolder": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
+      },
+      "companyEmployeeId": "mike.mcpadden.xx1",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "michael.mcpadden@tangoe.com",
+      "firstName": "Mike",
+      "id": "28673732",
+      "lastName": "McPadden",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "device": {
+      "accessMethod": "CDMA",
+      "companyAssetId": "123ABC",
+      "id": "35362368",
+      "macAddress": "90:33:20:94:31",
+      "manufacturer": {
+        "_meta": {
+          "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/LG"
+        },
+        "id": "LG",
+        "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/LG.gif",
+        "name": "LG"
+      },
+      "model": "Cookie Plus",
+      "serialNumber": {
+        "type": "ESN",
+        "value": "4289183847832"
+      },
+      "simId": "83924758342478392342"
+    },
+    "existingDevice": {
+      "manufacturer": {
+        "_meta": {
+          "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Other"
+        },
+        "id": "Other",
+        "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/Other.gif",
+        "name": "Other"
+      },
+      "model": {
+        "_meta": {
+          "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Other/models/Other"
+        },
+        "id": "Other",
+        "name": "Other"
+      },
+      "otherMakeModelName": "Acme StarPhone 2000",
+      "serialNumber": {
+        "type": "IMEI",
+        "value": "012345678901007"
+      },
+      "simId": "89 91 10 1200 00 320451 3"
+    },
+    "externalOrderNumber": "AZ99087547-001",
+    "newDevice": {
+      "manufacturer": {
+        "_meta": {
+          "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Apple"
+        },
+        "id": "Apple",
+        "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/Apple.gif",
+        "name": "Apple"
+      },
+      "model": {
+        "_meta": {
+          "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Apple/models/Apple"
+        },
+        "id": "iPhone 6 (64GB) - Space Gray",
+        "name": "iPhone 6 (64GB) - Space Gray"
+      },
+      "serialNumber": {
+        "type": "IMEI",
+        "value": "123456789001230"
+      }
+    },
+    "properties": [
+      {
+        "fields": [
+          {
+            "id": "CONTACT_NUMBER",
+            "label": "Contact Phone Number",
+            "text": "2035559999",
+            "type": "TEXT"
+          },
+          {
+            "id": "ADDITIONAL_INSTRUCTIONS",
+            "label": "Additional Instructions",
+            "text": "Please confirm serial number for new device",
+            "type": "TEXT"
+          },
+          {
+            "id": "SERVICE_NUMBER",
+            "label": "Service Number",
+            "text": "2035557676",
+            "type": "TEXT"
+          },
+          {
+            "id": "PREFERRED_AREA_CODE",
+            "label": "Preferred Area Code",
+            "text": "203",
+            "type": "TEXT"
+          }
+        ],
+        "groupId": "MISCELLANEOUS"
+      }
+    ],
+    "region": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/regions/70144640"
+      },
+      "id": "70144640",
+      "name": "United States"
+    },
+    "requestedBy": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
+      },
+      "companyEmployeeId": "mike.mcpadden.xx1",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "michael.mcpadden@tangoe.com",
+      "firstName": "Mike",
+      "id": "28673732",
+      "lastName": "McPadden",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "service": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/assets/services/38382349"
+      },
+      "contractDates": {
+        "activated": "2010-01-20T06:00:00Z",
+        "end": "2016-01-21T06:00:00Z",
+        "lastDeviceUpgrade": "2014-01-21T06:00:00Z",
+        "start": "2014-01-21T06:00:00Z"
+      },
+      "id": "38382349",
+      "serviceNumber": "2035557676",
+      "status": "ACTIVE"
+    },
+    "transactionType": "SWAP_DEVICES"
+  },
+  "status": "SUCCESS"
+}
 ```
 <br/>
 
@@ -88,6 +304,110 @@ If the submission is successful, the API will once again return a response conta
 Here is an example of what the order JSON might look like:
 
 ```
-  
+{
+  "order": {
+    "_meta": {
+      "href": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8712220"
+    },
+    "accountHolder": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
+      },
+      "companyEmployeeId": "mike.mcpadden.xx1",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "michael.mcpadden@tangoe.com",
+      "firstName": "Mike",
+      "id": "28673732",
+      "lastName": "McPadden",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "dateSubmitted": "2016-02-01T15:18:41Z",
+    "externalOrderNumber": "AZ99087547-001",
+    "orderId": "8712220",
+    "orderSegments": {
+      "items": [
+        {
+          "_meta": {
+            "hrefHistory": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8712220/history?orderSegment=8712221",
+            "hrefShipments": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8712220/shipments?orderSegment=8712221"
+          },
+          "accessories": [],
+          "features": [],
+          "orderSegmentId": "8712221",
+          "plan": {
+            "optionalFeatures": []
+          },
+          "status": "ORDER_SUBMITTED",
+          "vendor": {
+            "_meta": {
+              "href": "https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"
+            },
+            "id": "98",
+            "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif",
+            "name": "Verizon Wireless"
+          }
+        }
+      ]
+    },
+    "properties": [
+      {
+        "fields": [
+          {
+            "id": "CONTACT_NUMBER",
+            "label": "Contact Phone Number",
+            "text": "2035559999",
+            "type": "TEXT"
+          },
+          {
+            "id": "ADDITIONAL_INSTRUCTIONS",
+            "label": "Additional Instructions",
+            "text": "Please confirm serial number for new device",
+            "type": "TEXT"
+          },
+          {
+            "id": "SERVICE_NUMBER",
+            "label": "Service Number",
+            "text": "2035557676",
+            "type": "TEXT"
+          },
+          {
+            "id": "PREFERRED_AREA_CODE",
+            "label": "Preferred Area Code",
+            "text": "203",
+            "type": "TEXT"
+          }
+        ],
+        "groupId": "MISCELLANEOUS"
+      }
+    ],
+    "requestedBy": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
+      },
+      "companyEmployeeId": "mike.mcpadden.xx1",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "michael.mcpadden@tangoe.com",
+      "firstName": "Mike",
+      "id": "28673732",
+      "lastName": "McPadden",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "serviceNumber": "2035557676",
+    "shipTo": {
+      "address": []
+    },
+    "status": "ORDER_SUBMITTED",
+    "transactionType": "SWAP_DEVICES"
+  },
+  "status": "SUCCESS"
+}
 ```
 <br/>

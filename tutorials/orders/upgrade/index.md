@@ -22,15 +22,89 @@ For a UPGRADE, this JSON typically includes the following pieces:
 
 * Transaction type (i.e., UPGRADE).
 
+* Service asset ID for the cellular service with the features that you wish to upgrade. This ID can be obtained via the **/assets/service** endpoint.
+
+* Region ID for the country in which the device and/or service will be used. This ID can be obtained via the **/regions** endpoint.
+
+* The postal code for the zone in which the device and/or service will be used. (Note: this is only required when the selected region is the United States of America.)
+
+* Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, and/or plan features). These IDs can be obtained via the catalog endpoints (i.e., **/catalog/devices**, **/catalog/plans**, **/catalog/features**).
+  * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** endpoint.
+
 * All required and optional order properties. Refer to the <a href="/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
 
+* Shipping information. (Required when order includes physical items). Refer to the <a href="/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required for your order.
 
 
-
-Here is an example of what the fully-assembled request body JSON might look like:
+Here is an example of what the fully-assembled request body JSON might look like when upgrading both a device and its related serivce plan:
 
 ```
-
+{
+  "orderRequest": {
+    "externalOrderNumber": "upgrade_device_and_service_test",
+    "transactionType": "UPGRADE",
+    "serviceId": "38382349",
+    "regionId": "70144640",
+    "postalCode": "78759",    
+    "shoppingCart": {     
+      "deviceId": "9194713904",
+      "planId": "6568886698",
+      "optionalFeatureIds": ["293","2082"]
+    },
+    "properties": [ 
+      {
+        "groupId": "MISCELLANEOUS",
+        "fields": [
+          {
+            "id": "CONTACT_NUMBER",
+            "type": "TEXT",
+            "text": "1234567890"
+          },
+          {
+            "id": "ADDITIONAL_INSTRUCTIONS",            
+            "type": "TEXT",
+            "text": "TEST BY USING Rest based API."
+          },
+          {
+            "id": "SERVICE_NUMBER",            
+            "type": "TEXT",
+            "text": "2035557676"
+          },
+          {
+      	    "id": "Reason",
+            "type": "CHOICE",
+            "choice": {
+	     		"id": "18"
+            }
+          }
+        ]
+      }
+    ],
+    "shipTo": { 
+      "name": "Peter Edwards",
+      "regionId": "70144640",
+      "address": [
+        {
+          "id": "LINE_1",
+          "value": "35 Executive Blvd"
+        },
+        {
+          "id": "CITY",
+          "value": "Orange"
+        },
+        {
+          "id": "STATE",
+          "value": "CT"
+        },
+        {
+          "id": "POSTAL_CODE",
+          "value": "06477"
+        }
+      ],
+      "expedite": true
+    }
+  }
+}
 ```
 <br />
 
@@ -74,7 +148,238 @@ If successful, the API will return a response with a 200 HTTP status code and co
 Here is an example of what the order confirmation JSON might look like:
 
 ```
-
+{
+  "orderConfirmation": {
+    "accountHolder": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
+      },
+      "companyEmployeeId": "mike.mcpadden.xx1",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "michael.mcpadden@tangoe.com",
+      "firstName": "Mike",
+      "id": "28673732",
+      "lastName": "McPadden",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "costSummary": [
+      {
+        "amount": 199.99,
+        "currencyCode": "USD",
+        "recurrence": "ONETIME"
+      },
+      {
+        "amount": 261.65,
+        "currencyCode": "USD",
+        "recurrence": "MONTHLY"
+      }
+    ],
+    "device": {
+      "accessMethod": "CDMA",
+      "companyAssetId": "Mike's Cookie",
+      "id": "35362368",
+      "macAddress": "90:33:20:94:31",
+      "manufacturer": {
+        "_meta": {
+          "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/LG"
+        },
+        "id": "LG",
+        "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/LG.gif",
+        "name": "LG"
+      },
+      "model": "Cookie Plus",
+      "serialNumber": {
+        "type": "ESN",
+        "value": "4289183847832"
+      },
+      "simId": "83924758342478392342"
+    },
+    "externalOrderNumber": "upgrade_device_and_service_test",
+    "postalCode": "78759",
+    "properties": [
+      {
+        "fields": [
+          {
+            "id": "CONTACT_NUMBER",
+            "label": "Contact Phone Number",
+            "text": "1234567890",
+            "type": "TEXT"
+          },
+          {
+            "id": "ADDITIONAL_INSTRUCTIONS",
+            "label": "Additional Instructions",
+            "text": "TEST BY USING Rest based API.",
+            "type": "TEXT"
+          },
+          {
+            "id": "SERVICE_NUMBER",
+            "label": "Service Number",
+            "text": "2035557676",
+            "type": "TEXT"
+          },
+          {
+            "choice": {
+              "id": "18"
+            },
+            "id": "Reason",
+            "type": "CHOICE"
+          }
+        ],
+        "groupId": "MISCELLANEOUS"
+      }
+    ],
+    "region": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/regions/70144640"
+      },
+      "id": "70144640",
+      "name": "United States"
+    },
+    "requestedBy": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
+      },
+      "companyEmployeeId": "mike.mcpadden.xx1",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "michael.mcpadden@tangoe.com",
+      "firstName": "Mike",
+      "id": "28673732",
+      "lastName": "McPadden",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "service": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/assets/services/38382349"
+      },
+      "contractDates": {
+        "activated": "2010-01-20T06:00:00Z",
+        "end": "2016-01-21T06:00:00Z",
+        "lastDeviceUpgrade": "2014-01-21T06:00:00Z",
+        "start": "2014-01-21T06:00:00Z"
+      },
+      "id": "38382349",
+      "serviceNumber": "2035557676",
+      "status": "ACTIVE"
+    },
+    "shipTo": {
+      "address": [
+        {
+          "id": "LINE_1",
+          "label": "Address Line1",
+          "value": "35 Executive Blvd"
+        },
+        {
+          "id": "CITY",
+          "label": "City",
+          "value": "Orange"
+        },
+        {
+          "id": "STATE",
+          "label": "State",
+          "value": "CT"
+        },
+        {
+          "id": "POSTAL_CODE",
+          "label": "Zip Code",
+          "value": "06477"
+        }
+      ],
+      "expedite": true,
+      "name": "Peter Edwards",
+      "region": {
+        "_meta": {
+          "href": "https://tg-mobility.cloudhub.io/mobility/v1/regions/70144640"
+        },
+        "id": "70144640",
+        "name": "United States"
+      }
+    },
+    "shoppingCart": {
+      "device": {
+        "_meta": {
+          "href": "https://tg-mobility.cloudhub.io/mobility/v1/catalog/devices/9194713904"
+        },
+        "id": "9194713904",
+        "imageUrl": "https://commcareqa.tangoe.com/manage/images/devices/VER/iphone5_blk_l.jpg",
+        "manufacturer": {
+          "id": "Apple",
+          "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/Apple.gif",
+          "name": "Apple"
+        },
+        "name": "Apple iPhone 5 (16GB) - Black",
+        "price": {
+          "amount": 199.99,
+          "currencyCode": "USD",
+          "recurrence": "ONETIME"
+        },
+        "vendor": {
+          "id": "98",
+          "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif",
+          "name": "Verizon Wireless"
+        }
+      },
+      "plan": {
+        "id": "6568886698",
+        "includedFeatures": [
+          {
+            "description": "Total Equipment Coverage"
+          },
+          {
+            "description": "VZ Navigator"
+          },
+          {
+            "description": "Base Package"
+          }
+        ],
+        "name": "Nationwide for Business Talk Share Plan",
+        "optionalFeatures": [
+          {
+            "description": "Roadside Assistance",
+            "id": "293",
+            "price": {
+              "amount": 200,
+              "currencyCode": "USD",
+              "recurrence": "MONTHLY"
+            }
+          },
+          {
+            "description": "Visual Voice Mail",
+            "id": "2082",
+            "price": {
+              "amount": 2.99,
+              "currencyCode": "USD",
+              "recurrence": "MONTHLY"
+            }
+          }
+        ],
+        "price": {
+          "amount": 58.67,
+          "currencyCode": "USD",
+          "recurrence": "MONTHLY"
+        },
+        "vendor": {
+          "_meta": {
+            "href": "https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"
+          },
+          "id": "98",
+          "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif",
+          "name": "Verizon Wireless"
+        }
+      },
+      "quantity": 0
+    },
+    "transactionType": "UPGRADE"
+  },
+  "status": "SUCCESS"
+}
 ```
 <br/>
 
@@ -88,7 +393,182 @@ If the submission is successful, the API will once again return a response conta
 Here is an example of what the order JSON might look like:
 
 ```
-  
+{
+  "order": {
+    "_meta": {
+      "href": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8712282"
+    },
+    "accountHolder": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
+      },
+      "companyEmployeeId": "mike.mcpadden.xx1",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "michael.mcpadden@tangoe.com",
+      "firstName": "Mike",
+      "id": "28673732",
+      "lastName": "McPadden",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "dateSubmitted": "2016-02-01T16:36:45Z",
+    "externalOrderNumber": "upgrade_device_and_service_test",
+    "orderId": "8712282",
+    "orderSegments": {
+      "items": [
+        {
+          "_meta": {
+            "hrefHistory": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8712282/history?orderSegment=8712283",
+            "hrefShipments": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8712282/shipments?orderSegment=8712283"
+          },
+          "accessories": [],
+          "device": {
+            "imageUrl": "https://commcareqa.tangoe.com/manage/images/devices/iphone5_blk_l.jpg",
+            "manufacturer": {
+              "_meta": {
+                "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Apple"
+              },
+              "id": "Apple",
+              "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/Apple.gif",
+              "name": "Apple"
+            },
+            "name": "Apple iPhone 5 (16GB) - Black",
+            "price": {
+              "amount": 199.99,
+              "currencyCode": "USD",
+              "recurrence": "ONETIME"
+            }
+          },
+          "features": [],
+          "orderSegmentId": "8712283",
+          "plan": {
+            "name": "Nationwide for Business Talk Share Plan",
+            "optionalFeatures": [
+              {
+                "description": "Roadside Assistance",
+                "price": {
+                  "amount": 200,
+                  "currencyCode": "USD",
+                  "recurrence": "MONTHLY"
+                }
+              },
+              {
+                "description": "Visual Voice Mail",
+                "price": {
+                  "amount": 2.99,
+                  "currencyCode": "USD",
+                  "recurrence": "MONTHLY"
+                }
+              }
+            ],
+            "price": {
+              "amount": 58.67,
+              "currencyCode": "USD",
+              "recurrence": "MONTHLY"
+            }
+          },
+          "status": "ORDER_SUBMITTED",
+          "vendor": {
+            "_meta": {
+              "href": "https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"
+            },
+            "id": "98",
+            "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif",
+            "name": "Verizon Wireless"
+          }
+        }
+      ]
+    },
+    "properties": [
+      {
+        "fields": [
+          {
+            "id": "CONTACT_NUMBER",
+            "label": "Contact Phone Number",
+            "text": "1234567890",
+            "type": "TEXT"
+          },
+          {
+            "id": "ADDITIONAL_INSTRUCTIONS",
+            "label": "Additional Instructions",
+            "text": "TEST BY USING Rest based API.",
+            "type": "TEXT"
+          },
+          {
+            "id": "SERVICE_NUMBER",
+            "label": "Service Number",
+            "text": "2035557676",
+            "type": "TEXT"
+          },
+          {
+            "choice": {
+              "id": "18"
+            },
+            "id": "Reason",
+            "type": "CHOICE"
+          }
+        ],
+        "groupId": "MISCELLANEOUS"
+      }
+    ],
+    "requestedBy": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
+      },
+      "companyEmployeeId": "mike.mcpadden.xx1",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "michael.mcpadden@tangoe.com",
+      "firstName": "Mike",
+      "id": "28673732",
+      "lastName": "McPadden",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "serviceNumber": "2035557676",
+    "shipTo": {
+      "address": [
+        {
+          "id": "LINE_1",
+          "label": "Address Line1",
+          "value": "35 Executive Blvd"
+        },
+        {
+          "id": "CITY",
+          "label": "City",
+          "value": "Orange"
+        },
+        {
+          "id": "STATE",
+          "label": "State",
+          "value": "CT"
+        },
+        {
+          "id": "POSTAL_CODE",
+          "label": "Zip Code",
+          "value": "06477"
+        }
+      ],
+      "expedite": true,
+      "name": "Peter Edwards",
+      "region": {
+        "_meta": {
+          "href": "https://tg-mobility.cloudhub.io/mobility/v1/regions/70144640"
+        },
+        "id": "70144640",
+        "name": "United States"
+      }
+    },
+    "status": "ORDER_SUBMITTED",
+    "transactionType": "UPGRADE"
+  },
+  "status": "SUCCESS"
+}
 ```
 <br/>
 

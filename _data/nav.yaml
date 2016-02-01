@@ -50,6 +50,8 @@
     - label: "&nbsp;&nbsp;&nbsp;&nbsp;  SWAP_DEVICES"
       href: "tutorials/orders/SWAP_DEVICES/" 
 
+    - label: "Obtaining Device Models"
+      href: "tutorials/models/"
     - label: "Obtaining Order Properties"
       href: "tutorials/properties/"
     - label: "Formatting an Address"

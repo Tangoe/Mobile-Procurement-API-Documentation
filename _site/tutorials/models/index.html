@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset=utf-8 />
-  <title>  Getting Started register |  MOB API </title>  
+  <title>  Tutorial - Models |  MOB API </title>  
 
   <script src="http://localhost:4000/js/jquery/jquery-2.1.4.min.js"></script>
   
@@ -353,7 +353,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/tutorials/models/">Obtaining Device Models</a>
+              <a href="http://localhost:4000/tutorials/models/" class="dc-navOption__active">Obtaining Device Models</a>
               
               </div>
 
@@ -460,9 +460,84 @@
     </div><!--
     --><div class="tg-grid__cell  tg-four-fifths  tg-pad"> 
 
-      <h1 id="register-your-app">Register your app</h1>
+      <h1 id="obtaining-a-list-of-device-models">Obtaining a List of Device Models</h1>
 
-<p>(how to get a key)</p>
+<p><strong>This tutorial dscribes the steps for obtaining a list of models for a specific manufacturer.</strong></p>
+
+<p>XXXXXXXXXX.<br />
+<br /></p>
+
+<h2 id="the-manufacturersidmodels-endpoint">The /manufacturers/{id}/models endpoint</h2>
+
+<p>An API call can be made to the <strong>/manufacturers/{id}/models</strong> endpoint to obtain the known models that a particular manufacturer offers.</p>
+
+<p>In order to obtain a list of known device models offered by a particular manufacturer, an API call must first be made to the <strong>/manufacturers</strong> endpoint to determine that manufacturer’s ID. This ID is then passed into the models endpoint as a URI parameter identifying the selected manufacturer. This call will then return a response that includes all of the models known for this manufacturer.</p>
+
+<p>When making this API call, you can also set the (optional) <strong>type</strong> query parameter (e.g., ALL, DEVICE, ACCESSORY).</p>
+
+<p>Here is an illustration of what the models might look like:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<p><br /></p>
+
+<h2 id="contents-of-an-order-property">Contents of an Order Property</h2>
+
+<p>An individual order property contain the following required elements:</p>
+
+<ul>
+  <li>
+    <p><strong>id</strong> – The unique ID identifing this specific property.</p>
+  </li>
+  <li>
+    <p><strong>label</strong> – A descriptive label that is suitable for displaying to an end user.</p>
+  </li>
+  <li>
+    <p><strong>validation</strong> – Indicates whether or not the property is required by the vendor.</p>
+  </li>
+  <li>
+    <p><strong>type</strong> – Type indicates the type of data to which the value should be set:</p>
+    <ul>
+      <li><em>TEXT</em>: A string.</li>
+      <li><em>DATE</em>: A date. (Note: the “pattern” element may be set to indicate the accepted format, e.g., ISO 8601, etc.)</li>
+      <li><em>CHOICE</em>: An ID of a single option chosen from an array of choice options.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>They can also contain any of the following optional eleements:</p>
+
+<ul>
+  <li>
+    <p><strong>maxLength</strong> – The maximum number of charaacters to which this property can be set.</p>
+  </li>
+  <li>
+    <p><strong>minLength</strong> – The minimum number of charaacters to which this property must be set.</p>
+  </li>
+  <li>
+    <p><strong>pattern</strong> – A description of the pattern to which the value should match (e.g, “mm/dd/yyyy”). This can be dislayed to an end user as a hint for what the properties value should look like.</p>
+  </li>
+  <li>
+    <p><strong>regEx</strong> – A regular expression pattern that can be used to validate the value to which the proeprty is set.</p>
+  </li>
+</ul>
+
+<p><a name="#choiceProperty"></a><br /></p>
+
+<h2 id="the-choice-property-type">The CHOICE Property Type</h2>
+
+<p>The CHOICE type is used to model properties that only accept a value from a defined list of options. An API consumer might use this property to surface a dropdown list in their user interface.</p>
+
+<p>CHOICE properties include an array named “choices” that contains its acceptable options. Each option in the array contains the following elements:</p>
+
+<ul>
+  <li><strong>id</strong> – The unique ID identifing this specific option.</li>
+  <li><strong>label</strong> –  A descriptive label that is suitable for displaying to an end user.</li>
+  <li><strong>isOther</strong> – A boolean indicating if this specific option is used to select “other” (i.e., “none of the above”). There should only be one option in the array with isOther set to true. Furthermore, this element can be helpful to the user interface to trigger another event, such as revealing a text field for the end user to enter something not found in the dropdown list.</li>
+</ul>
+
 
 
     </div>

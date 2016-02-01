@@ -22,6 +22,10 @@ For a UPDATE_FEATURES, this JSON typically includes the following pieces:
 
 * Transaction type (i.e., UPDATE_FEATURES).
 
+* Service asset ID for the cellular service with the features that you wish to update. This ID can be obtained via the **/assets/service** endpoint.
+
+* IDs for the features you wish to modify, along with the action you wish to take (i.e., ADD or REMOVE). You can also add an (optional) comment to provide additional information about the change, if needed.
+
 * All required and optional order properties. Refer to the <a href="/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
 
 
@@ -30,7 +34,44 @@ For a UPDATE_FEATURES, this JSON typically includes the following pieces:
 Here is an example of what the fully-assembled request body JSON might look like:
 
 ```
-
+{
+  "orderRequest": {
+    "externalOrderNumber": "123456",
+    "transactionType": "UPDATE_FEATURES",
+    "serviceId": "38382335",
+    "shoppingCart": {
+      "features": [
+        {
+          "id": "518",
+          "action": "ADD"
+        }
+      ],
+      "featureRequestComment": "Please also add Caller ID"
+    },
+    "properties": [
+      {
+        "groupId": "MISCELLANEOUS",
+        "fields": [
+          {
+            "id": "CONTACT_NUMBER",
+            "type": "TEXT",
+            "text": "2035559999"
+          },
+          {
+            "id": "SERVICE_NUMBER",
+            "type": "TEXT",
+            "text": "2035554468"
+          },
+          {
+            "id": "ADDITIONAL_INSTRUCTIONS",
+            "type": "TEXT",
+            "text": "Please confirm with account holder that feature has been added."
+          }
+        ]
+      }
+    ]
+  }
+}
 ```
 <br />
 
@@ -74,7 +115,139 @@ If successful, the API will return a response with a 200 HTTP status code and co
 Here is an example of what the order confirmation JSON might look like:
 
 ```
-
+{
+  "orderConfirmation": {
+    "accountHolder": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
+      },
+      "companyEmployeeId": "mike.mcpadden.xx1",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "michael.mcpadden@tangoe.com",
+      "firstName": "Mike",
+      "id": "28673732",
+      "lastName": "McPadden",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "costSummary": [
+      {
+        "amount": 0,
+        "currencyCode": "USD",
+        "recurrence": "ONETIME"
+      },
+      {
+        "amount": 0,
+        "currencyCode": "USD",
+        "recurrence": "MONTHLY"
+      }
+    ],
+    "device": {
+      "accessMethod": "CDMA_PCS",
+      "companyAssetId": "Mike's iphone",
+      "id": "35362361",
+      "macAddress": "90:33:20:94:33",
+      "manufacturer": {
+        "_meta": {
+          "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Apple"
+        },
+        "id": "Apple",
+        "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/Apple.gif",
+        "name": "Apple"
+      },
+      "model": "iPhone 6 Plus (16GB) gold",
+      "serialNumber": {
+        "type": "IMEI",
+        "value": "7738293847839"
+      },
+      "simId": "830002222211123"
+    },
+    "externalOrderNumber": "123456",
+    "properties": [
+      {
+        "fields": [
+          {
+            "id": "CONTACT_NUMBER",
+            "label": "Contact Phone Number",
+            "text": "2035559999",
+            "type": "TEXT"
+          },
+          {
+            "id": "SERVICE_NUMBER",
+            "label": "Service Number",
+            "text": "2035554468",
+            "type": "TEXT"
+          },
+          {
+            "id": "ADDITIONAL_INSTRUCTIONS",
+            "label": "Additional Instructions",
+            "text": "Please confirm with account holder that feature has been added.",
+            "type": "TEXT"
+          }
+        ],
+        "groupId": "MISCELLANEOUS"
+      }
+    ],
+    "region": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/regions/70144640"
+      },
+      "id": "70144640",
+      "name": "United States"
+    },
+    "requestedBy": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
+      },
+      "companyEmployeeId": "mike.mcpadden.xx1",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "michael.mcpadden@tangoe.com",
+      "firstName": "Mike",
+      "id": "28673732",
+      "lastName": "McPadden",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "service": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/assets/services/38382335"
+      },
+      "contractDates": {
+        "activated": "2014-02-15T06:00:00Z",
+        "end": "2017-02-18T06:00:00Z",
+        "lastDeviceUpgrade": "2015-02-18T06:00:00Z",
+        "start": "2015-02-18T06:00:00Z"
+      },
+      "id": "38382335",
+      "serviceNumber": "2035554468",
+      "status": "ACTIVE"
+    },
+    "shoppingCart": {
+      "featureRequestComment": "Please also add Caller ID",
+      "features": [
+        {
+          "action": "ADD",
+          "description": "Call Forwarding ($0.20 per minute)",
+          "id": "518",
+          "price": {
+            "amount": 0,
+            "currencyCode": "USD",
+            "recurrence": "MONTHLY"
+          }
+        }
+      ],
+      "quantity": 0
+    },
+    "transactionType": "UPDATE_FEATURES"
+  },
+  "status": "SUCCESS"
+}
 ```
 <br/>
 
@@ -88,7 +261,116 @@ If the submission is successful, the API will once again return a response conta
 Here is an example of what the order JSON might look like:
 
 ```
-  
+{
+  "order": {
+    "_meta": {
+      "href": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8712260"
+    },
+    "accountHolder": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
+      },
+      "companyEmployeeId": "mike.mcpadden.xx1",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "michael.mcpadden@tangoe.com",
+      "firstName": "Mike",
+      "id": "28673732",
+      "lastName": "McPadden",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "dateSubmitted": "2016-02-01T16:07:59Z",
+    "externalOrderNumber": "123456",
+    "orderId": "8712260",
+    "orderSegments": {
+      "items": [
+        {
+          "_meta": {
+            "hrefHistory": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8712260/history?orderSegment=8712261",
+            "hrefShipments": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8712260/shipments?orderSegment=8712261"
+          },
+          "accessories": [],
+          "features": [
+            {
+              "action": "ADD",
+              "description": "Call Forwarding ($0.20 per minute)",
+              "id": "518",
+              "price": {
+                "amount": 0,
+                "currencyCode": "USD",
+                "recurrence": "MONTHLY"
+              }
+            }
+          ],
+          "orderSegmentId": "8712261",
+          "plan": {
+            "optionalFeatures": []
+          },
+          "status": "ORDER_SUBMITTED",
+          "vendor": {
+            "_meta": {
+              "href": "https://tg-mobility.cloudhub.io/mobility/v1/vendors/105"
+            },
+            "id": "105",
+            "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_SPR.gif",
+            "name": "Sprint"
+          }
+        }
+      ]
+    },
+    "properties": [
+      {
+        "fields": [
+          {
+            "id": "CONTACT_NUMBER",
+            "label": "Contact Phone Number",
+            "text": "2035559999",
+            "type": "TEXT"
+          },
+          {
+            "id": "SERVICE_NUMBER",
+            "label": "Service Number",
+            "text": "2035554468",
+            "type": "TEXT"
+          },
+          {
+            "id": "ADDITIONAL_INSTRUCTIONS",
+            "label": "Additional Instructions",
+            "text": "Please confirm with account holder that feature has been added.",
+            "type": "TEXT"
+          }
+        ],
+        "groupId": "MISCELLANEOUS"
+      }
+    ],
+    "requestedBy": {
+      "_meta": {
+        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
+      },
+      "companyEmployeeId": "mike.mcpadden.xx1",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "michael.mcpadden@tangoe.com",
+      "firstName": "Mike",
+      "id": "28673732",
+      "lastName": "McPadden",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "serviceNumber": "2035554468",
+    "shipTo": {
+      "address": []
+    },
+    "status": "ORDER_SUBMITTED",
+    "transactionType": "UPDATE_FEATURES"
+  },
+  "status": "SUCCESS"
+}
 ```
 <br/>
 
