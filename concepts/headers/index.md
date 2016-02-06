@@ -30,7 +30,7 @@ For example, an application called the API using a service account ID (i.e., adm
 
 ### X-TNGO-CONTEXT-COMPANYEMPLOYEEID
 
-This is the employee ID assigned by the tenant/customer (e.g., employee's email address, etc.). This header is only checked if the X-TNGO-CONTEXT-EMPLOYEEID header is not set. If this header does not exist, the context will be set to the authenticated user. 
+This is the employee ID assigned by the tenant/customer (e.g., employee's email address, etc.). This header is only used when the X-TNGO-CONTEXT-EMPLOYEEID header is not set. If this header is NOT set, the context will be set to the authenticated user. 
 
 * Optional
 * Data type: string
@@ -39,7 +39,7 @@ This is the employee ID assigned by the tenant/customer (e.g., employee's email 
 
 ### X-TNGO-CONTEXT-EMPLOYEEID 
 
-This is the employee ID assigned by Tangoe. If this header is set, it will be used in place of the  X-TNGO-CONTEXT-COMPANYEMPLOYEEID header. If it is not set, then the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header will be used (if set).
+This is the employee ID assigned by Tangoe. If this header is set, it will be used in place of the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header. If it is NOT set, then the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header will be used (if set).
 
 * Optional
 * Data type: string

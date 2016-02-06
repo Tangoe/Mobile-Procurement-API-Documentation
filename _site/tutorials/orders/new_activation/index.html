@@ -467,10 +467,10 @@
 
 <h2 id="authentication">Authentication</h2>
 
-<p>This API uses the OAuth2 standard for authentication. Specifically, it supports two grant types: <em>Implicit</em> and <em>Resource Owner Password Credentials</em>. For details regarding how to use this standard to authenticate when making your API calls, please refer to the  <a href="/concepts/security/">Security and Authentication</a> page.<br />
+<p>This API uses the OAuth2 standard for authentication. Specifically, it supports two grant types: <em>Implicit</em> and <em>Resource Owner Password Credentials</em>. For details regarding how to use this standard to authenticate when making your API calls, please refer to the  <a href="/concepts/security/">Authentication and Security</a> page.<br />
 <br /></p>
 
-<h2 id="step-1-build-the-request-body-in-json-that-is-required">Step 1. Build the request body (in JSON) that is required</h2>
+<h2 id="step-1-build-the-request-body-that-is-required">Step 1. Build the request body that is required</h2>
 
 <p>Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.</p>
 
@@ -494,7 +494,7 @@
   <li>
     <p>All required and optional order properties. Refer to the <a href="/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.</p>
   </li>
-  <li>Shipping information. (Required when order includes physical items). Refer to the <a href="/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required for your order.</li>
+  <li>Shipping information. This is required when order includes physical items. Refer to the <a href="/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required for your order.</li>
 </ul>
 
 <p>Here is an example of what the fully-assembled request body JSON might look like:</p>
@@ -571,7 +571,7 @@
 
 <h2 id="step-2-set-required-request-headers">Step 2: Set required request headers.</h2>
 
-<p>There are multiple HTTP headers that may be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate). See the <a href="/concepts/headers/">Headers</a> page for more information about our supported headers.</p>
+<p>There are multiple HTTP headers that may be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate). See the <a href="/concepts/headers/">Request Headers</a> page for more information about our supported headers.</p>
 
 <h3 id="required-headers">Required Headers:</h3>
 
@@ -583,15 +583,13 @@
 
 <ul>
   <li>
-    <p><strong>X-TNGO-CONTEXT-COMPANYEMPLOYEEID</strong> – Used to specify a company employee ID that defines the context of the call. This header is only checked if the X-TNGO-CONTEXT-EMPLOYEEID header is blank or does not exist. If this header does not exist, the context will be set to the authenticated user. <br />
-<em>Security Note:</em> The authenticated user must be authorized to access (at a minimum) all the same data that the employee referenced in this header is authorized to access.</p>
+    <p><strong>X-TNGO-CONTEXT-COMPANYEMPLOYEEID</strong> – The employee ID assigned by the tenant/customer (e.g., employee’s email address, etc.).</p>
   </li>
   <li>
-    <p><strong>X-TNGO-CONTEXT-EMPLOYEEID</strong> – Used to specify an employee ID that defines the context of the call. If this header does not exist or is blank, then the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header will be used instead. <br />
-<em>Security Note:</em> The authenticated user must be authorized to access (at a minimum) all the same data that the employee referenced in this header is authorized to access.</p>
+    <p><strong>X-TNGO-CONTEXT-EMPLOYEEID</strong> – The employee ID assigned by Tangoe.</p>
   </li>
   <li>
-    <p><strong>X-TNGO-CONTEXT-HIERARCHYID</strong> – Used to specify the organizational hierarchy to be used for the API call. If this header is blank or does not exist, the default hierarchy will be used.</p>
+    <p><strong>X-TNGO-CONTEXT-HIERARCHYID</strong> – The Tangoe-assigned ID that is used to specify the organizational hierarchy to be used for the API call.</p>
   </li>
 </ul>
 
@@ -607,11 +605,11 @@
 
 <h2 id="step-4-obtain-the-order-confirmation-by-calling-the-orders-endpoint-via-http-post">Step 4: Obtain the order confirmation by calling the /orders endpoint via HTTP POST.</h2>
 
-<p>Your request, containing the JSON request body and confirm query parameter set to true, is now be ready. Submit it via the HTTP POST method to the <strong>/orders</strong> endpoint.</p>
+<p>Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the <strong>/orders</strong> endpoint.</p>
 
 <p>If successful, the API will return a response with a 200 HTTP status code and containing JSON that fully describes the identifiers that were submitted. This data can then be presented back to the end user for verification and correction (if necessary).</p>
 
-<p>Here is an example of what the order confirmation JSON might look like:</p>
+<p>Here is an example of what the order confirmation response might look like:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"orderConfirmation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -884,7 +882,7 @@
 
 <p>If the submission is successful, the API will once again return a response containing JSON with an HTTP status code of 200. This response also will include the newly-assigned order number (i.e., orderId).</p>
 
-<p>Here is an example of what the order JSON might look like:</p>
+<p>Here is an example of what the order response might look like:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">

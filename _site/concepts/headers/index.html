@@ -488,7 +488,7 @@
 
 <h3 id="x-tngo-context-companyemployeeid">X-TNGO-CONTEXT-COMPANYEMPLOYEEID</h3>
 
-<p>This is the employee ID assigned by the tenant/customer (e.g., employee’s email address, etc.). This header is only checked if the X-TNGO-CONTEXT-EMPLOYEEID header is not set. If this header does not exist, the context will be set to the authenticated user.</p>
+<p>This is the employee ID assigned by the tenant/customer (e.g., employee’s email address, etc.). This header is only used when the X-TNGO-CONTEXT-EMPLOYEEID header is not set. If this header is NOT set, the context will be set to the authenticated user.</p>
 
 <ul>
   <li>Optional</li>
@@ -499,7 +499,7 @@
 
 <h3 id="x-tngo-context-employeeid">X-TNGO-CONTEXT-EMPLOYEEID</h3>
 
-<p>This is the employee ID assigned by Tangoe. If this header is set, it will be used in place of the  X-TNGO-CONTEXT-COMPANYEMPLOYEEID header. If it is not set, then the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header will be used (if set).</p>
+<p>This is the employee ID assigned by Tangoe. If this header is set, it will be used in place of the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header. If it is NOT set, then the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header will be used (if set).</p>
 
 <ul>
   <li>Optional</li>

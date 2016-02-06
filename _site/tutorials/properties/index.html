@@ -464,12 +464,12 @@
 
 <p><strong>This tutorial dscribes the steps for obtaining the required (and optional) properties that are supported by the vendor who will be fulfilling your order.</strong></p>
 
-<p>Order properties are additional pieces of information that are not used by the backend system to process your order. Rather they are passed on to the third-party vendor who will be fulfilling your order. Some of these properties may be required to be populated in order for your order to be accepted.<br />
+<p>Order properties are additional pieces of information about your order. They are not used by the API to process the order. But rather, they are passed on to the third-party vendor who will be fulfilling your order. Some of these properties may be required to be populated in order for your order to be accepted.<br />
 <br /></p>
 
 <h2 id="the-ordersproperties-endpoint">The /orders/properties endpoint</h2>
 
-<p>An API call can be made to the <strong>/orders/properties</strong> endpoint to obtain the properties. Which specific properties are returned depends upon both the order transaction type and the vendor who will be fulfilling the order.</p>
+<p>An API call can be made to the <strong>/orders/properties</strong> endpoint to obtain the properties. The specific properties returned are determined based on the order transaction type and  vendor who will be fulfilling the order.</p>
 
 <p>When making this API call, you must always set the <strong>transactionType</strong> query parameter (e.g., NEW_ACTIVATION, UPGRADE, SUSPEND, etc.). You also must also identify the vendor by passing either one of the two following query parameters:</p>
 
@@ -482,7 +482,7 @@
   </li>
 </ul>
 
-<p>Here is an illustration of what order properties might look like:</p>
+<p>Here is an illustration of what the order properties response could look like:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -545,7 +545,7 @@
 
 <h2 id="contents-of-an-order-property">Contents of an Order Property</h2>
 
-<p>An individual order property contain the following required elements:</p>
+<p>An individual order property contains the following required elements:</p>
 
 <ul>
   <li>
@@ -558,7 +558,7 @@
     <p><strong>validation</strong> – Indicates whether or not the property is required by the vendor.</p>
   </li>
   <li>
-    <p><strong>type</strong> – Type indicates the type of data to which the value should be set:</p>
+    <p><strong>type</strong> – Indicates the type of data to which the value should be set:</p>
     <ul>
       <li><em>TEXT</em>: A string.</li>
       <li><em>DATE</em>: A date. (Note: the “pattern” element may be set to indicate the accepted format, e.g., ISO 8601, etc.)</li>
@@ -567,20 +567,20 @@
   </li>
 </ul>
 
-<p>They can also contain any of the following optional eleements:</p>
+<p>They can also contain any of the following optional elements:</p>
 
 <ul>
   <li>
-    <p><strong>maxLength</strong> – The maximum number of charaacters to which this property can be set.</p>
+    <p><strong>maxLength</strong> – The maximum number of characters to which this property can be set.</p>
   </li>
   <li>
-    <p><strong>minLength</strong> – The minimum number of charaacters to which this property must be set.</p>
+    <p><strong>minLength</strong> – The minimum number of characters to which this property must be set.</p>
   </li>
   <li>
-    <p><strong>pattern</strong> – A description of the pattern to which the value should match (e.g, “mm/dd/yyyy”). This can be dislayed to an end user as a hint for what the properties value should look like.</p>
+    <p><strong>pattern</strong> – A description of the pattern to which the value should match (e.g, “mm/dd/yyyy”). This can be displayed to an end user as a hint for what the properties value should look like.</p>
   </li>
   <li>
-    <p><strong>regEx</strong> – A regular expression pattern that can be used to validate the value to which the proeprty is set.</p>
+    <p><strong>regEx</strong> – A regular expression pattern that can be used to validate the value to which the property is set.</p>
   </li>
 </ul>
 
@@ -595,7 +595,7 @@
 <ul>
   <li><strong>id</strong> – The unique ID identifing this specific option.</li>
   <li><strong>label</strong> –  A descriptive label that is suitable for displaying to an end user.</li>
-  <li><strong>isOther</strong> – A boolean indicating if this specific option is used to select “other” (i.e., “none of the above”). There should only be one option in the array with isOther set to true. Furthermore, this element can be helpful to the user interface to trigger another event, such as revealing a text field for the end user to enter something not found in the dropdown list.</li>
+  <li><strong>isOther</strong> – A boolean indicating if this specific option is used to select “other” (i.e., “none of the above”). There should only be one option in the array with isOther set to true. Furthermore, this element can be helpful to the user interface for triggering another event, such as revealing a text field for the end user to enter something not found in the dropdown list.</li>
 </ul>
 
 

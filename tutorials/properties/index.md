@@ -8,12 +8,12 @@ title: Tutorials
 
 **This tutorial dscribes the steps for obtaining the required (and optional) properties that are supported by the vendor who will be fulfilling your order.**
 
-Order properties are additional pieces of information that are not used by the backend system to process your order. Rather they are passed on to the third-party vendor who will be fulfilling your order. Some of these properties may be required to be populated in order for your order to be accepted.
+Order properties are additional pieces of information about your order. They are not used by the API to process the order. But rather, they are passed on to the third-party vendor who will be fulfilling your order. Some of these properties may be required to be populated in order for your order to be accepted.
 <br/>
 
 ## The /orders/properties endpoint
 
-An API call can be made to the **/orders/properties** endpoint to obtain the properties. Which specific properties are returned depends upon both the order transaction type and the vendor who will be fulfilling the order.
+An API call can be made to the **/orders/properties** endpoint to obtain the properties. The specific properties returned are determined based on the order transaction type and  vendor who will be fulfilling the order.
 
 When making this API call, you must always set the **transactionType** query parameter (e.g., NEW_ACTIVATION, UPGRADE, SUSPEND, etc.). You also must also identify the vendor by passing either one of the two following query parameters:
  
@@ -22,7 +22,7 @@ When making this API call, you must always set the **transactionType** query par
 * **service** -- The ID of a service asset for which the order is being executed, when applicable. The backend system will look up the ID of the vendor who is associated with this asset.
 
 
-Here is an illustration of what order properties might look like:
+Here is an illustration of what the order properties response could look like:
 
 ```
 {
@@ -85,7 +85,7 @@ Here is an illustration of what order properties might look like:
 
 ## Contents of an Order Property
 
-An individual order property contain the following required elements:
+An individual order property contains the following required elements:
 
 * **id** -- The unique ID identifing this specific property.
 
@@ -93,21 +93,21 @@ An individual order property contain the following required elements:
 
 * **validation** -- Indicates whether or not the property is required by the vendor.
 
-* **type** -- Type indicates the type of data to which the value should be set:
+* **type** -- Indicates the type of data to which the value should be set:
   * *TEXT*: A string.
   * *DATE*: A date. (Note: the "pattern" element may be set to indicate the accepted format, e.g., ISO 8601, etc.)
   * *CHOICE*: An ID of a single option chosen from an array of choice options. 
 
 
-They can also contain any of the following optional eleements:
+They can also contain any of the following optional elements:
 
-* **maxLength** -- The maximum number of charaacters to which this property can be set. 
+* **maxLength** -- The maximum number of characters to which this property can be set. 
 
-* **minLength** -- The minimum number of charaacters to which this property must be set. 
+* **minLength** -- The minimum number of characters to which this property must be set. 
 
-* **pattern** -- A description of the pattern to which the value should match (e.g, "mm/dd/yyyy"). This can be dislayed to an end user as a hint for what the properties value should look like.
+* **pattern** -- A description of the pattern to which the value should match (e.g, "mm/dd/yyyy"). This can be displayed to an end user as a hint for what the properties value should look like.
 
-* **regEx** -- A regular expression pattern that can be used to validate the value to which the proeprty is set.
+* **regEx** -- A regular expression pattern that can be used to validate the value to which the property is set.
 
 
 <a name="#choiceProperty"></a><br/>
@@ -120,5 +120,5 @@ CHOICE properties include an array named "choices" that contains its acceptable 
 
  * **id** -- The unique ID identifing this specific option.
  * **label** --  A descriptive label that is suitable for displaying to an end user.
- * **isOther** -- A boolean indicating if this specific option is used to select "other" (i.e., "none of the above"). There should only be one option in the array with isOther set to true. Furthermore, this element can be helpful to the user interface to trigger another event, such as revealing a text field for the end user to enter something not found in the dropdown list.
+ * **isOther** -- A boolean indicating if this specific option is used to select "other" (i.e., "none of the above"). There should only be one option in the array with isOther set to true. Furthermore, this element can be helpful to the user interface for triggering another event, such as revealing a text field for the end user to enter something not found in the dropdown list.
 

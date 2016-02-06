@@ -14,7 +14,7 @@ title: Tutorials - ORDER_ACCESSORIES Order
 This API uses the OAuth2 standard for authentication. Specifically, it supports two grant types: *Implicit* and *Resource Owner Password Credentials*. For details regarding how to use this standard to authenticate when making your API calls, please refer to the  [Security and Authentication](/concepts/security/) page.
 <br />
 
-## Step 1. Build the request body (in JSON) that is required 
+## Step 1. Build the request body that is required 
 
 Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.
 
@@ -38,7 +38,7 @@ Here is an example of what the fully-assembled request body JSON might look like
 
 ## Step 2: Set required request headers.
 
-There are multiple HTTP headers that may be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate). See the [Headers](/concepts/headers/) page for more information about our supported headers.
+There are multiple HTTP headers that may be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate). See the [Request Headers](/concepts/headers/) page for more information about our supported headers.
 
 ### Required Headers:
 
@@ -46,13 +46,11 @@ There are multiple HTTP headers that may be passed as part of your API request. 
 
 ### Optional Headers:
 
-* **X-TNGO-CONTEXT-COMPANYEMPLOYEEID** -- Used to specify a company employee ID that defines the context of the call. This header is only checked if the X-TNGO-CONTEXT-EMPLOYEEID header is blank or does not exist. If this header does not exist, the context will be set to the authenticated user. 
-*Security Note:* The authenticated user must be authorized to access (at a minimum) all the same data that the employee referenced in this header is authorized to access.
+* **X-TNGO-CONTEXT-COMPANYEMPLOYEEID** -- The employee ID assigned by the tenant/customer (e.g., employee’s email address, etc.). 
 
-* **X-TNGO-CONTEXT-EMPLOYEEID** -- Used to specify an employee ID that defines the context of the call. If this header does not exist or is blank, then the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header will be used instead. 
-*Security Note:* The authenticated user must be authorized to access (at a minimum) all the same data that the employee referenced in this header is authorized to access.
+* **X-TNGO-CONTEXT-EMPLOYEEID** -- The employee ID assigned by Tangoe. 
 
-* **X-TNGO-CONTEXT-HIERARCHYID** -- Used to specify the organizational hierarchy to be used for the API call. If this header is blank or does not exist, the default hierarchy will be used.
+* **X-TNGO-CONTEXT-HIERARCHYID** -- The Tangoe-assigned ID that is used to specify the organizational hierarchy to be used for the API call.
 
 <br />
 
@@ -67,11 +65,11 @@ To obtain a confirmation, set the **confirm** query parameter to true.
 
 ## Step 4: Obtain the order confirmation by calling the /orders endpoint via HTTP POST. 
 
-Your request, containing the JSON request body and confirm query parameter set to true, is now be ready. Submit it via the HTTP POST method to the **/orders** endpoint.
+Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the **/orders** endpoint.
 
 If successful, the API will return a response with a 200 HTTP status code and containing JSON that fully describes the identifiers that were submitted. This data can then be presented back to the end user for verification and correction (if necessary). 
 
-Here is an example of what the order confirmation JSON might look like:
+Here is an example of what the order confirmation response might look like:
 
 ```
 
@@ -85,7 +83,7 @@ Once the request has been confirmed, it can be re-submitted for processing via H
 
 If the submission is successful, the API will once again return a response containing JSON with an HTTP status code of 200. This response also will include the newly-assigned order number (i.e., orderId). 
  
-Here is an example of what the order JSON might look like:
+Here is an example of what the order response might look like:
 
 ```
   
