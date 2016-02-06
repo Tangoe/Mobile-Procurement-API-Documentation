@@ -141,7 +141,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/concepts/headers/">Headers</a>
+              <a href="http://localhost:4000/concepts/headers/">Request Headers</a>
               
               </div>
 
@@ -469,12 +469,14 @@
 
 <p>All paginated API calls require two input parameters: <strong>limit</strong> and <strong>offset</strong>.</p>
 
-<p>The limit value sets the maximum number of items to be included in single “page.” In other words, it is the number of items to be returned within the JSON, out of the total result set found by the query for that API call. The offset value identifies the index of first item contained in the current page. For example, assume you have a total result set of 50 items and you set the limit to 10 and the offset to 30. The result set would be grouped into 5 pages (50 / 10 = 5) and return 10 items starting with the third page (30 / 10 = 3).<br />
+<p>The limit sets the maximum number of items to be included in single “page.” In other words, it is the number of items to be returned within the response, out of the total result set found by the query for that API call.</p>
+
+<p>The offset identifies the index of first item contained in the current page. For example, assume you have a total result set of 50 items and you set the limit to 10 and the offset to 30. The result set would be grouped into 5 pages (50 / 10 = 5) and return 10 items starting with the third page (30 / 10 = 3).<br />
 <br /></p>
 
-<h2 id="json-response-body">JSON Response Body</h2>
+<h2 id="response-body">Response Body</h2>
 
-<p>Paginated results always include a <a href="/concepts/pagination/">metadata block</a> containing the details needed by the API consumer to navigate the resultset. These details include:</p>
+<p>Paginated results always include a <a href="/concepts/pagination/">metadata block</a> containing the details needed by the API consumer to navigate the result set. These details include:</p>
 
 <ul>
   <li>
@@ -494,19 +496,19 @@
   </li>
 </ul>
 
-<p>These pagination position properties (i.e., hrefStart, hrefPrevious, hrefNext, hrefEnd) will only be returned when that link resolves to a page other than the current page. For example, say the offset is set to zero (i.e., asking to return the first page). The API response will then return the first page in the result set. Therefore, the metadata will not include the hrefStart and hrefPrevious properties since they would both point to the same page that is returned. This behavior is intended to make it easier for user interface logic to populate a pagination control. The logic can simply check for the absence of these properties to know when to disable navigation links.</p>
+<p>These pagination position properties (i.e., hrefStart, hrefPrevious, hrefNext, hrefEnd) will only be returned when the link resolves to a page other than the current page. For example, say the offset is set to zero (i.e., asking to return the first page). The API response will then return the first page in the result set. Therefore, the metadata will not include the hrefStart and hrefPrevious properties since they would both point to the same page as the one that is returned. This behavior is intended to make it easier for user interface logic to populate a pagination control. The logic can simply check for the absence of these properties to know when to disable navigation links.</p>
 
-<p>Here is an example of what the pagination information in the metadata block might looks like:</p>
+<p>Here is an example of what the pagination information in the metadata block might look like:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>"_meta": {
   ...
   "totalCount": 24,
   "offset": 10,
   "limit": 5,
-  "hrefStart": "http://api.tangoe.com/mobileprocurement/v1/orders?sortAscending=true&amp;maxStatistics=7&amp;limit=5&amp;offset=0",
-  "hrefPrevious": "http://api.tangoe.com/mobileprocurement/v1/orders?sortAscending=true&amp;maxStatistics=7&amp;limit=5&amp;offset=5",
-  "hrefNext": "http://api.tangoe.com/mobileprocurement/v1/orders?sortAscending=true&amp;maxStatistics=7&amp;limit=5&amp;offset=15",
-  "hrefEnd": "http://api.tangoe.com/mobileprocurement/v1/orders?sortAscending=true&amp;maxStatistics=7&amp;limit=5&amp;offset=20"
+  "hrefStart": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&amp;offset=0",
+  "hrefPrevious": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&amp;offset=5",
+  "hrefNext": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&amp;offset=15",
+  "hrefEnd": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&amp;offset=20"
 }
 </code></pre>
 </div>
@@ -518,7 +520,7 @@
  
     
     <footer class="dc-footer">
-      <p class="">&copy; Copyright 2016 Tangoe  | <a href="http://www.tangoe.com">About Tangoe</a></p>
+      <p class="">&copy; Copyright 2016 Tangoe  | <a href="http://www.tangoe.com" target="_blank">About Tangoe</a></p>
     </footer> 
   </div>
 </body>

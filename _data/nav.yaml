@@ -16,7 +16,7 @@
   subOne:
     - label: "Authentication and Security"
       href: "concepts/security/"
-    - label: "Headers"
+    - label: "Request Headers"
       href: "concepts/headers/"
     - label: "Errors"
       href: "concepts/errors/"

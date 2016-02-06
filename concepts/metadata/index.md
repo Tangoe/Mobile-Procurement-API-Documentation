@@ -12,7 +12,7 @@ For example, the API call for a collection of employees might return items conta
 
 ## Detail Record Example
 
-Metadata blocks make it very easy for the API consumer to easily obtain details for selected items without having to bloat a collection with details for all items returned. This could be particularly useful for use cases such as a list page containing a “view details” button for every item in the list.The end user will likely want to scan a list and choose to find out more details about just one particular item, rather than view the details of every item. Therefore, it is unnecessary to bloat the API response with a huge volume of detail that the end user is unlikely to want. Moreover, a smaller result set of more targeted data will enable the API to return results much faster.
+Metadata blocks make it very easy for the API consumer to easily obtain details for selected items without having to bloat a collection with details for all items returned. This could be particularly useful for use cases such as a list page containing a “view details” button for every item in the list. The end user will likely want to scan a list and choose to find out more details about just one particular item, rather than view the details of every item. Therefore, it is unnecessary to bloat the API response with a huge volume of detail that the end user is unlikely to want. Moreover, a smaller result set of more targeted data will enable the API to return results much faster.
 
 Below is an illustration of a metadata block contained within a response for an employee collection.
 

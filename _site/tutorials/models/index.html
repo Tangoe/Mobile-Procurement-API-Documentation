@@ -141,7 +141,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/concepts/headers/">Headers</a>
+              <a href="http://localhost:4000/concepts/headers/">Request Headers</a>
               
               </div>
 
@@ -483,59 +483,12 @@
 
 <p><br /></p>
 
-<h2 id="contents-of-an-order-property">Contents of an Order Property</h2>
+<h2 id="contents-of-an-order-property-xxxxxxxxxxxxxxxxxxxxxx">Contents of an Order Property XXXXXXXXXXXXXXXXXXXXXX</h2>
 
 <p>An individual order property contain the following required elements:</p>
 
 <ul>
-  <li>
-    <p><strong>id</strong> – The unique ID identifing this specific property.</p>
-  </li>
-  <li>
-    <p><strong>label</strong> – A descriptive label that is suitable for displaying to an end user.</p>
-  </li>
-  <li>
-    <p><strong>validation</strong> – Indicates whether or not the property is required by the vendor.</p>
-  </li>
-  <li>
-    <p><strong>type</strong> – Type indicates the type of data to which the value should be set:</p>
-    <ul>
-      <li><em>TEXT</em>: A string.</li>
-      <li><em>DATE</em>: A date. (Note: the “pattern” element may be set to indicate the accepted format, e.g., ISO 8601, etc.)</li>
-      <li><em>CHOICE</em>: An ID of a single option chosen from an array of choice options.</li>
-    </ul>
-  </li>
-</ul>
-
-<p>They can also contain any of the following optional eleements:</p>
-
-<ul>
-  <li>
-    <p><strong>maxLength</strong> – The maximum number of charaacters to which this property can be set.</p>
-  </li>
-  <li>
-    <p><strong>minLength</strong> – The minimum number of charaacters to which this property must be set.</p>
-  </li>
-  <li>
-    <p><strong>pattern</strong> – A description of the pattern to which the value should match (e.g, “mm/dd/yyyy”). This can be dislayed to an end user as a hint for what the properties value should look like.</p>
-  </li>
-  <li>
-    <p><strong>regEx</strong> – A regular expression pattern that can be used to validate the value to which the proeprty is set.</p>
-  </li>
-</ul>
-
-<p><a name="#choiceProperty"></a><br /></p>
-
-<h2 id="the-choice-property-type">The CHOICE Property Type</h2>
-
-<p>The CHOICE type is used to model properties that only accept a value from a defined list of options. An API consumer might use this property to surface a dropdown list in their user interface.</p>
-
-<p>CHOICE properties include an array named “choices” that contains its acceptable options. Each option in the array contains the following elements:</p>
-
-<ul>
-  <li><strong>id</strong> – The unique ID identifing this specific option.</li>
-  <li><strong>label</strong> –  A descriptive label that is suitable for displaying to an end user.</li>
-  <li><strong>isOther</strong> – A boolean indicating if this specific option is used to select “other” (i.e., “none of the above”). There should only be one option in the array with isOther set to true. Furthermore, this element can be helpful to the user interface to trigger another event, such as revealing a text field for the end user to enter something not found in the dropdown list.</li>
+  <li><strong>id</strong> – The unique ID identifing this specific property.</li>
 </ul>
 
 
@@ -546,7 +499,7 @@
  
     
     <footer class="dc-footer">
-      <p class="">&copy; Copyright 2016 Tangoe  | <a href="http://www.tangoe.com">About Tangoe</a></p>
+      <p class="">&copy; Copyright 2016 Tangoe  | <a href="http://www.tangoe.com" target="_blank">About Tangoe</a></p>
     </footer> 
   </div>
 </body>
