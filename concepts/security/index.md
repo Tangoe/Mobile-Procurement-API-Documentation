@@ -1,7 +1,6 @@
 ---
 layout: default
-title: Tutorials
-logoTangoe: tangoe-logo_125.png
+title: Authentication and Security
 ---
 
 # Authentication and Security

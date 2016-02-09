@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Tutorials
+title: Create and Submit an Order
 ---
 
 # How to Create and Submit an Order

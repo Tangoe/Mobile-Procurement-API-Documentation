@@ -16,14 +16,16 @@
   subOne:
     - label: "Authentication and Security"
       href: "concepts/security/"
-    - label: "Request Headers"
-      href: "concepts/headers/"
     - label: "Errors"
       href: "concepts/errors/"
-    - label: "Pagination"
-      href: "concepts/pagination/"
     - label: "Metadata"
       href: "concepts/metadata/"
+    - label: "Pagination"
+      href: "concepts/pagination/"
+    - label: "Request Headers"
+      href: "concepts/headers/"
+    - label: "URI Parameters"
+      href: "concepts/uriparameters/"
 
 - label: "Tutorials"
   href: "tutorials/"
@@ -50,8 +52,6 @@
     - label: "&nbsp;&nbsp;&nbsp;&nbsp;  SWAP_DEVICES"
       href: "tutorials/orders/SWAP_DEVICES/" 
 
-    - label: "Obtaining Device Models"
-      href: "tutorials/models/"
     - label: "Obtaining Order Properties"
       href: "tutorials/properties/"
     - label: "Formatting an Address"
@@ -62,7 +62,7 @@
   subOne:
     - label: "Versioning Policy" 
       href: "policies/versioning/"
-    - label: "Terms of Service" 
+    - label: "Terms and Conditions" 
       href: "policies/terms/"
 
 - label: "Contact"

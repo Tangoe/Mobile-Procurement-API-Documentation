@@ -1,7 +1,6 @@
 ---
 layout: default
-title: Tutorials - Addresses
-logoTangoe: tangoe-logo_125.png
+title: Formatting an Address
 ---
 
 

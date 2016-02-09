@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset=utf-8 />
-  <title>  Tutorial - Models |  MOB API </title>  
+  <title>  URI Parameters |  MOB API </title>  
 
   <script src="http://localhost:4000/js/jquery/jquery-2.1.4.min.js"></script>
   
@@ -141,7 +141,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/concepts/headers/">Request Headers</a>
+              <a href="http://localhost:4000/concepts/errors/">Errors</a>
               
               </div>
 
@@ -155,7 +155,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/concepts/errors/">Errors</a>
+              <a href="http://localhost:4000/concepts/metadata/">Metadata</a>
               
               </div>
 
@@ -183,7 +183,21 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/concepts/metadata/">Metadata</a>
+              <a href="http://localhost:4000/concepts/headers/">Request Headers</a>
+              
+              </div>
+
+
+            
+
+
+              
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
+              <a href="http://localhost:4000/concepts/uriparameters/" class="dc-navOption__active">URI Parameters</a>
               
               </div>
 
@@ -353,20 +367,6 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/tutorials/models/" class="dc-navOption__active">Obtaining Device Models</a>
-              
-              </div>
-
-
-            
-
-
-              
-                          
-              
-
-              <div class="dc-navOption  dc-navOption__subone">
-              
               <a href="http://localhost:4000/tutorials/properties/">Obtaining Order Properties</a>
               
               </div>
@@ -425,7 +425,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/policies/terms/">Terms of Service</a>
+              <a href="http://localhost:4000/policies/terms/">Terms and Conditions</a>
               
               </div>
 
@@ -460,36 +460,24 @@
     </div><!--
     --><div class="tg-grid__cell  tg-four-fifths  tg-pad"> 
 
-      <h1 id="obtaining-a-list-of-device-models">Obtaining a List of Device Models</h1>
+      <h1 id="using-uri-parameters-to-obtain-a-single-item">Using URI Parameters to Obtain a Single Item</h1>
 
-<p><strong>This tutorial dscribes the steps for obtaining a list of models for a specific manufacturer.</strong></p>
+<p>Many of the endpoints in this API return a collection of resources (e.g., /assets/devices). However, where it makes sense, there are also many related endpoints that return a single resource instead of the entire collection (/assets/devices/{id}). Often these calls for a single item includes more detail data than provided by the collection.</p>
 
-<p>XXXXXXXXXX.<br />
+<p>These calls for a single item are commonly performed by appending a <em>URI parameter</em> to a collection endpoint, with that  parameter being set to the ID of the specific item desired.<br />
 <br /></p>
 
-<h2 id="the-manufacturersidmodels-endpoint">The /manufacturers/{id}/models endpoint</h2>
+<h2 id="uri-parameters">URI Parameters</h2>
 
-<p>An API call can be made to the <strong>/manufacturers/{id}/models</strong> endpoint to obtain the known models that a particular manufacturer offers.</p>
+<p>A Uniform Resource Identifier (URI) is a string of characters used to identify a resource. The most common form of URI is the Uniform Resource Locator (URL).</p>
 
-<p>In order to obtain a list of known device models offered by a particular manufacturer, an API call must first be made to the <strong>/manufacturers</strong> endpoint to determine that manufacturer’s ID. This ID is then passed into the models endpoint as a URI parameter identifying the selected manufacturer. This call will then return a response that includes all of the models known for this manufacturer.</p>
+<p>The URI parameter is a parameter that is incorporated into the URL itself, rather than appended on the end of the URL (as commonly seen with query strings). For this API, the URI parameter is always set to the ID of the specific resource item you wish to access.</p>
 
-<p>When making this API call, you can also set the (optional) <strong>type</strong> query parameter (e.g., ALL, DEVICE, ACCESSORY).</p>
+<p>In the API documentation, you will see these URI parameters referenced as <strong>“{id}”</strong> within the resource signature (e.g., /catalog/devices/{id}).</p>
 
-<p>Here is an illustration of what the models might look like:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>
+<div class="highlighter-rouge"><pre class="highlight"><code> /catalog/devices/9194831760
 </code></pre>
 </div>
-
-<p><br /></p>
-
-<h2 id="contents-of-an-order-property-xxxxxxxxxxxxxxxxxxxxxx">Contents of an Order Property XXXXXXXXXXXXXXXXXXXXXX</h2>
-
-<p>An individual order property contain the following required elements:</p>
-
-<ul>
-  <li><strong>id</strong> – The unique ID identifing this specific property.</li>
-</ul>
 
 
 
@@ -499,7 +487,7 @@
  
     
     <footer class="dc-footer">
-      <p class="">&copy; Copyright 2016 Tangoe  | <a href="http://www.tangoe.com" target="_blank">About Tangoe</a></p>
+      <p class="">&copy; Copyright 2016 Tangoe  | <a href="http://www.tangoe.com" target="_blank">About Tangoe</a> | <a href="https://www.tangoe.com/privacy-policy/" target="_blank">Privacy Policy</a></p>
     </footer> 
   </div>
 </body>

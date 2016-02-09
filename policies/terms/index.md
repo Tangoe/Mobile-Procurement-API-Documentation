@@ -1,11 +1,10 @@
 ---
 layout: default
-title: Policies - Terms of Service 
+title: Terms and Conditions
 ---
 
 
-
-# Terms of Service
+# Terms and Conditions
 
 (Legal disclosures here)
 

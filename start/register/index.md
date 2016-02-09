@@ -13,3 +13,11 @@ Once your application is registered, a client ID and client secret will be provi
 
 Next, simply follow our easy tutorial to see how you can <a href="/start/first-call/">make your first call in just minutes</a>.
 
+
+
+****NEED *****
+* Client ID  -- unique identifier for OAuth2 implicit grant
+* (client secret?)
+* Username, password
+
+

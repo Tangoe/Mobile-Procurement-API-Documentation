@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Policies - Versioning 
+title: Versioning Policy
 ---
 
 
