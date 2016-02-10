@@ -47,6 +47,7 @@ Once your order request is prepared, it can be passed to the server for validati
 * **Submission** -- Once the request is successfully validated and without errors -- and the confirmation mode is NOT explicitly set to true -- the order can be submitted to the server for fulfillment. Again, the server will return a status value of "SUCCESS", along with enough meaningful information for display to the end user, as well as with a new, system-generated order ID.
 
 * **Errors** -- If during validation the server determines that there are issues with the request that prevent it from being processed, the server will return a status value of "ERROR." The response will also include an array containing data describing the error(s). For a detailed description of what might be returned for an unsuccessful response, please go to the [Errors](/concepts/errors/) page.
+
 <br />
 
 
