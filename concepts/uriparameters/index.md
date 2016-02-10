@@ -8,7 +8,8 @@ title: URI Parameters
 Many of the endpoints in this API return a collection of resources (e.g., /assets/devices). However, where it makes sense, there are also many related endpoints that return a single resource instead of the entire collection (/assets/devices/{id}). Often these calls for a single item includes more detail data than provided by the collection.
 
 These calls for a single item are commonly performed by appending a *URI parameter* to a collection endpoint, with that  parameter being set to the ID of the specific item desired.
-<br>
+
+<br/>
 
 ## URI Parameters
 

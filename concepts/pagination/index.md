@@ -6,6 +6,7 @@ title: Pagination
 # Pagination
 
 API calls that retrieve collections of items frequently return large, unbounded result sets. In these cases, results are almost always paginated to both improve performance and help the user more easily manage handling of the results.
+
 <br />
 
 ## Input Parameters
@@ -15,6 +16,7 @@ All paginated API calls require two input parameters: **limit** and **offset**.
 The limit sets the maximum number of items to be included in single “page.” In other words, it is the number of items to be returned within the response, out of the total result set found by the query for that API call. 
 
 The offset identifies the index of first item contained in the current page. For example, assume you have a total result set of 50 items and you set the limit to 10 and the offset to 30. The result set would be grouped into 5 pages (50 / 10 = 5) and return 10 items starting with the third page (30 / 10 = 3).
+
 <br />
 
 ## Response Body

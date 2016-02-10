@@ -8,6 +8,7 @@ title: Errors
 This API returns a standard HTTP status code with every response to indicate whether your request had succeeded or failed. 
 
 Status codes within the 200 range typically indicate that the request was processed successfully. Codes within the 400 range indicate an error occurred that resulted from the request data provided by the caller (e.g., a required parameter was missing in the request). And codes within the 500 range indicate an error triggered by something on Tangoe's servers. 
+
 <br/>
 
 ## Supported HTTP Status Codes
