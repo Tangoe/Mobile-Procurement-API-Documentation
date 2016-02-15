@@ -12,7 +12,7 @@
       href: "start/explore/"
 
 - label: "Using the API" 
-  href: "concepts/"
+  href: null
   subOne:
     - label: "Authentication and Security"
       href: "concepts/security/"
@@ -28,7 +28,7 @@
       href: "concepts/uriparameters/"
 
 - label: "Tutorials"
-  href: "tutorials/"
+  href: ""
   subOne:
     - label: "Submitting an Order"
       href: "tutorials/orders/" 
@@ -58,7 +58,6 @@
       href: "tutorials/addresses/"  
 
 - label: "Policies and Terms" 
-  href: "policies/" 
   subOne:
     - label: "Versioning Policy" 
       href: "policies/versioning/"
