@@ -8,7 +8,7 @@ title: Request Headers
 
 Request headers are simply key/value pairs of metadata relating to what is contained within the body of a request and/or response. The Mobile Procurement API primarily uses them for identifying users and limiting context. 
 
-<br />
+<br /><br />
 
 ## General Headers
 
