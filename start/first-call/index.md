@@ -37,7 +37,7 @@ To begin, simply follow these easy steps:
 
 A successful response should be returned (i.e., HTTP status 200). The response body will include your echoText value, along with data identifying the backend system that processed your request. 
 
-If there was a problem with your request, you would have received an error message. Please refer to the <a href="/concepts/errors/">Errors page</a> for an explanation of supported HTTP status codes and error messages.
+If there was a problem with your request, you would have received an error message. Please refer to the <a href="{{site.url}}concepts/errors/">Errors page</a> for an explanation of supported HTTP status codes and error messages.
 
 <br />
 
