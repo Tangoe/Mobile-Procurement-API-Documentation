@@ -15,13 +15,14 @@ title: TO DO LIST
 
 * Final version policy (Becky, Legal)
 * Terms and conditions (Becky, Legal)
-* Authentication adn Security Overview (Peter, Ed)
+* Authentication and Security Overview (Peter, Ed)
 
+<br> 
 
 ## Dev Tasks (Mike)
 
 * Finalize copy, JSON: PORT_NUMBER, ORDER_ACCESSORIES
-* Finalize copy on Register adn First Call pages
+* Finalize copy on Register and First Call pages
 * Proof all pages
 * Clean up CSS
 * 
