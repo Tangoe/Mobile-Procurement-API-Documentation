@@ -7,11 +7,13 @@ title: Tutorials - UPDATE_FEATURES Order
 # How to Update the Features of a Service Asset
 
 **This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to update the features of a specific service asset.**
+
 <br />
 
 ## Authentication
 
 This API uses the OAuth2 standard for authentication. Specifically, it supports two grant types: *Implicit* and *Resource Owner Password Credentials*. For details regarding how to use this standard to authenticate when making your API calls, please refer to the  [Security and Authentication](/concepts/security/) page.
+
 <br />
 
 ## Step 1. Build the request body that is required 

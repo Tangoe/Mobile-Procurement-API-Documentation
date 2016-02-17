@@ -7,11 +7,13 @@ title: Tutorials - Ordering - NEW_ACTIVATION
 # How to Order a New Device and/or Service Plan 
 
 **This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to procure a new device and service plan (i.e., NEW_ACTIVATION). Please note that device accessories can also be included with this order.**
+
 <br />
 
 ## Authentication
 
 This API uses the OAuth2 standard for authentication. Specifically, it supports two grant types: *Implicit* and *Resource Owner Password Credentials*. For details regarding how to use this standard to authenticate when making your API calls, please refer to the  [Authentication and Security](/concepts/security/) page.
+
 <br />
 
 ## Step 1. Build the request body that is required 

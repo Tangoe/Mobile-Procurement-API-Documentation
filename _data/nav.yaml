@@ -1,8 +1,8 @@
 - label: "Home"
   href: "/"
 
-- label: "Getting Started"
-  href: "start/"
+- label: "Getting Started" 
+  href: "start/" 
   subOne:
     - label: "Register your App"
       href: "start/register/"
@@ -12,7 +12,7 @@
       href: "start/explore/"
 
 - label: "Using the API" 
-  href: null
+  href: "concepts/security/" 
   subOne:
     - label: "Authentication and Security"
       href: "concepts/security/"
@@ -27,8 +27,8 @@
     - label: "URI Parameters"
       href: "concepts/uriparameters/"
 
-- label: "Tutorials"
-  href: ""
+- label: "Tutorials" 
+  href: "tutorials/orders/" 
   subOne:
     - label: "Submitting an Order"
       href: "tutorials/orders/" 
@@ -58,6 +58,7 @@
       href: "tutorials/addresses/"  
 
 - label: "Policies and Terms" 
+  href: "policies/versioning/" 
   subOne:
     - label: "Versioning Policy" 
       href: "policies/versioning/"

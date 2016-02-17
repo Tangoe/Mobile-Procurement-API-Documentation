@@ -17,23 +17,23 @@ Within each of these categories are specific types of transactions, as listed in
 
 | ***Transaction Type*** 								| ***Catagory*** 		| ***Description*** 																					|
 | ----------------------------------------------		| --------------------- | ------------------------------------------------------------------------------------------- |
-| [NEW_ACTIVATION]({{site.url}}tutorials/orders/NEW_ACTIVATION/)	| Procurement 	 		| Obtain a new device, service, and/or accessory 														|
+| [NEW_ACTIVATION]({{site.url}}tutorials/orders/new_activation/)	| Procurement 	 		| Obtain a new device, service, and/or accessory 														|
 | ----------------------------------------------		| --------------------- | ------------------------------------------------------------------------------------------- |
-| [UPGRADE]({{site.url}}tutorials/orders/UPGRADE/)					| Procurement 			| Upgrade an existing device and/or service.															|
+| [UPGRADE]({{site.url}}tutorials/orders/upgrade/)					| Procurement 			| Upgrade an existing device and/or service.															|
 | ----------------------------------------------		| --------------------- | ------------------------------------------------------------------------------------------- |
-| [ORDER_ACCESSORIES]({{site.url}}tutorials/orders/ORDER_ACCESSORIES/) | Procurement 		| Obtain one or more new accessory item(s).  															|
+| [ORDER_ACCESSORIES]({{site.url}}tutorials/orders/order_accessories/) | Procurement 		| Obtain one or more new accessory item(s).  															|
 | ----------------------------------------------		| --------------------- | ------------------------------------------------------------------------------------------- |
-| [PORT_NUMBER]({{site.url}}tutorials/orders/PORT_NUMBER/) 		| Procurement 			| Port a  service asset from one carrier to another. 											|
+| [PORT_NUMBER]({{site.url}}tutorials/orders/port_number/) 		| Procurement 			| Port a  service asset from one carrier to another. 											|
 | ----------------------------------------------		| --------------------- | ------------------------------------------------------------------------------------------- |
-| [SUSPEND]({{site.url}}tutorials/orders/SUSPEND/)	 				| Care 					| Suspend an active cellular service asset.													|
+| [SUSPEND]({{site.url}}tutorials/orders/suspend/)	 				| Care 					| Suspend an active cellular service asset.													|
 | ----------------------------------------------		| --------------------- | ------------------------------------------------------------------------------------------- |
-| [UNSUSPEND]({{site.url}}tutorials/orders/UNSUSPEND/) 	 		| Care 					| Reactivate a cellular service asset that was previously suspended. 							|
+| [UNSUSPEND]({{site.url}}tutorials/orders/unsuspend/) 	 		| Care 					| Reactivate a cellular service asset that was previously suspended. 							|
 | ----------------------------------------------		| --------------------- | ------------------------------------------------------------------------------------------- |
-| [DEACTIVATE]({{site.url}}tutorials/orders/DEACTIVATE/) 	 		| Care 					| Deactivate an active cellular service asset.													|
+| [DEACTIVATE]({{site.url}}tutorials/orders/deactivate/) 	 		| Care 					| Deactivate an active cellular service asset.													|
 | ----------------------------------------------		| --------------------- | ------------------------------------------------------------------------------------------- |
-| [UPDATE_FEATURES]({{site.url}}tutorials/orders/UPDATE_FEATURES/)	| Care 					| Add or remove optional features on a cellular service asset. 								|
+| [UPDATE_FEATURES]({{site.url}}tutorials/orders/update_features/)	| Care 					| Add or remove optional features on a cellular service asset. 								|
 | ----------------------------------------------		| --------------------- | ------------------------------------------------------------------------------------------- |
-| [SWAP_DEVICES]({{site.url}}tutorials/orders/SWAP_DEVICES/) 		| Care 					| Reassign cellular service from one device to another. 									|
+| [SWAP_DEVICES]({{site.url}}tutorials/orders/swap_devices/) 		| Care 					| Reassign cellular service from one device to another. 									|
 | ----------------------------------------------		| --------------------- | ------------------------------------------------------------------------------------------- |
 
 <br/> 

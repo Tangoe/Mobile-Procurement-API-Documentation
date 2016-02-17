@@ -7,11 +7,13 @@ title: Tutorials - SWAP_DEVICE Order
 # How to Transfer Service from One Device to Another
 
 **This tutorial provides step-by-step instructions for changing the assignment of a service from one device to another. Please note that both devices must be known assets in the possession of the user. In other words, service cannot be transferred to a brand new device that is purchased during the order process.**
+
 <br />
 
 ## Authentication
 
 This API uses the OAuth2 standard for authentication. Specifically, it supports two grant types: *Implicit* and *Resource Owner Password Credentials*. For details regarding how to use this standard to authenticate when making your API calls, please refer to the  [Security and Authentication](/concepts/security/) page.
+
 <br />
 
 ## Step 1. Build the request body that is required 
