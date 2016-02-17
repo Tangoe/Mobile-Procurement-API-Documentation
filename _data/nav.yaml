@@ -2,7 +2,7 @@
   href: "/"
 
 - label: "Getting Started" 
-  href: "start/" 
+  href: "start/register/" 
   subOne:
     - label: "Register your App"
       href: "start/register/"
