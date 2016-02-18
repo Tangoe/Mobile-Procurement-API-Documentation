@@ -6,17 +6,19 @@ title: Contact Us
 
 # Contact Us
 
-
+<br/>
 
 ## Sales 
 
 To register your application to use the Mobile Procurement REST API, please contact <a href="https://www.tangoe.com/company/contact-us/request-info/" target="_blank"><strong>Tangoe Sales</strong></a>.
+
 <br/>
 
 
 ## Support
 
 For technical support, please contact <a href="mailto:Support@tangoe.com"><strong>support@tangoe.com</strong></a>.
+
 <br/>
 
 
