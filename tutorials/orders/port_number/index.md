@@ -12,7 +12,7 @@ title: Tutorials - PORT_NUMBER Order
 
 ## Authentication
 
-This API uses the OAuth2 standard for authentication. Specifically, it supports two grant types: *Implicit* and *Resource Owner Password Credentials*. For details regarding how to use this standard to authenticate when making your API calls, please refer to the  [Security and Authentication](/concepts/security/) page.
+This API uses the OAuth2 standard for authentication. Specifically, it supports two grant types: *Implicit* and *Resource Owner Password Credentials*. For details regarding how to use this standard to authenticate when making your API calls, please refer to the  [Security and Authentication]({{site.url}}/concepts/security/) page.
 
 <br />
 
@@ -24,7 +24,7 @@ For a PORT_NUMBER, this JSON typically includes the following pieces:
 
 * Transaction type (i.e., PORT_NUMBER).
 
-* All required and optional order properties. Refer to the <a href="/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
+* All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
 
 
 
@@ -40,7 +40,7 @@ Here is an example of what the fully-assembled request body JSON might look like
 
 ## Step 2: Set required request headers.
 
-There are multiple HTTP headers that may be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate). See the [Request Headers](/concepts/headers/) page for more information about our supported headers.
+There are multiple HTTP headers that may be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate). See the [Request Headers]({{site.url}}/concepts/headers/) page for more information about our supported headers.
 
 ### Required Headers:
 

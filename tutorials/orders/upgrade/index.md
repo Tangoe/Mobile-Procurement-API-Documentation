@@ -12,7 +12,7 @@ title: Tutorials - UPGRADE Order
 
 ## Authentication
 
-This API uses the OAuth2 standard for authentication. Specifically, it supports two grant types: *Implicit* and *Resource Owner Password Credentials*. For details regarding how to use this standard to authenticate when making your API calls, please refer to the  [Security and Authentication](/concepts/security/) page.
+This API uses the OAuth2 standard for authentication. Specifically, it supports two grant types: *Implicit* and *Resource Owner Password Credentials*. For details regarding how to use this standard to authenticate when making your API calls, please refer to the  [Security and Authentication]({{site.url}}/concepts/security/) page.
 
 <br />
 
@@ -33,9 +33,9 @@ For an UPGRADE, this JSON typically includes the following pieces:
 * Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, and/or plan features). These IDs can be obtained via the catalog endpoints (i.e., **/catalog/devices**, **/catalog/plans**, **/catalog/features**).
   * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** endpoint.
 
-* All required and optional order properties. Refer to the <a href="/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant to your order.
+* All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant to your order.
 
-* Shipping information. This is required whenever an order includes physical items. Refer to the <a href="/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required for your order.
+* Shipping information. This is required whenever an order includes physical items. Refer to the <a href="{{site.url}}/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required for your order.
 
 
 Here is an example of what the fully-assembled request body JSON might look like when upgrading both a device and its related serivce plan:
@@ -114,7 +114,7 @@ Here is an example of what the fully-assembled request body JSON might look like
 
 ## Step 2: Set required request headers.
 
-There are multiple HTTP headers that may be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate). See the [Request Headers](/concepts/headers/) page for more information about our supported headers.
+There are multiple HTTP headers that may be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate). See the [Request Headers]({{site.url}}/concepts/headers/) page for more information about our supported headers.
 
 ### Required Headers:
 
