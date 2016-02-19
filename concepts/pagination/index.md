@@ -21,7 +21,7 @@ The offset identifies the index of first item contained in the current page. For
 
 ## Response Body
 
-Paginated results always include a [metadata block](/concepts/pagination/) containing the details needed by the API consumer to navigate the result set. These details include: 
+Paginated results always include a [metadata block]({{site.url}}/concepts/pagination/) containing the details needed by the API consumer to navigate the result set. These details include: 
 
 * **totalCount** - The total number of items in the entire result set (i.e., across all pages).
 
