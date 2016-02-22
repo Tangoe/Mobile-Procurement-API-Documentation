@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset=utf-8 />
-  <title>  Tutorials - ORDER_ACCESSORIES Order |  Tangoe Mobile Procurement API </title>  
+  <title>  TO DO LIST |  Tangoe Mobile Procurement API </title>  
 
   <script src="http://localhost:4000/js/jquery/jquery-2.1.4.min.js"></script>
   
@@ -269,7 +269,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/tutorials/orders/order_accessories/" class="dc-navOption__active">&nbsp;&nbsp;&nbsp;&nbsp;  ORDER_ACCESSORIES</a>
+              <a href="http://localhost:4000/tutorials/orders/order_accessories/">&nbsp;&nbsp;&nbsp;&nbsp;  ORDER_ACCESSORIES</a>
               
               </div>
 
@@ -460,99 +460,30 @@
     </div><!--
     --><div class="tg-grid__cell  tg-four-fifths  tg-pad"> 
 
-      <h1 id="how-to-order-accessories">How to Order Accessories</h1>
-
-<p><strong>This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to order accessories for a specific device asset.</strong></p>
+      <h1 id="to-do-remaining-tasks">To Do: Remaining Tasks</h1>
 
 <p><br /></p>
 
-<h2 id="authentication">Authentication</h2>
-
-<p>This API uses the OAuth2 standard for authentication. Specifically, it supports two grant types: <em>Implicit</em> and <em>Resource Owner Password Credentials</em>. For details regarding how to use this standard to authenticate when making your API calls, please refer to the  <a href="http://localhost:4000//concepts/security/">Security and Authentication</a> page.</p>
-
-<p><br /></p>
-
-<h2 id="step-1-build-the-request-body-that-is-required">Step 1. Build the request body that is required</h2>
-
-<p>Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.</p>
-
-<p>For a ORDER_ACCESSORIES, this JSON typically includes the following pieces:</p>
+<h2 id="needed-content">Needed Content</h2>
 
 <ul>
-  <li>
-    <p>Transaction type (i.e., ORDER_ACCESSORIES).</p>
-  </li>
-  <li>
-    <p>All required and optional order properties. Refer to the <a href="http://localhost:4000//tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.</p>
-  </li>
-</ul>
-
-<p>Here is an example of what the fully-assembled request body JSON might look like:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>
-</code></pre>
-</div>
-<p><br /></p>
-
-<h2 id="step-2-set-required-request-headers">Step 2: Set required request headers.</h2>
-
-<p>There are multiple HTTP headers that may be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate). See the <a href="http://localhost:4000//concepts/headers/">Request Headers</a> page for more information about our supported headers.</p>
-
-<h3 id="required-headers">Required Headers:</h3>
-
-<ul>
-  <li><strong>X-TNGO-TENANT</strong> - Used to identify the specific tenant (i.e., customer) for which the API is being called.</li>
-</ul>
-
-<h3 id="optional-headers">Optional Headers:</h3>
-
-<ul>
-  <li>
-    <p><strong>X-TNGO-CONTEXT-COMPANYEMPLOYEEID</strong> – The employee ID assigned by the tenant/customer (e.g., employee’s email address, etc.).</p>
-  </li>
-  <li>
-    <p><strong>X-TNGO-CONTEXT-EMPLOYEEID</strong> – The employee ID assigned by Tangoe.</p>
-  </li>
-  <li>
-    <p><strong>X-TNGO-CONTEXT-HIERARCHYID</strong> – The Tangoe-assigned ID that is used to specify the organizational hierarchy to be used for the API call.</p>
-  </li>
+  <li>Final version policy (Becky, Legal)</li>
+  <li>Terms and conditions (Becky, Legal)</li>
+  <li>Authentication and Security Overview (Peter, Ed)</li>
 </ul>
 
 <p><br /></p>
 
-<h2 id="step-3-indicate-if-you-wish-to-obtain-an-order-confirmation">Step 3: Indicate if you wish to obtain an order confirmation.</h2>
+<h2 id="dev-tasks-mike">Dev Tasks (Mike)</h2>
 
-<p>Prior to submitting the order for vendor processing, you will probably want to first obtain an order confirmation. The confirmation returns all of the IDs passed in with the request body, along with the human-readable data that fully describes what was referenced by those IDs (e.g., device name, vendor, price). This is useful for API consumers who wish to present the order request back to their end user so they can verify it for accuracy.</p>
+<ul>
+  <li>Finalize copy, JSON: PORT_NUMBER, ORDER_ACCESSORIES</li>
+  <li>Finalize copy on Register and First Call pages</li>
+  <li>Proof all pages</li>
+  <li>Clean up CSS</li>
+  <li></li>
+</ul>
 
-<p>To obtain a confirmation, set the <strong>confirm</strong> query parameter to true.</p>
-
-<p><br /></p>
-
-<h2 id="step-4-obtain-the-order-confirmation-by-calling-the-orders-endpoint-via-http-post">Step 4: Obtain the order confirmation by calling the /orders endpoint via HTTP POST.</h2>
-
-<p>Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the <strong>/orders</strong> endpoint.</p>
-
-<p>If successful, the API will return a response with a 200 HTTP status code and containing JSON that fully describes the identifiers that were submitted. This data can then be presented back to the end user for verification and correction (if necessary).</p>
-
-<p>Here is an example of what the order confirmation response might look like:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>
-</code></pre>
-</div>
-<p><br /></p>
-
-<h2 id="step-5-submit-order-request">Step 5: Submit Order Request</h2>
-
-<p>Once the request has been confirmed, it can be re-submitted for processing via HTTP POST. Before submitting, be sure to set the confirm query parameter to false (or remove it, since the default is false).</p>
-
-<p>If the submission is successful, the API will once again return a response containing JSON with an HTTP status code of 200. This response also will include the newly-assigned order number (i.e., orderId).</p>
-
-<p>Here is an example of what the order response might look like:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>  
-</code></pre>
-</div>
-<p><br /></p>
 
 
     </div>

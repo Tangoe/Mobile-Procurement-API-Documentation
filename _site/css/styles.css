@@ -36,7 +36,7 @@ h3 {
 }
 
 a {
-	color: #0032A0;
+	color: #03F; /* #0032A0; */
 	text-decoration: none;
 }
 a:active,
