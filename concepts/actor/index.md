@@ -1,16 +1,16 @@
 ---
 layout: default
-title: Setting the Actor
+title: Setting Context - The Actor
 ---
 
-# Setting the Actor: Context vs. Filters
+# Setting Context ("the Actor")
 Every API response must only include data that the authenticated user is authorized to view. Even when an API call is being made on the behalf of a different user, at no time should the API ever return data that the authenticated user is not authorized to see.
 
 The one on whose behalf the API call is being made is considered the context for the API call. In the most simple case, this context is the authenticated user. However, sometimes it is desirable to change the user context (or limit the data returned) for one of two reasons:
 
-* Acting upon behalf of someone else. One common example of this involves the use of a service account to authenticate for all API calls. The service account may be used, but the API call is really being placed for the benefit of an end user. So this end user is the real context. For example, a call to obtain a device catalog returns the list of devices that the end user is authorized to see, not the service account (which might be all devices). Request headers are used for this purpose.
+* **Acting upon behalf of someone else.** One common example of this involves the use of a service account to authenticate for all API calls. The service account may be used, but the API call is really being placed for the benefit of an end user. So this end user is the real context. For example, a call to obtain a device catalog returns the list of devices that the end user is authorized to see, not the service account (which might be all devices). [Request headers]({{site.url}}concepts/headers/) are used for this purpose.
 
-* Showing a subset of data that is relevant to a specific user in your hierarchy. For example, a manager might want a list of devices assigned to a specific employee within the department that he/she manages. in this case we need to utilize a filter to obtain a subset of the total devices that might returned otherwise. Query parameters are used for this purpose.
+* **Showing a subset of data that is relevant to a specific user in your hierarchy.** For example, a manager might want a list of devices assigned to a specific employee within the department that he/she manages. in this case we need to utilize a filter to obtain a subset of the total devices that might returned otherwise. Query parameters are used for this purpose.
 
 <br/>
 
@@ -32,8 +32,8 @@ However, sometimes an API user may wish to execute a call on behalf of someone e
 
 Changing the context is accomplished via adding a header to the request that is set to either a Tangoe-generated ID (i.e., employee ID) or a third-party-generated ID (i.e., company employee ID). Specifically, these two headers are:
 
-* X-TNGO-CONTEXT-EMPLOYEEID
-* X-TNGO-CONTEXT-COMPANYEMPLOYEEID
+* [X-TNGO-CONTEXT-EMPLOYEEID]({{site.url}}concepts/headers/)
+* [X-TNGO-CONTEXT-COMPANYEMPLOYEEID]({{site.url}}concepts/headers/)
 
 The API resources that might require changing the context include:
 

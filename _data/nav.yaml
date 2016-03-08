@@ -26,7 +26,7 @@
       href: "concepts/headers/"
     - label: "URI Parameters"
       href: "concepts/uriparameters/"
-    - label: "Setting the Actor: Context vs. Filters"
+    - label: "Setting Context ('the Actor')"
       href: "concepts/actor/"  
 
 - label: "Tutorials" 
