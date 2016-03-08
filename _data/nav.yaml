@@ -63,9 +63,7 @@
   href: "policies/versioning/" 
   subOne:
     - label: "Versioning Policy" 
-      href: "policies/versioning/"
-    - label: "Terms and Conditions" 
-      href: "policies/terms/"
+      href: "policies/versioning/"    
 
 - label: "Contact"
   href: "contact/"
