@@ -3,17 +3,16 @@
 /* ********************* */
 /* COLORS */
 /* 
-dark blue: 		#;
+dark blue: 		#051C48;
 royal blue: 	#0032A0;
-yellow: 		#F3E600;
+yellow: 		  #F3E600;
 */
 /* ********************* */
 
 
 body {
-  /* margin: 10px 18px; */
   font-size: 15px;
-  color: #000000;
+  color: #000;
 }
 
 
@@ -25,18 +24,16 @@ h1 {
 
 h2 {
 	font-family: 'linotype_helvetica_roman', 'open_sanssemibold', 'open_sansbold', 'open_sansregular', arial, sans-serif;
-	/* font-size: 1rem; */
 	color: #051c48;
 }
 
 h3 {
 	font-family: 'linotype_helvetica_bold', 'open_sanssemibold', 'open_sansbold', 'open_sansregular', arial, sans-serif;
-	/* font-size: 1rem; */
 	color: #000;
 }
 
 a {
-	color: #03F; /* #0032A0; */
+	color: #03F;
 	text-decoration: none;
 }
 a:active,
@@ -47,17 +44,17 @@ a:hover {
 
 
 .highlight {
+  margin-bottom: 12px;
+  padding: 15px;
 	border: 1px dotted #999;
 	border-radius: 4px;
-	padding: 15px;
-	margin-bottom: 12px;
 }
 
 
 .dc-page {
 	width: 100%;
-	overflow: auto;
 	border: 0px;
+  overflow: auto;
 }
 
 .dc-pageLayout {
@@ -87,31 +84,30 @@ a:hover {
 	padding: 0px;
 }
 .dc-navOption__top > a {
-	font-weight: bold;
-	color: #777777; 
+	padding: 6px 10px; 
+  border-bottom: 1px solid #DDD;
+  font-weight: bold;
+	color: #777; 
 	text-decoration: none;	
-	border-bottom: 1px solid #DDDDDD;
-	padding: 6px 10px;
 	display: block;
 }
 
 .dc-navOption__subone {	
 	padding: 0px;
-	font-size: 12px;
-	font-weight: normal;
-	text-decoration: none;
 	border: 0px;
+  font-size: 12px;
+	font-weight: normal;
+	text-decoration: none;	
 }
 .dc-navOption__subone > a {
-	color: #666666;
-	text-decoration: none;
 	padding: 4px 7px 3px 11px;
+  color: #666;
+	text-decoration: none;	
 	display: block;
 }
 
 .dc-navOption__top:hover, 
-.dc-navOption__subone:hover {
-	
+.dc-navOption__subone:hover {	
 }
 
 .dc-navOption__top > a:hover, 
@@ -141,13 +137,13 @@ a.dc-navOption__active {
 	font-size: 2em;
 }
 .dc-banner--royal {
-	background-color: #0032A0;
-	color: #fff; /*#F5E500; */
+	padding: 5px 10px;
+  border-bottom: 4px solid #F5E500;
+  background-color: #0032A0;
+	color: #fff;
 	font-family: 'linotype_helvetica_bold', arial, sans-serif;
 	font-family: arial, sans-serif;
-	font-size: 12px;
-	padding: 5px 10px;
-	border-bottom: 4px solid #F5E500;
+	font-size: 12px;	
 }
 
 
@@ -158,10 +154,10 @@ a.dc-navOption__active {
 .dc-bannerLink:visited {
   margin: auto auto;  
   padding: 3px 9px;
-  color: #fff ; /* #051C48; */
-  background-color: transparent;  /*  #f2f2f2;  #0032A0; */
-  border: 1px solid #fff;  /* #051c48; /*  #051C48; #2b3c73; */
+  border: 1px solid #fff; 
   border-radius: 0px;
+  color: #fff;
+  background-color: transparent;  
   font-family: helvetica, arial, sans-serif;
   font-size: 10px;
   text-decoration: none;
@@ -169,13 +165,11 @@ a.dc-navOption__active {
 }
 .dc-bannerLink:hover,
 .dc-bannerLink:active {  
-  color: #000000; /* #2b3c73; */
-  background-color: #f3E600;
   border: 1px solid #051C48; 
+  color: #000;
+  background-color: #f3E600;  
   text-decoration: none;
 }
-
-
 
 
 
@@ -196,7 +190,7 @@ a.dc-navOption__active {
 
 /* Home page */
 .dc-home__background {
-  background: #00000A;  /* #0032A0; /* Old browsers */
+  background: #00000A;
   background-color:#00000A; 
   background-image:url('http://www.tangoe.com/wp-content/uploads/2015/12/1.2_Telecom1.jpg');
   background-size: cover;
@@ -204,7 +198,6 @@ a.dc-navOption__active {
 
 /* FEATURE BLOCK CLASSES */
 .dc-featureBlock {
-  /* width: 100%; */
   margin-top: 50px;
   background-color: #0032A0;
   display: flex;
@@ -212,11 +205,11 @@ a.dc-navOption__active {
   justify-content: space-around;  
 }
 .dv-feature { 
-  margin: 15px 5px;
-  text-align: center;
+  margin: 15px 5px;  
   padding-bottom: 18px;
   border: 1px solid  #051C48; 
   border-radius: 2px;
+  text-align: center;
   display: flex;
   flex-direction: column;
 }
@@ -231,18 +224,18 @@ a.dc-navOption__active {
   min-width: 120px;
   max-width: 220px;
   padding: 20px 20px 5px 20px;
-  color: #eee;
-  font-size: 11px;
   line-height: 15px;  
+  color: #eee;
+  font-size: 11px;  
 }
 .dv-feature__button,
 .dv-feature__button:visited {
   margin: auto auto;  
   padding: 6px 14px;
-  color: #FFFFFF;
-  background-color: #0032A0;
-  border: 1px solid #fff; /*  #051C48; #2b3c73; */
+  border: 1px solid #FFF;
   border-radius: 0px;
+  color: #FFF;
+  background-color: #0032A0;  
   font-family: 'linotype_helvetica_romanX', 'open_sansboldX', 'open_sansregularX',  'linotype_helvetica_boldX', verdana, helvetica, arial, sans-serif;
   font-size: 17px;
   text-decoration: none;
@@ -250,7 +243,7 @@ a.dc-navOption__active {
 }
 .dv-feature__button:hover,
 .dv-feature__button:active {  
-  color: #000000; /* #2b3c73; */
+  color: #000;
   background-color: #f3E600;
   border: 1px solid #f3E600; 
   text-decoration: none;
@@ -266,7 +259,7 @@ H2.block-title {
 /* HERO BLOCK CLASSES */
 .dv-hero__background {
   padding: 20px;
-  color: #FFFFFF;
+  color: #FFF;
   text-align: center;
   border-radius: 3px;
 }
@@ -274,7 +267,7 @@ H2.block-title {
 .dv-hero__headline {
   font-family: 'linotype_helvetica_thin', 'open_sanssemibold', 'open_sansbold', 'open_sansregular', arial, sans-serif;
   font-size: 2.75rem; 
-  color:#FFFFFF;
+  color: #FFF;
 }
 .dv-hero__headline--accent {
   color: #F5E500;	
@@ -285,9 +278,9 @@ H2.block-title {
   position: relative;
   margin: 5px  0px; 
   padding: 7px 17px;
-  color: #000000;
-  background-color: #f3E600;
   border: 1px solid #f3E600; 
+  color: #000;
+  background-color: #f3E600;  
   font-weight: bold;
   font-size: 17px;
   text-decoration: none;
@@ -295,8 +288,8 @@ H2.block-title {
 }
 .dv-hero__button:hover,
 .dv-hero__button:active {
-  color: #FFFFFF;
-  background-color: transparent;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #FFF;
+  color: #FFF;
+  background-color: transparent;  
   text-decoration: none;
 }
