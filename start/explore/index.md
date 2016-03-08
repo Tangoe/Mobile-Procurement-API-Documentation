@@ -11,3 +11,4 @@ Once you have made your <a href="{{site.url}}start/first-call/">first call</a> v
 Every endpoint in the API offers similar documentation that explains the purpose of the endpoint, along with the query parameters that it supports. Furthermore, every endpoint offers the same mechanism for testing it. Simply enter the appropriate headers and query parameter values, then click the button labeled with the desired HTTP method (e.g., GET, POST). A sample response will be returned, populated with your own data.
 
 
+<img src="{{site.url}}images/screens/devportal-apiref.png" style="border:1px solid #666;" />
