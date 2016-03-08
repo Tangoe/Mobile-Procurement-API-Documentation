@@ -7,20 +7,24 @@ title: Getting Started - Register your Application
 
 # Register your Application
 
-[TO BE DISCUSSED WITH BECKY -- NEED TO DETERMINE HOW WE WANT THEM TO REGISTER]
+The Tangoe Mobile Procurement REST API empowers developers with the ability to manage the procurement of mobile assets in new and innovative ways. This includes the ability to:
 
+* Place procurement orders
+* View asset information
+* Retrieve the status of your orders
 
-To begin using this API, you need to register your application with Tangoe. Please contact us at:  XXXXXXX@tangoe.com  [*** ASK BECKY FOR CONTACT EMAIL -- OR, USE SALESFORCE FORM? (pardot.com) ***]. 
+The Tangoe Mobile Procurement REST API is powered by Tangoe’s robust procurement system. As a registered user, your company will also have access to Tangoe’s extensive and up-to-date device, plan and accessory catalogs.  
 
-Once your application is registered, a client ID and client secret will be provided. This ID and secret are used to obtain a personalized access token that must be passed with every API call. 
+<br/>
 
-Next, simply follow our easy tutorial to see how you can <a href="{{site.url}}start/first-call/">make your first call in just minutes</a>.
+## Upon Registeration
 
+As soon as your application is registered, Tangoe will provide you with your own unique client ID and client secret. This ID and secret are used to obtain the personalized access token that must be passed with every API call. 
 
+Then simply follow our easy tutorial to see how you can <a href="{{site.url}}start/first-call/">make your first call in just minutes</a>.
 
-****NEED *****
-* Client ID  -- unique identifier for OAuth2 implicit grant
-* (client secret?)
-* Username, password
+<br/>
 
+## Register Today
 
+To register your application to use the Mobile Procurement REST API, please contact <a href="https://www.tangoe.com/company/contact-us/request-info/" target="_blank"><strong>Tangoe Sales</strong></a>.
