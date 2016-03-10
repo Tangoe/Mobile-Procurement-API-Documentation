@@ -6,11 +6,11 @@ title: Formatting an Address
 
 # How to Format an Address
 
-**This tutorial describes the steps for obtaining the address components, in order, that are required for properly formatting an address for delivery to a selected country.**
+**This tutorial describes the steps for obtaining the address components, in order, that are required for properly formatting an address for a selected country.**
 
 When placing an order that requires the physical shipment of a device or accessory, shipping address information will need to be included in the request body. Moreover, different countries often require differing sets of components in order for an address to be valid for delivery to an address within that country.
 
-In order to determine the required mailing address components for a selected country, an API call must first be made to the **/regions/{id}** endpoint. Please note that this endpoint requires passing the ID as a URI parameter for the country to which the shipment is to be delivered. This call will return a response that includes a block called addressFormat that identifies all of the specific address components that are required. 
+In order to determine the required mailing address components for a selected country, an API call must first be made to the **/regions/{id}** endpoint. Please note that this endpoint requires passing the ID as a [URI parameter]({{site.url}}concepts/uriparameters/) for the country to which the shipment is to be delivered. This call will return a response that includes a block called **addressFormat** that identifies all of the specific address components that are required. 
 
 For example:
 
