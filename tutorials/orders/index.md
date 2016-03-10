@@ -7,7 +7,6 @@ title: Create and Submit an Order
 
 **This tutorial provides a high-level overview of how orders are created and submitted. Please click on a specific transaction type (below) for step-by-step instructions describing how to successfully create and submit an order for that transaction type.**
 
-<br/>
 
 Each type of order that can be created with this API can be classified in one of two catagories: *Procurement* or *Care*. Procurement transactions are orders for obtaining a new device, plan, and/or accessories. Care transactions are orders for modifying an existing device or service asset. 
 

@@ -4,7 +4,7 @@ title: States and Provinces
 ---
 
 
-# Get a List of States and Provinces
+# Getting Lists of States and Provinces
 
 **This tutorial provides instructions for obtaining a list of states or provinces that are located within a specific country.**
 
