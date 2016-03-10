@@ -7,6 +7,7 @@ title: States and Provinces
 # Get a List of States and Provinces
 
 **This tutorial provides instructions for optaining a list of states or provinces that are located within a specific country.**
+
 <br/>
 
 When creating forms where users are required to enter address information, a dropdown list of states or provinces might need to be displayed. The **/regions** endpoint is used to obtain this data by . 

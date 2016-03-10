@@ -8,6 +8,8 @@ title: Obtaining Order Properties
 
 **This tutorial dscribes the steps for obtaining the required (and optional) properties that are supported by the vendor who will be fulfilling your order.**
 
+<br/>
+
 Order properties are additional pieces of information about your order. They are not used by the API to process the order. But rather, they are passed on to the third-party vendor who will be fulfilling your order. Some of these properties may be required to be populated in order for your order to be accepted.
 
 <br/>
