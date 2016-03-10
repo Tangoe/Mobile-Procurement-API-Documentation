@@ -6,15 +6,13 @@ title: States and Provinces
 
 # Get a List of States and Provinces
 
-**This tutorial provides instructions for optaining a list of states or provinces that are located within a specific country.**
+**This tutorial provides instructions for obtaining a list of states or provinces that are located within a specific country.**
 
-<br/>
+When creating forms where users are required to enter address information, a dropdown list of states or provinces might need to be displayed. The **/regions** endpoint is used to obtain the data needed for populating the options. 
 
-When creating forms where users are required to enter address information, a dropdown list of states or provinces might need to be displayed. The **/regions** endpoint is used to obtain this data by . 
+To begin, you must first determine the region ID for a selected country. If you do not know this ID, call the **/regions** endpoint to get a full list of countries that you can search for the relevant region ID.
 
-To begin, you must first determine the region ID for the relevant country. If you do not know this ID, call the **/regions** endpoint to get a list of countries, each with their own unique region ID.
-
-Next, call the **/regions** endpoint, setting the request's **parentRegion** query parameter with the country's region ID. The API will return all of the states or provinces that are located within that country. Please note that each item in the list will include a TYPE property set to STATE_PROVINCE.
+Next, call the **/regions** endpoint again, this time setting the request's **parentRegion** query parameter with your selected country's region ID. The API will return all of the states or provinces that are located within that country. Please note that each item in the list will include a TYPE property set to STATE_PROVINCE.
 
 For example:
 
@@ -45,64 +43,9 @@ For example:
       "parentId": "70144640",
       "type": "STATE_PROVINCE"
     },
-    {
-      "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640",
-        "hrefParent": "https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640&parentRegion=70144640"
-      },
-      "abbreviation": "AS",
-      "id": "158385989",
-      "name": "American Samoa",
-      "parentId": "70144640",
-      "type": "STATE_PROVINCE"
-    },
-    {
-      "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640",
-        "hrefParent": "https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640&parentRegion=70144640"
-      },
-      "abbreviation": "AZ",
-      "id": "158385990",
-      "name": "Arizona",
-      "parentId": "70144640",
-      "type": "STATE_PROVINCE"
-    },
-    {
-      "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640",
-        "hrefParent": "https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640&parentRegion=70144640"
-      },
-      "abbreviation": "AR",
-      "id": "158385988",
-      "name": "Arkansas",
-      "parentId": "70144640",
-      "type": "STATE_PROVINCE"
-    },
-    {
-      "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640",
-        "hrefParent": "https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640&parentRegion=70144640"
-      },
-      "abbreviation": "CA",
-      "id": "158385991",
-      "name": "California",
-      "parentId": "70144640",
-      "type": "STATE_PROVINCE"
-    },
 
     ... 
 
-    {
-      "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640",
-        "hrefParent": "https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640&parentRegion=70144640"
-      },
-      "abbreviation": "WI",
-      "id": "158386040",
-      "name": "Wisconsin",
-      "parentId": "70144640",
-      "type": "STATE_PROVINCE"
-    },
     {
       "_meta": {
         "href": "https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640",
