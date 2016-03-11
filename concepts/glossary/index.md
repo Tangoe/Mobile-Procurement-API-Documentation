@@ -33,10 +33,10 @@ Hypertext transport protocol. It is one of the key architectural components behi
 ### HTTP Methods 
 Standard ”HTTP verbs” that identify a type of action that an HTTP client might perform against a resource. Common methods include:
 
-* GET - HTTP method for retrieving resources from a system with a RESTful API.
-* POST - HTTP method for creating resources in a system with a RESTful API.
-* PUT - HTTP method for updating resources in a system with a RESTful API.
-* DELETE - HTTP method for removing records from a system with a RESTful API.
+* *GET* - HTTP method for retrieving resources from a system with a RESTful API.
+* *POST* - HTTP method for creating resources in a system with a RESTful API.
+* *PUT* - HTTP method for updating resources in a system with a RESTful API.
+* *DELETE* - HTTP method for removing records from a system with a RESTful API.
 
 ### HTTPS 
 Hypertext transport protocol secure. It is the same in principle and function as HTTP, but exists when data transmitted via HTTP is encrypted before it is sent.
@@ -50,16 +50,39 @@ When the side-effects of multiple requests are the same as a single request. GET
 ### JSON 
 Javascript Object Notation is a data format commonly used for APIs requests parameters and response body.
 
-OAuth - Open standard authorization framework. Grants access on behalf of an end-user without directly sharing credentials.
-Parameter - A parameter is an argument sent to the API which helps define the request and expected response.
-Proxy - An intermediary for requests from clients and servers providing resources.
-RAML - A YAML-based language for describing RESTful and "pragmatically-RESTful" APIs.  
-Request - A call sent by a user to the API, in the form of a URL string, which invokes a specific action on one particular endpoint. It may also include additional parameters or header values.
-REST - Representational state transfer. An architectural pattern for interacting with resources via HTTP methods. It is a form of software architecture that is primarily used for web service design. The World Wide Web is based on REST.
-Resource - A resource is some object or entity that has a URI where it can be manipulated through standard HTTP requests (GET, POST, PUT, etc.).
-Response - The data that an API sends back to a user after it is called via a request. The format of an API response is typically JSON (or XML).
-URI - Unique Resource Identifier. A string of characters used to identify a resource. The most common form of URI is the Uniform Resource Locator (URL).
-URL - Uniform Resource Locator. The unique address for any object or function that can be accessed or invoked on the web.
-Versioning - Assigning a unique identifier to keep track of the state of the API. If breaking changes are made to the API, the version number will increment.
-XML - Extensible Markup Language. A language used for providing information as well as describing that information, such that programs can interpret data without really understanding the data itself.
+### OAuth
+Open standard authorization framework. Grants access on behalf of an end-user without directly sharing credentials.
+
+### Parameter
+A parameter is an argument sent to the API which helps define the request and expected response.
+
+### Proxy
+An intermediary for requests from clients and servers providing resources.
+
+### RAML
+A YAML-based language for describing RESTful and "pragmatically-RESTful" APIs.  
+
+### Request 
+A call sent by a user to the API, in the form of a URL string, which invokes a specific action on one particular endpoint. It may also include additional parameters or header values.
+
+### REST 
+Representational state transfer. An architectural pattern for interacting with resources via HTTP methods. It is a form of software architecture that is primarily used for web service design. The World Wide Web is based on REST.
+
+### Resource 
+A resource is some object or entity that has a URI where it can be manipulated through standard HTTP requests (GET, POST, PUT, etc.).
+
+### Response 
+The data that an API sends back to a user after it is called via a request. The format of an API response is typically JSON (or XML).
+
+### URI
+Unique Resource Identifier. A string of characters used to identify a resource. The most common form of URI is the Uniform Resource Locator (URL).
+
+### URL
+Uniform Resource Locator. The unique address for any object or function that can be accessed or invoked on the web.
+
+### Versioning 
+Assigning a unique identifier to keep track of the state of the API. If breaking changes are made to the API, the version number will increment.
+
+### XML
+Extensible Markup Language. A language used for providing information as well as describing that information, such that programs can interpret data without really understanding the data itself.
 
