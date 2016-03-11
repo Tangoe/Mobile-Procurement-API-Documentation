@@ -15,22 +15,41 @@ An authorization code passed in to an API request via a header or parameter to i
 ### Authentication 
 Identifying the user of the API. Common techniques for authentication include API Keys and OAuth.
 
+### Call 
+A request sent by a user to the API, in the form of a URL string, which invokes a specific action on one particular endpoint. It may also include additional parameters or header values.
 
-Call - A request sent by a user to the API, in the form of a URL string, which invokes a specific action on one particular endpoint. It may also include additional parameters or header values.
-Collection - An API resource that groups other resources together.
-Endpoint - The URI that goes after the base URL and points towards the requested API functionality.
-Header - The header is what's sent preceding the body of an HTTP request or response.
-HTTP - Hypertext transport protocol. It is one of the key architectural components behind how web-based content on the internet is accessed through web browsers.
-HTTP Methods -- Standard ”HTTP verbs” that identify a type of action that an HTTP client might perform against a resource. Common methods include:
-GET - HTTP method for retrieving resources from a system with a RESTful API.
-POST - HTTP method for creating resources in a system with a RESTful API.
-PUT - HTTP method for updating resources in a system with a RESTful API.
-DELETE - HTTP method for removing records from a system with a RESTful API.
+### Collection 
+An API resource that groups other resources together.
 
-HTTPS - Hypertext transport protocol secure. It is the same in principle and function as HTTP, but exists when data transmitted via HTTP is encrypted before it is sent.
-Hypermedia - Any content type which allows entities to link to each other in a standardized way, making other entities discoverable from a client.
-Idempotent - When the side-effects of multiple requests are the same as a single request. GET, PUT, and DELETE are idempotent methods.
-JSON - Javascript Object Notation is a data format commonly used for APIs requests parameters and response body.
+### Endpoint 
+The URI that goes after the base URL and points towards the requested API functionality.
+
+### Header 
+The header is what's sent preceding the body of an HTTP request or response.
+
+### HTTP
+Hypertext transport protocol. It is one of the key architectural components behind how web-based content on the internet is accessed through web browsers.
+
+### HTTP Methods 
+Standard ”HTTP verbs” that identify a type of action that an HTTP client might perform against a resource. Common methods include:
+
+* GET - HTTP method for retrieving resources from a system with a RESTful API.
+* POST - HTTP method for creating resources in a system with a RESTful API.
+* PUT - HTTP method for updating resources in a system with a RESTful API.
+* DELETE - HTTP method for removing records from a system with a RESTful API.
+
+### HTTPS 
+Hypertext transport protocol secure. It is the same in principle and function as HTTP, but exists when data transmitted via HTTP is encrypted before it is sent.
+
+### Hypermedia 
+Any content type which allows entities to link to each other in a standardized way, making other entities discoverable from a client.
+
+### Idempotent
+When the side-effects of multiple requests are the same as a single request. GET, PUT, and DELETE are idempotent methods.
+
+### JSON 
+Javascript Object Notation is a data format commonly used for APIs requests parameters and response body.
+
 OAuth - Open standard authorization framework. Grants access on behalf of an end-user without directly sharing credentials.
 Parameter - A parameter is an argument sent to the API which helps define the request and expected response.
 Proxy - An intermediary for requests from clients and servers providing resources.
