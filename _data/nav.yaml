@@ -28,6 +28,8 @@
       href: "concepts/actor/" 
     - label: "URI Parameters"
       href: "concepts/uriparameters/"
+    - label: "Glossary of Terms"
+      href: "concepts/glossary/"
 
 - label: "Tutorials" 
   href: "tutorials/orders/" 
@@ -61,7 +63,7 @@
     - label: "Formatting an Address"
       href: "tutorials/addresses/"  
 
-- label: "Policies and Terms" 
+- label: "Policies" 
   href: "policies/versioning/" 
   subOne:
     - label: "Versioning Policy" 
