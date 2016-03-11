@@ -1,56 +1,46 @@
 ---
 layout: default
-title: Request Headers 
+title: Glossary of Terms 
 ---
 
 
-# Request Headers
+# Glossary of API Terms
 
-Request headers are simply key/value pairs of metadata relating to what is contained within the body of a request and/or response. The Mobile Procurement API primarily uses them for identifying users and limiting context. 
+### API 
+Application Programming Interface. A software intermediary that allows two applications to talk to each other.
 
-<br />
+### API Key
+An authorization code passed in to an API request via a header or parameter to identify the requester.
 
-## General Headers
+### Authentication 
+Identifying the user of the API. Common techniques for authentication include API Keys and OAuth.
 
-General headers are added by the consumer of the API and are passed along to the appropriate backend system.
 
-### X-TNGO-TENANT
-Used to identify the specific tenant for which the API is being called (i.e., the customer).
+Call - A request sent by a user to the API, in the form of a URL string, which invokes a specific action on one particular endpoint. It may also include additional parameters or header values.
+Collection - An API resource that groups other resources together.
+Endpoint - The URI that goes after the base URL and points towards the requested API functionality.
+Header - The header is what's sent preceding the body of an HTTP request or response.
+HTTP - Hypertext transport protocol. It is one of the key architectural components behind how web-based content on the internet is accessed through web browsers.
+HTTP Methods -- Standard ”HTTP verbs” that identify a type of action that an HTTP client might perform against a resource. Common methods include:
+GET - HTTP method for retrieving resources from a system with a RESTful API.
+POST - HTTP method for creating resources in a system with a RESTful API.
+PUT - HTTP method for updating resources in a system with a RESTful API.
+DELETE - HTTP method for removing records from a system with a RESTful API.
 
-* Required
-* Data type: string
-
-<br />
-
-## Context ID Headers
-
-Frequently, the logged-in/authenticated user calling the API may be a service account. As such, a service account does not specifically identify the actual end user who is placing the order, viewing assets, etc. The true end user (also known as the actor), must be identified by setting a context header. The API will use these identifiers to set the context for making the API call. 
-
-For example, an application called the API using a service account ID (i.e., admin.acme.com). The request also included the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header set to the company ID for an end user, Peter Edwards (i.e., pedwards.acme.com). When the request for the device catalog was executed, only devices that Peter Edwards was authorized to see were returned rather than the larger set that the service account was authorized to access.
-<br>
-
-### X-TNGO-CONTEXT-COMPANYEMPLOYEEID
-
-This is the employee ID assigned by the tenant/customer (e.g., employee's email address, etc.). This header is only used when the X-TNGO-CONTEXT-EMPLOYEEID header is not set. If this header is NOT set, the context will be set to the authenticated user. 
-
-* Optional
-* Data type: string
-
-<br>
-
-### X-TNGO-CONTEXT-EMPLOYEEID 
-
-This is the employee ID assigned by Tangoe. If this header is set, it will be used in place of the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header. If it is NOT set, then the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header will be used (if set).
-
-* Optional
-* Data type: string
-
-<br>
-
-### X-TNGO-CONTEXT-HIERARCHYID 
-
-The Tangoe-assigned ID that is used to specify the organizational hierarchy to be used for the API call. If this header is not set, the default hierarchy will be used.
-
-* Optional
-* Data type: string
+HTTPS - Hypertext transport protocol secure. It is the same in principle and function as HTTP, but exists when data transmitted via HTTP is encrypted before it is sent.
+Hypermedia - Any content type which allows entities to link to each other in a standardized way, making other entities discoverable from a client.
+Idempotent - When the side-effects of multiple requests are the same as a single request. GET, PUT, and DELETE are idempotent methods.
+JSON - Javascript Object Notation is a data format commonly used for APIs requests parameters and response body.
+OAuth - Open standard authorization framework. Grants access on behalf of an end-user without directly sharing credentials.
+Parameter - A parameter is an argument sent to the API which helps define the request and expected response.
+Proxy - An intermediary for requests from clients and servers providing resources.
+RAML - A YAML-based language for describing RESTful and "pragmatically-RESTful" APIs.  
+Request - A call sent by a user to the API, in the form of a URL string, which invokes a specific action on one particular endpoint. It may also include additional parameters or header values.
+REST - Representational state transfer. An architectural pattern for interacting with resources via HTTP methods. It is a form of software architecture that is primarily used for web service design. The World Wide Web is based on REST.
+Resource - A resource is some object or entity that has a URI where it can be manipulated through standard HTTP requests (GET, POST, PUT, etc.).
+Response - The data that an API sends back to a user after it is called via a request. The format of an API response is typically JSON (or XML).
+URI - Unique Resource Identifier. A string of characters used to identify a resource. The most common form of URI is the Uniform Resource Locator (URL).
+URL - Uniform Resource Locator. The unique address for any object or function that can be accessed or invoked on the web.
+Versioning - Assigning a unique identifier to keep track of the state of the API. If breaking changes are made to the API, the version number will increment.
+XML - Extensible Markup Language. A language used for providing information as well as describing that information, such that programs can interpret data without really understanding the data itself.
 
