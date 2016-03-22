@@ -26,13 +26,13 @@ To begin, simply follow these easy steps:
 1. Scroll down to the Resources section and locate the **/ping** endpoint. 
 1. Click on the **GET** tab to expand the panel that describes this endpoint.
 1. Click on the **Try it** link, right below the GET tab. This will reveal the form used for testing this API call. 
-1. In the AUTHENTICATION section, enter your **Client ID** and check the appropriate scope (i.e., MOBILE_PROCUREMENT_API). 
-1. In the HEADERS section, enter your tenant header (i.e., X-TNGO-TENANT).
+1. In the AUTHENTICATION section, enter your **Client ID** and check the appropriate scope (i.e., **MOBPROC**). 
+1. In the HEADERS section, enter your tenant header (i.e., **X-TNGO-TENANT**), ID (i.e., **client_id**), and secret (i.e., **client_secret**).
 1. In the QUERY PARAMETERS section, enter some text in the **echoText** parameter input. This text will be returned with a successful response.
 1. Click the **GET** button to submit your request.
 
 
-<img src="{{site.url}}images/screens/ping.png" style="border:1px solid #666;" />
+<img src="{{site.url}}images/screens/first_call.gif" style="border:1px solid #666;" />
 <br/>
 
 A successful response should be returned (i.e., HTTP status 200). The response body will include your echoText value, along with data identifying the backend system that processed your request. 

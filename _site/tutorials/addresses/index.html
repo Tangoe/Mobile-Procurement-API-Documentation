@@ -197,6 +197,20 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
+              <a href="http://localhost:4000/concepts/actor/">Setting Context ('the Actor')</a>
+              
+              </div>
+
+
+            
+
+
+              
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
               <a href="http://localhost:4000/concepts/uriparameters/">URI Parameters</a>
               
               </div>
@@ -211,7 +225,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/concepts/actor/">Setting Context ('the Actor')</a>
+              <a href="http://localhost:4000/concepts/glossary/">Glossary of Terms</a>
               
               </div>
 
@@ -395,6 +409,20 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
+              <a href="http://localhost:4000/tutorials/states/">Lists of States and Provinces</a>
+              
+              </div>
+
+
+            
+
+
+              
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
               <a href="http://localhost:4000/tutorials/addresses/" class="dc-navOption__active">Formatting an Address</a>
               
               </div>
@@ -416,7 +444,7 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
-          <a href="http://localhost:4000/policies/versioning/">Policies and Terms</a>
+          <a href="http://localhost:4000/policies/versioning/">Policies</a>
         
          
           
@@ -462,9 +490,11 @@
 
       <h1 id="how-to-format-an-address">How to Format an Address</h1>
 
+<p><strong>This tutorial describes the steps for obtaining the address components, in order, that are required for properly formatting an address for a selected country.</strong></p>
+
 <p>When placing an order that requires the physical shipment of a device or accessory, shipping address information will need to be included in the request body. Moreover, different countries often require differing sets of components in order for an address to be valid for delivery to an address within that country.</p>
 
-<p>In order to determine the required mailing address components for a selected country, an API call must first be made to the <strong>/regions/{id}</strong> endpoint. Please note that this endpoint requires passing the ID as a URI parameter for the country to which the shipment is to be delivered. This call will return a response that includes a block called addressFormat that identifies all of the specific address components that are required.</p>
+<p>In order to determine the required mailing address components for a selected country, an API call must first be made to the <strong>/regions/{id}</strong> endpoint. Please note that this endpoint requires passing the ID as a <a href="http://localhost:4000/concepts/uriparameters/">URI parameter</a> for the country to which the shipment is to be delivered. This call will return a response that includes a block called <strong>addressFormat</strong> that identifies all of the specific address components that are required.</p>
 
 <p>For example:</p>
 

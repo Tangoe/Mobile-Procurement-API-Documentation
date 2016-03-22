@@ -108,6 +108,10 @@ There are multiple HTTP headers that may be passed as part of your API request. 
 
 * **X-TNGO-TENANT** - Used to identify the specific tenant (i.e., customer) for which the API is being called.
 
+* **client_id** - Used to identify your client application as the one calling the API.
+
+* **client_secret** - Used to identify your client application as the one calling the API.
+
 ### Optional Headers:
 
 * **X-TNGO-CONTEXT-COMPANYEMPLOYEEID** -- The employee ID assigned by the tenant/customer (e.g., employee’s email address, etc.). 

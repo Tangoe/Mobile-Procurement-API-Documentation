@@ -32,6 +32,7 @@ For an UPGRADE, this JSON typically includes the following pieces:
 
 * Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, and/or plan features). These IDs can be obtained via the catalog endpoints (i.e., **/catalog/devices**, **/catalog/plans**, **/catalog/features**).
   * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** endpoint.
+  * Please note that when upgrading to a plan offered by a different carrier, the new carrier's cellular network may use an different channel access method than your existing carrier (e.g., CDMA, GSM, etc.). In such case, your existing device will not be compatible with the new plan. Therefore, a new device must be selected as part of this order.
 
 * All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant to your order.
 
@@ -119,6 +120,10 @@ There are multiple HTTP headers that may be passed as part of your API request. 
 ### Required Headers:
 
 * **X-TNGO-TENANT** - Used to identify the specific tenant (i.e., customer) for which the API is being called.
+
+* **client_id** - Used to identify your client application as the one calling the API.
+
+* **client_secret** - Used to identify your client application as the one calling the API.
 
 ### Optional Headers:
 

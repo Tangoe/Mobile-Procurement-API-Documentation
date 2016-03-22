@@ -20,6 +20,23 @@ Used to identify the specific tenant for which the API is being called (i.e., th
 * Required
 * Data type: string
 
+<br>
+
+### client_id
+Used to identify your client application as the one calling the API.
+
+* Required
+* Data type: string
+
+<br>
+
+### client_secret
+Used to identify your client application as the one calling the API.
+
+* Required
+* Data type: string
+
+
 <br />
 
 ## Context ID Headers

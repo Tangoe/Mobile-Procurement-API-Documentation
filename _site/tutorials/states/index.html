@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset=utf-8 />
-  <title>  Pagination |  Tangoe Mobile Procurement API </title>  
+  <title>  States and Provinces |  Tangoe Mobile Procurement API </title>  
 
   <script src="http://localhost:4000/js/jquery/jquery-2.1.4.min.js"></script>
   
@@ -169,7 +169,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/concepts/pagination/" class="dc-navOption__active">Pagination</a>
+              <a href="http://localhost:4000/concepts/pagination/">Pagination</a>
               
               </div>
 
@@ -409,7 +409,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/tutorials/states/">Lists of States and Provinces</a>
+              <a href="http://localhost:4000/tutorials/states/" class="dc-navOption__active">Lists of States and Provinces</a>
               
               </div>
 
@@ -488,59 +488,61 @@
     </div><!--
     --><div class="tg-grid__cell  tg-four-fifths  tg-pad"> 
 
-      <h1 id="pagination">Pagination</h1>
+      <h1 id="getting-lists-of-states-and-provinces">Getting Lists of States and Provinces</h1>
 
-<p>API calls that retrieve collections of items frequently return large, unbounded result sets. In these cases, results are almost always paginated to both improve performance and help the user more easily manage handling of the results.</p>
+<p><strong>This tutorial provides instructions for obtaining a list of states or provinces that are located within a specific country.</strong></p>
 
-<p><br /></p>
+<p>When creating forms where users are required to enter address information, a dropdown list of states or provinces might need to be displayed. The <strong>/regions</strong> endpoint is used to obtain the data needed for populating the options in the list.</p>
 
-<h2 id="input-parameters">Input Parameters</h2>
+<p>To begin, you must first determine the region ID for a selected country. If you do not know this ID, call the <strong>/regions</strong> endpoint to get a full list of countries that you can search for the relevant region ID.</p>
 
-<p>All paginated API calls require two input parameters: <strong>limit</strong> and <strong>offset</strong>.</p>
+<p>Next, call the <strong>/regions</strong> endpoint again, this time setting the request’s <strong>parentRegion</strong> query parameter with your selected country’s region ID. The API will return all of the states or provinces that are located within that country. Please note that each item in the list will include a TYPE property set to STATE_PROVINCE.</p>
 
-<p>The limit sets the maximum number of items to be included in single “page.” In other words, it is the number of items to be returned within the response, out of the total result set found by the query for that API call.</p>
+<p>For example:</p>
 
-<p>The offset identifies the index of first item contained in the current page. For example, assume you have a total result set of 50 items and you set the limit to 10 and the offset to 30. The result set would be grouped into 5 pages (50 / 10 = 5) and return 10 items starting with the third page (30 / 10 = 3).</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"regions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"hrefParent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640&amp;parentRegion=70144640"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"abbreviation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AL"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"158385987"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alabama"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"parentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STATE_PROVINCE"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"hrefParent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640&amp;parentRegion=70144640"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"abbreviation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AK"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"158385986"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alaska"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"parentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STATE_PROVINCE"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
 
-<p><br /></p>
+    </span><span class="err">...</span><span class="w"> 
 
-<h2 id="response-body">Response Body</h2>
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"hrefParent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640&amp;parentRegion=70144640"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"abbreviation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WY"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"158386042"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wyoming"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"parentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STATE_PROVINCE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-<p>Paginated results always include a <a href="http://localhost:4000/concepts/metadata/">metadata block</a> containing the details needed by the API consumer to navigate the result set. These details include:</p>
-
-<ul>
-  <li>
-    <p><strong>totalCount</strong> - The total number of items in the entire result set (i.e., across all pages).</p>
-  </li>
-  <li>
-    <p><strong>hrefStart</strong> - A fully-qualified URL for an API call that will return the FIRST page in the result set.</p>
-  </li>
-  <li>
-    <p><strong>hrefPrevious</strong> - A fully-qualified URL for an API call that will return the page that occurs immediately BEFORE the current page in the result set.</p>
-  </li>
-  <li>
-    <p><strong>hrefNext</strong> - A fully-qualified URL that will return the the page that occurs immediately AFTER the current page in the result set.</p>
-  </li>
-  <li>
-    <p><strong>hrefEnd</strong> - A fully-qualified URL that will return the LAST page in the result set.</p>
-  </li>
-</ul>
-
-<p>These pagination position properties (i.e., hrefStart, hrefPrevious, hrefNext, hrefEnd) will only be returned when the link resolves to a page other than the current page. For example, say the offset is set to zero (i.e., asking to return the first page). The API response will then return the first page in the result set. Therefore, the metadata will not include the hrefStart and hrefPrevious properties since they would both point to the same page as the one that is returned. This behavior is intended to make it easier for user interface logic to populate a pagination control. The logic can simply check for the absence of these properties to know when to disable navigation links.</p>
-
-<p>Here is an example of what the pagination information in the metadata block might look like:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>"_meta": {
-  ...
-  "totalCount": 24,
-  "offset": 10,
-  "limit": 5,
-  "hrefStart": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&amp;offset=0",
-  "hrefPrevious": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&amp;offset=5",
-  "hrefNext": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&amp;offset=15",
-  "hrefEnd": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&amp;offset=20"
-}
-</code></pre>
+</span></code></pre>
 </div>
 
 

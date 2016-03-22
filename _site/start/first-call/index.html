@@ -197,6 +197,20 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
+              <a href="http://localhost:4000/concepts/actor/">Setting Context ('the Actor')</a>
+              
+              </div>
+
+
+            
+
+
+              
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
               <a href="http://localhost:4000/concepts/uriparameters/">URI Parameters</a>
               
               </div>
@@ -211,7 +225,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/concepts/actor/">Setting Context ('the Actor')</a>
+              <a href="http://localhost:4000/concepts/glossary/">Glossary of Terms</a>
               
               </div>
 
@@ -395,6 +409,20 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
+              <a href="http://localhost:4000/tutorials/states/">Lists of States and Provinces</a>
+              
+              </div>
+
+
+            
+
+
+              
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
               <a href="http://localhost:4000/tutorials/addresses/">Formatting an Address</a>
               
               </div>
@@ -416,7 +444,7 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
-          <a href="http://localhost:4000/policies/versioning/">Policies and Terms</a>
+          <a href="http://localhost:4000/policies/versioning/">Policies</a>
         
          
           
@@ -481,13 +509,13 @@
   <li>Scroll down to the Resources section and locate the <strong>/ping</strong> endpoint.</li>
   <li>Click on the <strong>GET</strong> tab to expand the panel that describes this endpoint.</li>
   <li>Click on the <strong>Try it</strong> link, right below the GET tab. This will reveal the form used for testing this API call.</li>
-  <li>In the AUTHENTICATION section, enter your <strong>Client ID</strong> and check the appropriate scope (i.e., MOBILE_PROCUREMENT_API).</li>
-  <li>In the HEADERS section, enter your tenant header (i.e., X-TNGO-TENANT).</li>
+  <li>In the AUTHENTICATION section, enter your <strong>Client ID</strong> and check the appropriate scope (i.e., <strong>MOBPROC</strong>).</li>
+  <li>In the HEADERS section, enter your tenant header (i.e., <strong>X-TNGO-TENANT</strong>), ID (i.e., <strong>client_id</strong>), and secret (i.e., <strong>client_secret</strong>).</li>
   <li>In the QUERY PARAMETERS section, enter some text in the <strong>echoText</strong> parameter input. This text will be returned with a successful response.</li>
   <li>Click the <strong>GET</strong> button to submit your request.</li>
 </ol>
 
-<p><img src="http://localhost:4000/images/screens/ping.png" style="border:1px solid #666;" /><br />
+<p><img src="http://localhost:4000/images/screens/first_call.gif" style="border:1px solid #666;" /><br />
 <br /></p>
 
 <p>A successful response should be returned (i.e., HTTP status 200). The response body will include your echoText value, along with data identifying the backend system that processed your request.</p>

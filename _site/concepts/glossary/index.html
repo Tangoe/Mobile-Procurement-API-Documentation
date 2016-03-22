@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset=utf-8 />
-  <title>  Pagination |  Tangoe Mobile Procurement API </title>  
+  <title>  Glossary of Terms |  Tangoe Mobile Procurement API </title>  
 
   <script src="http://localhost:4000/js/jquery/jquery-2.1.4.min.js"></script>
   
@@ -169,7 +169,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/concepts/pagination/" class="dc-navOption__active">Pagination</a>
+              <a href="http://localhost:4000/concepts/pagination/">Pagination</a>
               
               </div>
 
@@ -225,7 +225,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/concepts/glossary/">Glossary of Terms</a>
+              <a href="http://localhost:4000/concepts/glossary/" class="dc-navOption__active">Glossary of Terms</a>
               
               </div>
 
@@ -488,60 +488,90 @@
     </div><!--
     --><div class="tg-grid__cell  tg-four-fifths  tg-pad"> 
 
-      <h1 id="pagination">Pagination</h1>
+      <h1 id="glossary-of-api-terms">Glossary of API Terms</h1>
 
-<p>API calls that retrieve collections of items frequently return large, unbounded result sets. In these cases, results are almost always paginated to both improve performance and help the user more easily manage handling of the results.</p>
+<h3 id="api">API</h3>
+<p>Application Programming Interface. A software intermediary that allows two applications to talk to each other.</p>
 
-<p><br /></p>
+<h3 id="api-key">API Key</h3>
+<p>An authorization code passed in to an API request via a header or parameter to identify the requester.</p>
 
-<h2 id="input-parameters">Input Parameters</h2>
+<h3 id="authentication">Authentication</h3>
+<p>Identifying the user of the API. Common techniques for authentication include API Keys and OAuth.</p>
 
-<p>All paginated API calls require two input parameters: <strong>limit</strong> and <strong>offset</strong>.</p>
+<h3 id="call">Call</h3>
+<p>A request sent by a user to the API, in the form of a URL string, which invokes a specific action on one particular endpoint. It may also include additional parameters or header values.</p>
 
-<p>The limit sets the maximum number of items to be included in single “page.” In other words, it is the number of items to be returned within the response, out of the total result set found by the query for that API call.</p>
+<h3 id="collection">Collection</h3>
+<p>An API resource that groups other resources together.</p>
 
-<p>The offset identifies the index of first item contained in the current page. For example, assume you have a total result set of 50 items and you set the limit to 10 and the offset to 30. The result set would be grouped into 5 pages (50 / 10 = 5) and return 10 items starting with the third page (30 / 10 = 3).</p>
+<h3 id="endpoint">Endpoint</h3>
+<p>The URI that goes after the base URL and points towards the requested API functionality.</p>
 
-<p><br /></p>
+<h3 id="header">Header</h3>
+<p>The header is what’s sent preceding the body of an HTTP request or response.</p>
 
-<h2 id="response-body">Response Body</h2>
+<h3 id="http">HTTP</h3>
+<p>Hypertext transport protocol. It is one of the key architectural components behind how web-based content on the internet is accessed through web browsers.</p>
 
-<p>Paginated results always include a <a href="http://localhost:4000/concepts/metadata/">metadata block</a> containing the details needed by the API consumer to navigate the result set. These details include:</p>
+<h3 id="http-methods">HTTP Methods</h3>
+<p>Standard ”HTTP verbs” that identify a type of action that an HTTP client might perform against a resource. Common methods include:</p>
 
 <ul>
-  <li>
-    <p><strong>totalCount</strong> - The total number of items in the entire result set (i.e., across all pages).</p>
-  </li>
-  <li>
-    <p><strong>hrefStart</strong> - A fully-qualified URL for an API call that will return the FIRST page in the result set.</p>
-  </li>
-  <li>
-    <p><strong>hrefPrevious</strong> - A fully-qualified URL for an API call that will return the page that occurs immediately BEFORE the current page in the result set.</p>
-  </li>
-  <li>
-    <p><strong>hrefNext</strong> - A fully-qualified URL that will return the the page that occurs immediately AFTER the current page in the result set.</p>
-  </li>
-  <li>
-    <p><strong>hrefEnd</strong> - A fully-qualified URL that will return the LAST page in the result set.</p>
-  </li>
+  <li><em>GET</em> - HTTP method for retrieving resources from a system with a RESTful API.</li>
+  <li><em>POST</em> - HTTP method for creating resources in a system with a RESTful API.</li>
+  <li><em>PUT</em> - HTTP method for updating resources in a system with a RESTful API.</li>
+  <li><em>DELETE</em> - HTTP method for removing records from a system with a RESTful API.</li>
 </ul>
 
-<p>These pagination position properties (i.e., hrefStart, hrefPrevious, hrefNext, hrefEnd) will only be returned when the link resolves to a page other than the current page. For example, say the offset is set to zero (i.e., asking to return the first page). The API response will then return the first page in the result set. Therefore, the metadata will not include the hrefStart and hrefPrevious properties since they would both point to the same page as the one that is returned. This behavior is intended to make it easier for user interface logic to populate a pagination control. The logic can simply check for the absence of these properties to know when to disable navigation links.</p>
+<h3 id="https">HTTPS</h3>
+<p>Hypertext transport protocol secure. It is the same in principle and function as HTTP, but exists when data transmitted via HTTP is encrypted before it is sent.</p>
 
-<p>Here is an example of what the pagination information in the metadata block might look like:</p>
+<h3 id="hypermedia">Hypermedia</h3>
+<p>Any content type which allows entities to link to each other in a standardized way, making other entities discoverable from a client.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>"_meta": {
-  ...
-  "totalCount": 24,
-  "offset": 10,
-  "limit": 5,
-  "hrefStart": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&amp;offset=0",
-  "hrefPrevious": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&amp;offset=5",
-  "hrefNext": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&amp;offset=15",
-  "hrefEnd": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&amp;offset=20"
-}
-</code></pre>
-</div>
+<h3 id="idempotent">Idempotent</h3>
+<p>When the side-effects of multiple requests are the same as a single request. GET, PUT, and DELETE are idempotent methods.</p>
+
+<h3 id="json">JSON</h3>
+<p>Javascript Object Notation is a data format commonly used for APIs requests parameters and response body.</p>
+
+<h3 id="oauth">OAuth</h3>
+<p>Open standard authorization framework. Grants access on behalf of an end-user without directly sharing credentials.</p>
+
+<h3 id="parameter">Parameter</h3>
+<p>A parameter is an argument sent to the API which helps define the request and expected response.</p>
+
+<h3 id="proxy">Proxy</h3>
+<p>An intermediary for requests from clients and servers providing resources.</p>
+
+<h3 id="raml">RAML</h3>
+<p>A YAML-based language for describing RESTful and “pragmatically-RESTful” APIs.</p>
+
+<h3 id="request">Request</h3>
+<p>A call sent by a user to the API, in the form of a URL string, which invokes a specific action on one particular endpoint. It may also include additional parameters or header values.</p>
+
+<h3 id="rest">REST</h3>
+<p>Representational state transfer. An architectural pattern for interacting with resources via HTTP methods. It is a form of software architecture that is primarily used for web service design. The World Wide Web is based on REST.</p>
+
+<h3 id="resource">Resource</h3>
+<p>A resource is some object or entity that has a URI where it can be manipulated through standard HTTP requests (GET, POST, PUT, etc.).</p>
+
+<h3 id="response">Response</h3>
+<p>The data that an API sends back to a user after it is called via a request. The format of an API response is typically JSON (or XML).</p>
+
+<h3 id="uri">URI</h3>
+<p>Unique Resource Identifier. A string of characters used to identify a resource. The most common form of URI is the Uniform Resource Locator (URL).</p>
+
+<h3 id="url">URL</h3>
+<p>Uniform Resource Locator. The unique address for any object or function that can be accessed or invoked on the web.</p>
+
+<h3 id="versioning">Versioning</h3>
+<p>Assigning a unique identifier to keep track of the state of the API. If breaking changes are made to the API, the version number will increment.</p>
+
+<h3 id="xml">XML</h3>
+<p>Extensible Markup Language. A language used for providing information as well as describing that information, such that programs can interpret data without really understanding the data itself.</p>
+
 
 
     </div>
