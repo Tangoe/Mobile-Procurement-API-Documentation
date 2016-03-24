@@ -492,7 +492,7 @@
 
 <p>This API returns a standard HTTP status code with every response to indicate whether your request had succeeded or failed.</p>
 
-<p>Status codes within the 200 range typically indicate that the request was processed successfully. Codes within the 400 range indicate an error occurred that resulted from the request data provided by the caller (e.g., a required parameter was missing in the request). And codes within the 500 range indicate an error triggered by something on Tangoe’s servers.</p>
+<p>Status codes within the 200 range typically indicate that the request was processed successfully. Codes within the 400 range indicate an error occurred that resulted from the request data provided by the caller (e.g., a required parameter was missing in the request). And codes within the 500 range indicate an error triggered by an issue Tangoe’s servers.</p>
 
 <p><br /></p>
 
@@ -501,59 +501,38 @@
 <p>The following status codes are currently supported:</p>
 
 <table>
+  <thead>
+    <tr>
+      <th><strong><em>Status Code</em></strong></th>
+      <th><strong><em>Description</em></strong></th>
+    </tr>
+  </thead>
   <tbody>
-    <tr>
-      <td><strong><em>Status Code</em></strong></td>
-      <td><strong><em>Description</em></strong></td>
-    </tr>
-    <tr>
-      <td>——————–</td>
-      <td>————————————————————————————————-</td>
-    </tr>
     <tr>
       <td><strong>200</strong></td>
       <td><em>Success:</em> Your request was received, understood, and processed.</td>
-    </tr>
-    <tr>
-      <td>——————–</td>
-      <td>————————————————————————————————-</td>
     </tr>
     <tr>
       <td><strong>400</strong></td>
       <td><em>Bad Request:</em> Your request is missing required data or is malformed.</td>
     </tr>
     <tr>
-      <td>——————–</td>
-      <td>————————————————————————————————-</td>
-    </tr>
-    <tr>
       <td><strong>403</strong></td>
       <td><em>Forbidden:</em> You are not authorized to receive what was requested.</td>
-    </tr>
-    <tr>
-      <td>——————–</td>
-      <td>————————————————————————————————-</td>
     </tr>
     <tr>
       <td><strong>404</strong></td>
       <td><em>Not Found:</em> The resource you requested cannot be found.</td>
     </tr>
     <tr>
-      <td>——————–</td>
-      <td>————————————————————————————————-</td>
-    </tr>
-    <tr>
       <td><strong>500</strong></td>
       <td><em>Server Error:</em> Your request failed due to a problem on Tangoe’s servers.</td>
-    </tr>
-    <tr>
-      <td>——————–</td>
-      <td>————————————————————————————————-</td>
     </tr>
   </tbody>
 </table>
 
-<p><br /></p>
+<p><br /><br />
+<br /></p>
 
 <h2 id="error-messages">Error Messages</h2>
 
@@ -561,7 +540,7 @@
 
 <ul>
   <li><strong>status</strong> – One of the HTTP status codes listed above (e.g., 400).</li>
-  <li><strong>id</strong> – Unique string identifying this specific occurance of the error.</li>
+  <li><strong>id</strong> – Unique string identifying this specific occurence of the error.</li>
   <li><strong>errorCode</strong> – Tangoe-assigned code indicating the type of error that occurred.</li>
   <li><strong>message</strong> – Description of the what caused the message and/or how to resolve it.</li>
 </ul>

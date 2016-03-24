@@ -10,44 +10,87 @@ title: Formatting an Address
 
 When placing an order that requires the physical shipment of a device or accessory, shipping address information will need to be included in the request body. Moreover, different countries often require differing sets of components in order for an address to be valid for delivery to an address within that country.
 
-In order to determine the required mailing address components for a selected country, an API call must first be made to the **/regions/{id}** endpoint. Please note that this endpoint requires passing the ID as a [URI parameter]({{site.url}}concepts/uriparameters/) for the country to which the shipment is to be delivered. This call will return a response that includes a block called **addressFormat** that identifies all of the specific address components that are required. 
+In order to determine the required mailing address components for a selected country, an API call must be made to the **/regions/{id}** endpoint. Please note that this endpoint requires passing the ID of the selected country as a [URI parameter]({{site.url}}concepts/uriparameters/). This call will return a response that includes a block called **addressFormat** that identifies all of the specific address components that are required. 
 
 For example:
 
 ```
-
 {
   "_meta": {
-    "href": "http://api.tangoe.com/mobileprocurement/v1/regions/7088567",
-    "hrefParent": "",
-    "hrefChildren": "http://api.tangoe.com/mobileprocurement/v1/regions?parentRegion=7088567"
+    "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640",
+    "hrefChildren": "https://tngo-mobproc.cloudhub.io/mobproc/v1/regions?parentRegion=70144640"
   },
-  "id": "7088567",
-  "name": "United States of America",
-  "type": "COUNTRY",
-  "parentId": "",
+  "abbreviation": "US",
   "addressFormat": [
     {
       "id": "LINE_1",
-      "label": "Address 1"
+      "label": "Line 1",
+      "maxLength": 100,
+      "minLength": 1,
+      "validation": "REQUIRED"
     },
     {
       "id": "LINE_2",
-      "label": "Address 2"
+      "label": "Line 2",
+      "maxLength": 100,
+      "minLength": 0,
+      "validation": "OPTIONAL"
+    },
+    {
+      "id": "LINE_3",
+      "label": "Line 3",
+      "maxLength": 100,
+      "minLength": 0,
+      "validation": "OPTIONAL"
     },
     {
       "id": "CITY",
-      "label": "City"
+      "label": "City",
+      "maxLength": 50,
+      "minLength": 1,
+      "validation": "REQUIRED"
     },
     {
       "id": "STATE",
-      "label": "State"
+      "label": "State",
+      "maxLength": 2,
+      "minLength": 2,
+      "options": [
+        {
+          "label": "Alabama",
+          "value": "AL"
+        },
+        ...
+        {
+          "label": "Wyoming",
+          "value": "WY"
+        }
+      ],
+      "pattern": "[TX]",
+      "regEx": "[A-Za-z][A-Za-z]",
+      "validation": "REQUIRED"
     },
     {
       "id": "POSTAL_CODE",
-      "label": "Postal Code"
+      "label": "Postal Code",
+      "maxLength": 10,
+      "minLength": 4,
+      "pattern": "[99999] or [99999-9999]",
+      "regEx": "[0-9]{4,5}(-[0-9]{4})?",
+      "validation": "REQUIRED"
     }
-  ]
+  ],
+  "countryCode": "1",
+  "currency": {
+    "code": "USD",
+    "name": "US Dollars",
+    "symbol": "$"
+  },
+  "id": "70144640",
+  "name": "United States",
+  "postalCodePattern": "99999",
+  "postalCodeRegEx": "^\\d{5}$",
+  "type": "COUNTRY"
 }
 ```
 
@@ -59,7 +102,7 @@ Once a selected country's address format is returned, the response can be parsed
   "shipTo": {  
     "name": "Peter Edwards",
     "region": { 
-      "id": "7088567"
+      "id": "70144640"
     },
     "address": [
       {

@@ -494,43 +494,86 @@
 
 <p>When placing an order that requires the physical shipment of a device or accessory, shipping address information will need to be included in the request body. Moreover, different countries often require differing sets of components in order for an address to be valid for delivery to an address within that country.</p>
 
-<p>In order to determine the required mailing address components for a selected country, an API call must first be made to the <strong>/regions/{id}</strong> endpoint. Please note that this endpoint requires passing the ID as a <a href="http://localhost:4000/concepts/uriparameters/">URI parameter</a> for the country to which the shipment is to be delivered. This call will return a response that includes a block called <strong>addressFormat</strong> that identifies all of the specific address components that are required.</p>
+<p>In order to determine the required mailing address components for a selected country, an API call must be made to the <strong>/regions/{id}</strong> endpoint. Please note that this endpoint requires passing the ID of the selected country as a <a href="http://localhost:4000/concepts/uriparameters/">URI parameter</a>. This call will return a response that includes a block called <strong>addressFormat</strong> that identifies all of the specific address components that are required.</p>
 
 <p>For example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="w">
-</span><span class="p">{</span><span class="w">
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://api.tangoe.com/mobileprocurement/v1/regions/7088567"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"hrefParent"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"hrefChildren"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://api.tangoe.com/mobileprocurement/v1/regions?parentRegion=7088567"</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hrefChildren"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/regions?parentRegion=70144640"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7088567"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States of America"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COUNTRY"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"parentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"abbreviation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"addressFormat"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LINE_1"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address 1"</span><span class="w">
+      </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Line 1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"maxLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"minLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"validation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUIRED"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LINE_2"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address 2"</span><span class="w">
+      </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Line 2"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"maxLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"minLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"validation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPTIONAL"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LINE_3"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Line 3"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"maxLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"minLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"validation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPTIONAL"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CITY"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"City"</span><span class="w">
+      </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"City"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"maxLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"minLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"validation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUIRED"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STATE"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"State"</span><span class="w">
+      </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"State"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"maxLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"minLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alabama"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AL"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wyoming"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WY"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[TX]"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"regEx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[A-Za-z][A-Za-z]"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"validation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUIRED"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POSTAL_CODE"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Postal Code"</span><span class="w">
+      </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Postal Code"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"maxLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"minLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[99999] or [99999-9999]"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"regEx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[0-9]{4,5}(-[0-9]{4})?"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"validation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUIRED"</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US Dollars"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"postalCodePattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99999"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"postalCodeRegEx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^\\d{5}$"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COUNTRY"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 </div>
@@ -541,7 +584,7 @@
   </span><span class="nt">"shipTo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">  
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter Edwards"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7088567"</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">

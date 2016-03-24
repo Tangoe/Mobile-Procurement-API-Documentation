@@ -504,10 +504,10 @@
 
 <ul>
   <li>
-    <p><strong>vendor</strong> – The ID of the vendor who will be fulfilling the order. This ID can be obtained from mutliple other endpoints, including /vendors, /catalog/plans, etc.</p>
+    <p><strong>vendor</strong> – The ID of the vendor who will be fulfilling the order. This ID can be obtained from many endpoints, such as /vendors, /catalog/plans, etc.</p>
   </li>
   <li>
-    <p><strong>service</strong> – The ID of a service asset for which the order is being executed, when applicable. The backend system will look up the ID of the vendor who is associated with this asset.</p>
+    <p><strong>service</strong> – The ID of the service asset for which the order is being executed, if applicable. The backend system will look up the ID of the vendor who is associated with the service asset.</p>
   </li>
 </ul>
 
@@ -516,11 +516,19 @@
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/orders/properties?transactionType=DEACTIVATE&amp;service=123546789"</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/properties?transactionType=NEW_ACTIVATION&amp;vendor=98"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREFERRED_AREA_CODE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Preferred Area Code"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"maxLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"minLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"validation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUIRED"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTACT_NUMBER"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contact Phone Number"</span><span class="p">,</span><span class="w">
@@ -531,6 +539,14 @@
             </span><span class="nt">"validation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUIRED"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTACT_NUMBER_EXT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ext"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"maxLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"minLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"validation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPTIONAL"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADDITIONAL_INSTRUCTIONS"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Additional Instructions"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"maxLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">4000</span><span class="p">,</span><span class="w">
@@ -539,22 +555,18 @@
             </span><span class="nt">"validation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPTIONAL"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREFERRED_DEACTIVATION_DATE"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Preferred Deactivation Date"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"maxLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"minLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mm/dd/yyyy"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"regEx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.]\\d\\d\\d\\d"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATE"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"validation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPTIONAL"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
             </span><span class="nt">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"isOther"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cancel service as employee is no longer with the company"</span><span class="w">
-              </span><span class="p">}</span><span class="w">
+                </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Broken Device"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"isOther"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Job required upgrade to data device"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="err">...</span><span class="w">
             </span><span class="p">],</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reason"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reason"</span><span class="p">,</span><span class="w">
@@ -578,22 +590,19 @@
 
 <ul>
   <li>
-    <p><strong>id</strong> – The unique ID identifing this specific property.</p>
+    <p><strong>id</strong> – The unique ID identifing a specific order property.</p>
   </li>
   <li>
     <p><strong>label</strong> – A descriptive label that is suitable for displaying to an end user.</p>
   </li>
-  <li>
-    <p><strong>validation</strong> – Indicates whether or not the property is required by the vendor.</p>
-  </li>
-  <li>
-    <p><strong>type</strong> – Indicates the type of data to which the value should be set:</p>
+  <li><strong>type</strong> – Indicates the type of data to which the value should be set:
     <ul>
       <li><em>TEXT</em>: A string.</li>
       <li><em>DATE</em>: A date. (Note: the “pattern” element may be set to indicate the accepted format, e.g., ISO 8601, etc.)</li>
       <li><em>CHOICE</em>: An ID of a single option chosen from an array of choice options.</li>
     </ul>
   </li>
+  <li><strong>validation</strong> – Indicates whether or not the property is required by the vendor.</li>
 </ul>
 
 <p>They can also contain any of the following optional elements:</p>
@@ -606,7 +615,7 @@
     <p><strong>minLength</strong> – The minimum number of characters to which this property must be set.</p>
   </li>
   <li>
-    <p><strong>pattern</strong> – A description of the pattern to which the value should match (e.g, “mm/dd/yyyy”). This can be displayed to an end user as a hint for what the properties value should look like.</p>
+    <p><strong>pattern</strong> – A description of the pattern that the value should match (e.g, “mm/dd/yyyy”). This can be displayed to an end user as a hint describing what the properties value should look like.</p>
   </li>
   <li>
     <p><strong>regEx</strong> – A regular expression pattern that can be used to validate the value to which the property is set.</p>
@@ -619,12 +628,18 @@
 
 <p>The CHOICE type is used to model properties that only accept a value from a defined list of options. An API consumer might use this property to surface a dropdown list in their user interface.</p>
 
-<p>CHOICE properties include an array named “choices” that contains its acceptable options. Each option in the array contains the following elements:</p>
+<p>CHOICE properties include an array named <strong>choices</strong> that contains the acceptable options. Each option in the array contains the following elements:</p>
 
 <ul>
-  <li><strong>id</strong> – The unique ID identifing this specific option.</li>
-  <li><strong>label</strong> –  A descriptive label that is suitable for displaying to an end user.</li>
-  <li><strong>isOther</strong> – A boolean indicating if this specific option is used to select “other” (i.e., “none of the above”). There should only be one option in the array with isOther set to true. Furthermore, this element can be helpful to the user interface for triggering another event, such as revealing a text field for the end user to enter something not found in the dropdown list.</li>
+  <li>
+    <p><strong>id</strong> – The unique ID identifing this specific option.</p>
+  </li>
+  <li>
+    <p><strong>label</strong> –  A descriptive label that is suitable for displaying to an end user.</p>
+  </li>
+  <li>
+    <p><strong>isOther</strong> – A boolean indicating if this specific option is used to select “other” (i.e., “none of the above”). There should only be one option in the array that has <strong>isOther</strong> set to true. Furthermore, this element can be helpful to the user interface for triggering another event, such as revealing a text field. This field can be used by an end user to describe a choice that is different from the ones found in a dropdown list.</p>
+  </li>
 </ul>
 
 

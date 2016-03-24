@@ -494,9 +494,9 @@
 
 <p>When creating forms where users are required to enter address information, a dropdown list of states or provinces might need to be displayed. The <strong>/regions</strong> endpoint is used to obtain the data needed for populating the options in the list.</p>
 
-<p>To begin, you must first determine the region ID for a selected country. If you do not know this ID, call the <strong>/regions</strong> endpoint to get a full list of countries that you can search for the relevant region ID.</p>
+<p>To begin, you must first determine the region ID for a selected country. If you do not know this ID, call the <strong>/regions</strong> endpoint to get a full list of supported countries, along with their IDs.</p>
 
-<p>Next, call the <strong>/regions</strong> endpoint again, this time setting the request’s <strong>parentRegion</strong> query parameter with your selected country’s region ID. The API will return all of the states or provinces that are located within that country. Please note that each item in the list will include a TYPE property set to STATE_PROVINCE.</p>
+<p>Next, call the <strong>/regions</strong> endpoint again, this time setting the request’s <strong>parentRegion</strong> query parameter with your selected country’s region ID. The API will return a list of the states/provinces that are located within that country. Please note that each item in the list will include a TYPE property set to “STATE_PROVINCE.”</p>
 
 <p>For example:</p>
 
@@ -505,8 +505,8 @@
   </span><span class="nt">"regions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"hrefParent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640&amp;parentRegion=70144640"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tgno-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"hrefParent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tgno-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640&amp;parentRegion=70144640"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"abbreviation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AL"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"158385987"</span><span class="p">,</span><span class="w">
@@ -516,8 +516,8 @@
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"hrefParent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640&amp;parentRegion=70144640"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tgno-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"hrefParent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tgno-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640&amp;parentRegion=70144640"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"abbreviation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AK"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"158385986"</span><span class="p">,</span><span class="w">
@@ -530,8 +530,8 @@
 
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"hrefParent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640&amp;parentRegion=70144640"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tgno-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"hrefParent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tgno-mobility.cloudhub.io/mobility/v1/regions?parentRegion=70144640&amp;parentRegion=70144640"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"abbreviation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WY"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"158386042"</span><span class="p">,</span><span class="w">

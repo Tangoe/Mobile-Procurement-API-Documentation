@@ -18,9 +18,9 @@ An API call can be made to the **/orders/properties** endpoint to obtain the pro
 
 When making this API call, you must always set the **transactionType** query parameter (e.g., NEW_ACTIVATION, UPGRADE, SUSPEND, etc.). You also must also identify the vendor by passing either one of the two following query parameters:
  
-* **vendor** -- The ID of the vendor who will be fulfilling the order. This ID can be obtained from mutliple other endpoints, including /vendors, /catalog/plans, etc.
+* **vendor** -- The ID of the vendor who will be fulfilling the order. This ID can be obtained from many endpoints, such as /vendors, /catalog/plans, etc.
 
-* **service** -- The ID of a service asset for which the order is being executed, when applicable. The backend system will look up the ID of the vendor who is associated with this asset.
+* **service** -- The ID of the service asset for which the order is being executed, if applicable. The backend system will look up the ID of the vendor who is associated with the service asset.
 
 
 Here is an illustration of what the order properties response could look like:
@@ -29,11 +29,19 @@ Here is an illustration of what the order properties response could look like:
 {
   "properties": {
     "_meta": {
-      "href": "https://tg-mobility.cloudhub.io/mobility/v1/orders/properties?transactionType=DEACTIVATE&service=123546789"
+      "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/properties?transactionType=NEW_ACTIVATION&vendor=98"
     },
     "items": [
       {
         "fields": [
+          {
+            "id": "PREFERRED_AREA_CODE",
+            "label": "Preferred Area Code",
+            "maxLength": 3,
+            "minLength": 3,
+            "type": "TEXT",
+            "validation": "REQUIRED"
+          },
           {
             "id": "CONTACT_NUMBER",
             "label": "Contact Phone Number",
@@ -44,6 +52,14 @@ Here is an illustration of what the order properties response could look like:
             "validation": "REQUIRED"
           },
           {
+            "id": "CONTACT_NUMBER_EXT",
+            "label": "Ext",
+            "maxLength": 10,
+            "minLength": 0,
+            "type": "TEXT",
+            "validation": "OPTIONAL"
+          },
+          {
             "id": "ADDITIONAL_INSTRUCTIONS",
             "label": "Additional Instructions",
             "maxLength": 4000,
@@ -52,22 +68,18 @@ Here is an illustration of what the order properties response could look like:
             "validation": "OPTIONAL"
           },
           {
-            "id": "PREFERRED_DEACTIVATION_DATE",
-            "label": "Preferred Deactivation Date",
-            "maxLength": 10,
-            "minLength": 10,
-            "pattern": "mm/dd/yyyy",
-            "regEx": "(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.]\\d\\d\\d\\d",
-            "type": "DATE",
-            "validation": "OPTIONAL"
-          },
-          {
             "choices": [
               {
-                "id": "1",
+                "id": "19",
                 "isOther": false,
-                "label": "Cancel service as employee is no longer with the company"
-              }
+                "label": "Broken Device"
+              },
+              {
+                "id": "2",
+                "isOther": false,
+                "label": "Job required upgrade to data device"
+              },
+              ...
             ],
             "id": "Reason",
             "label": "Reason",
@@ -88,17 +100,16 @@ Here is an illustration of what the order properties response could look like:
 
 An individual order property contains the following required elements:
 
-* **id** -- The unique ID identifing this specific property.
+* **id** -- The unique ID identifing a specific order property.
 
 * **label** -- A descriptive label that is suitable for displaying to an end user.
-
-* **validation** -- Indicates whether or not the property is required by the vendor.
 
 * **type** -- Indicates the type of data to which the value should be set:
   * *TEXT*: A string.
   * *DATE*: A date. (Note: the "pattern" element may be set to indicate the accepted format, e.g., ISO 8601, etc.)
   * *CHOICE*: An ID of a single option chosen from an array of choice options. 
 
+* **validation** -- Indicates whether or not the property is required by the vendor.
 
 They can also contain any of the following optional elements:
 
@@ -106,7 +117,7 @@ They can also contain any of the following optional elements:
 
 * **minLength** -- The minimum number of characters to which this property must be set. 
 
-* **pattern** -- A description of the pattern to which the value should match (e.g, "mm/dd/yyyy"). This can be displayed to an end user as a hint for what the properties value should look like.
+* **pattern** -- A description of the pattern that the value should match (e.g, "mm/dd/yyyy"). This can be displayed to an end user as a hint describing what the properties value should look like.
 
 * **regEx** -- A regular expression pattern that can be used to validate the value to which the property is set.
 
@@ -117,9 +128,11 @@ They can also contain any of the following optional elements:
 
 The CHOICE type is used to model properties that only accept a value from a defined list of options. An API consumer might use this property to surface a dropdown list in their user interface. 
 
-CHOICE properties include an array named "choices" that contains its acceptable options. Each option in the array contains the following elements:
+CHOICE properties include an array named **choices** that contains the acceptable options. Each option in the array contains the following elements:
 
  * **id** -- The unique ID identifing this specific option.
+ 
  * **label** --  A descriptive label that is suitable for displaying to an end user.
- * **isOther** -- A boolean indicating if this specific option is used to select "other" (i.e., "none of the above"). There should only be one option in the array with isOther set to true. Furthermore, this element can be helpful to the user interface for triggering another event, such as revealing a text field for the end user to enter something not found in the dropdown list.
+ 
+ * **isOther** -- A boolean indicating if this specific option is used to select "other" (i.e., "none of the above"). There should only be one option in the array that has **isOther** set to true. Furthermore, this element can be helpful to the user interface for triggering another event, such as revealing a text field. This field can be used by an end user to describe a choice that is different from the ones found in a dropdown list.
 
