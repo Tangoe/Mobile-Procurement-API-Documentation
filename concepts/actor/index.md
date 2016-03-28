@@ -10,7 +10,7 @@ The one on whose behalf the API call is being made is considered the context for
 
 * **Acting upon behalf of someone else.** One common example of this involves the use of a service account to authenticate for all API calls. The service account may be used, but the API call is really being placed for the benefit of a particular end user. Therefore, this end user is the real context. For example, a call to obtain a device catalog returns the list of devices that the end user is authorized to see, not the list that the service account may access (which might be all devices). [Request headers]({{site.url}}concepts/headers/) are used for this purpose.
 
-* **Showing a subset of data that is relevant to a specific user in your hierarchy.** For example, a manager might want a list of devices assigned to a specific employee within the department that he/she manages. In this case, we need to utilize a filter to obtain a subset of the total devices that would have been returned oterhwise (i.e., without the filter). Query parameters are used for this purpose.
+* **Showing a subset of data that is relevant to a specific user in your hierarchy.** For example, a manager might want a list of devices assigned to a specific employee within the department that he/she manages. In this case, we need to utilize a filter to obtain a subset of the total devices that would have been returned otherwise (i.e., without the filter). Query parameters are used for this purpose.
 
 <br/>
 
