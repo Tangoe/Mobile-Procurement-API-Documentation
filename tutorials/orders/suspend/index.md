@@ -16,7 +16,7 @@ This API uses the OAuth2 standard for authentication. Specifically, it supports 
 
 <br />
 
-## Step 1. Build the request body that is required 
+## Step 1. Build the request body that is required. 
 
 Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.
 
@@ -240,7 +240,7 @@ Here is an example of what the order confirmation response might look like:
 <br/>
 
 
-## Step 5: Submit Order Request
+## Step 5: Submit order request.
 
 Once the request has been confirmed, it can be re-submitted for processing via HTTP POST. Before submitting, be sure to set the confirm query parameter to false (or remove it, since the default is false). 
 
