@@ -32,7 +32,7 @@ To begin, simply follow these easy steps:
 1. Click the **GET** button to submit your request.
 
 
-<img src="{{site.url}}images/screens/first_call.gif" style="border:1px solid #666;" />
+<img src="{{site.url}}images/screens/first_call.jpg" style="border:1px solid #666;" />
 <br/>
 
 A successful response should be returned (i.e., HTTP status 200). The response body will include your echoText value, along with data identifying the backend system that processed your request. 
