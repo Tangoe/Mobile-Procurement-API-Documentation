@@ -32,9 +32,10 @@ Used to identify your client application as the one calling the API.
 
 ## Context ID Headers
 
-Frequently, the logged-in/authenticated user calling the API may be a service account. As such, a service account does not specifically identify the actual end user who is placing the order, viewing assets, etc. The true end user (also known as the actor), must be identified by setting a context header. The API will use these identifiers to set the context for making the API call. 
+Frequently, the logged-in/authenticated user calling the API may be a service account. As such, a service account does not specifically identify the actual end user who is placing the order, viewing assets, etc. The true end user (also known as "the actor"), must be identified by setting a context header. The API will use these identifiers to set the context for making the API call. 
 
 For example, an application called the API using a service account ID (i.e., admin.acme.com). The request also included the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header set to the company ID for an end user, Peter Edwards (i.e., pedwards.acme.com). When the request for the device catalog was executed, only devices that Peter Edwards was authorized to see were returned rather than the larger set that the service account was authorized to access.
+
 <br>
 
 ### X-TNGO-CONTEXT-COMPANYEMPLOYEEID
