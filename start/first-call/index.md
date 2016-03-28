@@ -10,7 +10,7 @@ Once you have registered your application to use with this API, you will be prov
 
 Upon logging into the Tangoe Developer Portal, simply click on the API Reference link in the navigation panel on the left (pictured below). The API Reference page provides extensive documentation describing each of the API endpoints, including supported headers and query parameters. This reference guide also offers an interactive feature enabling you to submit requests to any endpoint. These requests will return real responses, populated with your own data.
 
-<img src="{{site.url}}images/screens/devportal.jpg" style="border:1px solid #666;" />
+<img src="{{site.url}}images/screens/devportal.png" style="border:1px solid #666;" />
 
 <br/>
 
