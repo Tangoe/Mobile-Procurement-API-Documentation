@@ -490,11 +490,11 @@
 
       <h1 id="how-to-make-your-first-api-call-in-just-minutes">How to Make your First API Call in Just Minutes</h1>
 
-<p>Once you have registered your application to use with this API, you will be provided with access credentials to the <strong>Tangoe Developer Portal</strong> (i.e., client ID, client secret, etc.). To log-in, click the <strong>Developer Portal Log In</strong> button in the upper right corner of this site.</p>
+<p>Once you have registered your application to use with this API, you will be provided with credentials needed to access the <strong>Tangoe Developer Portal</strong>, as well as what is needed for obtaining the access token that is required for calling the API (i.e., client ID, client secret, etc.). To log-in, click the <strong>Developer Portal Log In</strong> button in the upper right corner of this web site.</p>
 
 <p>Upon logging into the Tangoe Developer Portal, simply click on the API Reference link in the navigation panel on the left (pictured below). The API Reference page provides extensive documentation describing each of the API endpoints, including supported headers and query parameters. This reference guide also offers an interactive feature enabling you to submit requests to any endpoint. These requests will return real responses, populated with your own data.</p>
 
-<p><img src="http://localhost:4000/images/screens/devportal.jpg" style="border:1px solid #666;" /></p>
+<p><img src="http://localhost:4000/images/screens/devportal.png" style="border:1px solid #666;" /></p>
 
 <p><br /></p>
 
@@ -510,12 +510,12 @@
   <li>Click on the <strong>GET</strong> tab to expand the panel that describes this endpoint.</li>
   <li>Click on the <strong>Try it</strong> link, right below the GET tab. This will reveal the form used for testing this API call.</li>
   <li>In the AUTHENTICATION section, enter your <strong>Client ID</strong> and check the appropriate scope (i.e., <strong>MOBPROC</strong>).</li>
-  <li>In the HEADERS section, enter your tenant header (i.e., <strong>X-TNGO-TENANT</strong>), ID (i.e., <strong>client_id</strong>), and secret (i.e., <strong>client_secret</strong>).</li>
+  <li>In the HEADERS section, enter your tenant header (i.e., <strong>X-TNGO-TENANT</strong>) and client ID (i.e., <strong>client_id</strong>).</li>
   <li>In the QUERY PARAMETERS section, enter some text in the <strong>echoText</strong> parameter input. This text will be returned with a successful response.</li>
   <li>Click the <strong>GET</strong> button to submit your request.</li>
 </ol>
 
-<p><img src="http://localhost:4000/images/screens/first_call.gif" style="border:1px solid #666;" /><br />
+<p><img src="http://localhost:4000/images/screens/first_call.jpg" style="border:1px solid #666;" /><br />
 <br /></p>
 
 <p>A successful response should be returned (i.e., HTTP status 200). The response body will include your echoText value, along with data identifying the backend system that processed your request.</p>

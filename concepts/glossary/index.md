@@ -25,7 +25,7 @@ An API resource that groups other resources together.
 The URI that goes after the base URL and points towards the requested API functionality.
 
 ### Header 
-The header is what's sent preceding the body of an HTTP request or response.
+The header is the data that is sent preceding the body of an HTTP request or response.
 
 ### HTTP
 Hypertext transport protocol. It is one of the key architectural components behind how web-based content on the internet is accessed through web browsers.
@@ -45,7 +45,7 @@ Hypertext transport protocol secure. It is the same in principle and function as
 Any content type which allows entities to link to each other in a standardized way, making other entities discoverable from a client.
 
 ### Idempotent
-When the side-effects of multiple requests are the same as a single request. GET, PUT, and DELETE are idempotent methods.
+When the results of multiple requests are the same as a single request. GET, PUT, and DELETE are idempotent methods.
 
 ### JSON 
 Javascript Object Notation is a data format commonly used for APIs requests parameters and response body.
