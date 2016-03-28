@@ -6,7 +6,7 @@ title: Getting Started  First call
 
 # How to Make your First API Call in Just Minutes
 
-Once you have registered your application to use with this API, you will be provided with access credentials to the **Tangoe Developer Portal** (i.e., client ID, client secret, etc.). To log-in, click the **Developer Portal Log In** button in the upper right corner of this site.
+Once you have registered your application to use with this API, you will be provided with credentials needed to access the **Tangoe Developer Portal**, as well as what is needed for obtaining the access token that is needed for calling the API (i.e., client ID, client secret, etc.). To log-in, click the **Developer Portal Log In** button in the upper right corner of this site.
 
 Upon logging into the Tangoe Developer Portal, simply click on the API Reference link in the navigation panel on the left (pictured below). The API Reference page provides extensive documentation describing each of the API endpoints, including supported headers and query parameters. This reference guide also offers an interactive feature enabling you to submit requests to any endpoint. These requests will return real responses, populated with your own data.
 
@@ -27,7 +27,7 @@ To begin, simply follow these easy steps:
 1. Click on the **GET** tab to expand the panel that describes this endpoint.
 1. Click on the **Try it** link, right below the GET tab. This will reveal the form used for testing this API call. 
 1. In the AUTHENTICATION section, enter your **Client ID** and check the appropriate scope (i.e., **MOBPROC**). 
-1. In the HEADERS section, enter your tenant header (i.e., **X-TNGO-TENANT**), ID (i.e., **client_id**), and secret (i.e., **client_secret**).
+1. In the HEADERS section, enter your tenant header (i.e., **X-TNGO-TENANT**) and client ID (i.e., **client_id**).
 1. In the QUERY PARAMETERS section, enter some text in the **echoText** parameter input. This text will be returned with a successful response.
 1. Click the **GET** button to submit your request.
 

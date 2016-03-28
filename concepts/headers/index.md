@@ -28,15 +28,6 @@ Used to identify your client application as the one calling the API.
 * Required
 * Data type: string
 
-<br>
-
-### client_secret
-Used to identify your client application as the one calling the API.
-
-* Required
-* Data type: string
-
-
 <br />
 
 ## Context ID Headers
