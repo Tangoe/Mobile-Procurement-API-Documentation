@@ -6,7 +6,7 @@ title: Getting Started  First call
 
 # How to Make your First API Call in Just Minutes
 
-Once you have registered your application to use with this API, you will be provided with credentials needed to access the **Tangoe Developer Portal**, as well as what is needed for obtaining the access token that is needed for calling the API (i.e., client ID, client secret, etc.). To log-in, click the **Developer Portal Log In** button in the upper right corner of this site.
+Once you have registered your application to use with this API, you will be provided with credentials needed to access the **Tangoe Developer Portal**, as well as what is needed for obtaining the access token that is required for calling the API (i.e., client ID, client secret, etc.). To log-in, click the **Developer Portal Log In** button in the upper right corner of this web site.
 
 Upon logging into the Tangoe Developer Portal, simply click on the API Reference link in the navigation panel on the left (pictured below). The API Reference page provides extensive documentation describing each of the API endpoints, including supported headers and query parameters. This reference guide also offers an interactive feature enabling you to submit requests to any endpoint. These requests will return real responses, populated with your own data.
 
