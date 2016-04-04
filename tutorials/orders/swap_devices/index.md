@@ -142,7 +142,7 @@ Here is an example of what the order confirmation response might look like:
   "orderConfirmation": {
     "accountHolder": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"
       },
       "companyEmployeeId": "mike.mcpadden.xx1",
       "department": {
@@ -163,10 +163,10 @@ Here is an example of what the order confirmation response might look like:
       "macAddress": "90:33:20:94:31",
       "manufacturer": {
         "_meta": {
-          "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/LG"
+          "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/LG"
         },
         "id": "LG",
-        "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/LG.gif",
+        "logoUrl": "https://cdn.tangoe.com/manage/images/manufacturers/LG.gif",
         "name": "LG"
       },
       "model": "Cookie Plus",
@@ -179,15 +179,15 @@ Here is an example of what the order confirmation response might look like:
     "existingDevice": {
       "manufacturer": {
         "_meta": {
-          "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Other"
+          "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Other"
         },
         "id": "Other",
-        "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/Other.gif",
+        "logoUrl": "https://cdn.tangoe.com/manage/images/manufacturers/Other.gif",
         "name": "Other"
       },
       "model": {
         "_meta": {
-          "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Other/models/Other"
+          "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Other/models/Other"
         },
         "id": "Other",
         "name": "Other"
@@ -203,15 +203,15 @@ Here is an example of what the order confirmation response might look like:
     "newDevice": {
       "manufacturer": {
         "_meta": {
-          "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Apple"
+          "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Apple"
         },
         "id": "Apple",
-        "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/Apple.gif",
+        "logoUrl": "https://cdn.tangoe.com/manage/images/manufacturers/Apple.gif",
         "name": "Apple"
       },
       "model": {
         "_meta": {
-          "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Apple/models/Apple"
+          "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Apple/models/Apple"
         },
         "id": "iPhone 6 (64GB) - Space Gray",
         "name": "iPhone 6 (64GB) - Space Gray"
@@ -254,14 +254,14 @@ Here is an example of what the order confirmation response might look like:
     ],
     "region": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/regions/70144640"
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640"
       },
       "id": "70144640",
       "name": "United States"
     },
     "requestedBy": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"
       },
       "companyEmployeeId": "mike.mcpadden.xx1",
       "department": {
@@ -277,7 +277,7 @@ Here is an example of what the order confirmation response might look like:
     },
     "service": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/assets/services/38382349"
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/assets/services/38382349"
       },
       "contractDates": {
         "activated": "2010-01-20T06:00:00Z",
@@ -309,11 +309,11 @@ Here is an example of what the order response might look like:
 {
   "order": {
     "_meta": {
-      "href": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8712220"
+      "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8712220"
     },
     "accountHolder": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"
       },
       "companyEmployeeId": "mike.mcpadden.xx1",
       "department": {
@@ -334,8 +334,8 @@ Here is an example of what the order response might look like:
       "items": [
         {
           "_meta": {
-            "hrefHistory": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8712220/history?orderSegment=8712221",
-            "hrefShipments": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8712220/shipments?orderSegment=8712221"
+            "hrefHistory": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8712220/history?orderSegment=8712221",
+            "hrefShipments": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8712220/shipments?orderSegment=8712221"
           },
           "accessories": [],
           "features": [],
@@ -346,10 +346,10 @@ Here is an example of what the order response might look like:
           "status": "ORDER_SUBMITTED",
           "vendor": {
             "_meta": {
-              "href": "https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"
+              "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"
             },
             "id": "98",
-            "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif",
+            "logoUrl": "https://cdn.tangoe.com/manage/images/carrier/logo_VER.gif",
             "name": "Verizon Wireless"
           }
         }
@@ -388,7 +388,7 @@ Here is an example of what the order response might look like:
     ],
     "requestedBy": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"
       },
       "companyEmployeeId": "mike.mcpadden.xx1",
       "department": {

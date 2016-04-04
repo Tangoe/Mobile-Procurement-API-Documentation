@@ -53,7 +53,6 @@ Below is an illustration of a metadata block contained within a response for an 
   "status": "ACTIVE"
 },
 ...
-
 ```
 <br />
 

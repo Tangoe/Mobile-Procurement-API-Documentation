@@ -121,7 +121,7 @@ Here is an example of what the order confirmation response might look like:
   "orderConfirmation": {
     "accountHolder": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28671524"
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28671524"
       },
       "companyEmployeeId": "peter.edwards.acme",
       "department": {
@@ -175,7 +175,7 @@ Here is an example of what the order confirmation response might look like:
     ],
     "requestedBy": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28671524"
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28671524"
       },
       "companyEmployeeId": "peter.edwards.acme",
       "department": {
@@ -191,7 +191,7 @@ Here is an example of what the order confirmation response might look like:
     },
     "service": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/assets/services/31647891"
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/assets/services/31647891"
       },
       "contractDates": {
         "activated": "2013-06-05T05:00:00Z",
@@ -224,7 +224,7 @@ Here is an example of what the order response might look like:
 {
   "order": {
     "_meta": {
-      "href": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8054738"
+      "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8054738"
     },
     "accountHolder": {
       "companyEmployeeId": "peter.edwards.acme",
@@ -281,7 +281,7 @@ Here is an example of what the order response might look like:
     ],
     "requestedBy": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28671524"
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28671524"
       },
       "companyEmployeeId": "peter.edwards.acme",
       "department": {
