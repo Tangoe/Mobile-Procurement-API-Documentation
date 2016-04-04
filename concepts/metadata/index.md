@@ -20,7 +20,6 @@ This pattern is particularly useful for use cases such as a list page containing
 Below is an illustration of a metadata block contained within a response for an employee collection.
 
 ```
-
 {
   "_meta": {
     "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/48068931",
@@ -64,16 +63,14 @@ The meta blocks are not limited to providing the URLs used to make API calls for
 
 
 ```
-
 "_meta": {
-  "href": "http://tngo-mobproc.cloudhub.io/mobproc/v1/assets/devices?sortAscending=true&maxStatistics=7&limit=3&offset=9",
-  "totalCount": 31,
-  "offset": 9,
-  "limit": 3,
-  "hrefStart": "http://tngo-mobproc.cloudhub.io/mobproc/v1/assets/devices?sortAscending=true&maxStatistics=7&limit=3&offset=0",
-  "hrefPrevious": "http://tngo-mobproc.cloudhub.io/mobproc/v1/assets/devices?sortAscending=true&maxStatistics=7&limit=3&offset=6",
-  "hrefNext": "http://tngo-mobproc.cloudhub.io/mobproc/v1/assets/devices?sortAscending=true&maxStatistics=7&limit=3&offset=12",
-  "hrefEnd": "http://tngo-mobproc.cloudhub.io/mobproc/v1/assets/devices?sortAscending=true&maxStatistics=7&limit=3&offset=30"
+  "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees?limit=10&offset=30&sortAscending=true",
+  "hrefEnd": "https://tngo--mobproc.cloudhub.io/mobproc/v1/employees?sortAscending=true&offset=70&limit=10",
+  "hrefNext": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees?sortAscending=true&offset=40&limit=10",
+  "hrefPrevious": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees?sortAscending=true&offset=20&limit=10",
+  "hrefStart": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees?sortAscending=true&offset=0&limit=10",
+  "limit": 10,
+  "offset": 30,
+  "totalCount": 72
 }
-
 ```
