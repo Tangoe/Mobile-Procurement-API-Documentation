@@ -426,11 +426,11 @@ Here is an example of what the order response might look like:
 {
   "order": {
     "_meta": {
-      "href": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8710840"
+      "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8710840"
     },
     "accountHolder": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28671599"
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28671599"
       },
       "companyEmployeeId": "peter.edwards.acme",
       "department": {
@@ -451,18 +451,18 @@ Here is an example of what the order response might look like:
       "items": [
         {
           "_meta": {
-            "hrefHistory": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8710840/history?orderSegment=8710841",
-            "hrefShipments": "https://tg-mobility.cloudhub.io/mobility/v1/orders/8710840/shipments?orderSegment=8710841"
+            "hrefHistory": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8710840/history?orderSegment=8710841",
+            "hrefShipments": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8710840/shipments?orderSegment=8710841"
           },
           "accessories": [
             {
-              "imageUrl": "https://commcareqa.tangoe.com/manage/images/devices/EMICUSBDTVL_F.jpg",
+              "imageUrl": "https://cdn.tangoe.com/manage/images/devices/EMICUSBDTVL_F.jpg",
               "manufacturer": {
                 "_meta": {
-                  "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Verizon%20Wireless"
+                  "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Verizon%20Wireless"
                 },
                 "id": "Verizon Wireless",
-                "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/Verizon Wireless.gif",
+                "logoUrl": "https://cdn.tangoe.com/manage/images/manufacturers/Verizon Wireless.gif",
                 "name": "Verizon Wireless"
               },
               "name": "Verizon Wireless Rapid Wall Charger with 6ft Cable for Micro USB (EMICUSBDTVL-F)",
@@ -473,13 +473,13 @@ Here is an example of what the order response might look like:
               }
             },
             {
-              "imageUrl": "https://commcareqa.tangoe.com/manage/images/devices/MICRDUALVPCF_m.jpg",
+              "imageUrl": "https://cdn.tangoe.com/manage/images/devices/MICRDUALVPCF_m.jpg",
               "manufacturer": {
                 "_meta": {
-                  "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Verizon%20Wireless"
+                  "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Verizon%20Wireless"
                 },
                 "id": "Verizon Wireless",
-                "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/Verizon Wireless.gif",
+                "logoUrl": "https://cdn.tangoe.com/manage/images/manufacturers/Verizon Wireless.gif",
                 "name": "Verizon Wireless"
               },
               "name": "Verizon Wireless Vehicle Charger with Dual Output (MICRDUALVPC-F)",
@@ -491,13 +491,13 @@ Here is an example of what the order response might look like:
             }
           ],
           "device": {
-            "imageUrl": "https://commcareqa.tangoe.com/manage/images/devices/sam_gal_s4_blk.jpg",
+            "imageUrl": "https://cdn.tangoe.com/manage/images/devices/sam_gal_s4_blk.jpg",
             "manufacturer": {
               "_meta": {
-                "href": "https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Samsung"
+                "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Samsung"
               },
               "id": "Samsung",
-              "logoUrl": "https://commcareqa.tangoe.com/manage/images/manufacturers/Samsung.gif",
+              "logoUrl": "https://cdn.tangoe.com/manage/images/manufacturers/Samsung.gif",
               "name": "Samsung"
             },
             "name": "Samsung Galaxy S4 (16GB) - Black Mist",
@@ -538,10 +538,10 @@ Here is an example of what the order response might look like:
           "status": "ORDER_SUBMITTED",
           "vendor": {
             "_meta": {
-              "href": "https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"
+              "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"
             },
             "id": "98",
-            "logoUrl": "https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif",
+            "logoUrl": "https://cdn.tangoe.com/manage/images/carrier/logo_VER.gif",
             "name": "Verizon Wireless"
           }
         }
@@ -581,7 +581,7 @@ Here is an example of what the order response might look like:
     ],
     "requestedBy": {
       "_meta": {
-        "href": "https://tg-mobility.cloudhub.io/mobility/v1/employees/28671599"
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28671599"
       },
       "companyEmployeeId": "peter.edwards.acme",
       "department": {
@@ -622,7 +622,7 @@ Here is an example of what the order response might look like:
       "name": "Peter Edwards",
       "region": {
         "_meta": {
-          "href": "https://tg-mobility.cloudhub.io/mobility/v1/regions/70144640"
+          "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640"
         },
         "id": "70144640",
         "name": "United States"
