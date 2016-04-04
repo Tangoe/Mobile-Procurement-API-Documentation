@@ -23,23 +23,35 @@ Below is an illustration of a metadata block contained within a response for an 
 
 {
   "_meta": {
-    "href": "http://api.tangoe.com/mobileprocurement/v1/employees/123456781"
+    "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/48068931",
+    "hrefDevices": "https://tngo-mobproc.cloudhub.io/mobproc/v1/assets/devices?limit=10&offset=0&employee=48068931",
+    "hrefServices": "https://tngo-mobproc.cloudhub.io/mobproc/v1/assets/services?limit=10&offset=0&employee=48068931"
   },
-  "id": "123456781",
+  "companyEmployeeId": "barbara.andrews@example.com",
+  "department": {
+    "id": "80022",
+    "name": "Marketing"
+  },
   "firstName": "Barbara",
+  "id": "48068931",
   "lastName": "Andrews",
-  "email": "barbara.andrews@example.com",
-  "officePhone": "2035550399"
+  "status": "ACTIVE"
 },
 {
   "_meta": {
-    "href": "http://api.tangoe.com/mobileprocurement/v1/employees/223456993"
+    "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/48068987",
+    "hrefDevices": "https://tngo-mobproc.cloudhub.io/mobproc/v1/assets/devices?limit=10&offset=0&employee=48068987",
+    "hrefServices": "https://tngo-mobproc.cloudhub.io/mobproc/v1/assets/services?limit=10&offset=0&employee=48068987"
   },
-  "id": "223456993",
+  "companyEmployeeId": "james.carpenter@example.com",
+  "department": {
+    "id": "80022",
+    "name": "Marketing"
+  },
   "firstName": "James",
+  "id": "48068987",
   "lastName": "Carpenter",
-  "email": "james.carpenter@example.com",
-  "officePhone": "2035550402"
+  "status": "ACTIVE"
 },
 ...
 
@@ -54,14 +66,14 @@ The meta blocks are not limited to providing the URLs used to make API calls for
 ```
 
 "_meta": {
-  "href": "http://api.tangoe.com/mobileprocurement/v1/assets/devices?sortAscending=true&maxStatistics=7&limit=3&offset=9",
+  "href": "http://tngo-mobproc.cloudhub.io/mobproc/v1/assets/devices?sortAscending=true&maxStatistics=7&limit=3&offset=9",
   "totalCount": 31,
   "offset": 9,
   "limit": 3,
-  "hrefStart": "http://api.tangoe.com/mobileprocurement/v1/assets/devices?sortAscending=true&maxStatistics=7&limit=3&offset=0",
-  "hrefPrevious": "http://api.tangoe.com/mobileprocurement/v1/assets/devices?sortAscending=true&maxStatistics=7&limit=3&offset=6",
-  "hrefNext": "http://api.tangoe.com/mobileprocurement/v1/assets/devices?sortAscending=true&maxStatistics=7&limit=3&offset=12",
-  "hrefEnd": "http://api.tangoe.com/mobileprocurement/v1/assets/devices?sortAscending=true&maxStatistics=7&limit=3&offset=30"
+  "hrefStart": "http://tngo-mobproc.cloudhub.io/mobproc/v1/assets/devices?sortAscending=true&maxStatistics=7&limit=3&offset=0",
+  "hrefPrevious": "http://tngo-mobproc.cloudhub.io/mobproc/v1/assets/devices?sortAscending=true&maxStatistics=7&limit=3&offset=6",
+  "hrefNext": "http://tngo-mobproc.cloudhub.io/mobproc/v1/assets/devices?sortAscending=true&maxStatistics=7&limit=3&offset=12",
+  "hrefEnd": "http://tngo-mobproc.cloudhub.io/mobproc/v1/assets/devices?sortAscending=true&maxStatistics=7&limit=3&offset=30"
 }
 
 ```

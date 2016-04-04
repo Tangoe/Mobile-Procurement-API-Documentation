@@ -14,8 +14,6 @@
 - label: "Using the API" 
   href: "concepts/security/" 
   subOne:
-    - label: "Authentication and Security"
-      href: "concepts/security/"
     - label: "Errors"
       href: "concepts/errors/"
     - label: "Metadata"

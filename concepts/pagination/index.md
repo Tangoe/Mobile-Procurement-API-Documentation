@@ -16,6 +16,7 @@ All paginated API calls require two input parameters: **limit** and **offset**.
 The limit sets the maximum number of items to be included in single “page.” In other words, it is the number of items to be returned within the response, out of the total result set found by the query for that API call. 
 
 The limit value sets the maximum number of items to be included in the current page that gets returned from the total result set. The offset value identifies the index of the first item in that current page. For example, assume you have a result set of 50 items and you set the limit to 10 and the offset to 30. The result set would be grouped into 5 pages (50 / 10 = 5) and return the fourth page. (Indices 0 through 29 equals 30 items; 30 items divided by 10 equals 3 pages; so index 30 is the first item on the fourth page.)
+
 <br />
 
 ## Response Body
@@ -38,13 +39,13 @@ Here is an example of what the pagination information in the metadata block migh
 
 ```
 "_meta": {
-  ...
-  "totalCount": 24,
-  "offset": 10,
-  "limit": 5,
-  "hrefStart": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&offset=0",
-  "hrefPrevious": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&offset=5",
-  "hrefNext": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&offset=15",
-  "hrefEnd": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&offset=20"
-}
+	"href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees?limit=10&offset=30&sortAscending=true",
+	"hrefEnd": "https://tngo--mobproc.cloudhub.io/mobproc/v1/employees?sortAscending=true&offset=70&limit=10",
+	"hrefNext": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees?sortAscending=true&offset=40&limit=10",
+	"hrefPrevious": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees?sortAscending=true&offset=20&limit=10",
+	"hrefStart": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees?sortAscending=true&offset=0&limit=10",
+	"limit": 10,
+	"offset": 30,
+	"totalCount": 72
+},
 ```
