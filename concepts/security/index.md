@@ -6,11 +6,16 @@ title: Authentication and Security
 # Authentication and Security
 
 
-**** TBD: PAGE CONTENT TO BE ADDED AFTER AUTHENTICATION ARCHITECTURE HAS BEEN FINALIZED AND IMPLEMENTED ****
+**** NOTE: THIS PAGE TO BE ADDED SOON ****
 
-[HOW TO AUTHENTICATE AN API CALL]
 
-[GRANT TYPES: Implicit, Resource Owner Password Credentials]
- 
 
+## How to Authenticate an API Call
+
+
+
+
+## Grant Type: Implicit
+
+## Grant Type: Resource Owner Password Credentials
 

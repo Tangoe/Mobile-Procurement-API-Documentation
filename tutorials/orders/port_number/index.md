@@ -24,15 +24,92 @@ For a PORT_NUMBER, this JSON typically includes the following pieces:
 
 * Transaction type (i.e., PORT_NUMBER).
 
+* Service asset ID for the cellular service that is to be ported. This ID can be obtained via the **/assets/service** endpoint.
+
+* Region ID for the country in which the new device and/or new service will be used. This ID can be obtained via the **/regions** endpoint.
+
+* The postal code for the zone in which the new device and/or new service will be used. (Note: This is only required when the selected region is the United States of America.)
+
+* Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, etc.). These IDs can be obtained via the catalog endpoints (i.e., **/catalog/devices**, **/catalog/plans**).
+  * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** endpoint.
+
 * All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
 
-
+* Shipping information. This is required when order includes physical items. Refer to the <a href="{{site.url}}/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required for your order.
 
 
 Here is an example of what the fully-assembled request body JSON might look like:
 
 ```
-
+{
+  "orderRequest": {
+    "externalOrderNumber": "MM11234",
+    "transactionType": "PORT_NUMBER",
+    "serviceId": "34415733",
+    "regionId": "70144640",
+    "postalCode": "06477",
+    "shoppingCart": {
+      "deviceId": "9194713909",
+      "planId": "6568886494", 
+      "optionalFeatureIds": ["2082","1399"]
+    },
+    "properties": [
+      {
+        "groupId": "MISCELLANEOUS",
+        "fields": [
+          {
+            "id": "CARRIER_ACCT_NUMBER",
+            "type": "TEXT",
+            "text": "123456789"
+          },
+          {
+            "id": "NAME_ON_INVOICE",
+            "type": "TEXT",
+            "text": "Peter Edwards"
+          },
+          {
+            "id": "CONTACT_NUMBER",
+            "type": "TEXT",
+            "text": "2035559360"
+          },
+          {
+            "id": "CURRENT_CARRIER",
+            "type": "TEXT",
+            "text": "Formerly AT&T Wireless"
+          },
+          {
+            "id": "SERVICE_NUMBER",
+            "type": "TEXT",
+            "text": "5123440000"
+          }
+        ]
+      }
+    ],
+    "shipTo": {
+      "name": "Peter Edwards",
+      "regionId": "70144640",
+      "address": [
+        {
+          "id": "LINE_1",
+          "value": "35 Executive Blvd"
+        },
+        {
+          "id": "CITY",
+          "value": "Orange"
+        },
+        {
+          "id": "STATE",
+          "value": "CT"
+        },
+        {
+          "id": "POSTAL_CODE",
+          "value": "06477"
+        }
+      ],
+      "expedite": true
+    }
+  }
+}
 ```
 <br />
 
@@ -76,7 +153,246 @@ If successful, the API will return a response with a 200 HTTP status code and co
 Here is an example of what the order confirmation response might look like:
 
 ```
-
+{
+  "orderConfirmation": {
+    "accountHolder": {
+      "_meta": {
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"
+      },
+      "companyEmployeeId": "peter.edwards.acme",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
+      "id": "28673732",
+      "lastName": "Edwards",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "costSummary": [
+      {
+        "amount": 199.99,
+        "currencyCode": "USD",
+        "recurrence": "ONETIME"
+      },
+      {
+        "amount": 141.68,
+        "currencyCode": "USD",
+        "recurrence": "MONTHLY"
+      }
+    ],
+    "device": {
+      "accessMethod": "GSM",
+      "companyAssetId": "CompanyAssetID",
+      "id": "33585211",
+      "macAddress": "1C:0D:88:90",
+      "manufacturer": {
+        "_meta": {
+          "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Samsung"
+        },
+        "id": "Samsung",
+        "logoUrl": "https://api.tangoe.com/images/manufacturers/Samsung.gif",
+        "name": "Samsung"
+      },
+      "model": "Galaxy Note Pro - Black",
+      "serialNumber": {
+        "type": "IMEI",
+        "value": " 1234567891023456"
+      },
+      "simId": "830222233333"
+    },
+    "externalOrderNumber": "MM11234",
+    "postalCode": "06477",
+    "properties": [
+      {
+        "fields": [
+          {
+            "id": "CARRIER_ACCT_NUMBER",
+            "label": "Carrier Account Number",
+            "text": "123456789",
+            "type": "TEXT"
+          },
+          {
+            "id": "NAME_ON_INVOICE",
+            "label": "Name on Invoice",
+            "text": "Peter Edwards",
+            "type": "TEXT"
+          },
+          {
+            "id": "CONTACT_NUMBER",
+            "label": "Contact Phone Number",
+            "text": "2035559999",
+            "type": "TEXT"
+          },
+          {
+            "id": "CURRENT_CARRIER",
+            "label": "Current Carrier",
+            "text": "Formerly AT&T Wireless",
+            "type": "TEXT"
+          },
+          {
+            "id": "SERVICE_NUMBER",
+            "label": "Service Number",
+            "text": "5123440000",
+            "type": "TEXT"
+          }
+        ],
+        "groupId": "MISCELLANEOUS"
+      }
+    ],
+    "region": {
+      "_meta": {
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640"
+      },
+      "id": "70144640",
+      "name": "United States"
+    },
+    "requestedBy": {
+      "_meta": {
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"
+      },
+      "companyEmployeeId": "peter.edwards.acme",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
+      "id": "28673732",
+      "lastName": "Edwards",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "service": {
+      "_meta": {
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/assets/services/34415733"
+      },
+      "contractDates": {
+        "activated": "2013-03-20T05:00:00Z",
+        "end": "2015-03-20T05:00:00Z",
+        "lastDeviceUpgrade": "2014-08-21T05:00:00Z",
+        "start": "2013-03-20T05:00:00Z"
+      },
+      "id": "34415733",
+      "serviceNumber": "5123440000",
+      "status": "ACTIVE"
+    },
+    "shipTo": {
+      "address": [
+        {
+          "id": "LINE_1",
+          "label": "Address Line1",
+          "value": "35 Executive Blvd"
+        },
+        {
+          "id": "CITY",
+          "label": "City",
+          "value": "Orange"
+        },
+        {
+          "id": "STATE",
+          "label": "State",
+          "value": "CT"
+        },
+        {
+          "id": "POSTAL_CODE",
+          "label": "Zip Code",
+          "value": "06477"
+        }
+      ],
+      "expedite": true,
+      "name": "Peter Edwards",
+      "region": {
+        "_meta": {
+          "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640"
+        },
+        "id": "70144640",
+        "name": "United States"
+      }
+    },
+    "shoppingCart": {
+      "device": {
+        "_meta": {
+          "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/catalog/devices/9194713909"
+        },
+        "id": "9194713909",
+        "imageUrl": "https://api.tangoe.com/images/devices/VER/iphone5_blk_l.jpg",
+        "manufacturer": {
+          "_meta": {
+            "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Apple"
+          },
+          "id": "Apple",
+          "logoUrl": "https://api.tangoe.com/images/manufacturers/Apple.gif",
+          "name": "Apple"
+        },
+        "name": "Apple iPhone 5 (16GB) - Black",
+        "price": {
+          "amount": 199.99,
+          "currencyCode": "USD",
+          "recurrence": "ONETIME"
+        },
+        "vendor": {
+          "_meta": {
+            "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"
+          },
+          "id": "98",
+          "logoUrl": "https://api.tangoe.com/images/carrier/logo_VER.gif",
+          "name": "Verizon Wireless"
+        }
+      },
+      "plan": {
+        "_meta": {
+          "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/catalog/plans/6568886494"
+        },
+        "id": "6568886494",
+        "includedFeatures": [
+          {
+            "description": "Base Package"
+          }
+        ],
+        "name": "Nationwide for Business Talk Share Plan",
+        "optionalFeatures": [
+          {
+            "description": "Visual Voice Mail",
+            "id": "2082",
+            "price": {
+              "amount": 2.99,
+              "currencyCode": "USD",
+              "recurrence": "MONTHLY"
+            }
+          },
+          {
+            "description": "Wireless Phone Protection (Advanced Devices)",
+            "id": "1399",
+            "price": {
+              "amount": 100,
+              "currencyCode": "USD",
+              "recurrence": "MONTHLY"
+            }
+          }
+        ],
+        "price": {
+          "amount": 38.69,
+          "currencyCode": "USD",
+          "recurrence": "MONTHLY"
+        },
+        "vendor": {
+          "_meta": {
+            "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"
+          },
+          "id": "98",
+          "logoUrl": "https://api.tangoe.com/images/carrier/logo_VER.gif",
+          "name": "Verizon Wireless"
+        }
+      },
+      "quantity": 0
+    },
+    "transactionType": "PORT_NUMBER"
+  },
+  "status": "SUCCESS"
+}
 ```
 <br/>
 
@@ -90,6 +406,186 @@ If the submission is successful, the API will once again return a response conta
 Here is an example of what the order response might look like:
 
 ```
-  
+{
+  "order": {
+    "_meta": {
+      "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8711260"
+    },
+    "accountHolder": {
+      "_meta": {
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"
+      },
+      "companyEmployeeId": "peter.edwards.acme",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
+      "id": "28673732",
+      "lastName": "Edwards",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "dateSubmitted": "2016-04-26T14:45:20Z",
+    "externalOrderNumber": "MM11234",
+    "orderId": "8711260",
+    "orderSegments": {
+      "items": [
+        {
+          "_meta": {
+            "hrefHistory": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8711260/history?orderSegment=8711261",
+            "hrefShipments": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8711260/shipments?orderSegment=8711261"
+          },
+          "accessories": [],
+          "device": {
+            "imageUrl": "https://api.tangoe.com/images/devices/iphone5_blk_l.jpg",
+            "manufacturer": {
+              "_meta": {
+                "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Apple"
+              },
+              "id": "Apple",
+              "logoUrl": "https://api.tangoe.com/images/manufacturers/Apple.gif",
+              "name": "Apple"
+            },
+            "name": "Apple iPhone 5 (16GB) - Black",
+            "price": {
+              "amount": 199.99,
+              "currencyCode": "USD",
+              "recurrence": "ONETIME"
+            }
+          },
+          "features": [],
+          "orderSegmentId": "8711261",
+          "plan": {
+            "name": "Nationwide for Business Talk Share Plan",
+            "optionalFeatures": [
+              {
+                "description": "Visual Voice Mail",
+                "price": {
+                  "amount": 2.99,
+                  "currencyCode": "USD",
+                  "recurrence": "MONTHLY"
+                }
+              },
+              {
+                "description": "Wireless Phone Protection (Advanced Devices)",
+                "price": {
+                  "amount": 100,
+                  "currencyCode": "USD",
+                  "recurrence": "MONTHLY"
+                }
+              }
+            ],
+            "price": {
+              "amount": 38.69,
+              "currencyCode": "USD",
+              "recurrence": "MONTHLY"
+            }
+          },
+          "status": "ORDER_SUBMITTED",
+          "vendor": {
+            "_meta": {
+              "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"
+            },
+            "id": "98",
+            "logoUrl": "https://api.tangoe.com/images/carrier/logo_VER.gif",
+            "name": "Verizon Wireless"
+          }
+        }
+      ]
+    },
+    "properties": [
+      {
+        "fields": [
+          {
+            "id": "CARRIER_ACCT_NUMBER",
+            "label": "Carrier Account Number",
+            "text": "123456789",
+            "type": "TEXT"
+          },
+          {
+            "id": "NAME_ON_INVOICE",
+            "label": "Name on Invoice",
+            "text": "Peter Edwards",
+            "type": "TEXT"
+          },
+          {
+            "id": "CONTACT_NUMBER",
+            "label": "Contact Phone Number",
+            "text": "2035559999",
+            "type": "TEXT"
+          },
+          {
+            "id": "CURRENT_CARRIER",
+            "label": "Current Carrier",
+            "text": "Formerly AT&T Wireless",
+            "type": "TEXT"
+          },
+          {
+            "id": "SERVICE_NUMBER",
+            "label": "Service Number",
+            "text": "5123440000",            
+            "type": "TEXT"
+          }
+        ],
+        "groupId": "MISCELLANEOUS"
+      }
+    ],
+    "requestedBy": {
+      "_meta": {
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"
+      },
+      "companyEmployeeId": "peter.edwards.acme",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
+      "id": "28673732",
+      "lastName": "Edwards",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "serviceNumber": "5123440000",
+    "shipTo": {
+      "address": [
+        {
+          "id": "LINE_1",
+          "label": "Address Line1",
+          "value": "35 Executive Blvd"
+        },
+        {
+          "id": "CITY",
+          "label": "City",
+          "value": "Orange"
+        },
+        {
+          "id": "STATE",
+          "label": "State",
+          "value": "CT"
+        },
+        {
+          "id": "POSTAL_CODE",
+          "label": "Zip Code",
+          "value": "06477"
+        }
+      ],
+      "expedite": true,
+      "name": "Peter Edwards",
+      "region": {
+        "_meta": {
+          "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640"
+        },
+        "id": "70144640",
+        "name": "United States"
+      }
+    },
+    "status": "ORDER_SUBMITTED",
+    "transactionType": "PORT_NUMBER"
+  },
+  "status": "SUCCESS"
+} 
 ```
 <br/>

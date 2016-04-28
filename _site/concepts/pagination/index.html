@@ -25,7 +25,7 @@
 
      <div class="dc-banner--royal  tg-text--right  tg-pad--right">
         <div class="dc-bannerLinks">
-          <a href="https://anypoint.mulesoft.com/apiplatform/tangoe/#/portals/organizations/f5574299-614a-4d3f-885d-24958c10613f/apis/20442/versions/21828" target="_blank" class="dc-bannerLink">Developer Portal - Log In</a>
+          <a href="https://anypoint.mulesoft.com/apiplatform/tangoe#/portals" target="_blank" class="dc-bannerLink">Developer Portal - Log In</a>
         </div>
       </div>
     </header>
@@ -122,20 +122,6 @@
         
          
           
-                          
-              
-
-              <div class="dc-navOption  dc-navOption__subone">
-              
-              <a href="http://localhost:4000/concepts/security/">Authentication and Security</a>
-              
-              </div>
-
-
-            
-
-
-              
                           
               
 
@@ -284,20 +270,6 @@
               <div class="dc-navOption  dc-navOption__subone">
               
               <a href="http://localhost:4000/tutorials/orders/upgrade/">&nbsp;&nbsp;&nbsp;&nbsp;  UPGRADE</a>
-              
-              </div>
-
-
-            
-
-
-              
-                          
-              
-
-              <div class="dc-navOption  dc-navOption__subone">
-              
-              <a href="http://localhost:4000/tutorials/orders/order_accessories/">&nbsp;&nbsp;&nbsp;&nbsp;  ORDER_ACCESSORIES</a>
               
               </div>
 
@@ -474,6 +446,36 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
+          <a href="http://localhost:4000/releases/">Releases</a>
+        
+         
+          
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
+              <a href="http://localhost:4000/releases/1-1-0/">1.1.0</a>
+              
+              </div>
+
+
+            
+
+
+              
+            
+          
+
+            
+         
+        </div>
+      
+        
+        
+
+        <div class="dc-navOption  dc-navOption__top">
+        
           <a href="http://localhost:4000/contact/">Contact</a>
         
          
@@ -500,7 +502,7 @@
 
 <p>The limit sets the maximum number of items to be included in single “page.” In other words, it is the number of items to be returned within the response, out of the total result set found by the query for that API call.</p>
 
-<p>The offset identifies the index of the first item contained within the current page. For example, assume you have a total result set of 50 items and you set the limit to 10 and the offset to 30. The result set would be grouped into 5 pages (50 / 10 = 5) and return 10 items starting with the third page (30 / 10 = 3).</p>
+<p>The limit value sets the maximum number of items to be included in the current page that gets returned from the total result set. The offset value identifies the index of the first item in that current page. For example, assume you have a result set of 50 items and you set the limit to 10 and the offset to 30. The result set would be grouped into 5 pages (50 / 10 = 5) and return the fourth page. (Indices 0 through 29 equals 30 items; 30 items divided by 10 equals 3 pages; so index 30 is the first item on the fourth page.)</p>
 
 <p><br /></p>
 
@@ -531,14 +533,14 @@
 <p>Here is an example of what the pagination information in the metadata block might look like:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>"_meta": {
-  ...
-  "totalCount": 24,
-  "offset": 10,
-  "limit": 5,
-  "hrefStart": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&amp;offset=0",
-  "hrefPrevious": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&amp;offset=5",
-  "hrefNext": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&amp;offset=15",
-  "hrefEnd": "http://api.tangoe.com/mobileprocurement/v1/orders?limit=5&amp;offset=20"
+  "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees?limit=10&amp;offset=30&amp;sortAscending=true",
+  "hrefEnd": "https://tngo--mobproc.cloudhub.io/mobproc/v1/employees?sortAscending=true&amp;offset=70&amp;limit=10",
+  "hrefNext": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees?sortAscending=true&amp;offset=40&amp;limit=10",
+  "hrefPrevious": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees?sortAscending=true&amp;offset=20&amp;limit=10",
+  "hrefStart": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees?sortAscending=true&amp;offset=0&amp;limit=10",
+  "limit": 10,
+  "offset": 30,
+  "totalCount": 72
 }
 </code></pre>
 </div>

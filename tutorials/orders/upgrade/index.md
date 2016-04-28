@@ -8,6 +8,16 @@ title: Tutorials - UPGRADE Order
 
 **This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to upgrade a specific device and/or service plan.**
 
+
+Please note that the **existingDevice** block is required for all UPGRADE orders when the API source system is Command. It might not be required for other source systems.
+<br>
+
+### Special Instructions for when Only Upgrading a Plan  ###
+
+When upgrading to a new plan only (i.e., not also ordering a new device), you still need to include the **shipTo** block because a new SIM card is often required and it will be shipped to the user.
+
+Also, please note that various carrier networks do not always use the same cellular transmission technologies (e.g., GSM, CDMA, etc.). When upgrading to a plan offered by a different carrier, your existing device may no longer be supported by the new plan. In such case, the ID for a new (compatible) device will also need to be included in the shopping cart. If a new device is required but not included in the order, an error will be returned.
+
 <br />
 
 ## Authentication
@@ -20,15 +30,13 @@ This API uses the OAuth2 standard for authentication. Specifically, it supports 
 
 Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.
 
-For an UPGRADE, this JSON typically includes the following pieces:
+For an UPGRADE transaction, this JSON typically includes the following pieces:
 
 * Transaction type (i.e., UPGRADE).
 
 * Service asset ID for the cellular service, and/or associated device, that you wish to upgrade. This ID can be obtained via the **/assets/service** endpoint.
 
-* Region ID for the country in which the device and/or service will be used. This ID can be obtained via the **/regions** endpoint.
-
-* The postal code for the zone in which the device and/or service will be used. (Note: This is only required when the selected region is the United States of America.)
+* Existing device information for the device you are currently using. This is required, even when you are only upgrading the plan. This block includes the manufacturer ID, model ID, serial number, serial number type, and sim ID.
 
 * Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, and/or plan features). These IDs can be obtained via the catalog endpoints (i.e., **/catalog/devices**, **/catalog/plans**, **/catalog/features**).
   * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** endpoint.
@@ -44,15 +52,22 @@ Here is an example of what the fully-assembled request body JSON might look like
 ```
 {
   "orderRequest": {
-    "externalOrderNumber": "upgrade_device_and_service_test",
+    "externalOrderNumber": "12345678",
     "transactionType": "UPGRADE",
     "serviceId": "38382349",
-    "regionId": "70144640",
-    "postalCode": "78759",    
-    "shoppingCart": {     
+    "existingDevice": {
+      "manufacturerId": "LG",
+      "modelId": "Cookie Plus",      
+      "serialNumber": {
+        "type": "ESN",
+        "value": "4289183847832"
+      },
+      "simId": "83924758342478392342"
+    },
+    "shoppingCart": { 
       "deviceId": "9194713904",
-      "planId": "6568886698",
-      "optionalFeatureIds": ["293","2082"]
+      "planId": "6568886698", 
+      "optionalFeatureIds": ["122","293"]
     },
     "properties": [ 
       {
@@ -61,47 +76,42 @@ Here is an example of what the fully-assembled request body JSON might look like
           {
             "id": "CONTACT_NUMBER",
             "type": "TEXT",
-            "text": "1234567890"
+            "text": "2035559999"
           },
           {
-            "id": "ADDITIONAL_INSTRUCTIONS",            
-            "type": "TEXT",
-            "text": "TEST BY USING Rest based API."
-          },
-          {
-            "id": "SERVICE_NUMBER",            
-            "type": "TEXT",
-            "text": "2035557676"
-          },
-          {
-      	    "id": "Reason",
-            "type": "CHOICE",
-            "choice": {
-	     		"id": "18"
-            }
-          }
+      "id": "SERVICE_NUMBER",
+      "type": "TEXT",
+      "text": "2035557676"
+    },
+    {
+      "id": "Reason",
+      "type": "CHOICE",
+      "choice": {
+        "id": "21"
+      }
+          } 
         ]
       }
-    ],
+    ],    
     "shipTo": { 
       "name": "Peter Edwards",
       "regionId": "70144640",
       "address": [
         {
-          "id": "LINE_1",
-          "value": "35 Executive Blvd"
+        "id": "LINE_1",
+        "value": "35 Executive Blvd"
         },
         {
-          "id": "CITY",
-          "value": "Orange"
+        "id": "CITY",
+        "value": "Orange"
         },
         {
-          "id": "STATE",
-          "value": "CT"
+        "id": "STATE",
+        "value": "CT"
         },
         {
-          "id": "POSTAL_CODE",
-          "value": "06477"
+        "id": "POSTAL_CODE",
+        "value": "06477"
         }
       ],
       "expedite": true
@@ -157,15 +167,15 @@ Here is an example of what the order confirmation response might look like:
       "_meta": {
         "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"
       },
-      "companyEmployeeId": "mike.mcpadden.xx1",
+      "companyEmployeeId": "peter.edwards.acme",
       "department": {
         "id": "11569020385",
         "name": "Development"
       },
-      "email": "michael.mcpadden@tangoe.com",
-      "firstName": "Mike",
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
       "id": "28673732",
-      "lastName": "McPadden",
+      "lastName": "Edwards",
       "officePhone": "2035559999",
       "status": "ACTIVE"
     },
@@ -176,14 +186,14 @@ Here is an example of what the order confirmation response might look like:
         "recurrence": "ONETIME"
       },
       {
-        "amount": 261.65,
+        "amount": 558.67,
         "currencyCode": "USD",
         "recurrence": "MONTHLY"
       }
     ],
     "device": {
       "accessMethod": "CDMA",
-      "companyAssetId": "mjm_kp500",
+      "companyAssetId": "Peter's Cookie",
       "id": "35362368",
       "macAddress": "90:33:20:94:31",
       "manufacturer": {
@@ -191,7 +201,7 @@ Here is an example of what the order confirmation response might look like:
           "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/LG"
         },
         "id": "LG",
-        "logoUrl": "https://cdn.tangoe.com/manage/images/manufacturers/LG.gif",
+        "logoUrl": "https://cdn.tangoe.com//images/manufacturers/LG.gif",
         "name": "LG"
       },
       "model": "Cookie Plus",
@@ -201,21 +211,36 @@ Here is an example of what the order confirmation response might look like:
       },
       "simId": "83924758342478392342"
     },
-    "externalOrderNumber": "upgrade_device_and_service_test",
-    "postalCode": "78759",
+    "existingDevice": {
+      "manufacturer": {
+        "_meta": {
+          "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/LG"
+        },
+        "id": "LG",
+        "logoUrl": "https://cdn.tangoe.com//images/manufacturers/LG.gif",
+        "name": "LG"
+      },
+      "model": {
+        "_meta": {
+          "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/LG/models/Cookie%20Plus"
+        },
+        "id": "Cookie Plus",
+        "name": "Cookie Plus"
+      },
+      "serialNumber": {
+        "type": "ESN",
+        "value": "4289183847832"
+      },
+      "simId": "83924758342478392342"
+    },
+    "externalOrderNumber": "12345678",
     "properties": [
       {
         "fields": [
           {
             "id": "CONTACT_NUMBER",
             "label": "Contact Phone Number",
-            "text": "1234567890",
-            "type": "TEXT"
-          },
-          {
-            "id": "ADDITIONAL_INSTRUCTIONS",
-            "label": "Additional Instructions",
-            "text": "TEST BY USING Rest based API.",
+            "text": "2035559999",
             "type": "TEXT"
           },
           {
@@ -226,7 +251,7 @@ Here is an example of what the order confirmation response might look like:
           },
           {
             "choice": {
-              "id": "18"
+              "id": "21"
             },
             "id": "Reason",
             "type": "CHOICE"
@@ -246,15 +271,15 @@ Here is an example of what the order confirmation response might look like:
       "_meta": {
         "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"
       },
-      "companyEmployeeId": "mike.mcpadden.xx1",
+      "companyEmployeeId": "peter.edwards.acme",
       "department": {
         "id": "11569020385",
         "name": "Development"
       },
-      "email": "michael.mcpadden@tangoe.com",
-      "firstName": "Mike",
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
       "id": "28673732",
-      "lastName": "McPadden",
+      "lastName": "Edwards",
       "officePhone": "2035559999",
       "status": "ACTIVE"
     },
@@ -311,10 +336,13 @@ Here is an example of what the order confirmation response might look like:
           "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/catalog/devices/9194713904"
         },
         "id": "9194713904",
-        "imageUrl": "https://cdn.tangoe.com/manage/images/devices/VER/iphone5_blk_l.jpg",
+        "imageUrl": "https://cdn.tangoe.com//images/devices/VER/iphone5_blk_l.jpg",
         "manufacturer": {
+          "_meta": {
+            "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Apple"
+          },
           "id": "Apple",
-          "logoUrl": "https://cdn.tangoe.com/manage/images/manufacturers/Apple.gif",
+          "logoUrl": "https://cdn.tangoe.com//images/manufacturers/Apple.gif",
           "name": "Apple"
         },
         "name": "Apple iPhone 5 (16GB) - Black",
@@ -324,12 +352,18 @@ Here is an example of what the order confirmation response might look like:
           "recurrence": "ONETIME"
         },
         "vendor": {
+          "_meta": {
+            "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"
+          },
           "id": "98",
-          "logoUrl": "https://cdn.tangoe.com/manage/images/carrier/logo_VER.gif",
+          "logoUrl": "https://cdn.tangoe.com//images/carrier/logo_VER.gif",
           "name": "Verizon Wireless"
         }
       },
       "plan": {
+        "_meta": {
+          "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/catalog/plans/6568886698"
+        },
         "id": "6568886698",
         "includedFeatures": [
           {
@@ -345,19 +379,19 @@ Here is an example of what the order confirmation response might look like:
         "name": "Nationwide for Business Talk Share Plan",
         "optionalFeatures": [
           {
-            "description": "Roadside Assistance",
-            "id": "293",
+            "description": "Voice Mail",
+            "id": "122",
             "price": {
-              "amount": 200,
+              "amount": 300,
               "currencyCode": "USD",
               "recurrence": "MONTHLY"
             }
           },
           {
-            "description": "Visual Voice Mail",
-            "id": "2082",
+            "description": "Roadside Assistance",
+            "id": "293",
             "price": {
-              "amount": 2.99,
+              "amount": 200,
               "currencyCode": "USD",
               "recurrence": "MONTHLY"
             }
@@ -373,7 +407,7 @@ Here is an example of what the order confirmation response might look like:
             "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"
           },
           "id": "98",
-          "logoUrl": "https://cdn.tangoe.com/manage/images/carrier/logo_VER.gif",
+          "logoUrl": "https://cdn.tangoe.com//images/carrier/logo_VER.gif",
           "name": "Verizon Wireless"
         }
       },
@@ -399,43 +433,43 @@ Here is an example of what the order response might look like:
 {
   "order": {
     "_meta": {
-      "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8712282"
+      "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8711720"
     },
     "accountHolder": {
       "_meta": {
         "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"
       },
-      "companyEmployeeId": "mike.mcpadden.xx1",
+      "companyEmployeeId": "peter.edwards.acme",
       "department": {
         "id": "11569020385",
         "name": "Development"
       },
-      "email": "michael.mcpadden@tangoe.com",
-      "firstName": "Mike",
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
       "id": "28673732",
-      "lastName": "McPadden",
+      "lastName": "Edwards",
       "officePhone": "2035559999",
       "status": "ACTIVE"
     },
-    "dateSubmitted": "2016-02-01T16:36:45Z",
-    "externalOrderNumber": "upgrade_device_and_service_test",
-    "orderId": "8712282",
+    "dateSubmitted": "2016-04-28T18:10:27Z",
+    "externalOrderNumber": "12345678",
+    "orderId": "8711720",
     "orderSegments": {
       "items": [
         {
           "_meta": {
-            "hrefHistory": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8712282/history?orderSegment=8712283",
-            "hrefShipments": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8712282/shipments?orderSegment=8712283"
+            "hrefHistory": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8711720/history?orderSegment=8711721",
+            "hrefShipments": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8711720/shipments?orderSegment=8711721"
           },
           "accessories": [],
           "device": {
-            "imageUrl": "https://cdn.tangoe.com/manage/images/devices/iphone5_blk_l.jpg",
+            "imageUrl": "https://cdn.tangoe.com//images/devices/iphone5_blk_l.jpg",
             "manufacturer": {
               "_meta": {
                 "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Apple"
               },
               "id": "Apple",
-              "logoUrl": "https://cdn.tangoe.com/manage/images/manufacturers/Apple.gif",
+              "logoUrl": "https://cdn.tangoe.com//images/manufacturers/Apple.gif",
               "name": "Apple"
             },
             "name": "Apple iPhone 5 (16GB) - Black",
@@ -446,7 +480,7 @@ Here is an example of what the order response might look like:
             }
           },
           "features": [],
-          "orderSegmentId": "8712283",
+          "orderSegmentId": "8711721",
           "plan": {
             "name": "Nationwide for Business Talk Share Plan",
             "optionalFeatures": [
@@ -459,9 +493,9 @@ Here is an example of what the order response might look like:
                 }
               },
               {
-                "description": "Visual Voice Mail",
+                "description": "Voice Mail",
                 "price": {
-                  "amount": 2.99,
+                  "amount": 300,
                   "currencyCode": "USD",
                   "recurrence": "MONTHLY"
                 }
@@ -479,7 +513,7 @@ Here is an example of what the order response might look like:
               "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"
             },
             "id": "98",
-            "logoUrl": "https://cdn.tangoe.com/manage/images/carrier/logo_VER.gif",
+            "logoUrl": "https://cdn.tangoe.com//images/carrier/logo_VER.gif",
             "name": "Verizon Wireless"
           }
         }
@@ -491,13 +525,7 @@ Here is an example of what the order response might look like:
           {
             "id": "CONTACT_NUMBER",
             "label": "Contact Phone Number",
-            "text": "1234567890",
-            "type": "TEXT"
-          },
-          {
-            "id": "ADDITIONAL_INSTRUCTIONS",
-            "label": "Additional Instructions",
-            "text": "TEST BY USING Rest based API.",
+            "text": "2035559999",
             "type": "TEXT"
           },
           {
@@ -508,7 +536,7 @@ Here is an example of what the order response might look like:
           },
           {
             "choice": {
-              "id": "18"
+              "id": "21"
             },
             "id": "Reason",
             "type": "CHOICE"
@@ -521,15 +549,15 @@ Here is an example of what the order response might look like:
       "_meta": {
         "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"
       },
-      "companyEmployeeId": "mike.mcpadden.xx1",
+      "companyEmployeeId": "peter.edwards.acme",
       "department": {
         "id": "11569020385",
         "name": "Development"
       },
-      "email": "michael.mcpadden@tangoe.com",
-      "firstName": "Mike",
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
       "id": "28673732",
-      "lastName": "McPadden",
+      "lastName": "Edwards",
       "officePhone": "2035559999",
       "status": "ACTIVE"
     },

@@ -20,7 +20,7 @@ This API uses the OAuth2 standard for authentication. Specifically, it supports 
 
 Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.
 
-For a NEW_ACTIVATION, this JSON typically includes the following pieces:
+For a NEW_ACTIVATION transaction, this JSON typically includes the following pieces:
 
 * Transaction type (i.e., NEW_ACTIVATION).
 
@@ -28,7 +28,7 @@ For a NEW_ACTIVATION, this JSON typically includes the following pieces:
 
 * The postal code for the zone in which the device and/or service will be used. (Note: this is only required when the selected region is the United States of America.)
 
-* Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, features, and/or accessories). These IDs can be obtained via the catalog endpoints (i.e., **/catalog/devices**, **/catalog/plans**, **/catalog/features**, **/catalog/accessories**).
+* Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, features, and/or accessories). These IDs can be obtained via the catalog endpoints (i.e., **/catalog/devices**, **/catalog/plans**, **/catalog/accessories**).
   * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** endpoint.
 
 * All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.

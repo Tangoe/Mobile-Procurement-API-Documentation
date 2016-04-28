@@ -25,7 +25,7 @@
 
      <div class="dc-banner--royal  tg-text--right  tg-pad--right">
         <div class="dc-bannerLinks">
-          <a href="https://anypoint.mulesoft.com/apiplatform/tangoe/#/portals/organizations/f5574299-614a-4d3f-885d-24958c10613f/apis/20442/versions/21828" target="_blank" class="dc-bannerLink">Developer Portal - Log In</a>
+          <a href="https://anypoint.mulesoft.com/apiplatform/tangoe#/portals" target="_blank" class="dc-bannerLink">Developer Portal - Log In</a>
         </div>
       </div>
     </header>
@@ -122,20 +122,6 @@
         
          
           
-                          
-              
-
-              <div class="dc-navOption  dc-navOption__subone">
-              
-              <a href="http://localhost:4000/concepts/security/">Authentication and Security</a>
-              
-              </div>
-
-
-            
-
-
-              
                           
               
 
@@ -284,20 +270,6 @@
               <div class="dc-navOption  dc-navOption__subone">
               
               <a href="http://localhost:4000/tutorials/orders/upgrade/">&nbsp;&nbsp;&nbsp;&nbsp;  UPGRADE</a>
-              
-              </div>
-
-
-            
-
-
-              
-                          
-              
-
-              <div class="dc-navOption  dc-navOption__subone">
-              
-              <a href="http://localhost:4000/tutorials/orders/order_accessories/">&nbsp;&nbsp;&nbsp;&nbsp;  ORDER_ACCESSORIES</a>
               
               </div>
 
@@ -474,6 +446,36 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
+          <a href="http://localhost:4000/releases/">Releases</a>
+        
+         
+          
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
+              <a href="http://localhost:4000/releases/1-1-0/">1.1.0</a>
+              
+              </div>
+
+
+            
+
+
+              
+            
+          
+
+            
+         
+        </div>
+      
+        
+        
+
+        <div class="dc-navOption  dc-navOption__top">
+        
           <a href="http://localhost:4000/contact/">Contact</a>
         
          
@@ -511,14 +513,97 @@
     <p>Transaction type (i.e., PORT_NUMBER).</p>
   </li>
   <li>
+    <p>Service asset ID for the cellular service that is to be ported. This ID can be obtained via the <strong>/assets/service</strong> endpoint.</p>
+  </li>
+  <li>
+    <p>Region ID for the country in which the new device and/or new service will be used. This ID can be obtained via the <strong>/regions</strong> endpoint.</p>
+  </li>
+  <li>
+    <p>The postal code for the zone in which the new device and/or new service will be used. (Note: This is only required when the selected region is the United States of America.)</p>
+  </li>
+  <li>Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, etc.). These IDs can be obtained via the catalog endpoints (i.e., <strong>/catalog/devices</strong>, <strong>/catalog/plans</strong>).
+    <ul>
+      <li>Optional feature IDs for a specific plan can be obtained from the <strong>/catalog/plans/{id}</strong> endpoint.</li>
+    </ul>
+  </li>
+  <li>
     <p>All required and optional order properties. Refer to the <a href="http://localhost:4000//tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.</p>
   </li>
+  <li>Shipping information. This is required when order includes physical items. Refer to the <a href="http://localhost:4000//tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required for your order.</li>
 </ul>
 
 <p>Here is an example of what the fully-assembled request body JSON might look like:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
-</code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"orderRequest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"externalOrderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MM11234"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PORT_NUMBER"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34415733"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"regionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06477"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shoppingCart"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9194713909"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"planId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6568886494"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"optionalFeatureIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"2082"</span><span class="p">,</span><span class="s2">"1399"</span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"groupId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MISCELLANEOUS"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARRIER_ACCT_NUMBER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NAME_ON_INVOICE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter Edwards"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTACT_NUMBER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559360"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT_CARRIER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Formerly AT&amp;T Wireless"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SERVICE_NUMBER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5123440000"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"shipTo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter Edwards"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"regionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LINE_1"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35 Executive Blvd"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CITY"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Orange"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STATE"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CT"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POSTAL_CODE"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06477"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"expedite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 </div>
 <p><br /></p>
 
@@ -569,8 +654,247 @@
 
 <p>Here is an example of what the order confirmation response might look like:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
-</code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"orderConfirmation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"accountHolder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards.acme"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11569020385"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Development"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards@acme.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28673732"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Edwards"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"officePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"costSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">199.99</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ONETIME"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">141.68</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTHLY"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"accessMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GSM"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"companyAssetId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CompanyAssetID"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33585211"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"macAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1C:0D:88:90"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Samsung"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samsung"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.tangoe.com/images/manufacturers/Samsung.gif"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samsung"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Galaxy Note Pro - Black"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IMEI"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">" 1234567891023456"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"simId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"830222233333"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"externalOrderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MM11234"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06477"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARRIER_ACCT_NUMBER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carrier Account Number"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NAME_ON_INVOICE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name on Invoice"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter Edwards"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTACT_NUMBER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contact Phone Number"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT_CARRIER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Current Carrier"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Formerly AT&amp;T Wireless"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SERVICE_NUMBER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Service Number"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5123440000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"groupId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MISCELLANEOUS"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"requestedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards.acme"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11569020385"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Development"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards@acme.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28673732"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Edwards"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"officePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/assets/services/34415733"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"contractDates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"activated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-03-20T05:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-03-20T05:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lastDeviceUpgrade"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-21T05:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-03-20T05:00:00Z"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34415733"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serviceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5123440000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"shipTo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LINE_1"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address Line1"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35 Executive Blvd"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CITY"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"City"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Orange"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STATE"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"State"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CT"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POSTAL_CODE"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zip Code"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06477"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"expedite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter Edwards"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"shoppingCart"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/catalog/devices/9194713909"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9194713909"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.tangoe.com/images/devices/VER/iphone5_blk_l.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Apple"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.tangoe.com/images/manufacturers/Apple.gif"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple iPhone 5 (16GB) - Black"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">199.99</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ONETIME"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.tangoe.com/images/carrier/logo_VER.gif"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"plan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/catalog/plans/6568886494"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6568886494"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"includedFeatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Base Package"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nationwide for Business Talk Share Plan"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"optionalFeatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visual Voice Mail"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2082"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.99</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTHLY"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wireless Phone Protection (Advanced Devices)"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1399"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTHLY"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">38.69</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTHLY"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.tangoe.com/images/carrier/logo_VER.gif"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PORT_NUMBER"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 </div>
 <p><br /></p>
 
@@ -582,8 +906,188 @@
 
 <p>Here is an example of what the order response might look like:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  
-</code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8711260"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"accountHolder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards.acme"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11569020385"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Development"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards@acme.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28673732"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Edwards"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"officePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"dateSubmitted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-26T14:45:20Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"externalOrderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MM11234"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8711260"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderSegments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"hrefHistory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8711260/history?orderSegment=8711261"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"hrefShipments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8711260/shipments?orderSegment=8711261"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"accessories"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.tangoe.com/images/devices/iphone5_blk_l.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Apple"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.tangoe.com/images/manufacturers/Apple.gif"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple iPhone 5 (16GB) - Black"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">199.99</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ONETIME"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nt">"orderSegmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8711261"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"plan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nationwide for Business Talk Share Plan"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"optionalFeatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visual Voice Mail"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.99</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTHLY"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wireless Phone Protection (Advanced Devices)"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTHLY"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">38.69</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTHLY"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDER_SUBMITTED"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.tangoe.com/images/carrier/logo_VER.gif"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARRIER_ACCT_NUMBER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carrier Account Number"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NAME_ON_INVOICE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name on Invoice"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter Edwards"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTACT_NUMBER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contact Phone Number"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT_CARRIER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Current Carrier"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Formerly AT&amp;T Wireless"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SERVICE_NUMBER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Service Number"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5123440000"</span><span class="p">,</span><span class="w">            
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"groupId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MISCELLANEOUS"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"requestedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards.acme"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11569020385"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Development"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards@acme.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28673732"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Edwards"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"officePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"serviceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5123440000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shipTo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LINE_1"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address Line1"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35 Executive Blvd"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CITY"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"City"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Orange"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STATE"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"State"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CT"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POSTAL_CODE"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zip Code"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06477"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"expedite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter Edwards"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDER_SUBMITTED"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PORT_NUMBER"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
 </div>
 <p><br /></p>
 

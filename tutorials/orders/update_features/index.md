@@ -20,7 +20,7 @@ This API uses the OAuth2 standard for authentication. Specifically, it supports 
 
 Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.
 
-For an UPDATE_FEATURES request, this JSON typically includes the following pieces:
+For an UPDATE_FEATURES transaction, this JSON typically includes the following pieces:
 
 * Transaction type (i.e., UPDATE_FEATURES).
 

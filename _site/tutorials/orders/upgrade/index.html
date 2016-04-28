@@ -25,7 +25,7 @@
 
      <div class="dc-banner--royal  tg-text--right  tg-pad--right">
         <div class="dc-bannerLinks">
-          <a href="https://anypoint.mulesoft.com/apiplatform/tangoe/#/portals/organizations/f5574299-614a-4d3f-885d-24958c10613f/apis/20442/versions/21828" target="_blank" class="dc-bannerLink">Developer Portal - Log In</a>
+          <a href="https://anypoint.mulesoft.com/apiplatform/tangoe#/portals" target="_blank" class="dc-bannerLink">Developer Portal - Log In</a>
         </div>
       </div>
     </header>
@@ -122,20 +122,6 @@
         
          
           
-                          
-              
-
-              <div class="dc-navOption  dc-navOption__subone">
-              
-              <a href="http://localhost:4000/concepts/security/">Authentication and Security</a>
-              
-              </div>
-
-
-            
-
-
-              
                           
               
 
@@ -284,20 +270,6 @@
               <div class="dc-navOption  dc-navOption__subone">
               
               <a href="http://localhost:4000/tutorials/orders/upgrade/" class="dc-navOption__active">&nbsp;&nbsp;&nbsp;&nbsp;  UPGRADE</a>
-              
-              </div>
-
-
-            
-
-
-              
-                          
-              
-
-              <div class="dc-navOption  dc-navOption__subone">
-              
-              <a href="http://localhost:4000/tutorials/orders/order_accessories/">&nbsp;&nbsp;&nbsp;&nbsp;  ORDER_ACCESSORIES</a>
               
               </div>
 
@@ -474,6 +446,36 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
+          <a href="http://localhost:4000/releases/">Releases</a>
+        
+         
+          
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
+              <a href="http://localhost:4000/releases/1-1-0/">1.1.0</a>
+              
+              </div>
+
+
+            
+
+
+              
+            
+          
+
+            
+         
+        </div>
+      
+        
+        
+
+        <div class="dc-navOption  dc-navOption__top">
+        
           <a href="http://localhost:4000/contact/">Contact</a>
         
          
@@ -492,6 +494,15 @@
 
 <p><strong>This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to upgrade a specific device and/or service plan.</strong></p>
 
+<p>Please note that the <strong>existingDevice</strong> block is required for all UPGRADE orders when the API source system is Command. It might not be required for other source systems.<br />
+<br /></p>
+
+<h3 id="special-instructions-for-when-only-upgrading-a-plan">Special Instructions for when Only Upgrading a Plan</h3>
+
+<p>When upgrading to a new plan only (i.e., not also ordering a new device), you still need to include the <strong>shipTo</strong> block because a new SIM card is often required and it will be shipped to the user.</p>
+
+<p>Also, please note that various carrier networks do not always use the same cellular transmission technologies (e.g., GSM, CDMA, etc.). When upgrading to a plan offered by a different carrier, your existing device may no longer be supported by the new plan. In such case, the ID for a new (compatible) device will also need to be included in the shopping cart. If a new device is required but not included in the order, an error will be returned.</p>
+
 <p><br /></p>
 
 <h2 id="authentication">Authentication</h2>
@@ -504,7 +515,7 @@
 
 <p>Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.</p>
 
-<p>For an UPGRADE, this JSON typically includes the following pieces:</p>
+<p>For an UPGRADE transaction, this JSON typically includes the following pieces:</p>
 
 <ul>
   <li>
@@ -514,10 +525,7 @@
     <p>Service asset ID for the cellular service, and/or associated device, that you wish to upgrade. This ID can be obtained via the <strong>/assets/service</strong> endpoint.</p>
   </li>
   <li>
-    <p>Region ID for the country in which the device and/or service will be used. This ID can be obtained via the <strong>/regions</strong> endpoint.</p>
-  </li>
-  <li>
-    <p>The postal code for the zone in which the device and/or service will be used. (Note: This is only required when the selected region is the United States of America.)</p>
+    <p>Existing device information for the device you are currently using. This is required, even when you are only upgrading the plan. This block includes the manufacturer ID, model ID, serial number, serial number type, and sim ID.</p>
   </li>
   <li>Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, and/or plan features). These IDs can be obtained via the catalog endpoints (i.e., <strong>/catalog/devices</strong>, <strong>/catalog/plans</strong>, <strong>/catalog/features</strong>).
     <ul>
@@ -535,15 +543,22 @@
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"orderRequest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"externalOrderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"upgrade_device_and_service_test"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"externalOrderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UPGRADE"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38382349"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"regionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"78759"</span><span class="p">,</span><span class="w">    
-    </span><span class="nt">"shoppingCart"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">     
+    </span><span class="nt">"existingDevice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"manufacturerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LG"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"modelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cookie Plus"</span><span class="p">,</span><span class="w">      
+      </span><span class="nt">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ESN"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4289183847832"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"simId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83924758342478392342"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"shoppingCart"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
       </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9194713904"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"planId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6568886698"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"optionalFeatureIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"293"</span><span class="p">,</span><span class="s2">"2082"</span><span class="p">]</span><span class="w">
+      </span><span class="nt">"planId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6568886698"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"optionalFeatureIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"122"</span><span class="p">,</span><span class="s2">"293"</span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> 
       </span><span class="p">{</span><span class="w">
@@ -552,47 +567,42 @@
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTACT_NUMBER"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADDITIONAL_INSTRUCTIONS"</span><span class="p">,</span><span class="w">            
-            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST BY USING Rest based API."</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SERVICE_NUMBER"</span><span class="p">,</span><span class="w">            
-            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035557676"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-      	    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reason"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHOICE"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"choice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-	     		</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">}</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SERVICE_NUMBER"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035557676"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reason"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHOICE"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"choice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w"> 
         </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="p">],</span><span class="w">    
     </span><span class="nt">"shipTo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter Edwards"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"regionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LINE_1"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35 Executive Blvd"</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LINE_1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35 Executive Blvd"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CITY"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Orange"</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CITY"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Orange"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STATE"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CT"</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STATE"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CT"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POSTAL_CODE"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06477"</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POSTAL_CODE"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06477"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nt">"expedite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -654,17 +664,17 @@
   </span><span class="nt">"orderConfirmation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"accountHolder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mike.mcpadden.xx1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards.acme"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11569020385"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Development"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"michael.mcpadden@tangoe.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mike"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards@acme.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28673732"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McPadden"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Edwards"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"officePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -675,22 +685,22 @@
         </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ONETIME"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">261.65</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">558.67</span><span class="p">,</span><span class="w">
         </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTHLY"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"accessMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CDMA"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"companyAssetId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mike's Cookie"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"companyAssetId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter's Cookie"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35362368"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"macAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90:33:20:94:31"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/LG"</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/LG"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LG"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/manufacturers/LG.gif"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com//images/manufacturers/LG.gif"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LG"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cookie Plus"</span><span class="p">,</span><span class="w">
@@ -700,21 +710,36 @@
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"simId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83924758342478392342"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"externalOrderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"upgrade_device_and_service_test"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"78759"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"existingDevice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/LG"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LG"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com//images/manufacturers/LG.gif"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LG"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/LG/models/Cookie%20Plus"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cookie Plus"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cookie Plus"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ESN"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4289183847832"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"simId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83924758342478392342"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"externalOrderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTACT_NUMBER"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contact Phone Number"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADDITIONAL_INSTRUCTIONS"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Additional Instructions"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST BY USING Rest based API."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
@@ -725,7 +750,7 @@
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"choice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18"</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reason"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHOICE"</span><span class="w">
@@ -736,30 +761,30 @@
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions/70144640"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"requestedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mike.mcpadden.xx1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards.acme"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11569020385"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Development"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"michael.mcpadden@tangoe.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mike"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards@acme.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28673732"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McPadden"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Edwards"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"officePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/assets/services/38382349"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/assets/services/38382349"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"contractDates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"activated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2010-01-20T06:00:00Z"</span><span class="p">,</span><span class="w">
@@ -798,7 +823,7 @@
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter Edwards"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions/70144640"</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="w">
@@ -807,13 +832,16 @@
     </span><span class="nt">"shoppingCart"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/catalog/devices/9194713904"</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/catalog/devices/9194713904"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9194713904"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/devices/VER/iphone5_blk_l.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com//images/devices/VER/iphone5_blk_l.jpg"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Apple"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/manufacturers/Apple.gif"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com//images/manufacturers/Apple.gif"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple iPhone 5 (16GB) - Black"</span><span class="p">,</span><span class="w">
@@ -823,12 +851,18 @@
           </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ONETIME"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com//images/carrier/logo_VER.gif"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"plan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/catalog/plans/6568886698"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6568886698"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"includedFeatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
@@ -844,19 +878,19 @@
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nationwide for Business Talk Share Plan"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"optionalFeatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Roadside Assistance"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"293"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Voice Mail"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"122"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
               </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTHLY"</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visual Voice Mail"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2082"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Roadside Assistance"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"293"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.99</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
               </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTHLY"</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -869,10 +903,10 @@
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com//images/carrier/logo_VER.gif"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -897,43 +931,43 @@
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/orders/8712282"</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8711720"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"accountHolder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mike.mcpadden.xx1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards.acme"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11569020385"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Development"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"michael.mcpadden@tangoe.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mike"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards@acme.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28673732"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McPadden"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Edwards"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"officePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"dateSubmitted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-01T16:36:45Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"externalOrderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"upgrade_device_and_service_test"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8712282"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dateSubmitted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-28T18:10:27Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"externalOrderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8711720"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderSegments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"hrefHistory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/orders/8712282/history?orderSegment=8712283"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"hrefShipments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/orders/8712282/shipments?orderSegment=8712283"</span><span class="w">
+            </span><span class="nt">"hrefHistory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8711720/history?orderSegment=8711721"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"hrefShipments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8711720/shipments?orderSegment=8711721"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="nt">"accessories"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
           </span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/devices/iphone5_blk_l.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com//images/devices/iphone5_blk_l.jpg"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
               </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Apple"</span><span class="w">
+                </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Apple"</span><span class="w">
               </span><span class="p">},</span><span class="w">
               </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/manufacturers/Apple.gif"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com//images/manufacturers/Apple.gif"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple iPhone 5 (16GB) - Black"</span><span class="p">,</span><span class="w">
@@ -944,7 +978,7 @@
             </span><span class="p">}</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="nt">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-          </span><span class="nt">"orderSegmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8712283"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderSegmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8711721"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"plan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nationwide for Business Talk Share Plan"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"optionalFeatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -957,9 +991,9 @@
                 </span><span class="p">}</span><span class="w">
               </span><span class="p">},</span><span class="w">
               </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visual Voice Mail"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Voice Mail"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                  </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.99</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
                   </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
                   </span><span class="nt">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTHLY"</span><span class="w">
                 </span><span class="p">}</span><span class="w">
@@ -974,10 +1008,10 @@
           </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDER_SUBMITTED"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"</span><span class="w">
+              </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com//images/carrier/logo_VER.gif"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -989,13 +1023,7 @@
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTACT_NUMBER"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contact Phone Number"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADDITIONAL_INSTRUCTIONS"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Additional Instructions"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST BY USING Rest based API."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
@@ -1006,7 +1034,7 @@
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"choice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18"</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reason"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHOICE"</span><span class="w">
@@ -1017,17 +1045,17 @@
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"requestedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/employees/28673732"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mike.mcpadden.xx1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards.acme"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11569020385"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Development"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"michael.mcpadden@tangoe.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mike"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards@acme.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28673732"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McPadden"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Edwards"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"officePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -1059,7 +1087,7 @@
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter Edwards"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions/70144640"</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="w">

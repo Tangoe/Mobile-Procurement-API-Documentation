@@ -25,7 +25,7 @@
 
      <div class="dc-banner--royal  tg-text--right  tg-pad--right">
         <div class="dc-bannerLinks">
-          <a href="https://anypoint.mulesoft.com/apiplatform/tangoe/#/portals/organizations/f5574299-614a-4d3f-885d-24958c10613f/apis/20442/versions/21828" target="_blank" class="dc-bannerLink">Developer Portal - Log In</a>
+          <a href="https://anypoint.mulesoft.com/apiplatform/tangoe#/portals" target="_blank" class="dc-bannerLink">Developer Portal - Log In</a>
         </div>
       </div>
     </header>
@@ -122,20 +122,6 @@
         
          
           
-                          
-              
-
-              <div class="dc-navOption  dc-navOption__subone">
-              
-              <a href="http://localhost:4000/concepts/security/">Authentication and Security</a>
-              
-              </div>
-
-
-            
-
-
-              
                           
               
 
@@ -284,20 +270,6 @@
               <div class="dc-navOption  dc-navOption__subone">
               
               <a href="http://localhost:4000/tutorials/orders/upgrade/">&nbsp;&nbsp;&nbsp;&nbsp;  UPGRADE</a>
-              
-              </div>
-
-
-            
-
-
-              
-                          
-              
-
-              <div class="dc-navOption  dc-navOption__subone">
-              
-              <a href="http://localhost:4000/tutorials/orders/order_accessories/">&nbsp;&nbsp;&nbsp;&nbsp;  ORDER_ACCESSORIES</a>
               
               </div>
 
@@ -474,6 +446,36 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
+          <a href="http://localhost:4000/releases/">Releases</a>
+        
+         
+          
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
+              <a href="http://localhost:4000/releases/1-1-0/">1.1.0</a>
+              
+              </div>
+
+
+            
+
+
+              
+            
+          
+
+            
+         
+        </div>
+      
+        
+        
+
+        <div class="dc-navOption  dc-navOption__top">
+        
           <a href="http://localhost:4000/contact/">Contact</a>
         
          
@@ -504,7 +506,7 @@
 
 <p>Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.</p>
 
-<p>For a NEW_ACTIVATION, this JSON typically includes the following pieces:</p>
+<p>For a NEW_ACTIVATION transaction, this JSON typically includes the following pieces:</p>
 
 <ul>
   <li>
@@ -516,7 +518,7 @@
   <li>
     <p>The postal code for the zone in which the device and/or service will be used. (Note: this is only required when the selected region is the United States of America.)</p>
   </li>
-  <li>Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, features, and/or accessories). These IDs can be obtained via the catalog endpoints (i.e., <strong>/catalog/devices</strong>, <strong>/catalog/plans</strong>, <strong>/catalog/features</strong>, <strong>/catalog/accessories</strong>).
+  <li>Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, features, and/or accessories). These IDs can be obtained via the catalog endpoints (i.e., <strong>/catalog/devices</strong>, <strong>/catalog/plans</strong>, <strong>/catalog/accessories</strong>).
     <ul>
       <li>Optional feature IDs for a specific plan can be obtained from the <strong>/catalog/plans/{id}</strong> endpoint.</li>
     </ul>
@@ -650,7 +652,7 @@
   </span><span class="nt">"orderConfirmation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"accountHolder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/employees/28671599"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28671599"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards.acme"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -712,14 +714,14 @@
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions/70144640"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"requestedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/employees/28671524"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28671524"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards.acme"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -760,7 +762,7 @@
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter Edwards"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions/70144640"</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="w">
@@ -770,16 +772,16 @@
       </span><span class="nt">"accessories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/catalog/accessories/3628935899"</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/catalog/accessories/3628935899"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3628935899"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/devices/VER/MICRDUALVPCF.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com/manage/images/devices/VER/MICRDUALVPCF.jpg"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Verizon%20Wireless"</span><span class="w">
+              </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Verizon%20Wireless"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/manufacturers/Verizon Wireless.gif"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com/manage/images/manufacturers/VerizonWireless.gif"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless Vehicle Charger with Dual Output (MICRDUALVPC-F)"</span><span class="p">,</span><span class="w">
@@ -790,25 +792,25 @@
           </span><span class="p">},</span><span class="w">
           </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"</span><span class="w">
+              </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/carrier/logo_VERZN.gif"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com/manage/images/carrier/logo_VERZN.gif"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/catalog/accessories/3628939022"</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/catalog/accessories/3628939022"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3628939022"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/devices/VER/EMICUSBDTVL_F.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com/manage/images/devices/VER/EMICUSBDTVL_F.jpg"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Verizon%20Wireless"</span><span class="w">
+              </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Verizon%20Wireless"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/manufacturers/Verizon Wireless.gif"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com/manage/images/manufacturers/VerizonWireless.gif"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless Rapid Wall Charger with 6ft Cable for Micro USB (EMICUSBDTVL-F)"</span><span class="p">,</span><span class="w">
@@ -819,26 +821,26 @@
           </span><span class="p">},</span><span class="w">
           </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"</span><span class="w">
+              </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/carrier/logo_VERZN.gif"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com/manage/images/carrier/logo_VERZN.gif"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/catalog/devices/9194791812"</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/catalog/devices/9194791812"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9194791812"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/devices/VER/sam_gal_s4.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com/manage/images/devices/VER/sam_gal_s4.jpg"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Samsung"</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Samsung"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samsung"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/manufacturers/Samsung.gif"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com/manage/images/manufacturers/Samsung.gif"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samsung"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samsung Galaxy S4 (16GB) - Black Mist"</span><span class="p">,</span><span class="w">
@@ -849,16 +851,16 @@
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/carrier/logo_VERZN.gif"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com/manage/images/carrier/logo_VERZN.gif"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"plan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/catalog/plans/6568886494"</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/catalog/plans/6568886494"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6568886494"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"includedFeatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -894,10 +896,10 @@
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/carrier/logo_VERZN.gif"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com/manage/images/carrier/logo_VERZN.gif"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -922,11 +924,11 @@
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/orders/8710840"</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8710840"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"accountHolder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/employees/28671599"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28671599"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards.acme"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -947,18 +949,18 @@
       </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"hrefHistory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/orders/8710840/history?orderSegment=8710841"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"hrefShipments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/orders/8710840/shipments?orderSegment=8710841"</span><span class="w">
+            </span><span class="nt">"hrefHistory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8710840/history?orderSegment=8710841"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"hrefShipments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8710840/shipments?orderSegment=8710841"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="nt">"accessories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/devices/EMICUSBDTVL_F.jpg"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com/manage/images/devices/EMICUSBDTVL_F.jpg"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Verizon%20Wireless"</span><span class="w">
+                  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Verizon%20Wireless"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/manufacturers/Verizon Wireless.gif"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com/manage/images/manufacturers/Verizon Wireless.gif"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
               </span><span class="p">},</span><span class="w">
               </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless Rapid Wall Charger with 6ft Cable for Micro USB (EMICUSBDTVL-F)"</span><span class="p">,</span><span class="w">
@@ -969,13 +971,13 @@
               </span><span class="p">}</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/devices/MICRDUALVPCF_m.jpg"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com/manage/images/devices/MICRDUALVPCF_m.jpg"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Verizon%20Wireless"</span><span class="w">
+                  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Verizon%20Wireless"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/manufacturers/Verizon Wireless.gif"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com/manage/images/manufacturers/Verizon Wireless.gif"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
               </span><span class="p">},</span><span class="w">
               </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless Vehicle Charger with Dual Output (MICRDUALVPC-F)"</span><span class="p">,</span><span class="w">
@@ -987,13 +989,13 @@
             </span><span class="p">}</span><span class="w">
           </span><span class="p">],</span><span class="w">
           </span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/devices/sam_gal_s4_blk.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com/manage/images/devices/sam_gal_s4_blk.jpg"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
               </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/manufacturers/Samsung"</span><span class="w">
+                </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Samsung"</span><span class="w">
               </span><span class="p">},</span><span class="w">
               </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samsung"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/manufacturers/Samsung.gif"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com/manage/images/manufacturers/Samsung.gif"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samsung"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samsung Galaxy S4 (16GB) - Black Mist"</span><span class="p">,</span><span class="w">
@@ -1034,10 +1036,10 @@
           </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDER_SUBMITTED"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/vendors/98"</span><span class="w">
+              </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://commcareqa.tangoe.com/manage/images/carrier/logo_VER.gif"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.tangoe.com/manage/images/carrier/logo_VER.gif"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verizon Wireless"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -1077,7 +1079,7 @@
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"requestedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/employees/28671599"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28671599"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"companyEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peter.edwards.acme"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1118,7 +1120,7 @@
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peter Edwards"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tg-mobility.cloudhub.io/mobility/v1/regions/70144640"</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70144640"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="w">
