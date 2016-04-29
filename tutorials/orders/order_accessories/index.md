@@ -24,6 +24,10 @@ For a ORDER_ACCESSORIES transaction, this JSON typically includes the following 
 
 * Transaction type (i.e., ORDER_ACCESSORIES).
 
+* Service asset ID for the cellular service associated with the user's device. This ID can be obtained via the **/assets/service** endpoint.
+
+* Shopping cart object containing an array of IDs for the accessory items being ordered. These IDs can be obtained via the accessory catalog endpoint (i.e., **/catalog/accessories**).
+
 * All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
 
 
@@ -32,7 +36,56 @@ For a ORDER_ACCESSORIES transaction, this JSON typically includes the following 
 Here is an example of what the fully-assembled request body JSON might look like:
 
 ```
-
+{
+  "orderRequest": {
+    "externalOrderNumber": "MM123456A",
+    "transactionType": "ORDER_ACCESSORIES",
+    "serviceId": "38382349",
+    "shoppingCart": {
+      "accessoryIds": ["3628935898","3628939021"]
+    },
+    "properties": [
+      {
+        "groupId": "MISCELLANEOUS",
+        "fields": [
+          {
+            "id": "CONTACT_NUMBER",
+            "type": "TEXT",
+            "text": "2035559999"
+          },
+          {
+            "id": "SERVICE_NUMBER",
+            "type": "TEXT",
+            "text": "2035557676"
+          }
+        ]
+      }
+    ],
+    "shipTo": {
+      "name": "Peter Edwards",
+      "regionId": "70144640",
+      "address": [
+        {
+          "id": "LINE_1",
+          "value": "35 Executive Blvd"
+        },
+        {
+          "id": "CITY",
+          "value": "Orange"
+        },
+        {
+          "id": "STATE",
+          "value": "CT"
+        },
+        {
+          "id": "POSTAL_CODE",
+          "value": "06477"
+        }
+      ],
+      "expedite": true
+    }
+  }
+}
 ```
 <br />
 
@@ -76,7 +129,213 @@ If successful, the API will return a response with a 200 HTTP status code and co
 Here is an example of what the order confirmation response might look like:
 
 ```
-
+{
+  "orderConfirmation": {
+    "accountHolder": {
+      "_meta": {
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"
+      },
+      "companyEmployeeId": "peter.edwards.acme",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
+      "id": "28673732",
+      "lastName": "Edwards",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "costSummary": [
+      {
+        "amount": 44.98,
+        "currencyCode": "USD",
+        "recurrence": "ONETIME"
+      },
+      {
+        "amount": 0,
+        "currencyCode": "USD",
+        "recurrence": "MONTHLY"
+      }
+    ],
+    "device": {
+      "accessMethod": "CDMA",
+      "companyAssetId": "Peter's Cookie",
+      "id": "35362368",
+      "macAddress": "90:33:20:94:31",
+      "manufacturer": {
+        "_meta": {
+          "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/LG"
+        },
+        "id": "LG",
+        "logoUrl": "https://cdn.tangoe.com//images/manufacturers/LG.gif",
+        "name": "LG"
+      },
+      "model": "Cookie Plus",
+      "serialNumber": {
+        "type": "ESN",
+        "value": "4289183847832"
+      },
+      "simId": "83924758342478392342"
+    },
+    "externalOrderNumber": "MM123456A",
+    "properties": [
+      {
+        "fields": [
+          {
+            "id": "CONTACT_NUMBER",
+            "label": "Contact Phone Number",
+            "text": "2035559999",
+            "type": "TEXT"
+          },
+          {
+            "id": "SERVICE_NUMBER",
+            "label": "Service Number",
+            "text": "2035557676",
+            "type": "TEXT"
+          }
+        ],
+        "groupId": "MISCELLANEOUS"
+      }
+    ],
+    "region": {
+      "_meta": {
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640"
+      },
+      "id": "70144640",
+      "name": "United States"
+    },
+    "requestedBy": {
+      "_meta": {
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"
+      },
+      "companyEmployeeId": "peter.edwards.acme",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
+      "id": "28673732",
+      "lastName": "Edwards",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "service": {
+      "_meta": {
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/assets/services/38382349"
+      },
+      "contractDates": {
+        "activated": "2010-01-20T06:00:00Z",
+        "end": "2016-01-21T06:00:00Z",
+        "lastDeviceUpgrade": "2014-01-21T06:00:00Z",
+        "start": "2014-01-21T06:00:00Z"
+      },
+      "id": "38382349",
+      "serviceNumber": "2035557676",
+      "status": "ACTIVE"
+    },
+    "shipTo": {
+      "address": [
+        {
+          "id": "LINE_1",
+          "label": "Address Line1",
+          "value": "35 Executive Blvd"
+        },
+        {
+          "id": "CITY",
+          "label": "City",
+          "value": "Orange"
+        },
+        {
+          "id": "STATE",
+          "label": "State",
+          "value": "CT"
+        },
+        {
+          "id": "POSTAL_CODE",
+          "label": "Zip Code",
+          "value": "06477"
+        }
+      ],
+      "expedite": true,
+      "name": "Peter Edwards",
+      "region": {
+        "_meta": {
+          "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640"
+        },
+        "id": "70144640",
+        "name": "United States"
+      }
+    },
+    "shoppingCart": {
+      "accessories": [
+        {
+          "_meta": {
+            "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/catalog/accessories/3628935898"
+          },
+          "id": "3628935898",
+          "imageUrl": "https://cdn.tangoe.com//images/devices/VER/MICRDUALVPCF_m.jpg",
+          "manufacturer": {
+            "_meta": {
+              "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Verizon%20Wireless"
+            },
+            "id": "Verizon Wireless",
+            "logoUrl": "https://cdn.tangoe.com//images/manufacturers/Verizon Wireless.gif",
+            "name": "Verizon Wireless"
+          },
+          "name": "Verizon Wireless Vehicle Charger with Dual Output (MICRDUALVPC-F)",
+          "price": {
+            "amount": 22.49,
+            "currencyCode": "USD",
+            "recurrence": "ONETIME"
+          },
+          "vendor": {
+            "_meta": {
+              "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"
+            },
+            "id": "98",
+            "logoUrl": "https://cdn.tangoe.com//images/carrier/logo_VER.gif",
+            "name": "Verizon Wireless"
+          }
+        },
+        {
+          "_meta": {
+            "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/catalog/accessories/3628939021"
+          },
+          "id": "3628939021",
+          "imageUrl": "https://cdn.tangoe.com//images/devices/VER/EMICUSBDTVL_F_m.jpg",
+          "manufacturer": {
+            "_meta": {
+              "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Verizon%20Wireless"
+            },
+            "id": "Verizon Wireless",
+            "logoUrl": "https://cdn.tangoe.com//images/manufacturers/Verizon Wireless.gif",
+            "name": "Verizon Wireless"
+          },
+          "name": "Verizon Wireless Rapid Wall Charger with 6ft Cable for Micro USB (EMICUSBDTVL-F)",
+          "price": {
+            "amount": 22.49,
+            "currencyCode": "USD",
+            "recurrence": "ONETIME"
+          },
+          "vendor": {
+            "_meta": {
+              "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"
+            },
+            "id": "98",
+            "logoUrl": "https://cdn.tangoe.com//images/carrier/logo_VER.gif",
+            "name": "Verizon Wireless"
+          }
+        }
+      ],
+      "quantity": 0
+    },
+    "transactionType": "ORDER_ACCESSORIES"
+  },
+  "status": "SUCCESS"
+}
 ```
 <br/>
 
@@ -90,6 +349,163 @@ If the submission is successful, the API will once again return a response conta
 Here is an example of what the order response might look like:
 
 ```
-  
+{
+  "order": {
+    "_meta": {
+      "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8711820"
+    },
+    "accountHolder": {
+      "_meta": {
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"
+      },
+      "companyEmployeeId": "peter.edwards.acme",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
+      "id": "28673732",
+      "lastName": "Edwards",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "dateSubmitted": "2016-04-29T21:04:56Z",
+    "externalOrderNumber": "MM123456A",
+    "orderId": "8711820",
+    "orderSegments": {
+      "items": [
+        {
+          "_meta": {
+            "hrefHistory": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8711820/history?orderSegment=8711821",
+            "hrefShipments": "https://tngo-mobproc.cloudhub.io/mobproc/v1/orders/8711820/shipments?orderSegment=8711821"
+          },
+          "accessories": [
+            {
+              "imageUrl": "https://cdn.tangoe.com//images/devices/MICRDUALVPCF_m.jpg",
+              "manufacturer": {
+                "_meta": {
+                  "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Verizon%20Wireless"
+                },
+                "id": "Verizon Wireless",
+                "logoUrl": "https://cdn.tangoe.com//images/manufacturers/Verizon Wireless.gif",
+                "name": "Verizon Wireless"
+              },
+              "name": "Verizon Wireless Vehicle Charger with Dual Output (MICRDUALVPC-F)",
+              "price": {
+                "amount": 22.49,
+                "currencyCode": "USD",
+                "recurrence": "ONETIME"
+              }
+            },
+            {
+              "imageUrl": "https://cdn.tangoe.com//images/devices/EMICUSBDTVL_F_m.jpg",
+              "manufacturer": {
+                "_meta": {
+                  "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/manufacturers/Verizon%20Wireless"
+                },
+                "id": "Verizon Wireless",
+                "logoUrl": "https://cdn.tangoe.com//images/manufacturers/Verizon Wireless.gif",
+                "name": "Verizon Wireless"
+              },
+              "name": "Verizon Wireless Rapid Wall Charger with 6ft Cable for Micro USB (EMICUSBDTVL-F)",
+              "price": {
+                "amount": 22.49,
+                "currencyCode": "USD",
+                "recurrence": "ONETIME"
+              }
+            }
+          ],
+          "features": [],
+          "orderSegmentId": "8711821",
+          "plan": {
+            "optionalFeatures": []
+          },
+          "status": "ORDER_SUBMITTED",
+          "vendor": {
+            "_meta": {
+              "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/vendors/98"
+            },
+            "id": "98",
+            "logoUrl": "https://cdn.tangoe.com//images/carrier/logo_VER.gif",
+            "name": "Verizon Wireless"
+          }
+        }
+      ]
+    },
+    "properties": [
+      {
+        "fields": [
+          {
+            "id": "CONTACT_NUMBER",
+            "label": "Contact Phone Number",
+            "text": "2035559999",
+            "type": "TEXT"
+          },
+          {
+            "id": "SERVICE_NUMBER",
+            "label": "Service Number",
+            "text": "2035557676",
+            "type": "TEXT"
+          }
+        ],
+        "groupId": "MISCELLANEOUS"
+      }
+    ],
+    "requestedBy": {
+      "_meta": {
+        "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/employees/28673732"
+      },
+      "companyEmployeeId": "peter.edwards.acme",
+      "department": {
+        "id": "11569020385",
+        "name": "Development"
+      },
+      "email": "peter.edwards@acme.com",
+      "firstName": "Peter",
+      "id": "28673732",
+      "lastName": "Edwards",
+      "officePhone": "2035559999",
+      "status": "ACTIVE"
+    },
+    "serviceNumber": "2035557676",
+    "shipTo": {
+      "address": [
+        {
+          "id": "LINE_1",
+          "label": "Address Line1",
+          "value": "35 Executive Blvd"
+        },
+        {
+          "id": "CITY",
+          "label": "City",
+          "value": "Orange"
+        },
+        {
+          "id": "STATE",
+          "label": "State",
+          "value": "CT"
+        },
+        {
+          "id": "POSTAL_CODE",
+          "label": "Zip Code",
+          "value": "06477"
+        }
+      ],
+      "expedite": true,
+      "name": "Peter Edwards",
+      "region": {
+        "_meta": {
+          "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640"
+        },
+        "id": "70144640",
+        "name": "United States"
+      }
+    },
+    "status": "ORDER_SUBMITTED",
+    "transactionType": "ORDER_ACCESSORIES"
+  },
+  "status": "SUCCESS"
+}
 ```
 <br/>
