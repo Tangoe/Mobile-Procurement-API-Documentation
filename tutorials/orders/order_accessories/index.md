@@ -6,7 +6,7 @@ title: Tutorials - ORDER_ACCESSORIES Order
 
 # How to Order Accessories
 
-**This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to order accessories for a specific device asset.**
+**This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to procure accessories for use with a specific device asset.**
 
 <br />
 
@@ -20,7 +20,7 @@ This API uses the OAuth2 standard for authentication. Specifically, it supports 
 
 Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.
 
-For a ORDER_ACCESSORIES transaction, this JSON typically includes the following pieces:
+For an ORDER_ACCESSORIES transaction, this JSON typically includes the following pieces:
 
 * Transaction type (i.e., ORDER_ACCESSORIES).
 
