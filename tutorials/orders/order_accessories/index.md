@@ -26,7 +26,8 @@ For an ORDER_ACCESSORIES transaction, this JSON typically includes the following
 
 * Service asset ID for the cellular service associated with the user's device. This ID can be obtained via the **/assets/service** endpoint.
 
-* Shopping cart object containing an array of IDs for the accessory items being ordered. These IDs can be obtained via the accessory catalog endpoint (i.e., **/catalog/accessories**).
+* Shopping cart object containing an array of IDs for the accessory items being ordered. 
+  * These IDs can be obtained via the accessory catalog endpoint (i.e., **/catalog/accessories**). When calling this endpoint, you must pass the **service** query parameter to get a list that is filtered to include only the accessories that are compatible with your device.
 
 * All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
 
