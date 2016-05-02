@@ -30,7 +30,11 @@ For a PORT_NUMBER, this JSON typically includes the following pieces:
 
 * The postal code for the zone in which the new device and/or new service will be used. (Note: This is only required when the selected region is the United States of America.)
 
-* Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, etc.). These IDs can be obtained via the catalog endpoints (i.e., **/catalog/devices**, **/catalog/plans**).
+* Shopping cart object containing the IDs for what is being ordered (i.e., device, plan, etc.). These IDs can be obtained via the catalog endpoints (i.e., **/catalog/devices**, **/catalog/plans**).
+  * An API call can be made to the **/catalog/devices** endpoint to obtain a list of eligible devices from which the enduser may select their new device ID. When making this call, you should pass the following three query parameters: 
+    * **transactionType**. The transaction type may be needed by the source system to invoke business logic that is specific to this type of transaction. 
+    * **service**. The service parameter will filter the results to NOT return any devices that are solely supported by the current carrier. 
+    * **vendor**. The vendor parameter will further filter the list to only return devices that are compatible with a specific carrier (i.e., the new carrier to which you are porting service).
   * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** endpoint.
 
 * All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
