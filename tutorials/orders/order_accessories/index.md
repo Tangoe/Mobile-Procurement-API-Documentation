@@ -33,7 +33,6 @@ For an ORDER_ACCESSORIES transaction, this JSON typically includes the following
 
 
 
-
 Here is an example of what the fully-assembled request body JSON might look like:
 
 ```
