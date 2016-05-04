@@ -8,7 +8,7 @@ title: Tutorials - PORT_NUMBER Order
 
 **This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to port a specific service asset to a different carrier.**
 
-Please note that sometimes the technology used by the new carrier's network is different than what is used by the original carrier. In this case, the new carrier may require different device hardware and therefore a new device will need to be ordered. An API call can be made to the /catalog/devices endpoint to obtain a list of eligible devices from which one can be selected.
+Please note that sometimes the technology used by the new carrier's network is different than what is used by the original carrier. In this case, the new carrier may require different device hardware and therefore a new device will need to be ordered. An API call can be made to the **/catalog/devices** endpoint to obtain a list of eligible devices from which one can be selected. Even if the new carrier supports the existing device, a new SIM card might be required. Therefore, these orders usually require including shipping information in the order request.
 
 <br />
 
@@ -41,7 +41,7 @@ For a PORT_NUMBER, this JSON typically includes the following pieces:
 
 * All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
 
-* Shipping information. This is required when order includes physical items. Refer to the <a href="{{site.url}}/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required for your order.
+* Shipping information. Since port orders frequently require the delivery of a new device or SIM card, shipping information is usually required. Refer to the <a href="{{site.url}}/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required for your order.
 
 
 Here is an example of what the fully-assembled request body JSON might look like:
