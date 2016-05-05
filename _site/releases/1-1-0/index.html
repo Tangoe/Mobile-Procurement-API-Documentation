@@ -510,18 +510,49 @@
 
 <h2 id="new-features">New Features</h2>
 
-<h3 id="approving-orders">Approving Orders</h3>
-<p>We added a new endpoint, <strong>/orders/{id}/approve</strong>, to enable API consumers to approve or reject an order that is currently pending approval.</p>
+<h3 id="porting-an-existing-service-to-a-different-carrier-ie-porting-a-number">Porting an Existing Service to a Different Carrier (i.e., porting a number)</h3>
+<p>This feature enables the creation of an order to port an existing service asset, including the service number, from one carrier to another. For a tutorial explaining how to use this feature, please refer to the <a href="http://localhost:4000/tutorials/orders/approvals/">Approving or Rejecting an Order</a> page.</p>
+
+<p>To support this feature, the following endpoints were created or modified:</p>
+
+<ul>
+  <li><strong>/vendors</strong> – Added the <strong>type</strong> filter to the request. This is enables filtering the response to only return carriers. Uses cases for such data includes populating a carrier selection list.</li>
+  <li><strong>/vendors/{id}</strong> – Added the <strong>accessMethod</strong> property to the response. This is used by the API caller to determine if a specific carrier supports a technology that is compatible with a specific device.</li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="approving-an-order">Approving an Order</h3>
+<p>This feature enables the approving of a specific order. To support this, the following endpoints were created or modified:</p>
+
+<ul>
+  <li><strong>/orders/{id}/approve</strong> – This new endpoint is used to approve or reject an order that is currently pending approval.</li>
+  <li><strong>/me</strong> – Added the <strong>isApprover</strong> property to the response. This property returns a boolean.</li>
+</ul>
 
 <p><br /></p>
 
 <h3 id="moving-a-service">Moving a Service</h3>
-<p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+<p>This feature enables moving the assignment of charges associated with a specific service asset from one employee to another. For a tutorial explaining how to use this feature, please refer to the <a href="http://localhost:4000/tutorials/move/">Moving a Service</a> page.</p>
+
+<p>To support this feature, the following endpoints were created or modified:</p>
+
+<ul>
+  <li><strong>/assets/services/{id}/move</strong> – This new endpoint is used to execute a “move” operation.</li>
+  <li><strong>/me</strong> – Added the <strong>canMoveService</strong> property to the response. This property returns a boolean.</li>
+</ul>
 
 <p><br /></p>
 
 <h3 id="filtering-for-accessories-that-are-compatible-with-a-specific-device-asset">Filtering for Accessories that are Compatible with a Specific Device Asset</h3>
-<p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+<p>The <strong>compatibleWithDeviceAssetId</strong> filter parameter was added to the <strong>/catalog/accessories</strong> endpoint. Previously, API consumers could only filter the accessories catalog by a device catalog ID. This filter enables filtering by an device asset ID as well.</p>
+
+<p><br /></p>
+
+<h2 id="fixed-issues">Fixed Issues</h2>
+
+<h3 id="vendors-and-vendorsid-endpoints">/vendors and /vendors/{id} endpoints</h3>
+<p>The region associated with a vendor returned in these endpoints’ responses were missing the <strong>_meta</strong> block. Responses are now be returning that data.</p>
 
 
     </div>

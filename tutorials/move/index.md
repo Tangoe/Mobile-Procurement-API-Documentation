@@ -4,8 +4,8 @@ title: Approving an Order
 ---
 
 
-# Approving or Rejecting an Order
+# Moving a Service
 
-**This tutorial describes the steps for approving or rejecting a specific order that is currently pending approval.**
+**This tutorial describes the steps for ...**
 
 xxxxxxx.
