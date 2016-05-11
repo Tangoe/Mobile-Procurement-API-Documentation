@@ -100,7 +100,7 @@ Here is an illustration of what the order properties response could look like:
 
 An individual order property contains the following required elements:
 
-* **id** -- The unique ID identifing a specific order property.
+* **id** -- The unique ID identifying a specific order property.
 
 * **label** -- A descriptive label that is suitable for displaying to an end user.
 

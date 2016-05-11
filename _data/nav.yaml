@@ -71,11 +71,11 @@
     - label: "Versioning Policy" 
       href: "policies/versioning/" 
 
-- label: "Releases" 
-  href: "releases/" 
-  subOne:
-    - label: "1.1.0" 
-      href: "releases/1-1-0/"   
+##  - label: "Releases" 
+##    href: "releases/" 
+##    subOne:
+##      - label: "1.1.0" 
+##        href: "releases/1-1-0/"   
 
 - label: "Contact"
   href: "contact/"
