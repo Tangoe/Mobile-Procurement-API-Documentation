@@ -27,6 +27,14 @@ For a SWAP_DEVICE  transaction, this JSON typically includes the following piece
 * Service asset ID for the cellular service that is to be transferred. This ID can be obtained via the **/assets/service** endpoint.
 
 * Manufacturer and model IDs, along with the serial number type and value, of the device to which you wish to transfer the service (i.e., the "newDevice" property). If the manufacturer and model are not currently identified in the device catalog, then the make and model names can passed via otherNameModelName property (e.g., "Acme StarPhone 2000").
+  * In addition to the serial number value, the serial number type must also be identified. Supported types include: 
+    * IMEI - International Mobile Station Equipment Identity
+    * MEID - Mobile Equipment Identifier
+    * ESN - Electronic Serial Number
+    * CAP_CODE - UK Code of Non-broadcast Advertising, Sales Promotion and Direct Marketing
+    * PIN - Personal Identification Number
+    * MSN - Mobile Serial Number
+    * UNKNOWN
 
 * The same manufacturer and model information must also be passed for the device you are currently using. That is, the device from which you are transferring service (i.e., the "existingDevice" property). Furthermore, the SIM ID for this existing device is also required.
 
