@@ -27,8 +27,7 @@ For an UNSUSPEND transaction, this JSON typically includes the following pieces:
 * Service asset ID for the cellular service that is to be re-activated. This ID can be obtained via the **/assets/service** endpoint.
 
 * All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
-
-
+  * Note: The USER order property is required for most UNSUSPEND orders. If your source system is Premium Mobile (also known as Command), then the value for this property must be set to a valid company employee ID. When obtaining your list of available properties from the  **/orders/properties** endpoint, the value for USER will be defaulted to the company employee ID for the "<a href="{{site.url}}/concepts/actor">actor</a>" (i.e., typically the logged-in user). 
 
 
 Here is an example of what the fully-assembled request body JSON might look like:

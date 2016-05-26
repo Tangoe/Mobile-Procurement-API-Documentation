@@ -17,7 +17,7 @@
 
     <header class="dc-banner">
      <div class="tg-display--table  tg-one-whole  tg-pad--half">
-      <div class="tg-display--table-cell"  style="width:110px;padding-top:4px">
+      <div class="tg-display--table-cell"  style="width:120px;padding-top:4px">
         <a href="http://localhost:4000/"><img src="http://www.tangoe.com/wp-content/themes/tangoe/images/tangoe_150x56.png" alt="Tangoe" class="dc-logo" /></a>
       </div><!--
     --><div class="tg-display--table-cell  tg-text--left  tg-valign--top"><span style="color:#fff">REST APIs ~</span> Mobile Procurement (MOBPROC) v1</div>
@@ -501,6 +501,9 @@
   </li>
   <li>
     <p>All required and optional order properties. Refer to the <a href="http://localhost:4000//tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.</p>
+    <ul>
+      <li>Note: The USER order property is required for most UNSUSPEND orders. If your source system is Premium Mobile (also known as Command), then the value for this property must be set to a valid company employee ID. When obtaining your list of available properties from the  <strong>/orders/properties</strong> endpoint, the value for USER will be defaulted to the company employee ID for the “<a href="http://localhost:4000//concepts/actor">actor</a>” (i.e., typically the logged-in user).</li>
+    </ul>
   </li>
 </ul>
 
