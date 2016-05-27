@@ -63,3 +63,29 @@ The Tangoe-assigned ID that is used to specify the organizational hierarchy to b
 * Optional
 * Data type: string
 
+
+<br />
+
+## Troubleshooting Headers
+
+These headers are used to tag related and individual API calls, making it much easier to quickly locate their related activity in server logs. All request and response activity that is logged for a single API call will be tagged with either/both of these headers when they are set. Either header is useful, but they can be especially helpful when used together (with different values) to track a series of related API calls.
+
+The  X-TNGO-CONTEXT-ACTIVITYID header can be used to tag multiple related calls with the same identifier. And different identifiers can be used for the X-TNGO-CONTEXT-CORRELATIONID header in each individual API call in this related set to help us distinguish between each call. Having this ability to group related activity, while simultaneously maintaining the ability to tag the individual calls that comprise your grouping, can be really helpful to troubleshoot an error occurring within a multi-step process.  
+
+<br>
+
+### X-TNGO-CONTEXT-ACTIVITYID
+
+Set this header with a value of your choice in multiple related API calls in order to sort them into a logical grouping.
+
+* Optional
+* Data type: string
+
+<br>
+
+### X-TNGO-CONTEXT-CORRELATIONID
+
+Set this header with a different unique value of your choice for each individual API call. 
+
+* Optional
+* Data type: string
