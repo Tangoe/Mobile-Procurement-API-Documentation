@@ -17,6 +17,8 @@ The limit sets the maximum number of items to be included in single “page.” 
 
 The limit value sets the maximum number of items to be included in the current page that gets returned from the total result set. The offset value identifies the index of the first item in that current page. For example, assume you have a result set of 50 items and you set the limit to 10 and the offset to 30. The result set would be grouped into 5 pages (50 / 10 = 5) and return the fourth page. (Indices 0 through 29 equals 30 items; 30 items divided by 10 equals 3 pages; so index 30 is the first item on the fourth page.)
 
+Please note that the Premium Mobile source system (known by some as Command), implements the offset parameter a little differently. If you subscribe to that system, please refer to the [note at the bottom of this page](#offsetCMD) regarding the subtle difference in how the offset affects the results returned in the response.
+
 <br />
 
 ## Response Body
@@ -49,3 +51,15 @@ Here is an example of what the pagination information in the metadata block migh
   "totalCount": 72
 }
 ```
+
+<br>
+
+<a name="offsetCMD"></a>
+
+## A Note about Offset for Premium Mobile Users
+
+API consumers who use Premium Mobile as their backend/source system should be advised that this system has implemented the **offset** parameter a little differently. 
+
+Prior to taking offset into account, Premium Mobile first calculates the pages based on the limit parameter only. For example, if the total results set is 28 items and the limit is 10, then three pages will be calculated. (Two with 10 items each, and one with eight.) Then, Premium Mobile will determine which of these pages *includes* the item represented by the index number passed in as the offset parameter. So, continuing with our example of 28 items in the result set, if the limit was three and our offset was set to 15, then the second page of results would be returned in the response and the offset item would not be the first item. This is because the item with the index number of 15 falls within the middle of the second page. 
+
+For other source systems, the behavior would be as described above. That is, the item represented by the index passed as the offset would be the first item in the results returned in the response.
