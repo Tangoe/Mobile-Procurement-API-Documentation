@@ -77,7 +77,7 @@ Here is an example of what the fully-assembled request body JSON might look like
 
 
 
-## Step 2: Set required request headers.
+## Step 2. Set required request headers.
 
 There are multiple HTTP headers that may be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate). See the [Request Headers]({{site.url}}/concepts/headers/) page for more information about our supported headers.
 
@@ -98,7 +98,7 @@ There are multiple HTTP headers that may be passed as part of your API request. 
 <br />
 
 
-## Step 3: Indicate if you wish to obtain an order confirmation.
+## Step 3. Indicate if you wish to obtain an order confirmation.
 
 Prior to submitting the order for vendor processing, you will probably want to first obtain an order confirmation. The confirmation returns all of the IDs passed in with the request body, along with the human-readable data that fully describes what was referenced by those IDs (e.g., device name, vendor, price). This is useful for API consumers who wish to present the order request back to their end user so they can verify it for accuracy.
 
@@ -106,7 +106,7 @@ To obtain a confirmation, set the **confirm** query parameter to true.
 
 <br />
 
-## Step 4: Obtain the order confirmation by calling the /orders endpoint via HTTP POST. 
+## Step 4. Obtain the order confirmation by calling the /orders endpoint via HTTP POST. 
 
 Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the **/orders** endpoint.
 
@@ -236,7 +236,7 @@ Here is an example of what the order confirmation response might look like:
 <br/>
 
 
-## Step 5: Submit order request.
+## Step 5. Submit order request.
 
 Once the request has been confirmed, it can be re-submitted for processing via HTTP POST. Before submitting, be sure to set the confirm query parameter to false (or remove it, since the default is false). 
 
