@@ -6,11 +6,13 @@ title: Setting Context - The Actor
 # Setting Context ("the Actor")
 Every API response must only include data that the authenticated user is authorized to view. Even when an API call is being made on the behalf of a different user, at no time should the API ever return data that the authenticated user is not authorized to see.
 
-The one on whose behalf the API call is being made is considered the context for the API call. In the most simple case, this context is the authenticated user. However, sometimes it is desirable to change the user context (or limit the data returned) for one of two reasons:
+The one on whose behalf the API call is being made is considered the context for the API call. In the most simple case, this context is the authenticated user. However, sometimes it is desirable to change the user context. This is typically done for one of two reasons:
 
-* **Acting upon behalf of someone else.** One common example of this involves the use of a service account to authenticate for all API calls. The service account may be used, but the API call is really being placed for the benefit of a particular end user. Therefore, this end user is the real context. For example, a call to obtain a device catalog returns the list of devices that the end user is authorized to see, not the list that the service account may access (which might be all devices). [Request headers]({{site.url}}concepts/headers/) are used for this purpose.
+* **Placing an order upon behalf of someone else.** A common example of this could be an administrative assistant who placed an order to upgrade his manager's cellphone, using a procurement application that was configured to use this API. Even if the assistant who logged into the application was the authenticated user of the API, he placed the order for the benefit of his manager. Therefore, the context was changed to reflect that relationship. This is important for reasons including if the manager was authorized to choose from more cellphones in the device catalog than the assistant would have been if the assistant had been placing the order for himself. 
 
-* **Showing a subset of data that is relevant to a specific user in your hierarchy.** For example, a manager might want a list of devices assigned to a specific employee within the department that he/she manages. In this case, we need to utilize a filter to obtain a subset of the total devices that would have been returned otherwise (i.e., without the filter). Query parameters are used for this purpose.
+* **Facilitating the use of a service account.** For security reasons, your company may wish to restrict which accounts are authorized to make API calls to a single service account (and possibly a very limited number of administrator accounts). Although the service account is used to execute the API call, that call could have been originated by an employee using your company's application. In this case, the order is being placed for the benefit of a particular end user and not the service account. The end user is the true context. For example, this would enable the API to return a smaller list from the device catalog that the end user is authorized to see, instead of the much larger list that the service account is authorized access (which could include all devices). 
+
+Whenever you need to change context, specific headers are used. Refer to the [request headers]({{site.url}}concepts/headers/) page for more information.
 
 <br/>
 
@@ -51,9 +53,11 @@ Sometimes it is helpful to retrieve additional details beyond the ID to identify
 
 <br/>
 
-## Filters
+## Context vs. Filtering
 
-Often setting the default context to the current end user makes sense since they are one using the API to place an order on their own behalf or view information about assets assigned to themselves.  However, sometimes the user does not want to see every data record that he/she is authorized to see. For example,a manager may wish to only see the devices that his/her employee may order. This case calls for use of the employee filter.
+As discussed above, we need to change the context of a call (sometimes referred to as "the actor") when we are executing it on behalf of another user. In other words, we wish to make the API call as if that other user was executing it. We also noted that we can only change the context to users that we are explicitly authorized to impersonate.
+
+However, there is also the concept of filtering which is different than changing context. Filtering is when the default context is used (i.e., the authenticated user) but we wish to limit, or filter, the results so that only a subset is returned. For example, a manager be authorized to see all of her devices, as well as all of the devices assigned to the employees in her department. However, when making the API call to **/assets/devices** endpoint, she might wish to only see the devices assigned to just one of her employees. This case calls for use of the employee filter.
 
 The employee filter is set via one of two query parameters: 
 
@@ -66,4 +70,3 @@ The API resources that support the employee filter include:
 * /assets/services
 * /orders (HTTP GET method)
 * /employees
-
