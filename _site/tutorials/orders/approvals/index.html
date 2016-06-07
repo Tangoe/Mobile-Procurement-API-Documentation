@@ -418,6 +418,20 @@
 
 
               
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
+              <a href="http://localhost:4000/tutorials/orders/approvals/" class="dc-navOption__active">Approving an Order</a>
+              
+              </div>
+
+
+            
+
+
+              
             
           
 
@@ -478,7 +492,97 @@
 
 <p><strong>This tutorial describes the steps for approving or rejecting a specific order that is currently pending approval.</strong></p>
 
-<p>xxxxxxx.</p>
+<p><br /></p>
+
+<h2 id="authentication">Authentication</h2>
+
+<p>This API uses the OAuth2 standard for authentication. Specifically, it supports two grant types: <em>Implicit</em> and <em>Resource Owner Password Credentials</em>. For details regarding how to use this standard to authenticate when making your API calls, please refer to the  <a href="http://localhost:4000//concepts/security/">Security and Authentication</a> page.</p>
+
+<p><br /></p>
+
+<h2 id="step-1-build-the-request-body-that-is-required">Step 1. Build the request body that is required.</h2>
+
+<p>Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.</p>
+
+<p>For an approval transaction, this JSON typically includes the following pieces:</p>
+
+<ul>
+  <li>
+    <p>Action (i.e., APPROVE or REJECT).</p>
+  </li>
+  <li>
+    <p>Reason for approval or rejection. This field is necessary for the successful submission when required by the workflow associated with the order. Typically a reason is required for a rejection.</p>
+  </li>
+</ul>
+
+<p>Here is an example of what the fully-assembled request body JSON might look like:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APPROVE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Employee eligible for device upgrade due to promotion to manager"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><br /></p>
+
+<h2 id="step-2-set-the-uri-parameter-for-the-order-to-be-approved">Step 2. Set the URI parameter for the order to be approved.</h2>
+
+<p>This endpoint requires a URI parameter to identify the order you wish to approve. Therefore, the order ID must be injected into the URI when calling this endpoint. For example, if the order ID is <strong>123456</strong>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>	/orders/123456/approval
+</code></pre>
+</div>
+
+<p><br /></p>
+
+<h2 id="step-3-set-required-request-headers">Step 3. Set required request headers.</h2>
+
+<p>There are multiple HTTP headers that may be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate). See the <a href="http://localhost:4000//concepts/headers/">Request Headers</a> page for more information about our supported headers.</p>
+
+<h3 id="required-headers">Required Headers:</h3>
+
+<ul>
+  <li>
+    <p><strong>X-TNGO-TENANT</strong> - Used to identify the specific tenant (i.e., customer) for which the API is being called.</p>
+  </li>
+  <li>
+    <p><strong>client_id</strong> - Used to identify your client application as the one calling the API.</p>
+  </li>
+</ul>
+
+<h3 id="optional-headers">Optional Headers:</h3>
+
+<ul>
+  <li>
+    <p><strong>X-TNGO-CONTEXT-COMPANYEMPLOYEEID</strong> – The employee ID assigned by the tenant/customer (e.g., employee’s email address, etc.).</p>
+  </li>
+  <li>
+    <p><strong>X-TNGO-CONTEXT-EMPLOYEEID</strong> – The employee ID assigned by Tangoe.</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="step-4-submit-order-request">Step 4. Submit order request.</h2>
+
+<p>If the submission is successful, the API will once again return a response containing JSON with an HTTP status code of 200. The response body will simply include one of four status options:</p>
+
+<ul>
+  <li><strong>APPROVAL_QUEUED</strong> — The approval request is queued up for the approval workflow.</li>
+  <li><strong>REJECTION_QUEUED</strong> — The approval request is queued up for the rejection workflow.</li>
+  <li><strong>APPROVAL_NOT_NEEDED</strong> — Returned when the order has already been approved (or rejected), or when an approval workflow has not been configured for this type of order.</li>
+  <li><strong>NOT_READY_FOR_APPROVAL</strong> — Returned for orders that do require approval but have not yet entered the AWAITING_APPROVAL state.</li>
+</ul>
+
+<p>Here is an example of what the order response might look like:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APPROVAL_QUEUED"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+<p><br /></p>
 
 
     </div>
