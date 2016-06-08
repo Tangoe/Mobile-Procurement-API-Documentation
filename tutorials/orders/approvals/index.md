@@ -71,10 +71,14 @@ There are multiple HTTP headers that may be passed as part of your API request. 
 
 If the submission is successful, the API will once again return a response containing JSON with an HTTP status code of 200. The response body will simply include one of four status options:
 
- * **APPROVAL_QUEUED** — The approval request is queued up for the approval workflow.
- * **REJECTION_QUEUED** — The approval request is queued up for the rejection workflow.
- * **APPROVAL_NOT_NEEDED** — Returned when the order has already been approved (or rejected), or when an approval workflow has not been configured for this type of order.
- * **NOT_READY_FOR_APPROVAL** — Returned for orders that do require approval but have not yet entered the AWAITING_APPROVAL state. 
+| ***Status*** | ***Description*** |
+| --- | --- |
+| **APPROVAL_QUEUED**	| The approval request is queued up for the approval workflow. 		|
+| **REJECTION_QUEUED**	| The approval request is queued up for the rejection workflow. 	|
+| **APPROVAL_NOT_NEEDED**	| Returned when the order has already been approved (or rejected), or when an approval workflow has not been configured for this type of order. 		|
+| **NOT_READY_FOR_APPROVAL**	| Returned for orders that do require approval but have not yet entered the AWAITING_APPROVAL state. |
+
+<br />
  
 Here is an example of what the order response might look like:
 
