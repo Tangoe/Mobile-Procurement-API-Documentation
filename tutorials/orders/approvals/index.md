@@ -16,7 +16,17 @@ This API uses the OAuth2 standard for authentication. Specifically, it supports 
 
 <br />
 
-## Step 1. Build the request body that is required. 
+## Step 1. Set the URI parameter for the order to be approved.
+
+This endpoint requires a URI parameter to identify the order you wish to approve. Therefore, the order ID must be injected into the URI when calling this endpoint. For example, if the order ID is **123456**:
+
+```
+	/orders/123456/approval
+```
+
+<br />
+
+## Step 2. Build the request body that is required. 
 
 Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.
 
@@ -37,16 +47,6 @@ Here is an example of what the fully-assembled request body JSON might look like
 
 <br />
 
-## Step 2. Set the URI parameter for the order to be approved.
-
-This endpoint requires a URI parameter to identify the order you wish to approve. Therefore, the order ID must be injected into the URI when calling this endpoint. For example, if the order ID is **123456**:
-
-```
-	/orders/123456/approval
-```
-
-<br />
-
 ## Step 3. Set required request headers.
 
 There are multiple HTTP headers that may be passed as part of your API request. They are used to confirm that the caller is authorized to make this request, along with optional filtering (when appropriate). See the [Request Headers]({{site.url}}/concepts/headers/) page for more information about our supported headers.
@@ -59,13 +59,11 @@ There are multiple HTTP headers that may be passed as part of your API request. 
 
 ### Optional Headers:
 
-* **X-TNGO-CONTEXT-COMPANYEMPLOYEEID** -- The employee ID assigned by the tenant/customer (e.g., employee’s email address, etc.). 
+* **X-TNGO-CONTEXT-COMPANYEMPLOYEEID** -- The employee ID assigned by the tenant/customer (e.g., employee’s email address, etc.). Used to change context. Refer to the [Setting Context]({{site.url}}/concepts/actor/) page for additional instructions.
 
-* **X-TNGO-CONTEXT-EMPLOYEEID** -- The employee ID assigned by Tangoe. 
-
+* **X-TNGO-CONTEXT-EMPLOYEEID** -- The employee ID assigned by Tangoe. Used to change context. Refer to the [Setting Context]({{site.url}}/concepts/actor/) page for additional instructions.
 
 <br />
-
 
 ## Step 4. Submit order request.
 
@@ -79,8 +77,8 @@ If the submission is successful, the API will once again return a response conta
 | **NOT_READY_FOR_APPROVAL**	| Returned for orders that do require approval but have not yet entered the AWAITING_APPROVAL state. |
 
 <br />
- 
-Here is an example of what the order response might look like:
+
+Here is an example of what the response might look like:
 
 ```
 {

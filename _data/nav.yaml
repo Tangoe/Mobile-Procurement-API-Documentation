@@ -62,7 +62,7 @@
       href: "tutorials/addresses/" 
     - label: "Approving an Order"
       href: "tutorials/orders/approvals/"  
-##    - label: "Moving a Service"
+##    - label: "Moving a Service Assignment"
 ##      href: "tutorials/move/" 
 
 - label: "Policies" 
