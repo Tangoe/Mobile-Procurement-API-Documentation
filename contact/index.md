@@ -79,5 +79,4 @@ For technical support, please contact <a href="mailto:Support@tangoe.com"><stron
 		Melbourne, VIC, 3000<br>
 		Australia<br>
 		<p>+61 (0) 3 9225 5288</p>
-	</div>
-</div>
+
