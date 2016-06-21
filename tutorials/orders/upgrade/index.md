@@ -36,7 +36,7 @@ For an UPGRADE transaction, this JSON typically includes the following pieces:
 
 * Service asset ID for the cellular service, and/or associated device, that you wish to upgrade. This ID can be obtained via the **/assets/service** endpoint.
 
-* Existing device information for the device you are currently using. This is required, even when you are only upgrading the plan. This block includes the manufacturer ID, model ID, serial number, serial number type, and sim ID.
+* Existing device information for the device you are currently using. This is required, even when you are only upgrading the plan. This block includes the manufacturer ID, model ID, serial number, serial number type, and SIM ID.
 
 * Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, and/or plan features). These IDs can be obtained via the catalog endpoints (i.e., **/catalog/devices**, **/catalog/plans**, **/catalog/features**).
   * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** endpoint.
@@ -47,7 +47,7 @@ For an UPGRADE transaction, this JSON typically includes the following pieces:
 * Shipping information. This is required whenever an order includes physical items. Refer to the <a href="{{site.url}}/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required for your order.
 
 
-Here is an example of what the fully-assembled request body JSON might look like when upgrading both a device and its related serivce plan:
+Here is an example of what the fully-assembled request body JSON might look like when upgrading both a device and its related service plan:
 
 ```
 {

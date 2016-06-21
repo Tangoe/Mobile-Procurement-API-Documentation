@@ -18,7 +18,7 @@ Upon logging into the Tangoe Developer Portal, simply click on the API Reference
 
 ## **Your API First Call**
 
-After signing into the Tangoe Developer Portal, we recommend you begin by trying the */ping* endpoint to confirm your access to the backend services that power this API. The steps to to test this simple endpoint are essentialy the same for all endpoints and can be used for exploring those as well.
+After signing into the Tangoe Developer Portal, we recommend you begin by trying the */ping* endpoint to confirm your access to the backend services that power this API. The steps to test this simple endpoint are essentially the same for all endpoints and can be used for exploring those as well.
 
 To begin, simply follow these easy steps:
 

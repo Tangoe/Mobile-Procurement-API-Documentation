@@ -4,7 +4,7 @@ title: Tutorials - DEACTIVATE Order
 ---
 
 
-# How to Deactivcate a Service Asset
+# How to Deactivate a Service Asset
 
 **This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to deactivate a specific service asset.**
 

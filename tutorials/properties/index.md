@@ -6,7 +6,7 @@ title: Obtaining Order Properties
 
 # Obtaining Order Properties
 
-**This tutorial dscribes the steps for obtaining the required (and optional) properties that are supported by the vendor who will be fulfilling your order.**
+**This tutorial describes the steps for obtaining the required (and optional) properties that are supported by the vendor who will be fulfilling your order.**
 
 Order properties are additional pieces of information about your order. They are not used by the API to process the order. But rather, they are passed on to the third-party vendor who will be fulfilling your order. Some of these properties may be required to be populated in order for your order to be accepted.
 
@@ -130,7 +130,7 @@ The CHOICE type is used to model properties that only accept a value from a defi
 
 CHOICE properties include an array named **choices** that contains the acceptable options. Each option in the array contains the following elements:
 
- * **id** -- The unique ID identifing this specific option.
+ * **id** -- The unique ID identifying this specific option.
  
  * **label** --  A descriptive label that is suitable for displaying to an end user.
  

@@ -32,7 +32,7 @@ The following status codes are currently supported:
 If an error does occur, the following error message information will be included in the response body:
 
 * **status** -- One of the HTTP status codes listed above (e.g., 400).
-* **id** -- Unique string identifying this specific occurence of the error.
+* **id** -- Unique string identifying this specific occurrence of the error.
 * **errorCode** -- Tangoe-assigned code indicating the type of error that occurred.
 * **message** -- Description of the what caused the message and/or how to resolve it.
 
