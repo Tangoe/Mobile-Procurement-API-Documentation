@@ -32,7 +32,7 @@ For technical support, please contact <a href="mailto:Support@tangoe.com"><stron
 				tg-space--half--top 
 				tg-valign--top">
 		<p><span class="tg-emphasis">North America</span><br>
-		<strong>CT, Orange (HQ)</strong><br>
+		<strong>Orange, USA (HQ)</strong><br>
 		35 Executive Blvd.<br>
 		Orange, CT 06477</p>
 		<p>+1 203 859 9300<br>
