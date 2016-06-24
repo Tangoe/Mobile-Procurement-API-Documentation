@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Errors
+youtubeId: T-gL_xdHTOk
 ---
 
 # Errors
@@ -8,6 +9,16 @@ title: Errors
 This API returns a standard HTTP status code with every response to indicate whether your request had succeeded or failed. 
 
 Status codes within the 200 range typically indicate that the request was processed successfully. Codes within the 400 range indicate an error occurred that resulted from the request data provided by the caller (e.g., a required parameter was missing in the request). And codes within the 500 range indicate an error triggered by an issue Tangoe's servers. 
+
+<br/>
+
+## Video Tutorial
+
+The following video explains how this API returns error responses to help you pinpoint your issue and get you back on track quickly.
+
+{% include youtube.html id=page.youtubeId %}
+
+We also recommend browsing all of our tutorials in our Video Library at [http://mobproc.tv](http://mobproc.tv). 
 
 <br/>
 
@@ -22,7 +33,6 @@ The following status codes are currently supported:
 | **403**	| *Forbidden:* You are not authorized to receive what was requested. 		|
 | **404**	| *Not Found:* The resource you requested cannot be found.					|
 | **500**	| *Server Error:* Your request failed due to a problem on Tangoe's servers.	|
-
 
 <br/>
 <br/>

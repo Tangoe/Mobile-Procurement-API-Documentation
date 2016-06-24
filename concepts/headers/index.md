@@ -1,12 +1,23 @@
 ---
 layout: default
 title: Request Headers 
+youtubeId: l_Yh7Pwapts
 ---
 
 
 # Request Headers
 
 Request headers are simply key/value pairs of metadata relating to what is contained within the body of a request and/or response. The Mobile Procurement API primarily uses them for identifying users and limiting context. 
+
+<br/>
+
+## Video Tutorial
+
+This video describes the custom headers that you can pass with any MOBPROC API request and how they are used.
+
+{% include youtube.html id=page.youtubeId %}
+
+We also recommend browsing all of our tutorials in our Video Library at [http://mobproc.tv](http://mobproc.tv).
 
 <br />
 

@@ -1,12 +1,23 @@
 ---
 layout: default
 title: Tutorials - ORDER_ACCESSORIES Order
+youtubeId: DdDudDNeXOQ
 ---
 
 
 # How to Order Accessories
 
 **This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to procure accessories for use with a specific device asset.**
+
+<br/>
+
+## Video Tutorial
+
+This video explains how to create and submit an order request to order accessories for a specific device asset.
+
+{% include youtube.html id=page.youtubeId %}
+
+We also recommend browsing all of our tutorials in our Video Library at [http://mobproc.tv](http://mobproc.tv). 
 
 <br />
 

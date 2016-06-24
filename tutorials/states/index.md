@@ -1,6 +1,7 @@
 ---
 layout: default
 title: States and Provinces
+youtubeId: S8SeR3YSpfI
 ---
 
 
@@ -9,6 +10,21 @@ title: States and Provinces
 **This tutorial provides instructions for obtaining a list of states or provinces that are located within a specific country.**
 
 When creating forms where users are required to enter address information, a dropdown list of states or provinces might need to be displayed. The **/regions** endpoint is used to obtain the data needed for populating the options in the list. 
+
+
+<br/>
+
+## Video Tutorial
+The following video explains two ways to obtain a list of states or provinces for a specific country.
+
+{% include youtube.html id=page.youtubeId %}
+
+We also recommend browsing all of our tutorials in our Video Library at [http://mobproc.tv](http://mobproc.tv). 
+
+
+<br/>
+
+## How to Obtain a List of States or Provinces
 
 To begin, you must first determine the region ID for a selected country. If you do not know this ID, call the **/regions** endpoint to get a full list of supported countries, along with their IDs.
 

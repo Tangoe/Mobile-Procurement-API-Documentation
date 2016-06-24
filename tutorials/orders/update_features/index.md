@@ -1,12 +1,23 @@
 ---
 layout: default
 title: Tutorials - UPDATE_FEATURES Order
+youtubeId: SKVAgRPbQn4
 ---
 
 
 # How to Update the Features of a Service Asset
 
 **This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to update the features of a specific service asset.**
+
+<br/>
+
+## Video Tutorial
+
+This video explains how to create and submit an order request to update the features of an existing service asset.
+
+{% include youtube.html id=page.youtubeId %}
+
+We also recommend browsing all of our tutorials in our Video Library at [http://mobproc.tv](http://mobproc.tv). 
 
 <br />
 

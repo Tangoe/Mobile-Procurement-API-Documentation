@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Metadata
+youtubeId: UUjW8vg5Lts
 ---
 
 # Metadata
@@ -8,6 +9,16 @@ title: Metadata
 In many places, this API’s responses include blocks of metadata relating to data points contained within that response. These supplementary blocks, which are always named “_meta,” typically contain fully-qualified URLs that resolve to other API calls for retrieving related detail data.
 
 For example, the API call for a collection of employees might return items containing just a few selected details about each employee. However, each item also contains a “_meta” block populated with a URL that can be used to obtain that specific employee’s full detail record. 
+
+<br/>
+
+## Video Tutorial
+
+The following video provides a quick explanation of the “_meta” block included in most API responses — as well as explain what it typically includes.
+
+{% include youtube.html id=page.youtubeId %}
+
+We also recommend browsing all of our tutorials in our Video Library at [http://mobproc.tv](http://mobproc.tv). 
 
 <br />
 

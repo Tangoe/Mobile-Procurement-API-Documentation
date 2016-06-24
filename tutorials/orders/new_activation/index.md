@@ -1,12 +1,23 @@
 ---
 layout: default
 title: Tutorials - Ordering - NEW_ACTIVATION 
+youtubeId: QrPC3YV2-xs
 ---
 
 
 # How to Order a New Device and/or Service Plan 
 
 **This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to procure a new device and service plan (i.e., NEW_ACTIVATION). Please note that device accessories can also be included with this order.**
+
+<br/>
+
+## Video Tutorial
+
+This video explains how to create and submit an order request to procure a new device and service plan (often referred to as a NEW_ACTIVATION). It can also include accessories for the new device that you’re ordering. But please note that this is different than the [ORDER_ACCESSORIES]({{site.url}}/tutorials/orders/order_accessories/) transaction type, which is used to order accessories for an existing device asset.
+
+{% include youtube.html id=page.youtubeId %}
+
+We also recommend browsing all of our tutorials in our Video Library at [http://mobproc.tv](http://mobproc.tv). 
 
 <br />
 

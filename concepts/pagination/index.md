@@ -1,11 +1,22 @@
 ---
 layout: default
 title: Pagination
+youtubeId: 09FgUyvYH14
 ---
 
 # Pagination
 
 API calls that retrieve collections of items frequently return large, unbounded result sets. In these cases, results are almost always paginated to improve performance and help the user more easily manage handling of the results.
+
+<br/>
+
+## Video Tutorial
+
+This video explains how pagination works for selected API endpoints that are most likely to return very large, unbounded collections.
+
+{% include youtube.html id=page.youtubeId %}
+
+We also recommend browsing all of our tutorials in our Video Library at [http://mobproc.tv](http://mobproc.tv).
 
 <br />
 

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Formatting an Address
+youtubeId: S8SeR3YSpfI
 ---
 
 
@@ -127,3 +128,14 @@ Once a selected country's address format is returned, the response can be parsed
 }
 
 ```
+
+
+<br/>
+
+## Video Tutorial
+
+The following video explains two ways to obtain a list of states or provinces for a specific country.
+
+{% include youtube.html id=page.youtubeId %}
+
+We also recommend browsing all of our tutorials in our Video Library at [http://mobproc.tv](http://mobproc.tv). 
