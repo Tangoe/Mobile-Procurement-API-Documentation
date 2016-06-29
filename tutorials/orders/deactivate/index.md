@@ -1,12 +1,23 @@
 ---
 layout: default
 title: Tutorials - DEACTIVATE Order
+youtubeId: W79c4NFhABc
 ---
 
 
 # How to Deactivate a Service Asset
 
 **This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to deactivate a specific service asset.**
+
+<br/>
+
+## Video Tutorial
+
+This video explains how to create and submit an order request to suspend, unsuspend, or deactivate a service asset.
+
+{% include youtube.html id=page.youtubeId %}
+
+We also recommend browsing all of our tutorials in our Video Library at [http://mobproc.tv](http://mobproc.tv). 
 
 <br />
 

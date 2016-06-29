@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Obtaining Order Properties
+youtubeId: QBHmgTDW6-4
 ---
 
 
@@ -9,6 +10,17 @@ title: Obtaining Order Properties
 **This tutorial describes the steps for obtaining the required (and optional) properties that are supported by the vendor who will be fulfilling your order.**
 
 Order properties are additional pieces of information about your order. They are not used by the API to process the order. But rather, they are passed on to the third-party vendor who will be fulfilling your order. Some of these properties may be required to be populated in order for your order to be accepted.
+
+<br/>
+
+## Video Tutorial
+
+This video explains how to obtain the order properties that need to be passed when submitting any order request.
+
+{% include youtube.html id=page.youtubeId %}
+
+We also recommend browsing all of our tutorials in our Video Library at [http://mobproc.tv](http://mobproc.tv). 
+
 
 <br/>
 

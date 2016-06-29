@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Tutorials - SUSPEND Order
+youtubeId: W79c4NFhABc
 ---
 
 
@@ -8,13 +9,23 @@ title: Tutorials - SUSPEND Order
 
 **This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to temporarily suspend a specific service asset that is currently active.**
 
+<br/>
+
+## Video Tutorial
+
+This video explains how to create and submit an order request to suspend, unsuspend, or deactivate a service asset.
+
+{% include youtube.html id=page.youtubeId %}
+
+We also recommend browsing all of our tutorials in our Video Library at [http://mobproc.tv](http://mobproc.tv). 
+
 <br />
 
 ## Authentication
 
 This API uses the OAuth2 standard for authentication. Specifically, it supports two grant types: *Implicit* and *Resource Owner Password Credentials*. For details regarding how to use this standard to authenticate when making your API calls, please refer to the  [Security and Authentication]({{site.url}}/concepts/security/) page.
 
-<br />
+<br/>
 
 ## Step 1. Build the request body that is required. 
 

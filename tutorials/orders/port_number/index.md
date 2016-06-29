@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Tutorials - PORT_NUMBER Order
+youtubeId: jdL__lw7gw4
 ---
 
 
@@ -9,6 +10,16 @@ title: Tutorials - PORT_NUMBER Order
 **This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to port a specific service asset to a different carrier.**
 
 Please note that sometimes the technology used by the new carrier's network is different than what is used by the original carrier. In this case, the new carrier may require different device hardware and therefore a new device will need to be ordered. An API call can be made to the **/catalog/devices** endpoint to obtain a list of eligible devices from which one can be selected. Even if the new carrier supports the existing device, a new SIM card might be required. Therefore, these orders usually require including shipping information in the order request.
+
+<br/>
+
+## Video Tutorial
+
+This video explains how to create and submit an order request to port an existing service asset (including the service number) from one carrier to another carrier.
+
+{% include youtube.html id=page.youtubeId %}
+
+We also recommend browsing all of our tutorials in our Video Library at [http://mobproc.tv](http://mobproc.tv). 
 
 <br />
 

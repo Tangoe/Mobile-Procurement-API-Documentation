@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Formatting an Address
-youtubeId: S8SeR3YSpfI
+youtubeId: psnb-pYO424
 ---
 
 
@@ -134,7 +134,7 @@ Once a selected country's address format is returned, the response can be parsed
 
 ## Video Tutorial
 
-The following video explains two ways to obtain a list of states or provinces for a specific country.
+The following video explains how to assemble the shipping information for an order request. It includes instructions for determining the correct address format.
 
 {% include youtube.html id=page.youtubeId %}
 
