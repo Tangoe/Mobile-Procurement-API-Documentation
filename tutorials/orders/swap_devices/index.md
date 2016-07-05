@@ -1,12 +1,23 @@
 ---
 layout: default
 title: Tutorials - SWAP_DEVICE Order
+youtubeId: 5ojaJLmh2wU
 ---
 
 
 # How to Transfer Service from One Device to Another
 
 **This tutorial provides step-by-step instructions for changing the assignment of a service from one device to another. Please note that both devices must be known assets in the possession of the user. In other words, service cannot be transferred to a brand new device that is purchased during the order process.**
+
+<br/>
+
+## Video Tutorial
+
+This video explains how to create and submit an order request to change the assignment of a service asset from one device to another.
+
+{% include youtube.html id=page.youtubeId %}
+
+We also recommend browsing all of our tutorials in our Video Library at [http://mobproc.tv](http://mobproc.tv). 
 
 <br />
 
