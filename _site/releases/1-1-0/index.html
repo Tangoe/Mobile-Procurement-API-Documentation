@@ -511,7 +511,20 @@
 
 <ul>
   <li><strong>/orders/{id}/approve</strong> – This new endpoint is used to approve or reject an order that is currently pending approval.</li>
+  <li><strong>/orders</strong> - Added the <strong>dateTimeUpdatedOnOrAfter</strong> filter. Also added the <strong>UPDATED_DATE</strong> sort option.</li>
+  <li><strong>/orders [POST]</strong> and <strong>/orders/{id}</strong> - Added the <strong>updated</strong> property.</li>
   <li><strong>/me</strong> – Added the <strong>isApprover</strong> property to the response. This property returns a boolean.</li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="tracking-sorting-and-filtering-for-when-assets-were-last-updated">Tracking, Sorting and Filtering for when Assets were Last Updated</h3>
+<p>This feature is useful for determining when an asset was last updated, as well as support for filtering and sorting on the last updated datetime.</p>
+
+<ul>
+  <li>Device and service asset responses now include the <strong>updated</strong> property.</li>
+  <li>Device and service asset collections can be sorted by <strong>UPDATED_DATE</strong>.</li>
+  <li>Device and service asset collections can now be filtered by <strong>dateTimeUpdatedOnOrAfter</strong> and/or <strong>dateTimeUpdatedOnOrBefore</strong>.</li>
 </ul>
 
 <p><br /></p>
@@ -531,12 +544,28 @@
 <h3 id="filtering-for-accessories-that-are-compatible-with-a-specific-device-asset">Filtering for Accessories that are Compatible with a Specific Device Asset</h3>
 <p>The <strong>compatibleWithDeviceAssetId</strong> filter parameter was added to the <strong>/catalog/accessories</strong> endpoint. Previously, API consumers could only filter the accessories catalog by a device catalog ID. This filter enables filtering by an device asset ID as well.</p>
 
-<p><br /></p>
+<p><br /><br />
+<br /></p>
+
+<h2 id="new-features-for-premium-mobile">New Features for Premium Mobile</h2>
+<p>The following new feature only applies to API consumers who are subscribers to Tangoe’s Premium Mobile source system (also known as Command).</p>
+
+<h3 id="diagnostics">/diagnostics</h3>
+<p>New diagnostics will be set with a boolean value to indicate whether or not each of these three Premium Mobile roles are currently assigned:</p>
+
+<ul>
+  <li><strong>IS_AUTHENTICATED_USER_APPROVER</strong></li>
+  <li><strong>IS_ACTOR_APPROVER</strong></li>
+  <li><strong>EXECUTE_MOVE_SERVICE_PERMISSION</strong></li>
+</ul>
+
+<p><br /><br />
+<br /></p>
 
 <h2 id="fixed-issues">Fixed Issues</h2>
 
 <h3 id="vendors-and-vendorsid-endpoints">/vendors and /vendors/{id} endpoints</h3>
-<p>The region associated with a vendor returned in these endpoints’ responses were missing the <strong>_meta</strong> block. Responses are now be returning that data.</p>
+<p>The region associated with a vendor that was returned within the response was missing the <strong>_meta</strong> block. The response now returns this metadata.</p>
 
 
     </div>
