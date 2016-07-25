@@ -39,7 +39,6 @@ This feature is useful for determining when an asset was last updated, as well a
 * Device and service asset collections can be sorted by **UPDATED_DATE**.
 * Device and service asset collections can now be filtered by **dateTimeUpdatedOnOrAfter** and/or **dateTimeUpdatedOnOrBefore**.
 
-
 <br/>
 
 ### Moving a Service
@@ -55,7 +54,10 @@ To support this feature, the following endpoints were created or modified:
 ### Filtering for Accessories that are Compatible with a Specific Device Asset
 The **compatibleWithDeviceAssetId** filter parameter was added to the **/catalog/accessories** endpoint. Previously, API consumers could only filter the accessories catalog by a device catalog ID. This filter enables filtering by an device asset ID as well.
 
+<br/>
 
+### Custom Employee Attributes
+Custom attributes can be associated with an employee record. These attributes are customizable and variable  name/value pairs that are defined by the client company. Furthermore, the client company can also define what specific values are valid for each attribute.  These custom attributes are included within the responses for the **/me** and **/employees/{id}** endpoints.
 
 
 <br/>
