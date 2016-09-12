@@ -59,6 +59,11 @@ The **compatibleWithDeviceAssetId** filter parameter was added to the **/catalog
 ### Custom Employee Attributes
 Custom attributes can be associated with an employee record. These attributes are customizable and variable  name/value pairs that are defined by the client company. Furthermore, the client company can also define what specific values are valid for each attribute.  These custom attributes are included within the responses for the **/me** and **/employees/{id}** endpoints.
 
+<br/>
+
+### Device Upgrade Eligiblity Tracking
+Properties were added to help to determine when a service asset is eligible for a device upgrade. The **upgradeEligibilityDate** property was added to responses that contain a service asset. Responses containing the employee object now include the **updated** property. And the **dateTimeUpdatedOnOrAfter** filter parameter was added to the **/employees** endpoint.
+
 
 <br/>
 <br/>
