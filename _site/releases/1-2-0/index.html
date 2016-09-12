@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset=utf-8 />
-  <title>  Request Headers |  Tangoe Mobile Procurement API </title>  
+  <title>  Release 1.2.0 |  Tangoe Mobile Procurement API </title>  
 
   <script src="http://localhost:4000/js/jquery/jquery-2.1.4.min.js"></script>
   
@@ -127,7 +127,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/concepts/headers/" class="dc-navOption__active">Request Headers</a>
+              <a href="http://localhost:4000/concepts/headers/">Request Headers</a>
               
               </div>
 
@@ -488,114 +488,21 @@
     </div><!--
     --><div class="tg-grid__cell  tg-four-fifths  tg-pad"> 
 
-      <h1 id="request-headers">Request Headers</h1>
-
-<p>Request headers are simply key/value pairs of metadata relating to what is contained within the body of a request and/or response. The Mobile Procurement API primarily uses them for identifying users and limiting context.</p>
+      <h1 id="release-120">Release 1.2.0</h1>
 
 <p><br /></p>
 
-<h2 id="video-tutorial">Video Tutorial</h2>
+<h2 id="new-features">New Features</h2>
 
-<p>This video describes the custom headers that you can pass with any MOBPROC API request and how they are used.</p>
+<h3 id="device-upgrade-eligiblity-tracking">Device Upgrade Eligiblity Tracking</h3>
+<p>Properties were added to help to determine when a service asset is eligible for a device upgrade. The <strong>upgradeEligibilityDate</strong> property was added to responses that contain a service asset. Responses containing the employee object now include the <strong>updated</strong> property. And the <strong>dateTimeUpdatedOnOrAfter</strong> filter parameter was added to the <strong>/employees</strong> endpoint.</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/zZfi3Vfy7lA" frameborder="0" style="border:1px solid #777" allowfullscreen=""></iframe>
+<p><br /><br />
+<br /></p>
 
-<p>We also recommend browsing all of our tutorials in our Video Library at <a href="http://mobproc.tv">http://mobproc.tv</a>.</p>
+<h2 id="fixed-issues">Fixed Issues</h2>
 
-<p><br /></p>
-
-<h2 id="general-headers">General Headers</h2>
-
-<p>General headers are added by the consumer of the API and are passed along to the appropriate backend system.</p>
-
-<h3 id="x-tngo-tenant">X-TNGO-TENANT</h3>
-<p>Used to identify the specific tenant for which the API is being called (i.e., the customer).</p>
-
-<ul>
-  <li>Required</li>
-  <li>Data type: string</li>
-</ul>
-
-<p><br /></p>
-
-<h3 id="clientid">client_id</h3>
-<p>Used to identify your client application as the one calling the API.</p>
-
-<ul>
-  <li>Required</li>
-  <li>Data type: string</li>
-</ul>
-
-<p><br /></p>
-
-<h2 id="context-id-headers">Context ID Headers</h2>
-
-<p>Frequently, the logged-in/authenticated user calling the API may be a service account. As such, a service account does not specifically identify the actual end user who is placing the order, viewing assets, etc. The true end user (also known as “the actor”), must be identified by setting a context header. The API will use these identifiers to set the context for making the API call.</p>
-
-<p>For example, an application called the API using a service account ID (i.e., admin.acme.com). The request also included the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header set to the company ID for an end user, Peter Edwards (i.e., pedwards.acme.com). When the request for the device catalog was executed, only devices that Peter Edwards was authorized to see were returned rather than the larger set that the service account was authorized to access.</p>
-
-<p><br /></p>
-
-<h3 id="x-tngo-context-companyemployeeid">X-TNGO-CONTEXT-COMPANYEMPLOYEEID</h3>
-
-<p>This is the employee ID assigned by the tenant/customer (e.g., employee’s email address, etc.). This header is only used when the X-TNGO-CONTEXT-EMPLOYEEID header is not set. If this header is NOT set, the context will be set to the authenticated user.</p>
-
-<ul>
-  <li>Optional</li>
-  <li>Data type: string</li>
-</ul>
-
-<p><br /></p>
-
-<h3 id="x-tngo-context-employeeid">X-TNGO-CONTEXT-EMPLOYEEID</h3>
-
-<p>This is the employee ID assigned by Tangoe. If this header is set, it will be used in place of the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header. If it is NOT set, then the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header will be used (if set).</p>
-
-<ul>
-  <li>Optional</li>
-  <li>Data type: string</li>
-</ul>
-
-<p><br /></p>
-
-<h3 id="x-tngo-context-hierarchyid">X-TNGO-CONTEXT-HIERARCHYID</h3>
-
-<p>The Tangoe-assigned ID that is used to specify the organizational hierarchy to be used for the API call. If this header is not set, the default hierarchy will be used.</p>
-
-<ul>
-  <li>Optional</li>
-  <li>Data type: string</li>
-</ul>
-
-<p><br /></p>
-
-<h2 id="troubleshooting-headers">Troubleshooting Headers</h2>
-
-<p>These headers are used to tag related and individual API calls, making it much easier to quickly locate their related activity in server logs. All request and response activity that is logged for a single API call will be tagged with either/both of these headers when they are set. Either header is useful, but they can be especially helpful when used together (with different values) to track a series of related API calls.</p>
-
-<p>The  X-TNGO-CONTEXT-ACTIVITYID header can be used to tag multiple related calls with the same identifier. And different identifiers can be used for the X-TNGO-CONTEXT-CORRELATIONID header in each individual API call in this related set to help us distinguish between each call. Having this ability to group related activity, while simultaneously maintaining the ability to tag the individual calls that comprise your grouping, can be really helpful to troubleshoot an error occurring within a multi-step process.</p>
-
-<p><br /></p>
-
-<h3 id="x-tngo-context-activityid">X-TNGO-CONTEXT-ACTIVITYID</h3>
-
-<p>Set this header with a value of your choice in multiple related API calls in order to sort them into a logical grouping.</p>
-
-<ul>
-  <li>Optional</li>
-  <li>Data type: string</li>
-</ul>
-
-<p><br /></p>
-
-<h3 id="x-tngo-context-correlationid">X-TNGO-CONTEXT-CORRELATIONID</h3>
-
-<p>Set this header with a different unique value of your choice for each individual API call.</p>
-
-<ul>
-  <li>Optional</li>
-  <li>Data type: string</li>
-</ul>
+<p>(N/A)</p>
 
 
     </div>

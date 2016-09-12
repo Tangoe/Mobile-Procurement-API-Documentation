@@ -76,6 +76,8 @@
 ##    subOne:
 ##      - label: "1.1.0" 
 ##        href: "releases/1-1-0/"   
+##      - label: "1.2.0" 
+##        href: "releases/1-2-0/"   
 
 - label: "Contact"
   href: "contact/"
