@@ -474,6 +474,50 @@
 
         <div class="dc-navOption  dc-navOption__top">
         
+          <a href="http://localhost:4000/releases/">Releases</a>
+        
+         
+          
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
+              <a href="http://localhost:4000/releases/1-1-0/" class="dc-navOption__active">1.1.0</a>
+              
+              </div>
+
+
+            
+
+
+              
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
+              <a href="http://localhost:4000/releases/1-2-0/">1.2.0</a>
+              
+              </div>
+
+
+            
+
+
+              
+            
+          
+
+            
+         
+        </div>
+      
+        
+        
+
+        <div class="dc-navOption  dc-navOption__top">
+        
           <a href="http://localhost:4000/contact/">Contact</a>
         
          
@@ -511,7 +555,7 @@
 
 <ul>
   <li><strong>/orders/{id}/approve</strong> – This new endpoint is used to approve or reject an order that is currently pending approval.</li>
-  <li><strong>/orders</strong> - Added the <strong>dateTimeUpdatedOnOrAfter</strong> filter. Also added the <strong>UPDATED_DATE</strong> sort option.</li>
+  <li><strong>/orders [GET]</strong> - Added the <strong>dateTimeUpdated</strong> filter. Also added the <strong>UPDATED_DATE</strong> sort option.</li>
   <li><strong>/orders [POST]</strong> and <strong>/orders/{id}</strong> - Added the <strong>updated</strong> property.</li>
   <li><strong>/me</strong> – Added the <strong>isApprover</strong> property to the response. This property returns a boolean.</li>
 </ul>
@@ -524,7 +568,7 @@
 <ul>
   <li>Device and service asset responses now include the <strong>updated</strong> property.</li>
   <li>Device and service asset collections can be sorted by <strong>UPDATED_DATE</strong>.</li>
-  <li>Device and service asset collections can now be filtered by <strong>dateTimeUpdatedOnOrAfter</strong> and/or <strong>dateTimeUpdatedOnOrBefore</strong>.</li>
+  <li>Device and service asset collections can now be filtered by <strong>dateTimeUpdated</strong>.</li>
 </ul>
 
 <p><br /></p>
@@ -548,11 +592,6 @@
 
 <h3 id="custom-employee-attributes">Custom Employee Attributes</h3>
 <p>Custom attributes can be associated with an employee record. These attributes are customizable and variable  name/value pairs that are defined by the client company. Furthermore, the client company can also define what specific values are valid for each attribute.  These custom attributes are included within the responses for the <strong>/me</strong> and <strong>/employees/{id}</strong> endpoints.</p>
-
-<p><br /></p>
-
-<h3 id="device-upgrade-eligiblity-tracking">Device Upgrade Eligiblity Tracking</h3>
-<p>Properties were added to help to determine when a service asset is eligible for a device upgrade. The <strong>upgradeEligibilityDate</strong> property was added to responses that contain a service asset. Responses containing the employee object now include the <strong>updated</strong> property. And the <strong>dateTimeUpdatedOnOrAfter</strong> filter parameter was added to the <strong>/employees</strong> endpoint.</p>
 
 <p><br /><br />
 <br /></p>

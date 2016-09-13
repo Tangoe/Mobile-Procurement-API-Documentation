@@ -26,7 +26,7 @@ To support this feature, the following endpoints were created or modified:
 This feature enables the approving of a specific order. To support this, the following endpoints were created or modified:
 
 * **/orders/{id}/approve** – This new endpoint is used to approve or reject an order that is currently pending approval.
-* **/orders** - Added the **dateTimeUpdatedOnOrAfter** filter. Also added the **UPDATED_DATE** sort option.
+* **/orders [GET]** - Added the **dateTimeUpdated** filter. Also added the **UPDATED_DATE** sort option.
 * **/orders [POST]** and **/orders/{id}** - Added the **updated** property.
 * **/me** – Added the **isApprover** property to the response. This property returns a boolean. 
 
@@ -37,7 +37,7 @@ This feature is useful for determining when an asset was last updated, as well a
 
 * Device and service asset responses now include the **updated** property.
 * Device and service asset collections can be sorted by **UPDATED_DATE**.
-* Device and service asset collections can now be filtered by **dateTimeUpdatedOnOrAfter** and/or **dateTimeUpdatedOnOrBefore**.
+* Device and service asset collections can now be filtered by **dateTimeUpdated**.
 
 <br/>
 
