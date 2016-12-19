@@ -14,6 +14,8 @@
 - label: "Using the API" 
   href: "concepts/headers/" 
   subOne:
+##    - label: "Authentication"
+##      href: "concepts/security/"
     - label: "Request Headers"
       href: "concepts/headers/"
     - label: "Metadata"
