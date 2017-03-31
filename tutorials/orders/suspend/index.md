@@ -37,7 +37,7 @@ For a SUSPEND transaction, this JSON typically includes the following pieces:
 
 * Service asset ID for the cellular service that is to be suspended. This ID can be obtained via the **/assets/service** endpoint.
 
-* All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
+* All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order. Also, refer to this same page for instructions for <a href="{{site.url}}/tutorials/properties#choicePropertySubmittingOtherValue">submitting an "other/none of the above" value</a>.
 
 
 Here is an example of what the fully-assembled request body JSON might look like:

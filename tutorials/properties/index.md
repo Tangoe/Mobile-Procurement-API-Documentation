@@ -134,7 +134,7 @@ They can also contain any of the following optional elements:
 * **regEx** -- A regular expression pattern that can be used to validate the value to which the property is set.
 
 
-<a name="#choiceProperty"></a><br/>
+<a name="choiceProperty"></a><br/>
 
 ## The CHOICE Property Type
 
@@ -147,4 +147,48 @@ CHOICE properties include an array named **choices** that contains the acceptabl
  * **label** --  A descriptive label that is suitable for displaying to an end user.
  
  * **isOther** -- A boolean indicating if this specific option is used to select "other" (i.e., "none of the above"). There should only be one option in the array that has **isOther** set to true. Furthermore, this element can be helpful to the user interface for triggering another event, such as revealing a text field. This field can be used by an end user to describe a choice that is different from the ones found in a dropdown list.
+
+
+<a name="choicePropertySubmittingOtherValue"></a><br/>
+
+## CHOICE Properties: Submitting an "Other/None of the Above" Value
+
+As mentioned above, a list of CHOICE properties (i.e., type = CHOICE) may include one option that allows your end user to indicate that they wish to select a response that is different than the ones currently offered. In other words, they wish to choose "none of the above." This "other/none of the above" option is indicated by the **isOther** property being set to true.
+
+An example of this "other" choice in action would be if the consuming application presents a list of checkboxes for their end user to identify their current cellular carrier, with the final choice being "none of the above."  
+
+However, simply choosing "none of the above" may be insufficient. The application may need to know what specific other choice the end user would prefer to submit. In this case, the user interface may want to reveal an input field for this when this "other/none of the above" option was checked. The value entered can then be passed via the "otherText" property as part of the POST to the **/orders** endpoint. 
+
+The following is an example of what that portion of the POST request might look like:
+
+```
+{
+  "orderRequest": {
+    ...
+    "properties": [
+      {
+        "groupId": "MISCELLANEOUS",
+        "fields": [
+          {
+            "id": "CONTACT_NUMBER",
+            "type": "TEXT",
+            "text": "2035559999"
+          },
+          {
+            "id": "Carrier",
+            "type": "CHOICE",
+            "choice": {
+              "id": "1",
+              "otherText": "Allied Cellular"
+            }
+          }
+        ]
+      }
+    ]
+    ...
+  }
+}
+```
+
+
 

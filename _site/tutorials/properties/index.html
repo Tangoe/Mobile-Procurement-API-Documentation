@@ -127,6 +127,20 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
+              <a href="http://localhost:4000/concepts/security/">Authentication</a>
+              
+              </div>
+
+
+            
+
+
+              
+                          
+              
+
+              <div class="dc-navOption  dc-navOption__subone">
+              
               <a href="http://localhost:4000/concepts/headers/">Request Headers</a>
               
               </div>
@@ -662,7 +676,7 @@
   </li>
 </ul>
 
-<p><a name="#choiceProperty"></a><br /></p>
+<p><a name="choiceProperty"></a><br /></p>
 
 <h2 id="the-choice-property-type">The CHOICE Property Type</h2>
 
@@ -682,6 +696,47 @@
   </li>
 </ul>
 
+<p><a name="choicePropertySubmittingOtherValue"></a><br /></p>
+
+<h2 id="choice-properties-submitting-an-othernone-of-the-above-value">CHOICE Properties: Submitting an “Other/None of the Above” Value</h2>
+
+<p>As mentioned above, a list of CHOICE properties (i.e., type = CHOICE) may include one option that allows your end user to indicate that they wish to select a response that is different than the ones currently offered. In other words, they wish to choose “none of the above.” This “other/none of the above” option is indicated by the <strong>isOther</strong> property being set to true.</p>
+
+<p>An example of this “other” choice in action would be if the consuming application presents a list of checkboxes for their end user to identify their current cellular carrier, with the final choice being “none of the above.”</p>
+
+<p>However, simply choosing “none of the above” may be insufficient. The application may need to know what specific other choice the end user would prefer to submit. In this case, the user interface may want to reveal an input field for this when this “other/none of the above” option was checked. The value entered can then be passed via the “otherText” property as part of the POST to the <strong>/orders</strong> endpoint.</p>
+
+<p>The following is an example of what that portion of the POST request might look like:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"orderRequest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+    </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"groupId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MISCELLANEOUS"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTACT_NUMBER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEXT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2035559999"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carrier"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHOICE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"choice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"otherText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allied Cellular"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
 
 
     </div>
@@ -690,7 +745,7 @@
  
     
     <footer class="dc-footer">
-      <p class="">&copy; Copyright 2016 Tangoe  | <a href="http://www.tangoe.com/company" target="_blank">About Tangoe</a> | <a href="https://www.tangoe.com/privacy-policy/" target="_blank">Privacy Policy</a></p>
+      <p class="">&copy; Copyright 2017 Tangoe  | <a href="http://www.tangoe.com/company" target="_blank">About Tangoe</a> | <a href="https://www.tangoe.com/privacy-policy/" target="_blank">Privacy Policy</a></p>
     </footer> 
   </div>
 

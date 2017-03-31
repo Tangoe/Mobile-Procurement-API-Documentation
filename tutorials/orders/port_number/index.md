@@ -50,7 +50,7 @@ For a PORT_NUMBER, this JSON typically includes the following pieces:
     * **vendor**. The vendor parameter will further filter the list to only return devices that are compatible with a specific carrier (i.e., the new carrier to which you are porting service).
   * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** endpoint.
 
-* All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
+* All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order. Also, refer to this same page for instructions for <a href="{{site.url}}/tutorials/properties#choicePropertySubmittingOtherValue">submitting an "other/none of the above" value</a>.
 
 * Shipping information. Since port orders frequently require the delivery of a new device or SIM card, shipping information is usually required. Refer to the <a href="{{site.url}}/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required for your order.
 

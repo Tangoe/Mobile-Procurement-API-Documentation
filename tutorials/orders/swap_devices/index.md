@@ -49,7 +49,7 @@ For a SWAP_DEVICE  transaction, this JSON typically includes the following piece
 
 * The same manufacturer and model information must also be passed for the device you are currently using. That is, the device from which you are transferring service (i.e., the "existingDevice" property). Furthermore, the SIM ID for this existing device is also required.
 
-* All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
+* All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order. Also, refer to this same page for instructions for <a href="{{site.url}}/tutorials/properties#choicePropertySubmittingOtherValue">submitting an "other/none of the above" value</a>.
 
 
 Here is an example of what the fully-assembled request body JSON might look like:

@@ -42,7 +42,7 @@ For an UPGRADE transaction, this JSON typically includes the following pieces:
   * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** endpoint.
   * Please note that when upgrading to a plan offered by a different carrier, the new carrier's cellular network may use an different channel access method than your existing carrier (e.g., CDMA, GSM, etc.). In such case, your existing device will not be compatible with the new plan, so a new device must be selected as part of this order.
 
-* All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant to your order.
+* All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant to your order. Also, refer to this same page for instructions for <a href="{{site.url}}/tutorials/properties#choicePropertySubmittingOtherValue">submitting an "other/none of the above" value</a>.
 
 * Shipping information. This is required whenever an order includes physical items. Refer to the <a href="{{site.url}}/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required for your order.
 

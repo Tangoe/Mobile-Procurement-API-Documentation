@@ -39,7 +39,7 @@ For an UPDATE_FEATURES transaction, this JSON typically includes the following p
 
 * IDs for the features you wish to modify, along with the action you wish to take (i.e., ADD or REMOVE). You can also add an (optional) comment to provide additional information about the change, if needed.
 
-* All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
+* All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order. Also, refer to this same page for instructions for <a href="{{site.url}}/tutorials/properties#choicePropertySubmittingOtherValue">submitting an "other/none of the above" value</a>.
 
 
 

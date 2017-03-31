@@ -42,7 +42,7 @@ For a NEW_ACTIVATION transaction, this JSON typically includes the following pie
 * Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, features, and/or accessories). These IDs can be obtained via the catalog endpoints (i.e., **/catalog/devices**, **/catalog/plans**, **/catalog/accessories**).
   * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** endpoint.
 
-* All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order.
+* All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order. Also, refer to this same page for instructions for <a href="{{site.url}}/tutorials/properties#choicePropertySubmittingOtherValue">submitting an "other/none of the above" value</a>.
 
 * Shipping information. This is required when order includes physical items. Refer to the <a href="{{site.url}}/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required for your order.
 
@@ -82,10 +82,18 @@ Here is an example of what the fully-assembled request body JSON might look like
             "text": "512"
           },
           {
-            "id": "Reason",
+            "id": "URGENCY",
             "type": "CHOICE",
             "choice": {
-              "id": "1"
+              "id": "2"
+            }
+          },
+          {
+            "id": "ORDER_REASON",
+            "type": "CHOICE",
+            "choice": {
+              "id": "7",
+              "otherText": "Current phone recalled for battery issue"
             }
           }
         ]
