@@ -85,25 +85,21 @@ Here is an example of what the fully-assembled request body JSON might look like
         "fields": [
           {
             "id": "CONTACT_NUMBER",
-            "label": "Contact Phone Number",
             "type": "TEXT",
             "text": "2035559999"
           },
           {
             "id": "ADDITIONAL_INSTRUCTIONS",
-            "label": "Additional Instructions",
             "type": "TEXT",
             "text": "Please confirm serial number for new device"
           },
           {
             "id": "SERVICE_NUMBER",
-            "label": "Service Number",
             "type": "TEXT",
             "text": "2035557676"
           },
           {
             "id": "PREFERRED_AREA_CODE",
-            "label": "Preferred Area Code",
             "type": "TEXT",
             "text": "203"
           }
