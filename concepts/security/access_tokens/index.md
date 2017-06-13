@@ -21,5 +21,5 @@ If you wish to determine whether your access token is currently valid and has no
 * <a href="./refresh_token">How to **Refresh** an Access Token</a>
 * <a href="./validate_token">How to **Validate** an Access Token</a>
 
-All of these tutorials tutorials are also available for download in one <a href="MOBROC_AccessTokens.pdf">convient PDF file</a> (856 KB).
+All of these tutorials tutorials are also available for download in one <a href="MOBROC_AccessTokens.pdf">convenient PDF file</a> (856 KB).
 
