@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset=utf-8 />
-  <title>  Getting Started - Register your Application |  Tangoe Mobile Procurement API </title>  
+  <title>  Access Tokens |  Tangoe Mobile Procurement API </title>  
 
   <script src="http://localhost:4000/js/jquery/jquery-2.1.4.min.js"></script>
   
@@ -69,7 +69,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/start/register/" class="dc-navOption__active">Register your App</a>
+              <a href="http://localhost:4000/start/register/">Register your App</a>
               
               </div>
 
@@ -546,31 +546,28 @@
     </div><!--
     --><div class="tg-grid__cell  tg-four-fifths  tg-pad"> 
 
-      <h1 id="register-your-application">Register your Application</h1>
+      <h1 id="access-tokens">Access Tokens</h1>
 
-<p>The Tangoe Mobile Procurement REST API empowers developers with the ability to manage the procurement of mobile assets in new and innovative ways. This includes the ability to:</p>
+<p>The MOBPROC REST API requires that users pass an access token with every API request.</p>
+
+<p>An access token is obtained by making a request to a unique authentication URL. Please refer to the tutorial page entitled <a href="./request_token_password">How to <strong>Request</strong> an Access Token (for <em>Resource Owner Password Credentials</em> grant type)</a> for instructions how to do that.</p>
+
+<p>The consuming application must then pass that access token with every API call. The access token for this API expires after one hour. However, when the access token is provided, Tangoe will also provide a refresh token. This refresh token can be passed with each call instead of the access token. Then, when the token is nearing expiration, a newly refreshed token will be automatically issued. In the case of the implicit grant type, this will save your end user the inconvenience of being repeatedly prompted to re-enter their username/password after an hour has passed. Please refer to the page entitled <a href="./refresh_token">How to <strong>Refresh</strong> an Access Token</a> for step-by-step instructions.</p>
+
+<p>If you wish to determine whether your access token is currently valid and has not yet expired, please refer to the page entitled <a href="./validate_token">How to <strong>Validate</strong> an Access Token</a> for specific instructions.</p>
+
+<p><br /></p>
+
+<h2 id="tutorials-for-managing-access-tokens">Tutorials for Managing Access Tokens</h2>
 
 <ul>
-  <li>Place procurement orders.</li>
-  <li>View asset information.</li>
-  <li>Retrieve the status of your orders.</li>
+  <li><a href="./request_token_password">How to <strong>Request</strong> an Access Token</a> (for <em>Resource Owner Password Credentials</em> grant type)</li>
+  <li><a href="./refresh_token">How to <strong>Refresh</strong> an Access Token</a></li>
+  <li><a href="./validate_token">How to <strong>Validate</strong> an Access Token</a></li>
 </ul>
 
-<p>This API is powered by Tangoe’s robust procurement system. As a registered user, your company will also have access to Tangoe’s extensive and up-to-date device, plan and accessory catalogs.</p>
+<p>All of these tutorials tutorials are also available for download in one <a href="MOBROC_AccessTokens.pdf">convient PDF file</a> (856 KB).</p>
 
-<p><br /></p>
-
-<h2 id="upon-registration">Upon Registration</h2>
-
-<p>As soon as your application is registered, Tangoe will provide you with your own unique client ID and client secret. This ID and secret are used to obtain the personalized access token that must be passed with every API call.</p>
-
-<p>Once Tangoe has provided you with your access credentials, simply follow our easy tutorial to see how you can <a href="http://localhost:4000/start/first-call/">make your first call in just minutes</a>.</p>
-
-<p><br /></p>
-
-<h2 id="register-today">Register Today</h2>
-
-<p>To register your application to use the Mobile Procurement REST API, please contact <a href="https://www.tangoe.com/company/contact-us/request-info/" target="_blank"><strong>Tangoe Sales</strong></a>.</p>
 
 
     </div>

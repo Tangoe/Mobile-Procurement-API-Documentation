@@ -31,7 +31,9 @@ Both grant types require a two-step process:
 1.	A request must be made to a unique authentication URL to obtain an access token. Please contact your Tangoe representative for that URL.
 1.	The consuming application must then pass that access token with every API call.
 
-The access token for this API expires after one hour. However, when the access token is provided, Tangoe will also provide a refresh token. This refresh token can be passed with each call instead of the access token. Then, when the token is nearing expiration, a newly refreshed token will be automatically issued. In the case of the implicit grant type, this will save your end user the inconvenience of being repeatedly prompted to re-enter their username/password after an hour has passed.
+The **access token** for this API expires after one hour. However, when the access token is provided, Tangoe will also provide a **refresh token**. This refresh token can be passed with each call instead of the access token. Then, when the token is nearing expiration, a newly refreshed token will be automatically issued. In the case of the implicit grant type, this will save your end user the inconvenience of being repeatedly prompted to re-enter their username/password after an hour has passed.
+
+Refer to the [access token page]({{site.url}}/concepts/security/access_tokens/) for more information about how to [request a token]({{site.url}}/concepts/security/access_tokens/request-token-password/), [refresh a token]({{site.url}}/concepts/security/access_tokens/request-token-password/) <a href="./access-tokens/refresh-token/">refresh a token</a> or <a hef="./access-tokens/validate-token/">validate a token</a>.
 
 <br/>
 

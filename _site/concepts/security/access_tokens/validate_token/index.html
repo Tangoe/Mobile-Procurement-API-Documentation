@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset=utf-8 />
-  <title>  Getting Started - Register your Application |  Tangoe Mobile Procurement API </title>  
+  <title>  Validate Access Token |  Tangoe Mobile Procurement API </title>  
 
   <script src="http://localhost:4000/js/jquery/jquery-2.1.4.min.js"></script>
   
@@ -69,7 +69,7 @@
 
               <div class="dc-navOption  dc-navOption__subone">
               
-              <a href="http://localhost:4000/start/register/" class="dc-navOption__active">Register your App</a>
+              <a href="http://localhost:4000/start/register/">Register your App</a>
               
               </div>
 
@@ -546,31 +546,114 @@
     </div><!--
     --><div class="tg-grid__cell  tg-four-fifths  tg-pad"> 
 
-      <h1 id="register-your-application">Register your Application</h1>
+      <h1 id="access-tokens">Access Tokens</h1>
 
-<p>The Tangoe Mobile Procurement REST API empowers developers with the ability to manage the procurement of mobile assets in new and innovative ways. This includes the ability to:</p>
+<h2 id="how-to-validate-an-access-token">How to Validate an Access Token</h2>
+
+<p>The following information is required to validate an access token:</p>
 
 <ul>
-  <li>Place procurement orders.</li>
-  <li>View asset information.</li>
-  <li>Retrieve the status of your orders.</li>
+  <li><strong>access_token</strong>: The access token to be validated.</li>
 </ul>
 
-<p>This API is powered by Tangoe’s robust procurement system. As a registered user, your company will also have access to Tangoe’s extensive and up-to-date device, plan and accessory catalogs.</p>
+<p><br /></p>
+
+<h3 id="endpoints">Endpoints</h3>
+<p>An access token is validated by making an HTTP GET to our validation endpoint. The specific endpoint used will depend upon your instance’s environment type:</p>
+
+<ul>
+  <li>For <strong>Production</strong>: <code>http://tngo-prod-oauth-ping-validator.cloudhub.io</code></li>
+  <li>For <strong>QA</strong>: <code>http://tngo-qa-oauth-ping-validator.cloudhub.io</code></li>
+</ul>
 
 <p><br /></p>
 
-<h2 id="upon-registration">Upon Registration</h2>
+<h3 id="request-query-parameters">Request Query Parameters</h3>
+<p>To validate an access token, the following query parameters need to be passed with this GET request:</p>
 
-<p>As soon as your application is registered, Tangoe will provide you with your own unique client ID and client secret. This ID and secret are used to obtain the personalized access token that must be passed with every API call.</p>
-
-<p>Once Tangoe has provided you with your access credentials, simply follow our easy tutorial to see how you can <a href="http://localhost:4000/start/first-call/">make your first call in just minutes</a>.</p>
+<table>
+  <thead>
+    <tr>
+      <th><strong><em>Query Parameter</em></strong></th>
+      <th><strong><em>Description</em></strong></th>
+      <th><strong><em>Example</em></strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>access_token</strong></td>
+      <td>The access token to be validated.</td>
+      <td><code>jf8ANPs5ETFT1RPnfJnZpbcWjz2f</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <p><br /></p>
 
-<h2 id="register-today">Register Today</h2>
+<h3 id="example">Example</h3>
+<p>The following is an example of a GET request to validate a token:</p>
 
-<p>To register your application to use the Mobile Procurement REST API, please contact <a href="https://www.tangoe.com/company/contact-us/request-info/" target="_blank"><strong>Tangoe Sales</strong></a>.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>https://oauthqa.tangoe.com/as/token.oauth2?grant_type=refresh_token&amp;client_id=376af94124f4400e9227c89937c12354&amp;client_secret=81f40d2777ea4a41A992535F17AC92EC&amp;scope=MOBPROC&amp;refresh_token=a9AhNvcffquYkV4bSw0O6gt4gKZRvTUGR2lfR8nJf4 
+</code></pre>
+</div>
+
+<p>The following is an example of a response that might be returned:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="w"> </span><span class="p">{</span><span class="w"> 
+   </span><span class="nt">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">7188</span><span class="p">,</span><span class="w"> 
+   </span><span class="nt">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MOBPROC"</span><span class="p">,</span><span class="w"> 
+   </span><span class="nt">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a98b70cddd5f1432221360bd732f5ec1"</span><span class="p">,</span><span class="w"> 
+   </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sn2.admin.xx1"</span><span class="p">,</span><span class="w"> 
+   </span><span class="nt">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"command"</span><span class="p">,</span><span class="w"> 
+   </span><span class="nt">"identityProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pcv_edge"</span><span class="w"> 
+ </span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+</div>
+
+<p>The following properties are returned in the token validation response:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong><em>Property</em></strong></th>
+      <th><strong><em>Description</em></strong></th>
+      <th><strong><em>Example</em></strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>expires_in</strong></td>
+      <td>Number of seconds that the access token will be valid.</td>
+      <td><code>7188</code></td>
+    </tr>
+    <tr>
+      <td><strong>scope</strong></td>
+      <td>OAuth scopes that are associated with the access token being validated.</td>
+      <td><code>MOBPROC</code></td>
+    </tr>
+    <tr>
+      <td><strong>client_id</strong></td>
+      <td>Tangoe-assigned client ID for the API client application that requested the access token being validated.</td>
+      <td><code>a98b70cddd5f1432221360bd732f5ec1</code></td>
+    </tr>
+    <tr>
+      <td><strong>username</strong></td>
+      <td>Username that is associated with the access token.</td>
+      <td><code>sn2.admin.xx1</code></td>
+    </tr>
+    <tr>
+      <td><strong>platform</strong></td>
+      <td>Source system that is associated with the access token.</td>
+      <td><code>command</code></td>
+    </tr>
+    <tr>
+      <td><strong>identityProvider</strong></td>
+      <td>Identifies the authenticating entity.</td>
+      <td><code>pcv_edge</code></td>
+    </tr>
+  </tbody>
+</table>
+
 
 
     </div>
