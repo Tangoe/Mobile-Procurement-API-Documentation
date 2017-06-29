@@ -10,7 +10,7 @@ title: Create and Submit an Order
 
 Each type of order that can be created with this API can be classified in one of two categories: *Procurement* or *Care*. Procurement transactions are orders for obtaining a new device, plan, and/or accessories. Care transactions are orders for modifying an existing device or service asset. 
 
-Within each of these categories are specific types of transactions, as listed in the table below. Click on a transaction type below to view the specific steps required to create that type of order, along with examples of the request/response body for that type.
+Within each of these categories are specific types of transactions. Click on a transaction type in the table below to view the specific steps required to create that type of order, along with examples of the request/response body for that type.
 
 <a name="transactionTypes"></a>
 *Click on a Transaction Type below to see specific instructions for submitting that particular type of order.*
@@ -30,7 +30,7 @@ Within each of these categories are specific types of transactions, as listed in
 
 <br/> 
 
-In addition to the required request headers, API consumers need to pass a block of JSON in the request body. This JSON code provides all of the data needed by the API to process the order request (e.g., transaction type ID, requester's employee ID, catalog ID of for the device to be obtained, etc.). In addition to the **/orders** endpoint, the API also provides many other supporting endpoints that are used to gather all of this data.
+In addition to the required request headers, API consumers need to pass a block of JSON in the request body. This JSON code provides all of the data needed by the API to process the order request (e.g., transaction type ID, requester's employee ID, catalog ID of for the device to be obtained, etc.). In addition to the **/orders** resource, the API also provides many other supporting resources that are used to gather all of this data.
 
 Once your order request is prepared, it can be passed to the server for validation and processing. This processing supports two modes: *confirmation* and *submission*:
 

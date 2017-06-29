@@ -68,8 +68,7 @@ Below is an illustration of a metadata block contained within a response for an 
 <br />
 
 ## Pagination Data Example
-
-The meta blocks are not limited to providing the URLs used to make API calls for more detailed data. Meta blocks can also hold data that is useful for supporting paginated lists, such as total count, items per page limit, etc. For example:
+Meta blocks are not limited to providing URLs for fetching detailed data. They can also hold data that is useful for supporting paginated lists, such as a total count or an items per page limit. For example:
 
 
 ```

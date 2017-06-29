@@ -7,7 +7,7 @@ youtubeId: zZfi3Vfy7lA
 
 # Request Headers
 
-Request headers are simply key/value pairs of metadata relating to what is contained within the body of a request and/or response. The Mobile Procurement API primarily uses them for identifying users and limiting context. 
+Request headers are simply just key/value pairs of metadata relating to what is contained within the body of a request and/or response. The Mobile Procurement API primarily uses them for identifying users and limiting context. 
 
 <br/>
 
@@ -43,9 +43,9 @@ Used to identify your client application as the one calling the API.
 
 ## Context ID Headers
 
-Frequently, the logged-in/authenticated user calling the API may be a service account. As such, a service account does not specifically identify the actual end user who is placing the order, viewing assets, etc. The true end user (also known as "the actor"), must be identified by setting a context header. The API will use these identifiers to set the context for making the API call. 
+Frequently the logged-in/authenticated user calling the API is a service account. However, service accounts do not specifically identify the actual end user who is placing the order, viewing assets, etc. The true end user (also known as "the actor"), must be identified by setting a context header. The API will use these identifiers to set the context for making the API call. 
 
-For example, an application called the API using a service account ID (i.e., admin.acme.com). The request also included the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header set to the company ID for an end user, Peter Edwards (i.e., pedwards.acme.com). When the request for the device catalog was executed, only devices that Peter Edwards was authorized to see were returned rather than the larger set that the service account was authorized to access.
+For example, imagine that an application called the API using a service account ID (i.e., admin.acme.com). Moreover, imagine that this request also included the X-TNGO-CONTEXT-COMPANYEMPLOYEEID header set to the company ID for an end user named Peter Edwards (i.e., pedwards.acme.com). When the request for the device catalog was executed, only devices that Peter Edwards was authorized to see would have been returned instead of the larger set of devices that the service account (admin.acme.com) was authorized to access.
 
 <br>
 
@@ -79,15 +79,15 @@ The Tangoe-assigned ID that is used to specify the organizational hierarchy to b
 
 ## Troubleshooting Headers
 
-These headers are used to tag related and individual API calls, making it much easier to quickly locate their related activity in server logs. All request and response activity that is logged for a single API call will be tagged with either/both of these headers when they are set. Either header is useful, but they can be especially helpful when used together (with different values) to track a series of related API calls.
+Troubleshooting headers are used to tag related and individual API calls, making it much easier to quickly locate their related activity in the server logs. All request and response activity that is logged for a single API call will be tagged with either/both of these headers, when they are set. Either header is useful, but they can be especially helpful when used together (with different values) to track a series of related API calls.
 
-The  X-TNGO-CONTEXT-ACTIVITYID header can be used to tag multiple related calls with the same identifier. And different identifiers can be used for the X-TNGO-CONTEXT-CORRELATIONID header in each individual API call in this related set to help us distinguish between each call. Having this ability to group related activity, while simultaneously maintaining the ability to tag the individual calls that comprise your grouping, can be really helpful to troubleshoot an error occurring within a multi-step process.  
+The  X-TNGO-CONTEXT-ACTIVITYID header can be used to tag multiple related calls with the same identifier. Different identifiers can be used for the X-TNGO-CONTEXT-CORRELATIONID header in each individual API call within this related set to help us distinguish between each individual call. Having this ability to group related activity, while simultaneously maintaining the ability to tag the individual calls that comprise your grouping, can be really helpful to troubleshoot an error occurring within a complex multi-step process.  
 
 <br>
 
 ### X-TNGO-CONTEXT-ACTIVITYID
 
-Set this header with a value of your choice in multiple related API calls in order to sort them into a logical grouping.
+Set this header with a value of your choice for multiple related API calls in order to sort them into a logical grouping.
 
 * Optional
 * Data type: string

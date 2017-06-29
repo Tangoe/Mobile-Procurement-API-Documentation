@@ -6,13 +6,13 @@ youtubeId: eImJGDA_tTM
 
 # Pagination
 
-API calls that retrieve collections of items frequently return large, unbounded result sets. In these cases, results are almost always paginated to improve performance and help the user more easily manage handling of the results.
+API calls for retrieving a collection of items frequently return large, unbounded result sets. In these cases, results are almost always paginated to improve performance and help the user more easily manage the handling of results.
 
 <br/>
 
 ## Video Tutorial
 
-This video explains how pagination works for selected API endpoints that are most likely to return very large, unbounded collections.
+This video explains how pagination works for selected API resources that are most likely to return very large, unbounded collections.
 
 {% include youtube.html id=page.youtubeId %}
 
@@ -42,7 +42,7 @@ Paginated results always include a [metadata block]({{site.url}}concepts/metadat
 
 * **hrefPrevious** - A fully-qualified URL for an API call that will return the page that occurs immediately BEFORE the current page in the result set.
 
-* **hrefNext** - A fully-qualified URL that will return the the page that occurs immediately AFTER the current page in the result set.
+* **hrefNext** - A fully-qualified URL that will return the page that occurs immediately AFTER the current page in the result set.
 
 * **hrefEnd** - A fully-qualified URL that will return the LAST page in the result set.
 
@@ -73,4 +73,4 @@ API consumers who use Premium Mobile as their backend/source system should be ad
 
 Prior to taking offset into account, Premium Mobile first calculates the pages based on the limit parameter only. For example, if the total result set is 28 items and the limit is 10, then three pages will be calculated. (Two with 10 items each, and one with eight.) Then, Premium Mobile will determine which of these pages *includes* the item represented by the index number passed in as the offset parameter. So, continuing with our example of 28 items in the result set, if the limit was three and our offset was set to 15, then the second page of results would be returned in the response and the offset item would not be the first item. This is because the item with the index number of 15 falls within the middle of the second page. 
 
-For other source systems, the behavior would be as described above. That is, the item represented by the index passed as the offset would be the first item in the results returned in the response.
+For other source systems, the behavior would be as described in the previous section. That is, the item represented by the index passed as the offset would be the first item in the results returned within the response.

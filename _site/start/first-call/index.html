@@ -576,9 +576,9 @@
 
       <h1 id="how-to-make-your-first-api-call-in-just-minutes">How to Make your First API Call in Just Minutes</h1>
 
-<p>Once you have registered your application to use with this API, you will be provided with credentials needed to access the <strong>Tangoe Developer Portal</strong>, as well as what is needed for obtaining the access token that is required for calling the API (i.e., client ID, client secret, etc.). To log-in, click the <strong>Developer Portal Log In</strong> button in the upper right corner of this web site.</p>
+<p>Once you have registered your application to use this API, you will be provided with credentials needed to access the <strong>Tangoe Developer Portal</strong>, as well as what is needed for obtaining the access token that is required for calling the API (i.e., client ID, client secret, etc.). To log-in, click the <strong>Developer Portal Log In</strong> button in the upper right corner of this web site.</p>
 
-<p>Upon logging into the Tangoe Developer Portal, simply click on the API Reference link in the navigation panel on the left (pictured below). The API Reference page provides extensive documentation describing each of the API endpoints, including supported headers and query parameters. This reference guide also offers an interactive feature enabling you to submit requests to any endpoint. These requests will return real responses, populated with your own data.</p>
+<p>Upon logging into the Tangoe Developer Portal, simply click on the API Reference link in the navigation panel on the left (pictured below). The API Reference page provides extensive documentation describing each of the API resources, including all supported headers and query parameters. This reference guide also offers an interactive feature enabling you to submit requests for any resource. These requests will return real responses, populated with your own data.</p>
 
 <p><img src="http://localhost:4000/images/screens/devportal.png" style="border:1px solid #666;" /></p>
 
@@ -586,14 +586,14 @@
 
 <h2 id="your-api-first-call"><strong>Your API First Call</strong></h2>
 
-<p>After signing into the Tangoe Developer Portal, we recommend you begin by trying the <em>/ping</em> endpoint to confirm your access to the backend services that power this API. The steps to test this simple endpoint are essentially the same for all endpoints and can be used for exploring those as well.</p>
+<p>After signing into the Tangoe Developer Portal, we recommend you begin by trying the <em>/ping</em> resource to confirm your access to the backend services that power this API. The steps required to request this simple resource are essentially the same for all resources and can be used for exploring those as well.</p>
 
 <p>To begin, simply follow these easy steps:</p>
 
 <ol>
   <li>Click on the API Reference link in navigation panel on the left.</li>
-  <li>Scroll down to the Resources section and locate the <strong>/ping</strong> endpoint.</li>
-  <li>Click on the <strong>GET</strong> tab to expand the panel that describes this endpoint.</li>
+  <li>Scroll down to the Resources section and locate the <strong>/ping</strong> resource.</li>
+  <li>Click on the <strong>GET</strong> tab to expand the panel that describes this resource.</li>
   <li>Click on the <strong>Try it</strong> link, right below the GET tab. This will reveal the form used for testing this API call.</li>
   <li>In the AUTHENTICATION section, enter your <strong>Client ID</strong> and check the appropriate scope (i.e., <strong>MOBPROC</strong>).</li>
   <li>In the HEADERS section, enter your tenant header (i.e., <strong>X-TNGO-TENANT</strong>) and client ID (i.e., <strong>client_id</strong>).</li>
@@ -606,7 +606,7 @@
 
 <p>A successful response should be returned (i.e., HTTP status 200). The response body will include your echoText value, along with data identifying the backend system that processed your request.</p>
 
-<p>If there was a problem with your request, you would have received an error message. Please refer to the <a href="http://localhost:4000/concepts/errors/">Errors page</a> for an explanation of supported HTTP status codes and error messages.</p>
+<p>If a problem occurs while processing your request, you will receive an error message. Please refer to the <a href="http://localhost:4000/concepts/errors/">Errors page</a> for an explanation of supported HTTP status codes and error messages.</p>
 
 <p><br /></p>
 

@@ -29,22 +29,22 @@ This API uses the OAuth2 standard for authentication. Specifically, it supports 
 
 ## Step 1. Build the request body that is required. 
 
-Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.
+Next, you will need to compile the JSON that will be submitted within the request body. This JSON includes all of the data that the backend system requires to process this order.
 
 For a NEW_ACTIVATION transaction, this JSON typically includes the following pieces:
 
 * Transaction type (i.e., NEW_ACTIVATION).
 
-* Region ID for the country in which the device and/or service will be used. This ID can be obtained via the **/regions** endpoint.
+* Region ID for the country in which the device and/or service will be used. This ID can be obtained via the **/regions** resource.
 
 * The postal code for the zone in which the device and/or service will be used. (Note: this is only required when the selected region is the United States of America.)
 
-* Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, features, and/or accessories). These IDs can be obtained via the catalog endpoints (i.e., **/catalog/devices**, **/catalog/plans**, **/catalog/accessories**).
-  * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** endpoint.
+* Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, features, and/or accessories). These IDs can be obtained via the catalog-specific resources (i.e., **/catalog/devices**, **/catalog/plans**, **/catalog/accessories**).
+  * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** resource.
 
-* All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order. Also, refer to this same page for instructions for <a href="{{site.url}}/tutorials/properties#choicePropertySubmittingOtherValue">submitting an "other/none of the above" value</a>.
+* All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant to your order. Also, refer to this same page for instructions for <a href="{{site.url}}/tutorials/properties#choicePropertySubmittingOtherValue">submitting an "other/none of the above" value</a>.
 
-* Shipping information. This is required when order includes physical items. Refer to the <a href="{{site.url}}/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required for your order.
+* Shipping information. This is required for orders that include physical items. Refer to the <a href="{{site.url}}/tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required to assemble a valid shipping address.
 
 
 Here is an example of what the fully-assembled request body JSON might look like:
@@ -158,9 +158,9 @@ To obtain a confirmation, set the **confirm** query parameter to true.
 
 <br />
 
-## Step 4. Obtain the order confirmation by calling the /orders endpoint via HTTP POST. 
+## Step 4. Obtain the order confirmation by calling the /orders resource via HTTP POST. 
 
-Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the **/orders** endpoint.
+Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the **/orders** resource.
 
 If successful, the API will return a response with a 200 HTTP status code and containing JSON that fully describes the identifiers that were submitted. This data can then be presented back to the end user for verification and correction (if necessary). 
 

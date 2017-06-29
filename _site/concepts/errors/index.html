@@ -578,7 +578,7 @@
 
 <p>This API returns a standard HTTP status code with every response to indicate whether your request had succeeded or failed.</p>
 
-<p>Status codes within the 200 range typically indicate that the request was processed successfully. Codes within the 400 range indicate an error occurred that resulted from the request data provided by the caller (e.g., a required parameter was missing in the request). And codes within the 500 range indicate an error triggered by an issue Tangoe’s servers.</p>
+<p>Status codes within the 200 range typically indicate that the request was processed successfully. Codes within the 400 range indicate an error resulting from the request data provided by the caller (e.g., a required parameter was missing from the request). And codes within the 500 range indicate an error triggered by an issue on Tangoe’s servers.</p>
 
 <p><br /></p>
 
@@ -610,7 +610,7 @@
     </tr>
     <tr>
       <td><strong>400</strong></td>
-      <td><em>Bad Request:</em> Your request is missing required data or is malformed.</td>
+      <td><em>Bad Request:</em> Your request was missing required data or malformed.</td>
     </tr>
     <tr>
       <td><strong>403</strong></td>
@@ -618,7 +618,7 @@
     </tr>
     <tr>
       <td><strong>404</strong></td>
-      <td><em>Not Found:</em> The resource you requested cannot be found.</td>
+      <td><em>Not Found:</em> The resource you requested could not be found.</td>
     </tr>
     <tr>
       <td><strong>500</strong></td>
@@ -632,13 +632,13 @@
 
 <h2 id="error-messages">Error Messages</h2>
 
-<p>If an error does occur, the following error message information will be included in the response body:</p>
+<p>If an error does occur, the following error message information will be included within the response body:</p>
 
 <ul>
-  <li><strong>status</strong> – One of the HTTP status codes listed above (e.g., 400).</li>
-  <li><strong>id</strong> – Unique string identifying this specific occurrence of the error.</li>
+  <li><strong>status</strong> – One of the supported HTTP status codes listed above (e.g., 400).</li>
+  <li><strong>id</strong> – Unique string identifying the specific occurrence of the error.</li>
   <li><strong>errorCode</strong> – Tangoe-assigned code indicating the type of error that occurred.</li>
-  <li><strong>message</strong> – Description of the what caused the message and/or how to resolve it.</li>
+  <li><strong>message</strong> – Description of the what caused the error and/or how to resolve it.</li>
 </ul>
 
 <p>Here is an example of an error message for a missing (required) parameter:</p>

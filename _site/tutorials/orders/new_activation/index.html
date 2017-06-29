@@ -598,7 +598,7 @@
 
 <h2 id="step-1-build-the-request-body-that-is-required">Step 1. Build the request body that is required.</h2>
 
-<p>Next, you will need to compile the JSON that will be submitted in the request body. This JSON includes all of the data that the backend system requires to process this order.</p>
+<p>Next, you will need to compile the JSON that will be submitted within the request body. This JSON includes all of the data that the backend system requires to process this order.</p>
 
 <p>For a NEW_ACTIVATION transaction, this JSON typically includes the following pieces:</p>
 
@@ -607,20 +607,20 @@
     <p>Transaction type (i.e., NEW_ACTIVATION).</p>
   </li>
   <li>
-    <p>Region ID for the country in which the device and/or service will be used. This ID can be obtained via the <strong>/regions</strong> endpoint.</p>
+    <p>Region ID for the country in which the device and/or service will be used. This ID can be obtained via the <strong>/regions</strong> resource.</p>
   </li>
   <li>
     <p>The postal code for the zone in which the device and/or service will be used. (Note: this is only required when the selected region is the United States of America.)</p>
   </li>
-  <li>Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, features, and/or accessories). These IDs can be obtained via the catalog endpoints (i.e., <strong>/catalog/devices</strong>, <strong>/catalog/plans</strong>, <strong>/catalog/accessories</strong>).
+  <li>Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, features, and/or accessories). These IDs can be obtained via the catalog-specific resources (i.e., <strong>/catalog/devices</strong>, <strong>/catalog/plans</strong>, <strong>/catalog/accessories</strong>).
     <ul>
-      <li>Optional feature IDs for a specific plan can be obtained from the <strong>/catalog/plans/{id}</strong> endpoint.</li>
+      <li>Optional feature IDs for a specific plan can be obtained from the <strong>/catalog/plans/{id}</strong> resource.</li>
     </ul>
   </li>
   <li>
-    <p>All required and optional order properties. Refer to the <a href="http://localhost:4000//tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order. Also, refer to this same page for instructions for <a href="http://localhost:4000//tutorials/properties#choicePropertySubmittingOtherValue">submitting an “other/none of the above” value</a>.</p>
+    <p>All required and optional order properties. Refer to the <a href="http://localhost:4000//tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant to your order. Also, refer to this same page for instructions for <a href="http://localhost:4000//tutorials/properties#choicePropertySubmittingOtherValue">submitting an “other/none of the above” value</a>.</p>
   </li>
-  <li>Shipping information. This is required when order includes physical items. Refer to the <a href="http://localhost:4000//tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required for your order.</li>
+  <li>Shipping information. This is required for orders that include physical items. Refer to the <a href="http://localhost:4000//tutorials/addresses">Formatting an Address</a> page for steps how to assemble the shipping components that are required to assemble a valid shipping address.</li>
 </ul>
 
 <p>Here is an example of what the fully-assembled request body JSON might look like:</p>
@@ -742,9 +742,9 @@
 
 <p><br /></p>
 
-<h2 id="step-4-obtain-the-order-confirmation-by-calling-the-orders-endpoint-via-http-post">Step 4. Obtain the order confirmation by calling the /orders endpoint via HTTP POST.</h2>
+<h2 id="step-4-obtain-the-order-confirmation-by-calling-the-orders-resource-via-http-post">Step 4. Obtain the order confirmation by calling the /orders resource via HTTP POST.</h2>
 
-<p>Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the <strong>/orders</strong> endpoint.</p>
+<p>Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the <strong>/orders</strong> resource.</p>
 
 <p>If successful, the API will return a response with a 200 HTTP status code and containing JSON that fully describes the identifiers that were submitted. This data can then be presented back to the end user for verification and correction (if necessary).</p>
 

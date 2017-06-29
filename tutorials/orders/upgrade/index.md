@@ -9,12 +9,12 @@ title: Tutorials - UPGRADE Order
 **This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to upgrade a specific device and/or service plan.**
 
 
-Please note that the **existingDevice** block is required for all UPGRADE orders when the API source system is Command. It might not be required for other source systems.
+Please note that the **existingDevice** block is required for all UPGRADE orders when the API source system is Premium Mobile (a.k.a., Command). It might not be required for other source systems.
 <br>
 
-### Special Instructions for when Only Upgrading a Plan  ###
+### Special Instructions for Upgrading a Plan Only  ###
 
-When upgrading to a new plan only (i.e., not also ordering a new device), you still need to include the **shipTo** block because a new SIM card is often required and it will be shipped to the user.
+When upgrading to a new plan only (i.e., not ordering a new device with it), you still need to include the **shipTo** block because a new SIM card is often required and it will be shipped to the user.
 
 Also, please note that various carrier networks do not always use the same cellular transmission technologies (e.g., GSM, CDMA, etc.). When upgrading to a plan offered by a different carrier, your existing device may no longer be supported by the new plan. In such case, the ID for a new (compatible) device will also need to be included in the shopping cart. If a new device is required but not included in the order, an error will be returned.
 
@@ -34,12 +34,12 @@ For an UPGRADE transaction, this JSON typically includes the following pieces:
 
 * Transaction type (i.e., UPGRADE).
 
-* Service asset ID for the cellular service, and/or associated device, that you wish to upgrade. This ID can be obtained via the **/assets/service** endpoint.
+* Service asset ID for the cellular service, and/or associated device, that you wish to upgrade. This ID can be obtained via the **/assets/service** resource.
 
 * Existing device information for the device you are currently using. This is required, even when you are only upgrading the plan. This block includes the manufacturer ID, model ID, serial number, serial number type, and SIM ID.
 
-* Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, and/or plan features). These IDs can be obtained via the catalog endpoints (i.e., **/catalog/devices**, **/catalog/plans**, **/catalog/features**).
-  * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** endpoint.
+* Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, and/or plan features). These IDs can be obtained via the catalog-specific resources (i.e., **/catalog/devices**, **/catalog/plans**, **/catalog/features**).
+  * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** resource.
   * Please note that when upgrading to a plan offered by a different carrier, the new carrier's cellular network may use an different channel access method than your existing carrier (e.g., CDMA, GSM, etc.). In such case, your existing device will not be compatible with the new plan, so a new device must be selected as part of this order.
 
 * All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant to your order. Also, refer to this same page for instructions for <a href="{{site.url}}/tutorials/properties#choicePropertySubmittingOtherValue">submitting an "other/none of the above" value</a>.
@@ -152,9 +152,9 @@ To obtain a confirmation, set the **confirm** query parameter to true.
 
 <br />
 
-## Step 4. Obtain the order confirmation by calling the /orders endpoint via HTTP POST. 
+## Step 4. Obtain the order confirmation by calling the /orders resource via HTTP POST. 
 
-Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the **/orders** endpoint.
+Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the **/orders** resource.
 
 If successful, the API will return a response with a 200 HTTP status code and containing JSON that fully describes the identifiers that were submitted. This data can then be presented back to the end user for verification and correction (if necessary). 
 
