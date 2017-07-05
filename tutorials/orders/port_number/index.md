@@ -9,7 +9,7 @@ youtubeId: jdL__lw7gw4
 
 **This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to port a specific service asset to a different carrier.**
 
-Please note that sometimes the technology used by the new carrier's network is different than what is used by the original carrier. In this case, the new carrier may require different device hardware and therefore a new device will need to be ordered. An API call can be made to the **/catalog/devices** endpoint to obtain a list of eligible devices from which one can be selected. Even if the new carrier supports the existing device, a new SIM card might be required. Therefore, these orders usually require including shipping information in the order request.
+Please note that sometimes the technology used by the new carrier's network is different than what is used by the original carrier. In this case, the new carrier may require different device hardware and therefore a new device will need to be ordered. An API call can be made to the **/catalog/devices** resource to obtain a list of eligible devices from which one can be selected. Even if the new carrier supports the existing device, a new SIM card might be required. Therefore, these orders usually require including shipping information in the order request.
 
 <br/>
 
@@ -37,18 +37,18 @@ For a PORT_NUMBER, this JSON typically includes the following pieces:
 
 * Transaction type (i.e., PORT_NUMBER).
 
-* Service asset ID for the cellular service that is to be ported. This ID can be obtained via the **/assets/service** endpoint.
+* Service asset ID for the cellular service that is to be ported. This ID can be obtained via the **/assets/service** resource.
 
-* Region ID for the country in which the new device and/or new service will be used. This ID can be obtained via the **/regions** endpoint.
+* Region ID for the country in which the new device and/or new service will be used. This ID can be obtained via the **/regions** resource.
 
 * The postal code for the zone in which the new device and/or new service will be used. (Note: This is only required when the selected region is the United States of America.)
 
-* Shopping cart object containing the IDs for what is being ordered (i.e., device, plan, etc.). These IDs can be obtained via the catalog endpoints (i.e., **/catalog/devices**, **/catalog/plans**).
-  * An API call can be made to the **/catalog/devices** endpoint to obtain a list of eligible devices from which the enduser may select their new device ID. When making this call, you should pass the following three query parameters: 
+* Shopping cart object containing the IDs for what is being ordered (i.e., device, plan, etc.). These IDs can be obtained via the catalog-specific resources (i.e., **/catalog/devices**, **/catalog/plans**).
+  * An API call can be made to the **/catalog/devices** resource to obtain a list of eligible devices from which the end user may select their new device ID. When making this call, you should pass the following three query parameters: 
     * **transactionType**. The transaction type may be needed by the source system to invoke business logic that is specific to this type of transaction. 
     * **service**. The service parameter will filter the results to NOT return any devices that are solely supported by the current carrier. 
     * **vendor**. The vendor parameter will further filter the list to only return devices that are compatible with a specific carrier (i.e., the new carrier to which you are porting service).
-  * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** endpoint.
+  * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** resource.
 
 * All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order. Also, refer to this same page for instructions for <a href="{{site.url}}/tutorials/properties#choicePropertySubmittingOtherValue">submitting an "other/none of the above" value</a>.
 
@@ -160,9 +160,9 @@ To obtain a confirmation, set the **confirm** query parameter to true.
 
 <br />
 
-## Step 4. Obtain the order confirmation by calling the /orders endpoint via HTTP POST. 
+## Step 4. Obtain the order confirmation by calling the /orders resource via HTTP POST. 
 
-Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the **/orders** endpoint.
+Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the **/orders** resource.
 
 If successful, the API will return a response with a 200 HTTP status code and containing JSON that fully describes the identifiers that were submitted. This data can then be presented back to the end user for verification and correction (if necessary). 
 

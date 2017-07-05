@@ -35,9 +35,9 @@ For an UPDATE_FEATURES transaction, this JSON typically includes the following p
 
 * Transaction type (i.e., UPDATE_FEATURES).
 
-* Service asset ID for the cellular service with the features that you wish to update. This ID can be obtained via the **/assets/service** endpoint.
+* Service asset ID for the cellular service with the features that you wish to update. This ID can be obtained via the **/assets/service** resource.
 
-* IDs for the features you wish to modify, along with the action you wish to take (i.e., ADD or REMOVE). You can also add an (optional) comment to provide additional information about the change, if needed.
+* IDs for the features you wish to modify, along with the action you wish to take (i.e., ADD or REMOVE). You can also add a comment to provide additional information about the change, if needed.
 
 * All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order. Also, refer to this same page for instructions for <a href="{{site.url}}/tutorials/properties#choicePropertySubmittingOtherValue">submitting an "other/none of the above" value</a>.
 
@@ -118,9 +118,9 @@ To obtain a confirmation, set the **confirm** query parameter to true.
 
 <br />
 
-## Step 4. Obtain the order confirmation by calling the /orders endpoint via HTTP POST. 
+## Step 4. Obtain the order confirmation by calling the /orders resource via HTTP POST. 
 
-Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the **/orders** endpoint.
+Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the **/orders** resource.
 
 If successful, the API will return a response with a 200 HTTP status code and containing JSON that fully describes the identifiers that were submitted. This data can then be presented back to the end user for verification and correction (if necessary). 
 

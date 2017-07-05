@@ -32,11 +32,12 @@ For technical support, please contact <a href="mailto:Support@tangoe.com"><stron
 				tg-space--half--top 
 				tg-valign--top">
 		<p><span class="tg-emphasis">North America</span><br>
-		<strong>Orange, USA (HQ)</strong><br>
-		35 Executive Blvd.<br>
-		Orange, CT 06477</p>
-		<p>+1 203 859 9300<br>
-		+1 203 589 9427 Fax</p>
+		<strong>Parsippany NJ (HQ)</strong><br>
+		169 Lackawanna Ave., Suite 2B<br>
+		Parsippany, NJ 07054</p>
+		<p>+1 973 257 0300<br>
+		+1 877 571 4737 Toll free<br>
+		+1 973 257 0302 Fax</p>
 	</div><!--
 --><div class="tg-grid__cell
 				tg-one-quarter

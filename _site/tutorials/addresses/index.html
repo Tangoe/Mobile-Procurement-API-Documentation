@@ -576,11 +576,11 @@
 
       <h1 id="how-to-format-an-address">How to Format an Address</h1>
 
-<p><strong>This tutorial describes the steps for obtaining the address components, in order, that are required for properly formatting an address for a selected country.</strong></p>
+<p><strong>This tutorial describes the steps for obtaining the address components, in proper dispaly order, that are required for properly formatting an address for a selected country.</strong></p>
 
 <p>When placing an order that requires the physical shipment of a device or accessory, shipping address information will need to be included in the request body. Moreover, different countries often require differing sets of components in order for an address to be valid for delivery to an address within that country.</p>
 
-<p>In order to determine the required mailing address components for a selected country, an API call must be made to the <strong>/regions/{id}</strong> endpoint. Please note that this endpoint requires passing the ID of the selected country as a <a href="http://localhost:4000/concepts/uriparameters/">URI parameter</a>. This call will return a response that includes a block called <strong>addressFormat</strong> that identifies all of the specific address components that are required.</p>
+<p>In order to determine the required mailing address components for a selected country, an API call must be made to the <strong>/regions/{id}</strong> resource. Please note that this resource requires passing the ID of the selected country as a <a href="http://localhost:4000/concepts/uriparameters/">URI parameter</a>. This call will return a response that includes a block called <strong>addressFormat</strong> that identifies all of the specific address components that are required.</p>
 
 <p>For example:</p>
 

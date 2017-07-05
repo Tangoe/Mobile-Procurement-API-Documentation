@@ -578,7 +578,7 @@
 
 <p><strong>This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to port a specific service asset to a different carrier.</strong></p>
 
-<p>Please note that sometimes the technology used by the new carrier’s network is different than what is used by the original carrier. In this case, the new carrier may require different device hardware and therefore a new device will need to be ordered. An API call can be made to the <strong>/catalog/devices</strong> endpoint to obtain a list of eligible devices from which one can be selected. Even if the new carrier supports the existing device, a new SIM card might be required. Therefore, these orders usually require including shipping information in the order request.</p>
+<p>Please note that sometimes the technology used by the new carrier’s network is different than what is used by the original carrier. In this case, the new carrier may require different device hardware and therefore a new device will need to be ordered. An API call can be made to the <strong>/catalog/devices</strong> resource to obtain a list of eligible devices from which one can be selected. Even if the new carrier supports the existing device, a new SIM card might be required. Therefore, these orders usually require including shipping information in the order request.</p>
 
 <p><br /></p>
 
@@ -609,24 +609,24 @@
     <p>Transaction type (i.e., PORT_NUMBER).</p>
   </li>
   <li>
-    <p>Service asset ID for the cellular service that is to be ported. This ID can be obtained via the <strong>/assets/service</strong> endpoint.</p>
+    <p>Service asset ID for the cellular service that is to be ported. This ID can be obtained via the <strong>/assets/service</strong> resource.</p>
   </li>
   <li>
-    <p>Region ID for the country in which the new device and/or new service will be used. This ID can be obtained via the <strong>/regions</strong> endpoint.</p>
+    <p>Region ID for the country in which the new device and/or new service will be used. This ID can be obtained via the <strong>/regions</strong> resource.</p>
   </li>
   <li>
     <p>The postal code for the zone in which the new device and/or new service will be used. (Note: This is only required when the selected region is the United States of America.)</p>
   </li>
-  <li>Shopping cart object containing the IDs for what is being ordered (i.e., device, plan, etc.). These IDs can be obtained via the catalog endpoints (i.e., <strong>/catalog/devices</strong>, <strong>/catalog/plans</strong>).
+  <li>Shopping cart object containing the IDs for what is being ordered (i.e., device, plan, etc.). These IDs can be obtained via the catalog-specific resources (i.e., <strong>/catalog/devices</strong>, <strong>/catalog/plans</strong>).
     <ul>
-      <li>An API call can be made to the <strong>/catalog/devices</strong> endpoint to obtain a list of eligible devices from which the enduser may select their new device ID. When making this call, you should pass the following three query parameters:
+      <li>An API call can be made to the <strong>/catalog/devices</strong> resource to obtain a list of eligible devices from which the end user may select their new device ID. When making this call, you should pass the following three query parameters:
         <ul>
           <li><strong>transactionType</strong>. The transaction type may be needed by the source system to invoke business logic that is specific to this type of transaction.</li>
           <li><strong>service</strong>. The service parameter will filter the results to NOT return any devices that are solely supported by the current carrier.</li>
           <li><strong>vendor</strong>. The vendor parameter will further filter the list to only return devices that are compatible with a specific carrier (i.e., the new carrier to which you are porting service).</li>
         </ul>
       </li>
-      <li>Optional feature IDs for a specific plan can be obtained from the <strong>/catalog/plans/{id}</strong> endpoint.</li>
+      <li>Optional feature IDs for a specific plan can be obtained from the <strong>/catalog/plans/{id}</strong> resource.</li>
     </ul>
   </li>
   <li>
@@ -749,9 +749,9 @@
 
 <p><br /></p>
 
-<h2 id="step-4-obtain-the-order-confirmation-by-calling-the-orders-endpoint-via-http-post">Step 4. Obtain the order confirmation by calling the /orders endpoint via HTTP POST.</h2>
+<h2 id="step-4-obtain-the-order-confirmation-by-calling-the-orders-resource-via-http-post">Step 4. Obtain the order confirmation by calling the /orders resource via HTTP POST.</h2>
 
-<p>Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the <strong>/orders</strong> endpoint.</p>
+<p>Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the <strong>/orders</strong> resource.</p>
 
 <p>If successful, the API will return a response with a 200 HTTP status code and containing JSON that fully describes the identifiers that were submitted. This data can then be presented back to the end user for verification and correction (if necessary).</p>
 

@@ -592,15 +592,15 @@
 
 <p><br /></p>
 
-<h2 id="the-ordersproperties-endpoint">The /orders/properties endpoint</h2>
+<h2 id="the-ordersproperties-resource">The /orders/properties resource</h2>
 
-<p>An API call can be made to the <strong>/orders/properties</strong> endpoint to obtain the properties. The specific properties returned are determined based on the order transaction type and  vendor who will be fulfilling the order.</p>
+<p>An API call can be made to the <strong>/orders/properties</strong> resource to obtain the properties. The specific properties returned are determined based on the order transaction type and  vendor who will be fulfilling the order.</p>
 
 <p>When making this API call, you must always set the <strong>transactionType</strong> query parameter (e.g., NEW_ACTIVATION, UPGRADE, SUSPEND, etc.). You also must also identify the vendor by passing either one of the two following query parameters:</p>
 
 <ul>
   <li>
-    <p><strong>vendor</strong> – The ID of the vendor who will be fulfilling the order. This ID can be obtained from many endpoints, such as /vendors, /catalog/plans, etc.</p>
+    <p><strong>vendor</strong> – The ID of the vendor who will be fulfilling the order. This ID can be obtained from many resources (e.g., /vendors, /catalog/plans, etc.).</p>
   </li>
   <li>
     <p><strong>service</strong> – The ID of the service asset for which the order is being executed, if applicable. The backend system will look up the ID of the vendor who is associated with the service asset.</p>

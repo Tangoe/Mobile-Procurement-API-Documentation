@@ -35,10 +35,10 @@ For an ORDER_ACCESSORIES transaction, this JSON typically includes the following
 
 * Transaction type (i.e., ORDER_ACCESSORIES).
 
-* Service asset ID for the cellular service associated with the user's device. This ID can be obtained via the **/assets/service** endpoint.
+* Service asset ID for the cellular service associated with the user's device. This ID can be obtained via the **/assets/service** resource.
 
 * Shopping cart object containing an array of IDs for the accessory items being ordered. 
-  * These IDs can be obtained via the accessory catalog endpoint (i.e., **/catalog/accessories**). When calling this endpoint, you must pass the **service** query parameter to get a list that is filtered to include only the accessories that are compatible with your device.
+  * These IDs can be obtained via the accessory catalog resource (i.e., **/catalog/accessories**). When calling this resource, you must pass the **service** query parameter to get a list that is filtered to include only the accessories that are compatible with your device.
 
 * All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order. Also, refer to this same page for instructions for <a href="{{site.url}}/tutorials/properties#choicePropertySubmittingOtherValue">submitting an "other/none of the above" value</a>.
 
@@ -129,9 +129,9 @@ To obtain a confirmation, set the **confirm** query parameter to true.
 
 <br />
 
-## Step 4. Obtain the order confirmation by calling the /orders endpoint via HTTP POST. 
+## Step 4. Obtain the order confirmation by calling the /orders resource via HTTP POST. 
 
-Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the **/orders** endpoint.
+Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the **/orders** resource.
 
 If successful, the API will return a response with a 200 HTTP status code and containing JSON that fully describes the identifiers that were submitted. This data can then be presented back to the end user for verification and correction (if necessary). 
 

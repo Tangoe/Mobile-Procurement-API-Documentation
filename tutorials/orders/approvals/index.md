@@ -18,7 +18,7 @@ This API uses the OAuth2 standard for authentication. Specifically, it supports 
 
 ## Step 1. Set the URI parameter for the order to be approved.
 
-This endpoint requires a URI parameter to identify the order you wish to approve. Therefore, the order ID must be injected into the URI when calling this endpoint. For example, if the order ID is **123456**:
+This resource requires a URI parameter to identify the order you wish to approve. Therefore, the order ID must be injected into the URI when calling this resource. For example, if the order ID is **123456**:
 
 ```
 	/orders/123456/approval
@@ -34,7 +34,7 @@ For an approval transaction, this JSON typically includes the following pieces:
 
 * Action (i.e., APPROVE or REJECT).
 
-* Reason for approval or rejection. This field is necessary for the successful submission when required by the workflow associated with the order. Typically a reason is required for a rejection.
+* Reason for approval or rejection. This field is necessary for the successful submission when required by the workflow associated with the order. Typically, a reason is required for a rejection.
 
 Here is an example of what the fully-assembled request body JSON might look like:
 

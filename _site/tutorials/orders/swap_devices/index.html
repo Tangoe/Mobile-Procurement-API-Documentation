@@ -576,7 +576,7 @@
 
       <h1 id="how-to-transfer-service-from-one-device-to-another">How to Transfer Service from One Device to Another</h1>
 
-<p><strong>This tutorial provides step-by-step instructions for changing the assignment of a service from one device to another. Please note that both devices must be known assets in the possession of the user. In other words, service cannot be transferred to a brand new device that is purchased during the order process.</strong></p>
+<p><strong>This tutorial provides step-by-step instructions for changing the assignment of a service from one device to another (i.e., swapping devices). Please note that both devices must be known assets in the possession of the user. In other words, service cannot be transferred to a brand new device that is purchased during the order process.</strong></p>
 
 <p><br /></p>
 
@@ -607,7 +607,7 @@
     <p>Transaction type (i.e., SWAP_DEVICE).</p>
   </li>
   <li>
-    <p>Service asset ID for the cellular service that is to be transferred. This ID can be obtained via the <strong>/assets/service</strong> endpoint.</p>
+    <p>Service asset ID for the cellular service that is to be transferred. This ID can be obtained via the <strong>/assets/service</strong> resource.</p>
   </li>
   <li>Manufacturer and model IDs, along with the serial number type and value, of the device to which you wish to transfer the service (i.e., the “newDevice” property). If the manufacturer and model are not currently identified in the device catalog, then the make and model names can passed via otherNameModelName property (e.g., “Acme StarPhone 2000”).
     <ul>
@@ -728,9 +728,9 @@
 
 <p><br /></p>
 
-<h2 id="step-4-obtain-the-order-confirmation-by-calling-the-orders-endpoint-via-http-post">Step 4. Obtain the order confirmation by calling the /orders endpoint via HTTP POST.</h2>
+<h2 id="step-4-obtain-the-order-confirmation-by-calling-the-orders-resource-via-http-post">Step 4. Obtain the order confirmation by calling the /orders resource via HTTP POST.</h2>
 
-<p>Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the <strong>/orders</strong> endpoint.</p>
+<p>Your request, containing the JSON request body and confirm query parameter set to true, is now ready. Submit it via the HTTP POST method to the <strong>/orders</strong> resource.</p>
 
 <p>If successful, the API will return a response with a 200 HTTP status code and containing JSON that fully describes the identifiers that were submitted. This data can then be presented back to the end user for verification and correction (if necessary).</p>
 

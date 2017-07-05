@@ -578,7 +578,7 @@
 
 <p><strong>This tutorial provides instructions for obtaining a list of states or provinces that are located within a specific country.</strong></p>
 
-<p>When creating forms where users are required to enter address information, a dropdown list of states or provinces might need to be displayed. The <strong>/regions</strong> endpoint is used to obtain the data needed for populating the options in the list.</p>
+<p>When creating forms where users are required to enter address information, a dropdown list of states or provinces might need to be displayed. The <strong>/regions</strong> resource is used to obtain the data needed for populating the options in the list.</p>
 
 <p><br /></p>
 
@@ -593,9 +593,9 @@
 
 <h2 id="how-to-obtain-a-list-of-states-or-provinces">How to Obtain a List of States or Provinces</h2>
 
-<p>To begin, you must first determine the region ID for a selected country. If you do not know this ID, call the <strong>/regions</strong> endpoint to get a full list of supported countries, along with their IDs.</p>
+<p>To begin, you must first determine the region ID for a selected country. If you do not know this ID, call the <strong>/regions</strong> resource to get a full list of supported countries, along with their IDs.</p>
 
-<p>Next, call the <strong>/regions</strong> endpoint again, this time setting the request’s <strong>parentRegion</strong> query parameter with your selected country’s region ID. The API will return a list of the states/provinces that are located within that country. Please note that each item in the list will include a TYPE property set to “STATE_PROVINCE.”</p>
+<p>Next, call the <strong>/regions</strong> resource again, this time setting the request’s <strong>parentRegion</strong> query parameter with your selected country’s region ID. The API will return a list of the states/provinces that are located within that country. Please note that each item in the list will include a TYPE property set to “STATE_PROVINCE.”</p>
 
 <p>For example:</p>
 
