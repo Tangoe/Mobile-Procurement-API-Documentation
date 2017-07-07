@@ -9,12 +9,12 @@ title: Tutorials - UPGRADE Order
 **This tutorial provides step-by-step instructions for creating, confirming, and submitting an order to upgrade a specific device and/or service plan.**
 
 
-Please note that the **existingDevice** block is required for all UPGRADE orders when the API source system is Premium Mobile (a.k.a., Command). It might not be required for other source systems.
+Please note that the **existingDevice** block is required for all UPGRADE orders when the API source system is Premium Mobile (a.k.a., Command). It might not be supported on other source systems (i.e, Rivermine).
 <br>
 
 ### Special Instructions for Upgrading a Plan Only  ###
 
-When upgrading to a new plan only (i.e., not ordering a new device with it), you still need to include the **shipTo** block because a new SIM card is often required and it will be shipped to the user.
+When upgrading to a new plan only (i.e., not ordering a new device with it), you may still need to include the **shipTo** block because a new SIM card is often required and it will be shipped to the user. Typically this is the case for users connected to the Premium Mobile source system but not for Rivermine. 
 
 Also, please note that various carrier networks do not always use the same cellular transmission technologies (e.g., GSM, CDMA, etc.). When upgrading to a plan offered by a different carrier, your existing device may no longer be supported by the new plan. In such case, the ID for a new (compatible) device will also need to be included in the shopping cart. If a new device is required but not included in the order, an error will be returned.
 
@@ -36,7 +36,7 @@ For an UPGRADE transaction, this JSON typically includes the following pieces:
 
 * Service asset ID for the cellular service, and/or associated device, that you wish to upgrade. This ID can be obtained via the **/assets/service** resource.
 
-* Existing device information for the device you are currently using. This is required, even when you are only upgrading the plan. This block includes the manufacturer ID, model ID, serial number, serial number type, and SIM ID.
+* Existing device information for the device you are currently using. This is often required, even when you are only upgrading the plan. This block includes the manufacturer ID, model ID, serial number, serial number type, and SIM ID. (NOTE: Tangoe's Rivermine source system does not support upgrading a device to an existing device.)
 
 * Shopping cart object containing the IDs for what is being ordered (i.e., devices, plans, and/or plan features). These IDs can be obtained via the catalog-specific resources (i.e., **/catalog/devices**, **/catalog/plans**, **/catalog/features**).
   * Optional feature IDs for a specific plan can be obtained from the **/catalog/plans/{id}** resource.
