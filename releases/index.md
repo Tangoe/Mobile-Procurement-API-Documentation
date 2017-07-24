@@ -12,6 +12,8 @@ title: Releases
 
 <br/>
 
+[Release 1.3.1]({{site.url}}releases/1-3-1/)
+
 [Release 1.2.1]({{site.url}}releases/1-2-1/)
 
 [Release 1.2.0]({{site.url}}releases/1-2-0/)
