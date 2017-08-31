@@ -5,14 +5,13 @@ title: Validate Access Token
 
 # Access Tokens
 
-
 ## How to Validate an Access Token
-
 
 The following information is required to validate an access token: 
 
 * **access_token**: The access token to be validated.
 
+<br>NOTE: Some client IDs may not have the permissions required to validate tokens. When requested, this permission is granted on a case by case basis.
 <br>
 
 ### Endpoints 
@@ -32,34 +31,42 @@ To validate an access token, the following query parameters need to be passed wi
 
 <br>
 
+
 ### Example 
 The following is an example of a GET request to validate a token: 
 
 ```
-https://oauthqa.tangoe.com/as/token.oauth2?grant_type=refresh_token&client_id=376af94124f4400e9227c89937c12354&client_secret=81f40d2777ea4a41A992535F17AC92EC&scope=MOBPROC&refresh_token=a9AhNvcffquYkV4bSw0O6gt4gKZRvTUGR2lfR8nJf4 
+https://oauthqa.tangoe.com/as/token.oauth2?grant_type=urn:pingidentity.com:oauth2:grant_type:validate_bearer&token=8jmFdZdww2h3FDYNJEHXgvtnXbdc&client_id=286ff94127c8801e9227d89337c14351&client_secret=72g30d2857fo4a41A9525345572AC72LK
 ```
 
 The following is an example of a response that might be returned: 
 
 ```
- { 
-   "expires_in": 7188, 
-   "scope": "MOBPROC", 
-   "client_id": "a98b70cddd5f1432221360bd732f5ec1", 
-   "username": "sn2.admin.xx1", 
-   "platform": "command", 
-   "identityProvider": "pcv_edge" 
- } 
+ {
+    "scope": "MOBPROC",
+    "token_type": "urn:pingidentity.com:oauth2:validated_token",
+    "expires_in": 7186,
+    "client_id": "286ff94127c8801e9227d89337c14351",
+    "access_token": {
+        "platform": "command",
+        "tenant": "XYZ",
+        "multitenant": "false",
+        "domain": "*",
+        "identityProvider": "pcv_edge",
+        "identifier": "api.account.xyz"
+    }
+  }
 ```
 
 The following properties are returned in the token validation response: 
 
 | ***Property*** | ***Description*** | ***Example*** |
 | --- | --- | --- |
-| **expires_in** | Number of seconds that the access token will be valid. | <code>7188</code> |
 | **scope** | OAuth scopes that are associated with the access token being validated. | <code>MOBPROC</code> |
+| **expires_in** | Number of seconds that the access token will be valid. | <code>7188</code> |
 | **client_id** | Tangoe-assigned client ID for the API client application that requested the access token being validated. | <code>a98b70cddd5f1432221360bd732f5ec1</code> |
-| **username** | Username that is associated with the access token. | <code>sn2.admin.xx1</code> |
 | **platform** | Source system that is associated with the access token. | <code>command</code> |
+| **tenant** | The Tangoe-assigned code that identifies the client account. | <code>ABC</code> |
 | **identityProvider** | Identifies the authenticating entity. | <code>pcv_edge</code> |
+
 
