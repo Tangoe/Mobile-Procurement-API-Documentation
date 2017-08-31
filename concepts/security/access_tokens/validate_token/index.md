@@ -67,6 +67,8 @@ The following properties are returned in the token validation response:
 | **client_id** | Tangoe-assigned client ID for the API client application that requested the access token being validated. | <code>a98b70cddd5f1432221360bd732f5ec1</code> |
 | **platform** | Source system that is associated with the access token. | <code>command</code> |
 | **tenant** | The Tangoe-assigned code that identifies the client account. | <code>ABC</code> |
+| **multitenant** | Boolean to indicate that caller has access to data for more than one tenant. | <code>false</code> |
 | **identityProvider** | Identifies the authenticating entity. | <code>pcv_edge</code> |
+| **identifier** | Identity that was authorized by security provider (e.g., Ping). | <code>api.account.xyz</code> |
 
 
