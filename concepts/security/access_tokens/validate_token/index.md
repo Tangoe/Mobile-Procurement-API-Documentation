@@ -44,7 +44,6 @@ The following is an example of a response that might be returned:
 ```
  {
     "scope": "MOBPROC",
-    "token_type": "urn:pingidentity.com:oauth2:validated_token",
     "expires_in": 7186,
     "client_id": "286ff94127c8801e9227d89337c14351",
     "access_token": {
