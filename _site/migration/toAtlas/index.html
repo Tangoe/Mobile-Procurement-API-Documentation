@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset=utf-8 />
-  <title>  Formatting an Address |  Tangoe Mobile Procurement API </title>
+  <title>  Migration to Atlas |  Tangoe Mobile Procurement API </title>
 
   <script src="http://localhost:4000/js/jquery/jquery-2.1.4.min.js"></script>
 
@@ -702,136 +702,105 @@
     </div><!--
     --><div class="tg-grid__cell  tg-pad"> 
 
-      <h1 id="how-to-format-an-address">How to Format an Address</h1>
+      <h1 id="migration-to-the-atlas-platform-beta">Migration to the Atlas Platform (Beta)</h1>
 
-<p><strong>This tutorial describes the steps for obtaining the address components, in proper dispaly order, that are required for properly formatting an address for a selected country.</strong></p>
+<p>The Mobile Procurement API (MOBPROC) was originally designed to support two Tangoe backend platforms: Premium Mobile (Command) and Rivermine. We recently updated this API so that it can be adopted by subscribers to our new Atlas platform as well.</p>
 
-<p>When placing an order that requires the physical shipment of a device or accessory, shipping address information will need to be included in the request body. Moreover, different countries often require differing sets of components in order for an address to be valid for delivery to an address within that country.</p>
+<p>Although Atlas offers a more robust experience than the older platforms, Tangoe has intentionally limited the scope of new Atlas functionality offered via MOBPROC to minimize effort required by API consumers when they migrate to Atlas. However, there are a few considerations to be aware of that could necessitate changes to the code for applications that consume the API.</p>
 
-<p>In order to determine the required mailing address components for a selected country, an API call must be made to the <strong>/regions/{id}</strong> resource. Please note that this resource requires passing the ID of the selected country as a <a href="http://localhost:4000/concepts/uriparameters/">URI parameter</a>. This call will return a response that includes a block called <strong>addressFormat</strong> that identifies all of the specific address components that are required.</p>
+<p><br /></p>
 
-<p>For example:</p>
+<h2 id="code-changes-that-might-be-required">Code Changes that Might Be Required</h2>
+<h3 id="device-features">Device Features</h3>
+<p>The Premium Mobile (Command) and Rivermine platforms both require that a unique device catalog item exist for every device feature option combination (e.g., iPhone 7 32GB silver; iPhone 7 128GB gold, etc.). However, the Atlas platform can support multiple features for a generic device catalog item (e.g., iPhone 7). Therefore, the response returned from the Atlas platform for the <strong>/catalog/devices/{id}</strong> endpoint includes an additional data block called <code>deviceFeatures</code> to provide available feature options.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
-  "_meta": {
-    "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640",
-    "hrefChildren": "https://tngo-mobproc.cloudhub.io/mobproc/v1/regions?parentRegion=70144640"
-  },
-  "abbreviation": "US",
-  "addressFormat": [
-    {
-      "id": "LINE_1",
-      "label": "Line 1",
-      "maxLength": 100,
-      "minLength": 1,
-      "validation": "REQUIRED"
-    },
-    {
-      "id": "LINE_2",
-      "label": "Line 2",
-      "maxLength": 100,
-      "minLength": 0,
+<p>The following is an example of the device features block returned within the device asset detail response:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ...
+  "deviceFeatures": [
+      {
+        "id": "740500",
+        "label": "Available Colors",
+        "options": [
+          {
+            "id": "993500",
+            "isDefault": false,
+            "label": "Silver",
+            "price": {
+              "amount": 0,
+              "currencyCode": "USD",
+              "recurrence": "ONETIME"
+            }
+          },
+          {
+            "id": "994500",
+            "isDefault": false,
+            "label": "Gold",
+            "price": {
+              "amount": 0,
+              "currencyCode": "USD",
+              "recurrence": "ONETIME"
+            }
+          }
+        ],
+        "type": "CHOICE",
+        "validation": "OPTIONAL"
+      },
+      {
+        "id": "741500",
+        "label": "Available Storage",
+        "options": [
+          {
+            "id": "995500",
+            "isDefault": false,
+            "label": "8 GB",
+            "price": {
+              "amount": 5,
+              "currencyCode": "USD",
+              "recurrence": "ONETIME"
+            }
+          },
+          {
+            "id": "996500",
+            "isDefault": false,
+            "label": "16 GB",
+            "price": {
+              "amount": 10,
+              "currencyCode": "USD",
+              "recurrence": "ONETIME"
+            }
+          }
+        ],
+      "type": "CHOICE",
       "validation": "OPTIONAL"
-    },
-    {
-      "id": "LINE_3",
-      "label": "Line 3",
-      "maxLength": 100,
-      "minLength": 0,
-      "validation": "OPTIONAL"
-    },
-    {
-      "id": "CITY",
-      "label": "City",
-      "maxLength": 50,
-      "minLength": 1,
-      "validation": "REQUIRED"
-    },
-    {
-      "id": "STATE",
-      "label": "State",
-      "maxLength": 2,
-      "minLength": 2,
-      "options": [
-        {
-          "label": "Alabama",
-          "value": "AL"
-        },
-        ...
-        {
-          "label": "Wyoming",
-          "value": "WY"
-        }
-      ],
-      "pattern": "[TX]",
-      "regEx": "[A-Za-z][A-Za-z]",
-      "validation": "REQUIRED"
-    },
-    {
-      "id": "POSTAL_CODE",
-      "label": "Postal Code",
-      "maxLength": 10,
-      "minLength": 4,
-      "pattern": "[99999] or [99999-9999]",
-      "regEx": "[0-9]{4,5}(-[0-9]{4})?",
-      "validation": "REQUIRED"
     }
-  ],
-  "countryCode": "1",
-  "currency": {
-    "code": "USD",
-    "name": "US Dollars",
-    "symbol": "$"
-  },
-  "id": "70144640",
-  "name": "United States",
-  "postalCodePattern": "99999",
-  "postalCodeRegEx": "^\\d{5}$",
-  "type": "COUNTRY"
-}
-</code></pre></div></div>
-
-<p>Once a selected country’s address format is returned, the response can be parsed to assemble a <strong>shipTo</strong> block containing all of the required address components, along with the appropriate values. For example:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
-  "shipTo": {  
-    "name": "Peter Edwards",
-    "region": { 
-      "id": "70144640"
-    },
-    "address": [
-      {
-        "id": "LINE_1",
-        "value": "35 Executive Blvd"
-      },
-      {
-        "id": "CITY",
-        "value": "Orange"
-      },
-      {
-        "id": "STATE",
-        "value": "CT"
-      },
-      {
-        "id": "POSTAL_CODE",
-        "value": "06477"
-      }
-    ],
-    "expedite": true
-  }
-}
-
+  ]
+  ...
 </code></pre></div></div>
 
 <p><br /></p>
 
-<h2 id="video-tutorial">Video Tutorial</h2>
+<h2 id="changes-not-requiring-code-changes">Changes Not Requiring Code Changes</h2>
 
-<p>The following video explains how to assemble the shipping information for an order request. It includes instructions for determining the correct address format.</p>
+<h3 id="catalog-item-ids-device-and-plan">Catalog Item IDs (Device and Plan)</h3>
+<p>Please note that all IDs returned by the Mobile Procurement API are assigned by the API and can change over time. Moreover, the structure of the ID can be different depending on the Tangoe backend system to which you subscribe. Specifically, catalog item IDs for the Premium Mobile (Command) and Rivermine platforms are a continous string that is vendor-specific. However, IDs for the Atlas platform contain two segments concatenated with an underscore (e.g., 123456_7778888). The first segment is the catalog item ID and the second segment is the vendor ID.</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/psnb-pYO424" frameborder="0" style="border:1px solid #777" allowfullscreen=""></iframe>
+<p>The Premium Mobile (Command) and Rivermine platforms both require that a unique device catalog item exist for every unique vendor. Although the Atlas platform can support multiple vendors for the same device catalog item, the MOBPROC API will return a separate item for each vendor. However, related catalog items will have the same string in the first portion of the ID number (i.e., portion before the underscore).</p>
 
-<p>We also recommend browsing all of our tutorials in our Video Library at <a href="http://mobproc.tv">http://mobproc.tv</a>.</p>
+<p><br /></p>
+
+<h3 id="images-returned-as-a-data-uri">Images Returned as a Data URI</h3>
+<p>For the Atlas platform, image values will be returned as data URIs. These URIs are prefixed with the <code>data:</code> scheme and allow content creators to embed small files inline into documents. Data URLs for images are supported on all modern browsers.</p>
+
+<p>Data URLs are composed of four parts: a prefix (data:), a MIME type indicating the type of data, an optional base64 token if non-textual, and the data itself. That is, it adheres to the followign syntax:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> data:[&lt;mediatype&gt;][;base64],&lt;data&gt;
+</code></pre></div></div>
+<p>For example:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAA7CAIAAAClhQ7a
+ AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4goXEh0KED2VsgAAAB1pVFh0Q2
+ 9tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAW0lEQVRo3u3asRHAIAwE
+ QeRxtRTkdp8KHIOYvVTJBh+qkow+PaNVuLi4uO2579+hvtoCyowx4OLi4uLi4uLi4u
+ Li4uLi4uLi4uLi4uLi4p5Web/AxcXFxb2GuwDC8glxFXZphAAAAABJRU5ErkJggg==
+</code></pre></div></div>
 
 
     </div>

@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset=utf-8 />
-  <title>  Formatting an Address |  Tangoe Mobile Procurement API </title>
+  <title>  Obtaining Order Acknowledgements |  Tangoe Mobile Procurement API </title>
 
   <script src="http://localhost:4000/js/jquery/jquery-2.1.4.min.js"></script>
 
@@ -702,136 +702,120 @@
     </div><!--
     --><div class="tg-grid__cell  tg-pad"> 
 
-      <h1 id="how-to-format-an-address">How to Format an Address</h1>
+      <h1 id="obtaining-order-acknowledgements">Obtaining Order Acknowledgements</h1>
 
-<p><strong>This tutorial describes the steps for obtaining the address components, in proper dispaly order, that are required for properly formatting an address for a selected country.</strong></p>
+<p><strong>This tutorial describes the steps for obtaining the information and acknowledgements that the vendor requires to be disclosed to the user when placing an order to transfer ownership of a service asset.</strong></p>
 
-<p>When placing an order that requires the physical shipment of a device or accessory, shipping address information will need to be included in the request body. Moreover, different countries often require differing sets of components in order for an address to be valid for delivery to an address within that country.</p>
+<p><strong>Info blocks</strong> are additional pieces of information that a vendor wishes to disclose when transferring ownership. Additionally, most vendors also require that the user placing the transfer order acknowledge one or more points before the order can be placed. These <strong>acknowledgments</strong> are not used by the API to process the order. But rather, they are passed on to the third-party vendor who will be fulfilling your order. Some of these acknowledgments may be required to be populated in order for your order to be accepted.</p>
 
-<p>In order to determine the required mailing address components for a selected country, an API call must be made to the <strong>/regions/{id}</strong> resource. Please note that this resource requires passing the ID of the selected country as a <a href="http://localhost:4000/concepts/uriparameters/">URI parameter</a>. This call will return a response that includes a block called <strong>addressFormat</strong> that identifies all of the specific address components that are required.</p>
+<p><br /></p>
 
-<p>For example:</p>
+<h2 id="the-acknowledgements-resource">The /acknowledgements resource</h2>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
-  "_meta": {
-    "href": "https://tngo-mobproc.cloudhub.io/mobproc/v1/regions/70144640",
-    "hrefChildren": "https://tngo-mobproc.cloudhub.io/mobproc/v1/regions?parentRegion=70144640"
-  },
-  "abbreviation": "US",
-  "addressFormat": [
-    {
-      "id": "LINE_1",
-      "label": "Line 1",
-      "maxLength": 100,
-      "minLength": 1,
-      "validation": "REQUIRED"
-    },
-    {
-      "id": "LINE_2",
-      "label": "Line 2",
-      "maxLength": 100,
-      "minLength": 0,
-      "validation": "OPTIONAL"
-    },
-    {
-      "id": "LINE_3",
-      "label": "Line 3",
-      "maxLength": 100,
-      "minLength": 0,
-      "validation": "OPTIONAL"
-    },
-    {
-      "id": "CITY",
-      "label": "City",
-      "maxLength": 50,
-      "minLength": 1,
-      "validation": "REQUIRED"
-    },
-    {
-      "id": "STATE",
-      "label": "State",
-      "maxLength": 2,
-      "minLength": 2,
-      "options": [
-        {
-          "label": "Alabama",
-          "value": "AL"
-        },
-        ...
-        {
-          "label": "Wyoming",
-          "value": "WY"
-        }
-      ],
-      "pattern": "[TX]",
-      "regEx": "[A-Za-z][A-Za-z]",
-      "validation": "REQUIRED"
-    },
-    {
-      "id": "POSTAL_CODE",
-      "label": "Postal Code",
-      "maxLength": 10,
-      "minLength": 4,
-      "pattern": "[99999] or [99999-9999]",
-      "regEx": "[0-9]{4,5}(-[0-9]{4})?",
-      "validation": "REQUIRED"
-    }
-  ],
-  "countryCode": "1",
-  "currency": {
-    "code": "USD",
-    "name": "US Dollars",
-    "symbol": "$"
-  },
-  "id": "70144640",
-  "name": "United States",
-  "postalCodePattern": "99999",
-  "postalCodeRegEx": "^\\d{5}$",
-  "type": "COUNTRY"
-}
+<p>An API call can be made to the <strong>/acknowledgements</strong> resource to obtain the acknowledgements. The specific acknowledgements returned are determined based on the order transaction type and vendor who will be fulfilling the order.</p>
+
+<p>When making this API call, you must always set the following query parameters:</p>
+<ul>
+  <li><strong>transactionType</strong>  (e.g., XFER_SERVICE_OUT, XFER_SERVICE_IN, etc.).</li>
+  <li><strong>vendor</strong> – The ID of the vendor who will be fulfilling the order. This ID can be obtained from many resources (e.g., /vendors, /catalog/plans, etc.).</li>
+</ul>
+
+<p><br />
+Here is an illustration of an order acknowledgements request:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/acknowledgements?vendor=777&amp;transactionType=XFER_SERVICE_IN
 </code></pre></div></div>
 
-<p>Once a selected country’s address format is returned, the response can be parsed to assemble a <strong>shipTo</strong> block containing all of the required address components, along with the appropriate values. For example:</p>
+<p><br />
+The following example illustrates what the corresponding order acknowledgements response might look like:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
-  "shipTo": {  
-    "name": "Peter Edwards",
-    "region": { 
-      "id": "70144640"
+    "infoblocks": [
+    {
+      "header": "Family &amp; Shared Minute Plans",
+      "paragraphs": [
+        {
+          "text": "PLEASE READ: In order to transfer a personally-liable account to a corporate-liable account, 
+          the user may be required to have service with the corporate carrier currently."
+        },
+        {
+          "text": "Before transferring your number, please contact your current carrier to resolve an outstanding 
+          balance, if required."
+        }
+      ]
     },
-    "address": [
-      {
-        "id": "LINE_1",
-        "value": "35 Executive Blvd"
-      },
-      {
-        "id": "CITY",
-        "value": "Orange"
-      },
-      {
-        "id": "STATE",
-        "value": "CT"
-      },
-      {
-        "id": "POSTAL_CODE",
-        "value": "06477"
-      }
-    ],
-    "expedite": true
-  }
+    {
+      "header": "Authorization of Transfer",
+      "paragraphs": [
+        {
+          "text": "PLEASE READ: By transferring your number to the company, you agree to give up all rights to 
+          that number. Depending upon the company's policy, the number may not be transferrable back to you."
+        }
+      ]
+    },
+    {
+      "header": "Termination Fee Notice",
+      "paragraphs": [
+        {
+          "text": "PLEASE READ: You may be required to pay a termination fee when moving your service number to a 
+          new carrier. Please contact your cellular provider to determine if a termination fee will be charged."
+        }
+      ]
+    }
+  ],
+  "acknowledgements": [
+    {
+      "id": "FAMILY_SHARED_MINUTE_PLAN",
+      "label": "I verify that the service number to be transferred is no longer on a family shared plan. This has 
+      been confirmed with my current carrier.",
+      "type": "BOOLEAN",
+      "validation": "REQUIRED"
+    },
+    {
+      "id": "AUTHORIZATION_OF_TRANSFER",
+      "label": "I authorize the transfer of liability for this service number to the company.",
+      "type": "BOOLEAN",
+      "validation": "REQUIRED"
+    },
+    {
+      "id": "TERMINATION_FEES",
+      "label": "I authorize this port of service to the new carrier. I accept personal responsibility for any 
+      termination fees or other charges incurred.",
+      "type": "BOOLEAN",
+      "validation": "REQUIRED"
+    }
+  ]
 }
-
 </code></pre></div></div>
 
 <p><br /></p>
 
-<h2 id="video-tutorial">Video Tutorial</h2>
+<h2 id="contents-of-an-info-block">Contents of an Info Block</h2>
 
-<p>The following video explains how to assemble the shipping information for an order request. It includes instructions for determining the correct address format.</p>
+<p>An individual info block contains the following required elements:</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/psnb-pYO424" frameborder="0" style="border:1px solid #777" allowfullscreen=""></iframe>
+<ul>
+  <li><strong>header</strong> – A descriptive section heading label that is suitable for displaying to an end user.</li>
+  <li><strong>paragraphs</strong> – An array of text blocks that relate to the corresponding header element. The text returned is suitable for displaying to an end user.</li>
+</ul>
 
-<p>We also recommend browsing all of our tutorials in our Video Library at <a href="http://mobproc.tv">http://mobproc.tv</a>.</p>
+<p><br /></p>
+
+<h2 id="contents-of-acknowledgements">Contents of Acknowledgements</h2>
+
+<p>An individual acknowledgement contains the following required elements:</p>
+
+<ul>
+  <li><strong>id</strong> – The unique ID identifying a specific acknowledgement.</li>
+  <li><strong>label</strong> – A descriptive label describing the acknowledgement that is suitable for displaying to an end user.</li>
+  <li><strong>type</strong> – Indicates the type of data to which the value should be set:
+    <ul>
+      <li><em>BOOLEAN</em>: True or False. True indicates the user’s acknowledgement.</li>
+    </ul>
+  </li>
+  <li><strong>validation</strong> – Required or Optional. Indicates whether or not the property is required by the vendor.</li>
+</ul>
+
 
 
     </div>
