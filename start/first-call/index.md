@@ -10,7 +10,7 @@ Once you have registered your application to use this API, you will be provided 
 
 Upon logging into the Tangoe Developer Portal, simply click on the API Reference link in the navigation panel on the left (pictured below). The API Reference page provides extensive documentation describing each of the API resources, including all supported headers and query parameters. This reference guide also offers an interactive feature enabling you to submit requests for any resource. These requests will return real responses, populated with your own data.
 
-<img src="{{site.url}}images/screens/devportal.png" style="border:1px solid #666;" />
+<img src="{{site.url}}/images/screens/devportal.png" style="border:1px solid #666;" />
 
 <br/>
 
@@ -31,12 +31,12 @@ To begin, simply follow these easy steps:
 1. Click the **GET** button to submit your request.
 
 
-<img src="{{site.url}}images/screens/first_call.jpg" style="border:1px solid #666;" />
+<img src="{{site.url}}/images/screens/first_call.jpg" style="border:1px solid #666;" />
 <br/>
 
 A successful response should be returned (i.e., HTTP status 200). The response body will include your echoText value, along with data identifying the backend system that processed your request. 
 
-If a problem occurs while processing your request, you will receive an error message. Please refer to the <a href="{{site.url}}concepts/errors/">Errors page</a> for an explanation of supported HTTP status codes and error messages.
+If a problem occurs while processing your request, you will receive an error message. Please refer to the <a href="{{site.url}}/concepts/errors/">Errors page</a> for an explanation of supported HTTP status codes and error messages.
 
 <br />
 

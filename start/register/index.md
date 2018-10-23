@@ -21,7 +21,7 @@ This API is powered by Tangoe’s robust procurement system. As a registered use
 
 As soon as your application is registered, Tangoe will provide you with your own unique client ID and client secret. This ID and secret are used to obtain the personalized access token that must be passed with every API call. 
 
-Once Tangoe has provided you with your access credentials, simply follow our easy tutorial to see how you can <a href="{{site.url}}start/first-call/">make your first call in just minutes</a>.
+Once Tangoe has provided you with your access credentials, simply follow our easy tutorial to see how you can <a href="{{site.url}}/start/first-call/">make your first call in just minutes</a>.
 
 <br/>
 

@@ -1,24 +1,10 @@
-name: ""
-description: ""
+name: "MOBPROC REST API Documentation"
+description: "Concepts and tutorials for using Tangoe's Mobile Procurement API"
 
-#url: "http://localhost:4000/"  
+
 url: "http://tangoe.github.io/Mobile-Procurement-API-Documentation/" 
-
-#kramdown:
-#  input: GFM
-
-#markdown: kramdown
-#kramdown:
-#  use_coderay: true
-
-#markdown: redcarpet
-#markdown: rdiscount
-
-# Conversion
-#markdown: redcarpet
-#highlighter: rouge 
-#redcarpet:
-#  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript"]
+#url: "https://mmcpadden.github.io/mobdoctest"   #Staging account for QA purposes
+baseurl: ""
 
 
 markdown: kramdown

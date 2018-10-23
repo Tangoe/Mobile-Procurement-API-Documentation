@@ -11,7 +11,7 @@ youtubeId: psnb-pYO424
 
 When placing an order that requires the physical shipment of a device or accessory, shipping address information will need to be included in the request body. Moreover, different countries often require differing sets of components in order for an address to be valid for delivery to an address within that country.
 
-In order to determine the required mailing address components for a selected country, an API call must be made to the **/regions/{id}** resource. Please note that this resource requires passing the ID of the selected country as a [URI parameter]({{site.url}}concepts/uriparameters/). This call will return a response that includes a block called **addressFormat** that identifies all of the specific address components that are required. 
+In order to determine the required mailing address components for a selected country, an API call must be made to the **/regions/{id}** resource. Please note that this resource requires passing the ID of the selected country as a [URI parameter]({{site.url}}/concepts/uriparameters/). This call will return a response that includes a block called **addressFormat** that identifies all of the specific address components that are required. 
 
 For example:
 
