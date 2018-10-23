@@ -33,7 +33,7 @@ For technical support, please contact <a href="mailto:Support@tangoe.com"><stron
 				tg-valign--top">
 		<p><span class="tg-emphasis">North America</span><br>
 		<strong>Parsippany NJ (HQ)</strong><br>
-		169 Lackawanna Ave., Suite 2B<br>
+		169 Lackawanna Ave.<br>
 		Parsippany, NJ 07054</p>
 		<p>+1 973 257 0300<br>
 		+1 877 571 4737 Toll free<br>
@@ -65,7 +65,7 @@ For technical support, please contact <a href="mailto:Support@tangoe.com"><stron
 		Alameda Santos, 200<br>
 		6° andar, 01418-000<br>
 		São Paulo, SP</p>
-		<p>+55 11 3587 1320</p>
+		<p>+55 11 4380 8090</p>
 	</div><!--
 --><div class="tg-grid__cell
 				tg-one-quarter
@@ -77,7 +77,7 @@ For technical support, please contact <a href="mailto:Support@tangoe.com"><stron
 		<strong>Melbourne, Australia</strong><br>
 		Level 50<br>
 		120 Collins Street<br>
-		Melbourne, VIC, 3000<br>
+		Melbourne, 3000<br>
 		Australia<br>
-		<p>+61 (0) 3 9225 5288</p>
+		<p>+61 (03) 9225 5288</p>
 

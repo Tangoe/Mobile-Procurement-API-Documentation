@@ -69,7 +69,7 @@ td {
 .highlight {
   margin-bottom: 12px;
   padding: 15px;
-	border: 1px dotted #999;
+/*	border: 1px dotted #999; */
 	border-radius: 4px;
 }
 
@@ -85,7 +85,7 @@ td {
 	flex-direction: row;
 }
 .dc-pageLayout_cell--nav {
-	flex-basis: 222px;
+	flex-basis: 222px;   /* 222px; */
 	background-color: #fff;
 }
 

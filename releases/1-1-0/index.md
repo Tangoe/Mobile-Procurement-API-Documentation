@@ -13,7 +13,7 @@ title: Release 1.1.0
 
 
 ### Porting an Existing Service to a Different Carrier (i.e., porting a number)
-This feature enables the creation of an order to port an existing service asset, including the service number, from one carrier to another. For a tutorial explaining how to use this feature, please refer to the [Approving or Rejecting an Order]({{site.url}}tutorials/orders/approvals/) page. 
+This feature enables the creation of an order to port an existing service asset, including the service number, from one carrier to another. For a tutorial explaining how to use this feature, please refer to the [Approving or Rejecting an Order]({{site.url}}/tutorials/orders/approvals/) page. 
 
 To support this feature, the following endpoints were created or modified:
 
@@ -42,7 +42,7 @@ This feature is useful for determining when an asset was last updated, as well a
 <br/>
 
 ### Moving a Service
-This feature enables moving the assignment of charges associated with a specific service asset from one employee to another. For a tutorial explaining how to use this feature, please refer to the [Moving a Service]({{site.url}}tutorials/move/) page.
+This feature enables moving the assignment of charges associated with a specific service asset from one employee to another. For a tutorial explaining how to use this feature, please refer to the [Moving a Service]({{site.url}}/tutorials/move/) page.
 
 To support this feature, the following endpoints were created or modified:
 

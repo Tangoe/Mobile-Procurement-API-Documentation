@@ -34,7 +34,7 @@ Please note that the Premium Mobile source system (known by some as Command), im
 
 ## Response Body
 
-Paginated results always include a [metadata block]({{site.url}}concepts/metadata/) containing the details needed by the API consumer to navigate the result set. These details include: 
+Paginated results always include a [metadata block]({{site.url}}/concepts/metadata/) containing the details needed by the API consumer to navigate the result set. These details include: 
 
 * **totalCount** - The total number of items in the entire result set (i.e., across all pages).
 

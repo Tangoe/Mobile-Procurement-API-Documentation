@@ -26,14 +26,28 @@ In cases where the end user needs to manually enter their password. For example,
 
 Please note that the when using the implicit grant type, your end user’s login credentials are not stored for the duration of the user’s session, only the token is stored. This allows for a trusted third-party to evaluate the credentials and authenticate the user without the hosting app have any access to those credentials. A popular example of this grant type in action would be an application that allows a user to authenticate with their Facebook username/password. The login popup is rovided by Facebook rather than the application itself and as a result the hosting application never has access to these credentials. In the case of Tangoe’s implicit OAuth 2, the Tangoe user store would act in the Facebook role.
 
+
+<br/>
+
+## Using the Access Token
+
 Both grant types require a two-step process:
 
 1.	A request must be made to a unique authentication URL to obtain an access token. Please contact your Tangoe representative for that URL.
 1.	The consuming application must then pass that access token with every API call.
 
-The **access token** for this API expires after one hour. However, when the access token is provided, Tangoe will also provide a **refresh token**. This refresh token can be passed with each call instead of the access token. Then, when the token is nearing expiration, a newly refreshed token will be automatically issued. In the case of the implicit grant type, this will save your end user the inconvenience of being repeatedly prompted to re-enter their username/password after an hour has passed.
+The **access token** for this API expires after one hour. However, when the access token is provided, Tangoe will also provide a **refresh token**. This refresh token can be passed with each call instead of the access token. Then, when the token is nearing expiration, a newly refreshed token will be automatically issued. In the case of the implicit grant type, this will save your end user the inconvenience of being repeatedly prompted to re-enter their username/password after an hour has passed. Refer to the [access token page]({{site.url}}/concepts/security/access_tokens/) for more information about how to [request a token]({{site.url}}/concepts/security/access_tokens/request-token-password/), [refresh a token]({{site.url}}/concepts/security/access_tokens/request-token-password/) <a href="./access-tokens/refresh-token/">refresh a token</a> or <a hef="./access-tokens/validate-token/">validate a token</a>.
 
-Refer to the [access token page]({{site.url}}/concepts/security/access_tokens/) for more information about how to [request a token]({{site.url}}/concepts/security/access_tokens/request-token-password/), [refresh a token]({{site.url}}/concepts/security/access_tokens/request-token-password/) <a href="./access-tokens/refresh-token/">refresh a token</a> or <a hef="./access-tokens/validate-token/">validate a token</a>.
+Once you have obtained your access token, it will need to be passed in as a header with every request. Other required headers include your tenant code and your client ID. For example:
+
+| ***Header Key*** | ***Example*** | ***Description*** |
+| --- | --- | --- |
+| **X-TNGO-TENANT**	| <code>XYZ</code> | Identifies the specific tenant for which the API is being called (i.e., the customer). |
+| **client_id**	| <code>0123abc456def78ghij11bc213wxyz</code> | Identifies the specific client application as the one calling the API. |
+| **Authorization**	| <code>Bearer <code>&lt;insert access token here&gt;</code> | Passed when using the Implicit authentication grant type. NOTE: The access token string must be preceded with the word “Bearer” |
+
+<br/>
+For more information regarding additional headers that may be passed, please refer to the <a href="/concepts/headers/">Request Headers</a> page.
 
 <br/>
 

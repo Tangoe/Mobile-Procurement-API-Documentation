@@ -12,7 +12,7 @@ The one on whose behalf the API call is being made is considered the context for
 
 * **Facilitating the use of a service account.** For security reasons, your company may wish to restrict which accounts are authorized to make API calls to a single service account (and possibly a very limited number of administrator accounts). Although the service account is used to execute the API call, that call could have been originated by an employee using your company's application. In this case, the order is being placed for the benefit of a particular end user and not the service account itself. The end user is the true context. For example, this would enable the API to return a smaller list from the device catalog that the end user is authorized to see, instead of the much larger list that the service account is authorized access (which could include all devices). 
 
-Whenever you need to change context, specific headers are used. Refer to the [request headers]({{site.url}}concepts/headers/) page for more information.
+Whenever you need to change context, specific headers are used. Refer to the [request headers]({{site.url}}/concepts/headers/) page for more information.
 
 <br/>
 
@@ -34,8 +34,8 @@ However, sometimes an API user may wish to execute a call on behalf of someone e
 
 Changing the context is accomplished via adding a header to the request that is set to either a Tangoe-generated ID (i.e., employee ID) or a third-party-generated ID (i.e., company employee ID). Specifically, these two headers are:
 
-* [X-TNGO-CONTEXT-EMPLOYEEID]({{site.url}}concepts/headers/)
-* [X-TNGO-CONTEXT-COMPANYEMPLOYEEID]({{site.url}}concepts/headers/)
+* [X-TNGO-CONTEXT-EMPLOYEEID]({{site.url}}/concepts/headers/)
+* [X-TNGO-CONTEXT-COMPANYEMPLOYEEID]({{site.url}}/concepts/headers/)
 
 API resources that might require changing the context include:
 
