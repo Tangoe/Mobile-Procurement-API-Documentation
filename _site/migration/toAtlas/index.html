@@ -708,6 +708,8 @@
 
 <p>Although Atlas offers a more robust experience than the older platforms, Tangoe has intentionally limited the scope of new Atlas functionality offered via MOBPROC to minimize effort required by API consumers when they migrate to Atlas. However, there are a few considerations to be aware of that could necessitate changes to the code for applications that consume the API.</p>
 
+<p>Currently, only a subset of the available MOBPROC endpoints have been implemented for Atlas. As additional endpoints are supported in the future, this page will be updated to identify any additional considerations that arise.</p>
+
 <p><br /></p>
 
 <h2 id="code-changes-that-might-be-required">Code Changes that Might Be Required</h2>
@@ -782,7 +784,7 @@
 <h2 id="changes-not-requiring-code-changes">Changes Not Requiring Code Changes</h2>
 
 <h3 id="catalog-item-ids-device-and-plan">Catalog Item IDs (Device and Plan)</h3>
-<p>Please note that all IDs returned by the Mobile Procurement API are assigned by the API and can change over time. Moreover, the structure of the ID can be different depending on the Tangoe backend system to which you subscribe. Specifically, catalog item IDs for the Premium Mobile (Command) and Rivermine platforms are a continous string that is vendor-specific. However, IDs for the Atlas platform contain two segments concatenated with an underscore (e.g., 123456_7778888). The first segment is the catalog item ID and the second segment is the vendor ID.</p>
+<p>Please note that all IDs returned by the Mobile Procurement API are assigned by the API and intended to be only used by the API. <strong>The specific ID values returned should not be relied upon for use apart from the API.</strong> Moreover, the structure of the ID can be different depending on the Tangoe backend system to which you subscribe. Specifically, catalog item IDs for the Premium Mobile (Command) and Rivermine platforms are a continous string that is vendor-specific. However, IDs for the Atlas platform contain two segments concatenated with an underscore (e.g., 123456_7778888). The first segment is the catalog item ID and the second segment is the vendor ID.</p>
 
 <p>The Premium Mobile (Command) and Rivermine platforms both require that a unique device catalog item exist for every unique vendor. Although the Atlas platform can support multiple vendors for the same device catalog item, the MOBPROC API will return a separate item for each vendor. However, related catalog items will have the same string in the first portion of the ID number (i.e., portion before the underscore).</p>
 
