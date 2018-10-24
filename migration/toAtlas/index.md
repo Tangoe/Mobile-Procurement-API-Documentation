@@ -8,7 +8,9 @@ title: Migration to Atlas
 
 The Mobile Procurement API (MOBPROC) was originally designed to support two Tangoe backend platforms: Premium Mobile (Command) and Rivermine. We recently updated this API so that it can be adopted by subscribers to our new Atlas platform as well. 
 
-Although Atlas offers a more robust experience than the older platforms, Tangoe has intentionally limited the scope of new Atlas functionality offered via MOBPROC to minimize effort required by API consumers when they migrate to Atlas. However, there are a few considerations to be aware of that could necessitate changes to the code for applications that consume the API.
+Although Atlas offers a more robust experience than the older platforms, Tangoe has intentionally limited the scope of new Atlas functionality offered via MOBPROC to minimize effort required by API consumers when they migrate to Atlas. However, there are a few considerations to be aware of that could necessitate changes to the code for applications that consume the API. 
+
+Currently, only a subset of the available MOBPROC endpoints have been implemented for Atlas. As additional endpoints are supported in the future, this page will be updated to identify any additional considerations that arise.
 
 <br/>
 
@@ -85,7 +87,7 @@ The following is an example of the device features block returned within the dev
 ## Changes Not Requiring Code Changes 
 
 ### Catalog Item IDs (Device and Plan)
-Please note that all IDs returned by the Mobile Procurement API are assigned by the API and can change over time. Moreover, the structure of the ID can be different depending on the Tangoe backend system to which you subscribe. Specifically, catalog item IDs for the Premium Mobile (Command) and Rivermine platforms are a continous string that is vendor-specific. However, IDs for the Atlas platform contain two segments concatenated with an underscore (e.g., 123456_7778888). The first segment is the catalog item ID and the second segment is the vendor ID. 
+Please note that all IDs returned by the Mobile Procurement API are assigned by the API and intended to be only used by the API. **The specific ID values returned should not be relied upon for use apart from the API.** Moreover, the structure of the ID can be different depending on the Tangoe backend system to which you subscribe. Specifically, catalog item IDs for the Premium Mobile (Command) and Rivermine platforms are a continous string that is vendor-specific. However, IDs for the Atlas platform contain two segments concatenated with an underscore (e.g., 123456_7778888). The first segment is the catalog item ID and the second segment is the vendor ID. 
 
 The Premium Mobile (Command) and Rivermine platforms both require that a unique device catalog item exist for every unique vendor. Although the Atlas platform can support multiple vendors for the same device catalog item, the MOBPROC API will return a separate item for each vendor. However, related catalog items will have the same string in the first portion of the ID number (i.e., portion before the underscore).
 
