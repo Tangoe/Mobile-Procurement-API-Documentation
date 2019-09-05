@@ -37,7 +37,7 @@ For an UPDATE_FEATURES transaction, this JSON typically includes the following p
 
 * Service asset ID for the cellular service with the features that you wish to update. This ID can be obtained via the **/assets/service** resource.
 
-* IDs for the features you wish to modify, along with the action you wish to take (i.e., ADD or REMOVE). You can also add a comment to provide additional information about the change, if needed.
+* IDs for the features you wish to modify, along with the action you wish to take (i.e., ADD or REMOVE). Feature IDs can be obtained via the **/catalog/features** resource. You can also add a comment to provide additional information about the change, if needed.
 
 * All required and optional order properties. Refer to the <a href="{{site.url}}/tutorials/properties">Obtaining Order Properties</a> page for steps how to identify the properties that are relevant for your order. Also, refer to this same page for instructions for <a href="{{site.url}}/tutorials/properties#choicePropertySubmittingOtherValue">submitting an "other/none of the above" value</a>.
 
